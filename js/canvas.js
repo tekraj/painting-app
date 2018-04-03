@@ -157,7 +157,7 @@ $(document).ready(function(){
 
     //clear canvas
     $('#new-paint').click(function(){
-        drawingCanvas.clearRect(0,0,c.width,c.height);
+        drawingCanvas.clearRect(0,0,drawingC.width,drawingC.height);
         drag =[];
         mouseX = [];
         mouseY = [];
