@@ -256,9 +256,10 @@
                 <div class="row">
                 <div class="col-md-6 px-0 writing">
                     <div class="canvas-wrapper">
-                        <canvas  class="drawing-board" height="1000px" width="1000" id="drawing-board"></canvas>
+                        <canvas  class="drawing-board"  id="drawing-board"></canvas>
                         <input class="canvas-text-input js-text-demo" style="display: none;" id="canvas-text-input">
-                        <canvas id="fake-canvas"  height="1000px" width="1000" class="fake-canvas"></canvas>
+                        <canvas id="fake-canvas"   class="fake-canvas"></canvas>
+                        <canvas id="resize-canvas" style="display: none;"></canvas>
                     </div>
                 </div>
                 <div class="col-md-6 px-0">

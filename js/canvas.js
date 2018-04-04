@@ -19,6 +19,8 @@ $(document).ready(function(){
         drawingCanvas=drawingC.getContext('2d'),
         fakeC = document.getElementById('fake-canvas'),
         fakeCanvas = fakeC.getContext('2d'),
+        rC = document.getElementById('resize-canvas'),
+        resizeCanvas = rC.getContext('2d'),
         cursor = 'default',
         currentColor = '#000',
         font = $('.js-font.active').data().font,
@@ -35,6 +37,8 @@ $(document).ready(function(){
         textTopCord,
         mouseX= [],
         mouseY= [],
+        textAnimation,
+        textCursor = true,
         pixColor =  [],
         drag= [],
         mouseDown,
@@ -42,9 +46,14 @@ $(document).ready(function(){
         j=0,
         background = '#fff',
         currentTool = 'pencil';
-
-    dc.css({'cursor':cursor});
-
+        dc.css({'cursor':cursor});
+        var parentHeight = dc.parent().height();
+        var parentWidth = dc.parent().width();
+        dc.attr({'height':parentHeight,'width':parentWidth})
+        fa.attr({'height':parentHeight,'width':parentWidth})
+        dc.parent().scroll(function(){
+            position = getCoords(drawingC);
+        })
 
     /**
      * ======================================================
@@ -53,6 +62,7 @@ $(document).ready(function(){
      */
     //default font-indicator
     $('#demo-font-text').css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
+    textInput.css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
     //change default color
     $('.js-color-code').click(function(e){
         e.preventDefault();
@@ -135,7 +145,7 @@ $(document).ready(function(){
         $('.js-font-size').removeClass('active');
         $(this).addClass('active');
         var activeFontSize = $(this).data().size;
-        $('#demo-font-text').css({'font-size':activeFontSize});
+        $('.js-text-demo').css({'font-size':activeFontSize});
     });
 
     $('#change-font').click(function (e){
@@ -143,7 +153,7 @@ $(document).ready(function(){
         font = $('.js-font.active').data().font;
         fontSize = $('.js-font-size.active').data().size;
         fontStyle = $('.js-font-style.active').data().style;
-        $('#demo-font-text').css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
+        $('.js-text-demo').css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
         dc.css({'cursor':cursor});
         currentTool = 'none';
         $('.option-menu').hide();
@@ -185,29 +195,24 @@ $(document).ready(function(){
         mouseDown = true;
         var left = e.pageX-position.left,
             top = e.pageY-position.top;
-        if( textEnabled){
-
-            textInput.blur().hide();
-            drawingCanvas.font = fontStyle+' ' +fontSize+'px '+font;
-            drawingCanvas.fillStyle = currentColor;
-            drawingCanvas.fillText(textInput.val(),textLeftCord+10,textTopCord+20 );
-            textInput.val('');
-            textEnabled = false;
-        }
 
         if(currentTool=='pencil'){
-
             clickIt(left,top)
             drawPencil();
         }else if( currentTool=='text' && !textEnabled  ){
-
              textEnabled = true;
              textInput.show().css({left:left,top:top});
              textLeftCord=left;
              textTopCord = top;
+
              setTimeout(function(){
                  textInput.focus();
              },100);
+
+             setTimeout(function (){
+                 fa.show();
+                 textInput.click();
+             },500)
 
          }else if(currentTool=='line'){
             fa.show();
@@ -225,10 +230,32 @@ $(document).ready(function(){
 
     });
     //mousemove
-    dc.mousemove(function(e){
+    $('body').mousemove(function(e){
         if(mouseDown) {
             var left = e.pageX - position.left;
             var top = e.pageY - position.top;
+            var canvasHeight = drawingC.height;
+            var canvasWidth = drawingC.width;
+
+
+           if(left>canvasWidth){
+               rC.width = canvasWidth;
+               rC.height = canvasHeight;
+               resizeCanvas.drawImage(drawingC, 0, 0);
+               dc.attr('width',left);
+               fa.attr('width',left);
+
+               drawingCanvas.drawImage(rC,0,0);
+           }
+           if(top>canvasHeight){
+               rC.width = canvasWidth;
+               rC.height = canvasHeight;
+               resizeCanvas.drawImage(drawingC, 0, 0);
+               dc.attr('height',top);
+               fa.attr('height',top);
+               drawingCanvas.drawImage(rC,0,0);
+           }
+
             if (currentTool == 'paint-bucket') {
                 drawingCanvas.fillRect(0, 0, c.width, c.height);
                 drawingCanvas.beginPath();
@@ -251,25 +278,33 @@ $(document).ready(function(){
                 clickIt(left,top, true)
                 drawPencil();
             }
+            if(currentTool=='line'){
+                drawLineAnimation(left,top);
+            }else if(currentTool=='cube'){
+                drawCubeAnimation(left,top);
+            }else if(currentTool=='rectangle'){
+                drawRectangleAnimation(left,top);
+            }
         }
+
+
     });
 
-    fa.mousemove(function(e){
-
+    //mouseup
+    $('body').mouseup(function(e){
         var left = e.pageX - position.left;
         var top = e.pageY - position.top;
-        if(currentTool=='line'){
-            drawLineAnimation(left,top);
-        }else if(currentTool=='cube'){
-            drawCubeAnimation(left,top);
-        }else if(currentTool=='rectangle'){
-            drawRectangleAnimation(left,top);
+        fa.hide();
+        if(mouseDown){
+            if(currentTool=='line'){
+                drawLine(left,top);
+            }else if(currentTool=='cube'){
+                drawCube(left,top);
+            }else if(currentTool=='rectangle'){
+                drawRectangle(left,top);
+            }
         }
-    });
-    //mouseup
-    dc.mouseup(function(e){
-
-
+        fakeCanvas.clearRect(0,0,fakeC.height,fakeC.width);
         mouseDown = false;
         mouseX = [];
         mouseY = [];
@@ -277,24 +312,11 @@ $(document).ready(function(){
 
 
     });
-    //mouseleave
-    dc.mouseleave(function(e){
-        mouseDown = false;
 
-    });
-    fa.mouseup(function (e){
-        var left = e.pageX - position.left;
-        var top = e.pageY - position.top;
-        $(this).hide();
-        if(currentTool=='line'){
-            drawLine(left,top);
-        }else if(currentTool=='cube'){
-            drawCube(left,top);
-        }else if(currentTool=='rectangle'){
-            drawRectangle(left,top);
-        }
-
-    });
+    // fa.mouseup(function (e){
+    //
+    //
+    // });
 
     /**
      * ======================================================
@@ -329,8 +351,7 @@ $(document).ready(function(){
      */
 
     function drawLineAnimation(x,y){
-
-        fakeCanvas.clearRect(0,0,fakeC.height,fakeC.width);
+        fakeCanvas.clearRect(0,0,fa.height()*4,fa.width()*4);
         fakeCanvas.beginPath();
         fakeCanvas.moveTo(lineStartPoint.x,lineStartPoint.y);
         fakeCanvas.lineTo(x,y);
@@ -409,7 +430,7 @@ $(document).ready(function(){
      * =====================================================
      */
     function drawCube(x,y){
-        fakeCanvas.clearRect(0,0,fakeC.height,fakeC.width);
+        fakeCanvas.clearRect(0,0,fa.height()*4,fa.width()*4);
         var sizeX = Math.abs(x-lineStartPoint.x);
         var sizeY = Math.abs(y-lineStartPoint.y);
         var sizeZ = Math.abs(x-lineStartPoint.x);
@@ -454,7 +475,7 @@ $(document).ready(function(){
      */
 
     function drawRectangleAnimation(x,y){
-        fakeCanvas.clearRect(0,0,fakeC.height,fakeC.width);
+        fakeCanvas.clearRect(0,0,fa.height()*4,fa.width()*4);
         fakeCanvas.beginPath();
         fakeCanvas.lineWidth= lineSize;
         fakeCanvas.strokeStyle=currentColor;
@@ -477,11 +498,72 @@ $(document).ready(function(){
         drawingCanvas.stroke();
 
     }
+
+    textInput.on('click keydown',function(e){
+
+        fa.show();
+         setTimeout(function(){
+             var inputValue = textInput.val() ? textInput.val() : '';
+             var textLength = (inputValue.length+1) * (fontSize/2);
+             if((textLength+textLeftCord+10)>drawingC.width){
+                 rC.width = (textLength+textLeftCord+10);
+                 rC.height = drawingC.height;
+                 resizeCanvas.drawImage(drawingC, 0, 0);
+                 dc.attr('width',textLength+textLeftCord+10);
+                 fa.attr('width',textLength+textLeftCord+10);
+                 drawingCanvas.drawImage(rC,0,0);
+             }
+             fakeCanvas.clearRect(0,0,fa.height()*4,fa.width()*4);
+            fakeCanvas.font = fontStyle+' ' +fontSize+'px '+font;
+            fakeCanvas.fillStyle = currentColor;
+
+            fakeCanvas.fillText(inputValue+'|',textLeftCord+10,textTopCord+10 );
+
+        },50);
+         if(textAnimation)
+            clearInterval(textAnimation);
+
+
+        textAnimation = setInterval(function (){
+            var textValue = textInput.val() ? textInput.val() : '';
+            if(textCursor){
+                textValue = textValue+'|';
+                textCursor= false;
+            }
+            else{
+                textCursor = true;
+            }
+
+            fakeCanvas.clearRect(0,0,fa.height()*4,fa.width()*4);
+            fakeCanvas.font = fontStyle+' ' +fontSize+'px '+font;
+            fakeCanvas.fillStyle = currentColor;
+            fakeCanvas.fillText(textValue,textLeftCord+10,textTopCord+10 );
+        },500);
+
+    });
+    textInput.blur(function (e){
+        clearInterval(textAnimation);
+        $(this).hide();
+        var textVal = $(this).val();
+        var left = e.pageX-position.left,
+            top = e.pageY-position.top;
+        fa.hide();
+        $('#mouse-cursor').click();
+        if( textEnabled){
+            drawingCanvas.font = fontStyle+' ' +fontSize+'px '+font;
+            drawingCanvas.fillStyle = currentColor;
+            drawingCanvas.fillText(textVal,textLeftCord+10,textTopCord+10 );
+            textInput.val('');
+            textEnabled = false;
+        }
+
+    });
 });
 
 function getCoords(elem) {
     var box = elem.getBoundingClientRect();
-
+    var scrollLeft = $(elem).parent().scrollLeft();
+    var scrollTop = $(elem).parent().scrollTop();
     var body = document.body;
     var docEl = document.documentElement;
 
