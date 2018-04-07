@@ -34,7 +34,7 @@ body {
 .canvas-wrapper{overflow: auto;height: 500px;border:5px solid #ccc;position: relative;}
 .drawing-board{background:#fff;}
 .canvas-text-input{
-    //border:none;
+    border:none;
     padding: 0px;
     margin:0;
     opacity: 0;
@@ -44,6 +44,7 @@ body {
     top: 0;
     left: 0;
     outline: none;
+    white-space: pre-wrap;
 }
 .option-menu-wrapper{position: relative;}
 .option-menu {

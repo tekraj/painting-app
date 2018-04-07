@@ -2,7 +2,7 @@
     $colors =  ['#e6194b','#3cb44b','#ffe119','#0082c8','#f58231','#911eb4','#46f0f0','#f032e6','#d2f53c','#fabebe','#008080','#e6beff','#aa6e28','#fffac8','#800000','#aaffc3','#808000','#ffd8b1','#000080','#808080','#FFFFFF','#000000'];
     $fonts = [['name'=>'Times New Roman','value'=>'"Times New Roman", Times, serif'],['name'=>'Arial','value'=>'Arial, Helvetica, sans-serif'],['name'=>'Courier New','value'=>'"Courier New", Courier, monospace']];
     $fontSizes = [8,9,10,11,12,13,14,16,18,20,24,30,36,42,48];
-    $fontStyle = ['regular','bold','italic','bold italic'];
+    $fontStyle = ['normal','bold','italic','bold italic'];
  ?>
 
 <!doctype html>
@@ -68,8 +68,8 @@
           <a href="#" class="btn btn-secondary btn-square">
           <span class=""><img src="images/email.png"></span>
           </a>
-          <a href="#" class="btn btn-secondary btn-square">
-          <span class=""><img src="images/printer-.png" width="16px;"></span>
+          <a href="#" class="btn btn-secondary btn-square" id="print-canvas">
+            <span class=""><img src="images/printer-.png" width="16px;"></span>
           </a>
           <a href="#" class="btn btn-secondary btn-square">
           <span class=""><img src="images/share-connection-sing.png"></span>
@@ -112,7 +112,7 @@
                     </ul>
                  </div>  
                 <div class="text-center my-1 option-menu-wrapper">
-                     <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" data-tool="eraser" data-toggle="tooltip" data-placement="top" title="Eraser" data-cursor="url(images/eraser.png), auto">
+                     <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" data-tool="eraser" data-toggle="tooltip" data-placement="top" title="Eraser" data-cursor="crosshair">
                         <span class=""><img src="images/eraser.png" width="16px;"></span>
                      </a>
                     <div class="option-menu eraser-slider" style="display: none;">
@@ -158,7 +158,7 @@
                                     <h5>Size</h5>
                                     <ul>
                                         <?php foreach($fontSizes as $size):?>
-                                            <li><a href="#" class="js-font-size <?php echo $size==13 ? 'active' : ''; ?>" data-size="<?php echo $size ?>"><?php echo $size;?></a></li>
+                                            <li><a href="#" class="js-font-size <?php echo $size==18 ? 'active' : ''; ?>" data-size="<?php echo $size ?>"><?php echo $size;?></a></li>
                                         <?php endforeach; ?>
                                     </ul>
                                 </div>
@@ -175,7 +175,7 @@
                         </div>
                  </div>
                 <div class="text-center my-1 option-menu-wrapper">
-                     <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" data-toggle="tooltip" data-placement="top" title="Colors" id="color-indicator">
+                     <a href="#" style="background:#000;" class="btn btn-secondary btn-square mx-auto js-tools" data-toggle="tooltip" data-placement="top" title="Colors" id="color-indicator">
                         <span class=""><img src="images/palette.png"></span>
                      </a>
                     <div class="option-menu color-menu" style="display: none;">
@@ -192,7 +192,7 @@
 
                  </div>
                 <div class="text-center my-1">
-                 <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
+                 <a href="#" class="btn btn-secondary btn-square mx-auto" data-toggle="tooltip" data-placement="top" title="Just point the mouse where you want to paste the image and Press Ctrl+V">
                     <span class=""><img src="images/paste.png" width="16px;"></span>
                  </a>
                  </div>
@@ -207,6 +207,21 @@
                  </a>
                  </div>
                 <div class="text-center my-1 option-menu-wrapper">
+                    <a href="#" style="background:#000;" class="btn btn-secondary btn-square mx-auto js-tools" data-toggle="tooltip" data-placement="top" title="Graphs" id="color-indicator">
+                        <img src="images/icons/ic_list_white_18dp_1x.png" alt="">
+                    </a>
+
+                    <ul class="option-menu color-menu" style="display: none;">
+                        <li>
+                            <a href="" class="js-tools" data-tool="xgraph">Uni-directiona</a>
+                        </li>
+                        <li>
+                            <a href="" class="js-tools" data-tool="xygraph">XY Graph Graph</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="text-center my-1 option-menu-wrapper">
                  <a href="#" class="btn btn-secondary btn-square mx-auto js-tools"  data-toggle="tooltip" data-placement="top" title="Draw Line">
                     <span class=""><img src="images/shapes_basic_3d_shares_yellow-512.png" width="16px;"></span>
                  </a>
@@ -215,7 +230,22 @@
                             <a href="" class="js-tools" data-tool="rectangle" data-cursor="url(images/line-icon.png), auto">Rectangle</a>
                         </li>
                         <li>
-                            <a href="" class="js-tools" data-tool="cube" data-cursor="url(images/line-icon.png), auto">Cube</a>
+                            <a href="" class="js-tools" data-tool="cube" data-cursor="corss-hair">Cube</a>
+                        </li>
+                        <li>
+                            <a href="" class="js-tools" data-tool="oval" data-cursor="cross-hair">Oval</a>
+                        </li>
+                        <li>
+                            <a href="" class="js-tools" data-tool="cylinder" data-cursor="cross-hair">Cylinder</a>
+                        </li>
+                        <li>
+                            <a href="" class="js-tools" data-tool="cone" data-cursor="cross-hair">Cone</a>
+                        </li>
+                        <li>
+                            <a href="" class="js-tools" data-tool="cone" data-cursor="cross-hair">Cone</a>
+                        </li>
+                        <li>
+                            <a href="" class="js-tools" data-tool="pyramid" data-cursor="cross-hair">Pyramid</a>
                         </li>
                     </ul>
                  </div>
@@ -225,7 +255,7 @@
                  </a>
                  </div>
                 <div class="text-center my-1">
-                 <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
+                 <a href="#" class="btn btn-secondary btn-square mx-auto" data-toggle="modal" data-target="equation-modal">
                     <span class=""><img src="images/calculator.png"></span>
                  </a>
                  </div>
@@ -257,7 +287,7 @@
                 <div class="col-md-6 px-0 writing">
                     <div class="canvas-wrapper">
                         <canvas  class="drawing-board"  id="drawing-board"></canvas>
-                        <input class="canvas-text-input js-text-demo" style="display: none;" id="canvas-text-input">
+                        <textarea class="canvas-text-input js-text-demo" style="display: none;" id="canvas-text-input"></textarea>
                         <canvas id="fake-canvas"   class="fake-canvas"></canvas>
                         <canvas id="resize-canvas" style="display: none;"></canvas>
                     </div>
