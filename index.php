@@ -222,7 +222,7 @@
 
                 </div>
                 <div class="text-center my-1 option-menu-wrapper">
-                 <a href="#" class="btn btn-secondary btn-square mx-auto js-tools"  data-toggle="tooltip" data-placement="top" title="Draw Line">
+                 <a href="#" class="btn btn-secondary btn-square mx-auto js-tools"  data-toggle="tooltip" data-placement="top" title="Shapes">
                     <span class=""><img src="images/shapes_basic_3d_shares_yellow-512.png" width="16px;"></span>
                  </a>
                     <ul class="option-menu" style="display: none">
