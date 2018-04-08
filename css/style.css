@@ -106,3 +106,45 @@ body {
 .color-pallet{list-style: none;padding:0;margin:0;}
 .color-pallet li a{display: inline-block;width: 20px;height: 20px;border:1px solid #000;margin-bottom:3px;}
 .fake-canvas{position:absolute;top:0;left:0;display: none;background:transparent;z-index:9;}
+.canvas-writing.full-screen{
+    position:fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    background:#fff;
+    z-index: 99;
+}
+#symbol-modal .modal-dialog{max-width: 800px;}
+#symbol-modal .modal-header{padding:0;}
+#symbol-modal h4{font-size:14px;margin:0;padding:10px 15px;}
+#symbol-modal .modal-footer{padding:5px 15px;}
+#symbol-modal .modal-body{background:#ccc;}
+.f-50 {
+    font-size: 50px;
+    display: block;
+    line-height: 60px;
+    margin-top: -10px;
+}
+.f-32{font-size:32px;font-family: "Times New Roman";}
+.symbol-menu  li{display:inline-block;vertical-align:middle;width:60px;}
+.symbol-menu  li a{text-decoration: none!important;color:#5d5d5d;}
+.function-menu {
+    width: 370px;
+    padding-left: 30px;
+    padding-right: 15px;
+}
+.misscelleneous-menu  li{width:80px;}
+.misscelleneous-menu{
+    width: 450px;
+    padding-left: 30px;
+    padding-right: 15px;
+}
+
+.eqEdEquation{
+    width: 100%!important;
+    height: 200px;
+    padding: 20px;
+    background: #fff;
+    margin: 20px 0;
+}

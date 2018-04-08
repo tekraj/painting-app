@@ -10,6 +10,9 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 
 
+    //full screen
+
+
     /**
      * ======================================================
      * *************** variable declaration *****************
@@ -235,7 +238,7 @@ $(document).ready(function(){
                  textInput.click();
              },300)
 
-         }else if(currentTool=='line' || currentTool=='cube' || currentTool=='rectangle' ||currentTool=='oval' || currentTool=='cone' || currentTool=='pyramid' || currentTool=='xgraph' || currentTool=='xygraph'){
+         }else if(currentTool=='line' || currentTool=='cube' || currentTool=='rectangle' ||currentTool=='oval' || currentTool=='cone' || currentTool=='pyramid' || currentTool=='xgraph' || currentTool=='xygraph' || currentTool=='cylinder'){
             fa.show();
             lineStartPoint.x = left;
             lineStartPoint.y = top;
@@ -578,16 +581,13 @@ $(document).ready(function(){
         fakeCanvas.fillStyle = '#fff';
         fakeCanvas.stroke();
         fakeCanvas.fill();
-
     }
-
 
     /**
      * ======================================================
      * *************** function for circle animation
      * =====================================================
      */
-
     function drawCircleAnimation(x,y,noAnimation){
         fakeCanvas.clearRect(0,0,fakeCanvasMaxLenght,fakeCanvasMaxLenght);
         var ctx = noAnimation ? drawingCanvas : fakeCanvas;
@@ -737,7 +737,6 @@ $(document).ready(function(){
         ctx.strokeStyle = currentColor;
         ctx.stroke();
         ctx.closePath();
-
     }
 
     /**
@@ -981,7 +980,6 @@ $(document).ready(function(){
 
 
     textInput.on('focus click keydown',function(e){
-
         fa.show();
          setTimeout(function(){
              var inputValue = (textInput.val() ? textInput.val() : '')+'|';
@@ -1006,11 +1004,9 @@ $(document).ready(function(){
                  }
              }
 
-        },50);
+        },5);
          if(textAnimation)
             clearInterval(textAnimation);
-
-
         textAnimation = setInterval(function (){
             var textValue = (textInput.val() ? textInput.val() : '')+(textCursor ? '|' :'');
             var textValArray = textValue.split('\n');
@@ -1030,7 +1026,6 @@ $(document).ready(function(){
                     fakeCanvas.fillText(textValArray[i],textLeftCord,textTopCord+15+(i*fontSize) );
             }
         },500);
-
     });
     textInput.blur(function (e){
         clearInterval(textAnimation);
