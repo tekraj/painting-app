@@ -148,3 +148,17 @@ body {
     background: #fff;
     margin: 20px 0;
 }
+.menuItem{width: 40px!important;}
+#simple-functions{padding-top:20px;}
+#integralNoUpperNoLowerButton{height:60px;}
+#integralButton{height:80px;margin-top:-10px;}
+#limitButton{width: 60px!important;}
+#logLowerButton{width: 80px!important;}
+.tab-links a{padding:5px 10px;}
+#tab-content-top{width:100%;}
+.tab-links a{background:#9C9C9C;}
+.outerTab.active a, .outerTab.active a:hover{background:#fff;}
+#tab-content-top{background:#fff;}
+.symbol-dropdown{width:600px;}
+.symbol-dropdown li{width:60px;float:left;}
+.symbol-dropdown span{font-size:24px!important;}

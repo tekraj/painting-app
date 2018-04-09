@@ -1,4 +1,5 @@
 var insertWrapper = function(wrapper) {
+
     var cursor = $('.cursor');
     var highlighted = $('.highlighted');
     if (cursor.length > 0) {

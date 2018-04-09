@@ -1,3 +1,22 @@
+if (!HTMLCanvasElement.prototype.toBlob) {
+    Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
+        value: function (callback, type, quality) {
+            var canvas = this;
+            setTimeout(function() {
+                var binStr = atob( canvas.toDataURL(type, quality).split(',')[1] ),
+                    len = binStr.length,
+                    arr = new Uint8Array(len);
+
+                for (var i = 0; i < len; i++ ) {
+                    arr[i] = binStr.charCodeAt(i);
+                }
+
+                callback( new Blob( [arr], {type: type || 'image/png'} ) );
+            });
+        }
+    });
+}
+
 $(document).ready(function(){
     //script to hide save tab
     $('body').click(function(e){
@@ -68,6 +87,9 @@ $(document).ready(function(){
      * *************** script to change the value of variables
      * =====================================================
      */
+    setTimeout(function (){
+        $('.eqEdEquation').css({'font-size':fontSize});
+    },100);
     //default font-indicator
     $('#demo-font-text').css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
     textInput.css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
@@ -165,6 +187,7 @@ $(document).ready(function(){
         dc.css({'cursor':cursor});
         currentTool = 'none';
         $('.option-menu').hide();
+        $('.eqEdEquation').css({'font-size':fontSize});
     });
 
     $('#cancel-font').click(function (e){
@@ -172,6 +195,17 @@ $(document).ready(function(){
         $('.option-menu').hide();
     });
 
+
+    //insert symbols
+    $('#toLatex').on('click', function() {
+
+        var jsonObj = $('.eqEdEquation').data('eqObject').buildJsonObj();
+        var latex = generateLatex(jsonObj.operands.topLevelContainer);
+       // $('.eqEdEquation').find('.eqEdContainer').attr('')
+        insertSymbols($('.eqEdContainer'),function(){
+            $('.modal').modal('hide');
+        })
+    });
 
     //clear canvas
     $('#new-paint').click(function(){
@@ -199,7 +233,7 @@ $(document).ready(function(){
 
     });
 
-    //function for pushing the values in the arrays
+    //function for pushing the values in the arraysx
     function pushPencilPoints(x,y,tf){
         mouseX.push(x);
         mouseY.push(y);
@@ -1121,6 +1155,49 @@ $(document).ready(function(){
             }
         }
     }
+
+
+    function insertSymbols(dom,callback){
+
+        domtoimage.toPng(dom[0])
+            .then(function(dataUrl) {
+                var img = new Image;
+                img.onload = function () {
+                    var width = img.width;
+                    var height = img.height;
+                    var canvasHeight = drawingC.height;
+                    var canvasWidth = drawingC.width;
+                    var left = lineStartPoint.x+width;
+                    var top = lineStartPoint.y+height;
+                    if(left>canvasWidth){
+                        parentDiv.scrollLeft(left);
+                        rC.width = canvasWidth;
+                        rC.height = canvasHeight;
+                        resizeCanvas.drawImage(drawingC, 0, 0);
+                        dc.attr('width',left);
+                        fa.attr('width',left);
+                        drawingCanvas.drawImage(rC,0,0);
+                    }
+                    if(top>canvasHeight){
+                        parentDiv.scrollLeft(top);
+                        rC.width = canvasWidth;
+                        rC.height = canvasHeight;
+                        resizeCanvas.drawImage(drawingC, 0, 0);
+                        dc.attr('height',top);
+                        fa.attr('height',top);
+                        drawingCanvas.drawImage(rC,0,0);
+                    }
+                    drawingCanvas.drawImage(img, lineStartPoint.x,lineStartPoint.y);
+                    return callback();
+                };
+                img.src = dataUrl;
+
+            })
+            .catch(function(error) {
+                return callback();
+                console.error('oops, something went wrong!', error);
+            });
+    }
 });
 
 function getCoords(elem) {
@@ -1139,4 +1216,12 @@ function getCoords(elem) {
     var left = box.left + scrollLeft - clientLeft;
     return {top: Math.round(top), left:Math.round(left) };
 }
+
+
+
+
+
+
+
+
 
