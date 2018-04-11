@@ -16,49 +16,10 @@ if (!HTMLCanvasElement.prototype.toBlob) {
         }
     });
 }
-$.fn.superScript = function() {
-    var chars = '+−=()0123456789AaÆᴂɐɑɒBbcɕDdðEeƎəɛɜɜfGgɡɣhHɦIiɪɨᵻɩjJʝɟKklLʟᶅɭMmɱNnɴɲɳŋOoɔᴖᴗɵȢPpɸrRɹɻʁsʂʃTtƫUuᴜᴝʉɥɯɰʊvVʋʌwWxyzʐʑʒꝯᴥβγδθφχнნʕⵡ',
-        sup   = '⁺⁻⁼⁽⁾⁰¹²³⁴⁵⁶⁷⁸⁹ᴬᵃᴭᵆᵄᵅᶛᴮᵇᶜᶝᴰᵈᶞᴱᵉᴲᵊᵋᶟᵌᶠᴳᵍᶢˠʰᴴʱᴵⁱᶦᶤᶧᶥʲᴶᶨᶡᴷᵏˡᴸᶫᶪᶩᴹᵐᶬᴺⁿᶰᶮᶯᵑᴼᵒᵓᵔᵕᶱᴽᴾᵖᶲʳᴿʴʵʶˢᶳᶴᵀᵗᶵᵁᵘᶸᵙᶶᶣᵚᶭᶷᵛⱽᶹᶺʷᵂˣʸᶻᶼᶽᶾꝰᵜᵝᵞᵟᶿᵠᵡᵸჼˤⵯ';
 
-    return this.each(function() {
-        this.value = this.value.replace(/<sup[^>]*>(.*?)<\/sup>/g, function(x) {
-            var str = '',
-                txt = $.trim($(x).unwrap().text());
-
-            for (var i=0; i<txt.length; i++) {
-                var n = chars.indexOf(txt[i]);
-                str += (n!=-1 ? sup[n] : txt[i]);
-            }
-            console.log(str);
-            return str;
-        });
-    });
-}
-
-$.fn.subScript = function() {
-    var chars = '0123456789+-()',
-        sup   = '₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎';
-
-    return this.each(function() {
-        this.value = this.value.replace(/<sub[^>]*>(.*?)<\/sub>/g, function(x) {
-            var str = '',
-                txt = $.trim($(x).unwrap().text());
-
-            for (var i=0; i<txt.length; i++) {
-                var n = chars.indexOf(txt[i]);
-                str += (n!=-1 ? sup[n] : txt[i]);
-            }
-            return str;
-        });
-    });
-};
 $(document).ready(function(){
 
     $('[data-toggle="tooltip"]').tooltip();
-
-    //code to insert custom science symbols
-    $('.y-value-sub').subScript();
-    $('.y-value-sup').superScript();
 
     //full screen
 
@@ -101,6 +62,7 @@ $(document).ready(function(){
         scienceEnabled = false,
         graphColor = '#ccc',
         fakeCanvasMaxLenght = 10000,
+        textHolder = $('#text-holder'),
         mouseDown,
         lineStartPoint ={x:0,y:0},
         lineEndPoint = {x:0,y:0},
@@ -124,7 +86,7 @@ $(document).ready(function(){
         $('.eqEdEquation').css({'font-size':fontSize});
     },100);
     //default font-indicator
-    $('#demo-font-text').css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
+    $('#demo-font-text,#text-holder').css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
     textInput.css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
     $('.js-enable-symbol').mouseover(function(){
         symbolEnabled = true;
@@ -144,13 +106,20 @@ $(document).ready(function(){
 
     $('#x-value-sup,#x-value-sub').keydown(function(e){
         var $this = $(this);
+        symbolEnabled = true;
         setTimeout(function (){
             var symbol = $this.val();
-
             var currentTextValue = textInput.val();
+            if($this.hasClass('y-value-sub')){
+                symbol = '<sub>'+symbol+'</sub>';
+            }else{
+                symbol = '<sup>'+symbol+'</sup>';
+            }
             textInput.val(currentTextValue+symbol).change();
+            $this.val('');
             $this.blur();
             textInput.focus();
+            symbolEnabled = false;
         },100);
     });
     //change default color
@@ -249,7 +218,7 @@ $(document).ready(function(){
         font = $('.js-font.active').data().font;
         fontSize = $('.js-font-size.active').data().size;
         fontStyle = $('.js-font-style.active').data().style;
-        $('.js-text-demo').css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
+        $('.js-text-demo,#text-holder').css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
         dc.css({'cursor':cursor});
         currentTool = 'none';
         $('.option-menu').hide();
@@ -267,9 +236,7 @@ $(document).ready(function(){
         var jsonObj = $('.eqEdEquation').data('eqObject').buildJsonObj();
         var latex = generateLatex(jsonObj.operands.topLevelContainer);
        // $('.eqEdEquation').find('.eqEdContainer').attr('')
-        insertSymbols($('.eqEdContainer'),function(){
-            $('.modal').modal('hide');
-        })
+        insertSymbols($('.eqEdContainer'));
     });
 
     //clear canvas
@@ -1094,11 +1061,11 @@ $(document).ready(function(){
 
 
     textInput.on('focus change click keydown',function(e){
-        fa.show();
+        textHolder.show();
          setTimeout(function(){
              var inputValue = (textInput.val() ? textInput.val() : '')+'|';
-             var textValArray = inputValue.split('\n');
              var textLength = (inputValue.length+1) * (fontSize/2);
+             inputValue = inputValue.replace('\n','<br>');
              if((textLength+textLeftCord)>drawingC.width){
                  rC.width = (textLength+textLeftCord);
                  rC.height = drawingC.height;
@@ -1107,38 +1074,21 @@ $(document).ready(function(){
                  fa.attr('width',textLength+textLeftCord);
                  drawingCanvas.drawImage(rC,0,0);
              }
-             fakeCanvas.clearRect(0,0,fakeCanvasMaxLenght,fakeCanvasMaxLenght);
-            fakeCanvas.font = fontStyle+' ' +fontSize+'px '+font;
-            fakeCanvas.fillStyle = currentColor;
-             fakeCanvas.font = fontStyle+' ' +fontSize+'px '+font;
-             fakeCanvas.fillStyle = currentColor;
-             for(var i in textValArray){
-                 if(textValArray[i]){
-                     fakeCanvas.fillText(textValArray[i],textLeftCord,textTopCord+15+(i*fontSize) );
-                 }
-             }
-
+             textHolder.css({'left':textLeftCord,'top':textTopCord-5}).html(inputValue);
         },5);
          if(textAnimation)
             clearInterval(textAnimation);
         textAnimation = setInterval(function (){
-            var textValue = (textInput.val() ? textInput.val() : '')+(textCursor ? '|' :'');
-            var textValArray = textValue.split('\n');
+            var inputValue = (textInput.val() ? textInput.val() : '');
+            inputValue = inputValue.replace('\n','<br>');
             if(textCursor){
-                textValue = textValue+'|';
+                inputValue = inputValue+'|';
                 textCursor= false;
             }
             else{
                 textCursor = true;
             }
-
-            fakeCanvas.clearRect(0,0,fakeCanvasMaxLenght,fakeCanvasMaxLenght);
-
-            fakeCanvas.font = fontStyle+' ' +fontSize+'px '+font;
-            fakeCanvas.fillStyle = currentColor;
-            for(var i in textValArray){
-                    fakeCanvas.fillText(textValArray[i],textLeftCord,textTopCord+15+(i*fontSize) );
-            }
+            textHolder.html(inputValue);
         },500);
     });
     textInput.blur(function (e){
@@ -1152,15 +1102,10 @@ $(document).ready(function(){
         var textValArray = textVal.split('\n');
         var left = lineStartPoint.x,
             top = lineStartPoint.y;
-        fa.hide();
+        textHolder.hide();
         $('#mouse-cursor').click();
         if (textEnabled) {
-            drawingCanvas.globalCompositeOperation = "source-over";
-            drawingCanvas.font = fontStyle + ' ' + fontSize + 'px ' + font;
-            drawingCanvas.fillStyle = currentColor;
-            for (var i in textValArray) {
-                drawingCanvas.fillText(textValArray[i], textLeftCord, textTopCord + 15 + (i * fontSize));
-            }
+            writeTextDivToCanvas(textLeftCord,textTopCord);
             textInput.val('');
             textEnabled = false;
         }
@@ -1241,7 +1186,7 @@ $(document).ready(function(){
     }
 
 
-    function insertSymbols(dom,callback){
+    function insertSymbols(dom){
 
         domtoimage.toPng(dom[0])
             .then(function(dataUrl) {
@@ -1272,13 +1217,52 @@ $(document).ready(function(){
                         drawingCanvas.drawImage(rC,0,0);
                     }
                     drawingCanvas.drawImage(img, lineStartPoint.x,lineStartPoint.y);
-                    return callback();
                 };
                 img.src = dataUrl;
 
             })
             .catch(function(error) {
-                return callback();
+                console.error('oops, something went wrong!', error);
+            });
+    }
+
+    function writeTextDivToCanvas(x,y){
+        domtoimage.toPng(textHolder[0])
+            .then(function(dataUrl) {
+                var img = new Image;
+                img.onload = function () {
+                    var width = img.width;
+                    var height = img.height;
+                    var canvasHeight = drawingC.height;
+                    var canvasWidth = drawingC.width;
+                    var left = lineStartPoint.x+width;
+                    var top = lineStartPoint.y+height;
+                    if(left>canvasWidth){
+                        parentDiv.scrollLeft(left);
+                        rC.width = canvasWidth;
+                        rC.height = canvasHeight;
+                        resizeCanvas.drawImage(drawingC, 0, 0);
+                        dc.attr('width',left);
+                        fa.attr('width',left);
+                        drawingCanvas.drawImage(rC,0,0);
+                    }
+                    if(top>canvasHeight){
+                        parentDiv.scrollLeft(top);
+                        rC.width = canvasWidth;
+                        rC.height = canvasHeight;
+                        resizeCanvas.drawImage(drawingC, 0, 0);
+                        dc.attr('height',top);
+                        fa.attr('height',top);
+                        drawingCanvas.drawImage(rC,0,0);
+                    }
+                    drawingCanvas.drawImage(img, x,y);
+                    textHolder.hide();
+
+                };
+                img.src = dataUrl;
+
+            })
+            .catch(function(error) {
                 console.error('oops, something went wrong!', error);
             });
     }

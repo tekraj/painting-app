@@ -174,3 +174,4 @@ body {
 .power-dropdown input{display: inline-block;width:40px;position: absolute;right:15px;}
 .power-dropdown .y-value-sub{bottom:15px;}
 .power-dropdown .x-value-sub{padding:5px 30px 30px 5px;}
+#text-holder{position:absolute;left:0;top:0;display: none;}
