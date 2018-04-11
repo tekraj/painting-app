@@ -136,8 +136,9 @@ $(document).ready(function(){
         var currentTextValue = textInput.val();
         setTimeout(function(){
             textInput.val(currentTextValue+symbol).change();
+            textInput.focus();
         },100)
-       // textInput.focus();
+
     });
 
 
@@ -145,9 +146,11 @@ $(document).ready(function(){
         var $this = $(this);
         setTimeout(function (){
             var symbol = $this.val();
-            console.log(symbol)
+
             var currentTextValue = textInput.val();
             textInput.val(currentTextValue+symbol).change();
+            $this.blur();
+            textInput.focus();
         },100);
     });
     //change default color
