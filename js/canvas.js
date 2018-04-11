@@ -18,15 +18,10 @@ if (!HTMLCanvasElement.prototype.toBlob) {
 }
 
 $(document).ready(function(){
-    //script to hide save tab
-    $('body').click(function(e){
 
-        if( !$(e.target).is('.option-menu-wrapper a') && !$(e.target).is('.option-menu-wrapper .option-menu') &&  !$(e.target).is('.option-menu-wrapper a img') && !$(e.target).is('.option-menu-wrapper a span')){
-            $('.option-menu').hide();
-        }
-
-    });
     $('[data-toggle="tooltip"]').tooltip();
+
+    //code to insert custom science symbols
 
 
     //full screen
@@ -66,6 +61,8 @@ $(document).ready(function(){
         textCursor = true,
         pixColor =  [],
         drag= [],
+        symbolEnabled = false,
+        scienceEnabled = false,
         graphColor = '#ccc',
         fakeCanvasMaxLenght = 10000,
         mouseDown,
@@ -81,7 +78,7 @@ $(document).ready(function(){
         fa.attr({'height':parentHeight,'width':parentWidth})
         dc.parent().scroll(function(){
             position = getCoords(drawingC);
-        })
+        });
     /**
      * ======================================================
      * *************** script to change the value of variables
@@ -93,6 +90,20 @@ $(document).ready(function(){
     //default font-indicator
     $('#demo-font-text').css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
     textInput.css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
+    $('.js-enable-symbol').mouseover(function(){
+        symbolEnabled = true;
+    });
+
+    $('.js-science-symbol').click(function(e){
+        e.preventDefault();
+        var symbol = $(this).data().symbol;
+        var currentTextValue = textInput.val();
+        setTimeout(function(){
+            textInput.val(currentTextValue+symbol).change();
+        },100)
+       // textInput.focus();
+    });
+
     //change default color
     $('.js-color-code').click(function(e){
         e.preventDefault();
@@ -105,20 +116,26 @@ $(document).ready(function(){
     });
 
     //change tools
+    $('.option-menu-wrapper').mouseover(function (){
+        //show options if exists
+        var optionMenu = $(this).find('.option-menu');
+        if(optionMenu.length>0){
+            optionMenu.show();
+        }
+    }).mouseleave(function(){
+        var optionMenu = $(this).find('.option-menu');
+        if(optionMenu.length>0){
+            optionMenu.hide();
+        }
+    });
     $('.js-tools').click(function (e){
         e.preventDefault();
-        $('.js-tools').removeClass('active');
-        $(this).addClass('active');
+
         currentTool = $(this).data().tool;
         var toolCursor = $(this).data().cursor;
 
         if(toolCursor){
             dc.css({'cursor':toolCursor});
-        }
-        //show options if exists
-        var optionMenu = $(this).parent().find('.option-menu');
-        if(optionMenu.length>0){
-            optionMenu.show();
         }
     });
 
@@ -198,7 +215,6 @@ $(document).ready(function(){
 
     //insert symbols
     $('#toLatex').on('click', function() {
-
         var jsonObj = $('.eqEdEquation').data('eqObject').buildJsonObj();
         var latex = generateLatex(jsonObj.operands.topLevelContainer);
        // $('.eqEdEquation').find('.eqEdContainer').attr('')
@@ -246,8 +262,17 @@ $(document).ready(function(){
      * *************** event handlers
      * =====================================================
      */
+
+    //click event for body
+    $('body').click(function (e){
+        if(!$(e.target).is('.js-science-symbol')){
+            console.log('test');
+            symbolEnabled = false;
+        }
+    })
     //mouseDown Event Handler
     dc.mousedown(function(e){
+
         mouseDown = true;
         var left = e.pageX-position.left,
             top = e.pageY-position.top;
@@ -270,7 +295,7 @@ $(document).ready(function(){
              setTimeout(function (){
                  fa.show();
                  textInput.click();
-             },300)
+             },300);
 
          }else if(currentTool=='line' || currentTool=='cube' || currentTool=='rectangle' ||currentTool=='oval' || currentTool=='cone' || currentTool=='pyramid' || currentTool=='xgraph' || currentTool=='xygraph' || currentTool=='cylinder'){
             fa.show();
@@ -281,6 +306,7 @@ $(document).ready(function(){
     });
     //mousemove
     $('body').mousemove(function(e){
+
         var left = e.pageX - position.left;
         var top = e.pageY - position.top;
         currentMouse.x = left;
@@ -378,6 +404,7 @@ $(document).ready(function(){
 
     //mouseup
     $('body').mouseup(function(e){
+
         var left = e.pageX - position.left;
         var top = e.pageY - position.top;
         fa.hide();
@@ -407,8 +434,6 @@ $(document).ready(function(){
         mouseX = [];
         mouseY = [];
         pixColor =[];
-
-
     });
 
     // fa.mouseup(function (e){
@@ -1013,7 +1038,7 @@ $(document).ready(function(){
     }
 
 
-    textInput.on('focus click keydown',function(e){
+    textInput.on('focus change click keydown',function(e){
         fa.show();
          setTimeout(function(){
              var inputValue = (textInput.val() ? textInput.val() : '')+'|';
@@ -1062,20 +1087,26 @@ $(document).ready(function(){
         },500);
     });
     textInput.blur(function (e){
+        if(symbolEnabled){
+            setTimeout(function(){
+                textInput.focus();
+            },100);
+            return false;
+        }
         clearInterval(textAnimation);
         $(this).hide();
         var textVal = $(this).val() ? $(this).val() : '';
         var textValArray = textVal.split('\n');
-        var left = e.pageX-position.left,
-            top = e.pageY-position.top;
+        var left = lineStartPoint.x,
+            top = lineStartPoint.y;
         fa.hide();
         $('#mouse-cursor').click();
-        if( textEnabled){
-            drawingCanvas.globalCompositeOperation="source-over";
-            drawingCanvas.font = fontStyle+' ' +fontSize+'px '+font;
+        if (textEnabled) {
+            drawingCanvas.globalCompositeOperation = "source-over";
+            drawingCanvas.font = fontStyle + ' ' + fontSize + 'px ' + font;
             drawingCanvas.fillStyle = currentColor;
-            for(var i in textValArray){
-                drawingCanvas.fillText(textValArray[i],textLeftCord,textTopCord+15+(i*fontSize) );
+            for (var i in textValArray) {
+                drawingCanvas.fillText(textValArray[i], textLeftCord, textTopCord + 15 + (i * fontSize));
             }
             textInput.val('');
             textEnabled = false;

@@ -159,6 +159,10 @@ body {
 .tab-links a{background:#9C9C9C;}
 .outerTab.active a, .outerTab.active a:hover{background:#fff;}
 #tab-content-top{background:#fff;}
-.symbol-dropdown{width:600px;}
+.symbol-dropdown {
+    width: 600px;
+    bottom: 0;
+    top: initial;
+}
 .symbol-dropdown li{width:60px;float:left;}
 .symbol-dropdown span{font-size:24px!important;}

@@ -253,108 +253,110 @@
                         </ul>
                      </div>
                     <div class="text-center my-1">
-                     <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
-                        <span class=""><img src="images/refresh-arrow.png"></span>
-                     </a>
+                         <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
+                            <span class=""><img src="images/refresh-arrow.png"></span>
+                         </a>
                      </div>
                     <div class="text-center my-1">
-                     <a href="#" class="btn btn-secondary btn-square mx-auto" data-toggle="modal" data-target="#symbol-modal">
-                        <span class=""><img src="images/calculator.png"></span>
-                     </a>
+                         <a href="#" class="btn btn-secondary btn-square mx-auto js-enable-science" data-toggle="modal" data-target="#symbol-modal">
+                            <span class=""><img src="images/calculator.png"></span>
+                         </a>
                      </div>
-                    <div class="text-center my-1 option-menu-wrapper">
-                         <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" >
+                    <div class="text-center my-1 option-menu-wrapper  js-enable-symbol">
+                         <a href="#" class="btn btn-secondary btn-square mx-auto" >
                             <span class=""><img src="images/venus.png"></span>
                          </a>
+                            <ul class="option-menu symbol-dropdown" style="display:none;" >
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol=":" >:</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≤">≤</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≥" >≥</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="◦" >◦</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≈" >≈</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∈" >∈</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="×" >×</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="±" >±</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∧" >∧</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∨" >∨</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≡" >≡</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≅" >≅</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≠" >≠</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∼" >∼</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∝">∝</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≺" >≺</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⪯" >⪯</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⊂">⊂</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⊆" >⊆</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≻" >≻</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⪰" >⪰</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⊥">⊥</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∣" >∣</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∥">∥</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∂">∂</span></li>
+                                <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∞" >∞</span></li>
+                                <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Γ" >Γ</span></li>
+                                <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Δ" >Δ</span></li>
+                                <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Θ" >Θ</span></li>
+                                <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Λ" >Λ</span></li>
+                                <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Ξ" >Ξ</span></li>
+                                <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Π" >Π</span></li>
+                                <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Σ" >Σ</span></li>
+                                <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Υ" >Υ</span></li>
+                                <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Φ" >Φ</span></li>
+                                <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Ψ" >Ψ</span></li>
+                                <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Ω">Ω</span></li>
 
-                            <ul class="option-menu symbol-dropdown" style="display: none;">
-                                <li> <span class="menuItem MathJax_Main" id="scicolonButton" style="font-size: 45px;">:</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scilessThanOrEqualToButton" style="font-size: 45px;">≤</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scigreaterThanOrEqualToButton" style="font-size: 45px;">≥</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scicircleOperatorButton" style="font-size: 45px;">◦</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="sciapproxEqualToButton" style="font-size: 45px;">≈</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scibelongsToButton" style="font-size: 45px;">∈</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scitimesButton" style="font-size: 45px;">×</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scipmButton" style="font-size: 45px;">±</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="sciwedgeButton" style="font-size: 45px;">∧</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="sciveeButton" style="font-size: 45px;">∨</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="sciequivButton" style="font-size: 45px;">≡</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scicongButton" style="font-size: 45px;">≅</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scineqButton" style="font-size: 45px;">≠</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scisimButton" style="font-size: 45px;">∼</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="sciproptoButton" style="font-size: 45px;">∝</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="sciprecButton" style="font-size: 45px;">≺</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="sciprecEqButton" style="font-size: 45px;">⪯</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scisubsetButton" style="font-size: 45px;">⊂</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scisubsetEqButton" style="font-size: 45px;">⊆</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scisuccButton" style="font-size: 45px;">≻</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scisuccEqButton" style="font-size: 45px;">⪰</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="sciperpButton" style="font-size: 45px;">⊥</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scimidButton" style="font-size: 45px;">∣</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="sciparallelButton" style="font-size: 45px;">∥</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="scipartialButton" style="font-size: 45px;">∂</span></li>
-                                <li> <span class="menuItem MathJax_Main" id="sciinfinityButton" style="font-size: 45px;">∞</span></li>
-                                <li><span class="menuItem MathJax_Main" id="scigammaUpperButton" style="font-size: 24px;">Γ</span></li>
-                                <li><span class="menuItem MathJax_Main" id="scideltaUpperButton" style="font-size: 24px;">Δ</span></li>
-                                <li><span class="menuItem MathJax_Main" id="scithetaUpperButton" style="font-size: 24px;">Θ</span></li>
-                                <li><span class="menuItem MathJax_Main" id="scilambdaUpperButton" style="font-size: 24px;">Λ</span></li>
-                                <li><span class="menuItem MathJax_Main" id="scixiUpperButton" style="font-size: 24px;">Ξ</span></li>
-                                <li><span class="menuItem MathJax_Main" id="scipiUpperButton" style="font-size: 24px;">Π</span></li>
-                                <li><span class="menuItem MathJax_Main" id="scisigmaUpperButton" style="font-size: 24px;">Σ</span></li>
-                                <li><span class="menuItem MathJax_Main" id="sciupsilonUpperButton" style="font-size: 24px;">Υ</span></li>
-                                <li><span class="menuItem MathJax_Main" id="sciphiUpperButton" style="font-size: 24px;">Φ</span></li>
-                                <li><span class="menuItem MathJax_Main" id="scipsiUpperButton" style="font-size: 24px;">Ψ</span></li>
-                                <li><span class="menuItem MathJax_Main" id="sciomegaUpperButton" style="font-size: 24px;">Ω</span></li>
-
-                                <li><span class="menuItem MathJax_MathItalic" id="scialphaButton" style="font-size: 24px;">α</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scibetaButton" style="font-size: 24px;">β</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scigammaButton" style="font-size: 24px;">γ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scideltaButton" style="font-size: 24px;">δ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scivarEpsilonButton" style="font-size: 24px;">ε</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="sciepsilonButton" style="font-size: 24px;">ϵ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scizetaButton" style="font-size: 24px;">ζ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scietaButton" style="font-size: 24px;">η</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scithetaButton" style="font-size: 24px;">θ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scivarThetaButton" style="font-size: 24px;">ϑ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="sciiotaButton" style="font-size: 24px;">ι</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scikappaButton" style="font-size: 24px;">κ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scilambdaButton" style="font-size: 24px;">λ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scimuButton" style="font-size: 24px;">μ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scinuButton" style="font-size: 24px;">ν</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scixiButton" style="font-size: 24px;">ξ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scipiButton" style="font-size: 24px;">π</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scivarPiButton" style="font-size: 24px;">ϖ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scirhoButton" style="font-size: 24px;">ρ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scivarRhoButton" style="font-size: 24px;">ϱ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scisigmaButton" style="font-size: 24px;">σ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scivarSigmaButton" style="font-size: 24px;">ς</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scitauButton" style="font-size: 24px;">τ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="sciupsilonButton" style="font-size: 24px;">υ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scivarPhiButton" style="font-size: 24px;">φ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="sciphiButton" style="font-size: 24px;">ϕ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scichiButton" style="font-size: 24px;">χ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="scipsiButton" style="font-size: 24px;">ψ</span></li>
-                                <li><span class="menuItem MathJax_MathItalic" id="sciomegaButton" style="font-size: 24px;">ω</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="α">α</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="β">β</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="γ">γ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="δ">δ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol=">" >ε</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ϵ">ϵ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ζ">ζ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="η">η</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="θ">θ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ϑ">ϑ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ι">ι</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="κ">κ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="λ">λ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="μ">μ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ν">ν</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ξ">ξ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="π">π</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ϖ">ϖ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ρ">ρ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ϱ">ϱ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="σ">σ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ς">ς</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="τ">τ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="υ">υ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="φ">φ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ϕ">ϕ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="χ">χ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol=">" >ψ</span></li>
+                                <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ω">ω</span></li>
                             </ul>
+                     </div>
 
+                    <div class="text-center my-1 option-menu-wrapper">
+                         <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
+                            <span style="font-size:18px;" class="px-1">a<sub>2</sub></span>
+                         </a>
                      </div>
-                    <div class="text-center my-1">
-                     <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
-                       <span style="font-size:18px;" class="px-1">	a&#769;</span>
-                     </a>
+
+                    <div class="text-center my-1 option-menu-wrapper">
+                         <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
+                            <span>a <sup>2</sup></span>
+                         </a>
                      </div>
+
                     <div class="text-center my-1">
-                     <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
-                     <span>a2</span>
-                     </a>
-                     </div>
-                    <div class="text-center my-1">
-                     <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
-                        <span class=""><img src="images/cross.png"></span>
-                     </a>
+                         <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
+                            <span class=""><img src="images/cross.png"></span>
+                         </a>
                      </div>
 
                 </div>
+
                 <div class="col-md-11 border px-0">
                     <div class="container-fluid">
                     <div class="row">
@@ -366,11 +368,11 @@
                             <canvas id="resize-canvas" style="display: none;"></canvas>
                         </div>
                     </div>
+
                     <div class="col-md-6 px-0">
                          <form class="">
                             <div class="form-group">
                                 <textarea class="form-control" id="exampleFormControlTextarea2" rows="17"></textarea>
-                                <textarea id="latex-holder">
                                 </textarea>
                             </div>
                         </form>
@@ -451,10 +453,9 @@
                                     <li class="outerTab"><a href="#misc-functions">Miscellaneous</a></li>
                                     <li class="outerTab"><a href="#greek-alphabets">Greek Alphabets</a></li>
                                 </ul>
-
                                 <div class="tab-content" id="tab-content-top">
                                     <div id="symbol-functions" class="tab outer active">
-                                        <span class="menuItem MathJax_Main" id="colonButton" style="font-size: 45px;">:</span>
+                                        <span class="menuItem MathJax_Main"  id="colonButton" style="font-size: 45px;">:</span>
                                         <span class="menuItem MathJax_Main" id="lessThanOrEqualToButton" style="font-size: 45px;">≤</span>
                                         <span class="menuItem MathJax_Main" id="greaterThanOrEqualToButton" style="font-size: 45px;">≥</span>
                                         <span class="menuItem MathJax_Main" id="circleOperatorButton" style="font-size: 45px;">◦</span>
