@@ -166,3 +166,11 @@ body {
 }
 .symbol-dropdown li{width:60px;float:left;}
 .symbol-dropdown span{font-size:24px!important;}
+.power-dropdown .x-value-sub, .power-dropdown .x-value-sup {
+    display: inline-block;
+    font-size: 30px;
+    padding: 10px 30px 20px 5px;
+}
+.power-dropdown input{display: inline-block;width:40px;position: absolute;right:15px;}
+.power-dropdown .y-value-sub{bottom:15px;}
+.power-dropdown .x-value-sub{padding:5px 30px 30px 5px;}

@@ -85,7 +85,7 @@
               </a>
               <span style="font-size:12px;"><b>Slide 1/1</b></span>
               <div class="float-right">
-            <a class="btn btn-secondary btn-sm" id="new-paint" >New Board</a>
+            <a class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#save-modal" >New Board</a>
     <input class="btn btn-secondary btn-sm" type="button" value="Back">
     <input class="btn btn-secondary btn-sm" type="submit" value="Next">
           </div>
@@ -337,20 +337,26 @@
                             </ul>
                      </div>
 
-                    <div class="text-center my-1 option-menu-wrapper">
+                    <div class="text-center my-1 option-menu-wrapper js-enable-symbol">
                          <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
                             <span style="font-size:18px;" class="px-1">a<sub>2</sub></span>
                          </a>
+                        <div class="option-menu power-dropdown" style="display:none;">
+                            <span class="x-value-sub">a</span><input type="text" class="y-value-sub js-sup-sub" id="x-value-sub">
+                        </div>
                      </div>
 
-                    <div class="text-center my-1 option-menu-wrapper">
+                    <div class="text-center my-1 option-menu-wrapper js-enable-symbol">
                          <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
                             <span>a <sup>2</sup></span>
                          </a>
+                        <div class="option-menu power-dropdown" style="display:none;">
+                            <span class="x-value-sup">a</span><input type="text" class="y-value-sup js-sup-sub" id="x-value-sup">
+                        </div>
                      </div>
 
                     <div class="text-center my-1">
-                         <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
+                         <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" id="clear-canvas" data-toggle="modal" data-target="#save-modal">
                             <span class=""><img src="images/cross.png"></span>
                          </a>
                      </div>
@@ -601,6 +607,20 @@
                             <button class="btn btn-default btn-sm">Clear</button>
                             <button class="btn btn-default btn-sm" id="toLatex">Insert</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="save-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Do you want to save this painting?</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default js-clear-canvas" data-ans="no">Cancel</button>
+                        <a href="#" class="btn btn-default js-clear-canvas" data-ans="yes">Save</a>
                     </div>
                 </div>
             </div>

@@ -16,13 +16,49 @@ if (!HTMLCanvasElement.prototype.toBlob) {
         }
     });
 }
+$.fn.superScript = function() {
+    var chars = '+−=()0123456789AaÆᴂɐɑɒBbcɕDdðEeƎəɛɜɜfGgɡɣhHɦIiɪɨᵻɩjJʝɟKklLʟᶅɭMmɱNnɴɲɳŋOoɔᴖᴗɵȢPpɸrRɹɻʁsʂʃTtƫUuᴜᴝʉɥɯɰʊvVʋʌwWxyzʐʑʒꝯᴥβγδθφχнნʕⵡ',
+        sup   = '⁺⁻⁼⁽⁾⁰¹²³⁴⁵⁶⁷⁸⁹ᴬᵃᴭᵆᵄᵅᶛᴮᵇᶜᶝᴰᵈᶞᴱᵉᴲᵊᵋᶟᵌᶠᴳᵍᶢˠʰᴴʱᴵⁱᶦᶤᶧᶥʲᴶᶨᶡᴷᵏˡᴸᶫᶪᶩᴹᵐᶬᴺⁿᶰᶮᶯᵑᴼᵒᵓᵔᵕᶱᴽᴾᵖᶲʳᴿʴʵʶˢᶳᶴᵀᵗᶵᵁᵘᶸᵙᶶᶣᵚᶭᶷᵛⱽᶹᶺʷᵂˣʸᶻᶼᶽᶾꝰᵜᵝᵞᵟᶿᵠᵡᵸჼˤⵯ';
 
+    return this.each(function() {
+        this.value = this.value.replace(/<sup[^>]*>(.*?)<\/sup>/g, function(x) {
+            var str = '',
+                txt = $.trim($(x).unwrap().text());
+
+            for (var i=0; i<txt.length; i++) {
+                var n = chars.indexOf(txt[i]);
+                str += (n!=-1 ? sup[n] : txt[i]);
+            }
+            console.log(str);
+            return str;
+        });
+    });
+}
+
+$.fn.subScript = function() {
+    var chars = '0123456789+-()',
+        sup   = '₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎';
+
+    return this.each(function() {
+        this.value = this.value.replace(/<sub[^>]*>(.*?)<\/sub>/g, function(x) {
+            var str = '',
+                txt = $.trim($(x).unwrap().text());
+
+            for (var i=0; i<txt.length; i++) {
+                var n = chars.indexOf(txt[i]);
+                str += (n!=-1 ? sup[n] : txt[i]);
+            }
+            return str;
+        });
+    });
+};
 $(document).ready(function(){
 
     $('[data-toggle="tooltip"]').tooltip();
 
     //code to insert custom science symbols
-
+    $('.y-value-sub').subScript();
+    $('.y-value-sup').superScript();
 
     //full screen
 
@@ -104,6 +140,16 @@ $(document).ready(function(){
        // textInput.focus();
     });
 
+
+    $('#x-value-sup,#x-value-sub').keydown(function(e){
+        var $this = $(this);
+        setTimeout(function (){
+            var symbol = $this.val();
+            console.log(symbol)
+            var currentTextValue = textInput.val();
+            textInput.val(currentTextValue+symbol).change();
+        },100);
+    });
     //change default color
     $('.js-color-code').click(function(e){
         e.preventDefault();
@@ -224,7 +270,13 @@ $(document).ready(function(){
     });
 
     //clear canvas
-    $('#new-paint').click(function(){
+    $('.js-clear-canvas').click(function(){
+        var ans = $(this).data().ans;
+        if(ans=='yes'){
+            this.href = drawingC.toDataURL();
+            this.download = 'canvas.png';
+        }
+        $('.modal').modal('hide');
         drawingCanvas.clearRect(0,0,drawingC.width,drawingC.height);
         drag =[];
         mouseX = [];
@@ -1088,11 +1140,9 @@ $(document).ready(function(){
     });
     textInput.blur(function (e){
         if(symbolEnabled){
-            setTimeout(function(){
-                textInput.focus();
-            },100);
             return false;
         }
+        $('.js-sup-sub').val('');
         clearInterval(textAnimation);
         $(this).hide();
         var textVal = $(this).val() ? $(this).val() : '';
@@ -1247,8 +1297,6 @@ function getCoords(elem) {
     var left = box.left + scrollLeft - clientLeft;
     return {top: Math.round(top), left:Math.round(left) };
 }
-
-
 
 
 
