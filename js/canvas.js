@@ -291,6 +291,7 @@ $(document).ready(function(){
             if(symbolEnabled){
                 textInput.blur();
                 currentTool ='none';
+                console.log('test');
                 symbolEnabled = false;
             }
 
