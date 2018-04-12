@@ -288,8 +288,12 @@ $(document).ready(function(){
     //click event for body
     $('body').click(function (e){
         if(!$(e.target).is('.js-science-symbol')){
-            console.log('test');
-            symbolEnabled = false;
+            if(symbolEnabled){
+                textInput.blur();
+                currentTool ='none';
+                symbolEnabled = false;
+            }
+
         }
     })
     //mouseDown Event Handler
@@ -1076,36 +1080,39 @@ $(document).ready(function(){
              }
              textHolder.css({'left':textLeftCord,'top':textTopCord-5}).html(inputValue);
         },5);
-         if(textAnimation)
-            clearInterval(textAnimation);
-        textAnimation = setInterval(function (){
-            var inputValue = (textInput.val() ? textInput.val() : '');
-            inputValue = inputValue.replace('\n','<br>');
-            if(textCursor){
-                inputValue = inputValue+'|';
-                textCursor= false;
-            }
-            else{
-                textCursor = true;
-            }
-            textHolder.html(inputValue);
-        },500);
+        //  if(textAnimation)
+        //     clearInterval(textAnimation);
+        // textAnimation = setInterval(function (){
+        //     var inputValue = (textInput.val() ? textInput.val() : '');
+        //     inputValue = inputValue.replace('\n','<br>');
+        //     if(textCursor){
+        //         inputValue = inputValue+'|';
+        //         textCursor= false;
+        //     }
+        //     else{
+        //         textCursor = true;
+        //     }
+        //     textHolder.html(inputValue);
+        // },500);
     });
     textInput.blur(function (e){
         if(symbolEnabled){
             return false;
         }
         $('.js-sup-sub').val('');
-        clearInterval(textAnimation);
+        //clearInterval(textAnimation);
         $(this).hide();
+        currentTool = 'none';
         var textVal = $(this).val() ? $(this).val() : '';
         var textValArray = textVal.split('\n');
         var left = lineStartPoint.x,
             top = lineStartPoint.y;
-        textHolder.hide();
+
         $('#mouse-cursor').click();
         if (textEnabled) {
-            writeTextDivToCanvas(textLeftCord,textTopCord);
+            writeTextDivToCanvas(textLeftCord,textTopCord,function (){
+                textHolder.hide();
+            });
             textInput.val('');
             textEnabled = false;
         }
@@ -1226,45 +1233,53 @@ $(document).ready(function(){
             });
     }
 
-    function writeTextDivToCanvas(x,y){
-        domtoimage.toPng(textHolder[0])
-            .then(function(dataUrl) {
-                var img = new Image;
-                img.onload = function () {
-                    var width = img.width;
-                    var height = img.height;
-                    var canvasHeight = drawingC.height;
-                    var canvasWidth = drawingC.width;
-                    var left = lineStartPoint.x+width;
-                    var top = lineStartPoint.y+height;
-                    if(left>canvasWidth){
-                        parentDiv.scrollLeft(left);
-                        rC.width = canvasWidth;
-                        rC.height = canvasHeight;
-                        resizeCanvas.drawImage(drawingC, 0, 0);
-                        dc.attr('width',left);
-                        fa.attr('width',left);
-                        drawingCanvas.drawImage(rC,0,0);
-                    }
-                    if(top>canvasHeight){
-                        parentDiv.scrollLeft(top);
-                        rC.width = canvasWidth;
-                        rC.height = canvasHeight;
-                        resizeCanvas.drawImage(drawingC, 0, 0);
-                        dc.attr('height',top);
-                        fa.attr('height',top);
-                        drawingCanvas.drawImage(rC,0,0);
-                    }
-                    drawingCanvas.drawImage(img, x,y);
-                    textHolder.hide();
+    function writeTextDivToCanvas(x,y,callback){
+        var styles = textHolder.attr('style');
+        console.log(styles)
+        var data = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">' +
+            '<foreignObject width="100%" height="100%">' +
+            "<div xmlns='http://www.w3.org/1999/xhtml' style='"+styles+"'>" +
+                textHolder.html().replace('|','')
+                +
+            '</div>' +
+            '</foreignObject>' +
+            '</svg>';
 
-                };
-                img.src = dataUrl;
+        data = encodeURIComponent(data);
 
-            })
-            .catch(function(error) {
-                console.error('oops, something went wrong!', error);
-            });
+
+        var img = new Image();
+
+        img.onload = function() {
+            var width = img.width;
+            var height = img.height;
+            var canvasHeight = drawingC.height;
+            var canvasWidth = drawingC.width;
+            var left =x+width;
+            var top = y+height;
+            if(left>canvasWidth){
+                parentDiv.scrollLeft(left);
+                rC.width = canvasWidth;
+                rC.height = canvasHeight;
+                resizeCanvas.drawImage(drawingC, 0, 0);
+                dc.attr('width',left);
+                fa.attr('width',left);
+                drawingCanvas.drawImage(rC,0,0);
+            }
+            if(top>canvasHeight){
+                parentDiv.scrollLeft(top);
+                rC.width = canvasWidth;
+                rC.height = canvasHeight;
+                resizeCanvas.drawImage(drawingC, 0, 0);
+                dc.attr('height',top);
+                fa.attr('height',top);
+                drawingCanvas.drawImage(rC,0,0);
+            }
+            drawingCanvas.drawImage(img, x,y-2);
+            return callback();
+        }
+
+        img.src = "data:image/svg+xml," + data
     }
 });
 

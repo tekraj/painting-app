@@ -372,7 +372,7 @@
                             <textarea class="canvas-text-input js-text-demo" style="display: none;" id="canvas-text-input"></textarea>
                             <canvas id="fake-canvas"   class="fake-canvas"></canvas>
                             <canvas id="resize-canvas" style="display: none;"></canvas>
-                            <div id="text-holder"></div>
+                            <div id="text-holder" style="color:#000;"></div>
                         </div>
                     </div>
 
