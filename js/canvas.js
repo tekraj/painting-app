@@ -1096,7 +1096,9 @@ $(document).ready(function(){
         // },500);
     });
     textInput.blur(function (e){
+
         if(symbolEnabled){
+            console.log('test');
             return false;
         }
         $('.js-sup-sub').val('');
@@ -1104,7 +1106,7 @@ $(document).ready(function(){
         $(this).hide();
         currentTool = 'none';
         var textVal = $(this).val() ? $(this).val() : '';
-        var textValArray = textVal.split('\n');
+
         var left = lineStartPoint.x,
             top = lineStartPoint.y;
 
