@@ -55,7 +55,7 @@ body {
     background: #fff;
     border: 1px solid #ccc;
     margin: 0;
-    left: 63px;
+    left: 48px;
     top: 0;
     z-index: 999;
 }
@@ -175,6 +175,10 @@ body {
 .power-dropdown .y-value-sub{bottom:15px;}
 .power-dropdown .x-value-sub{padding:5px 30px 30px 5px;}
 #text-holder{position:absolute;left:0;top:0;display: none;}
-.tools-list .btn.mx-auto{padding:0;background: none;width:40px;height:40px;overflow:hidden;}
+.tools-list .btn.mx-auto{padding:0;background: none;width:30px;height:30px;overflow:hidden;}
 .shape-menu li{display: inline-block;}
 .shape-menu{width: 160px;}
+.mx-auto img{max-width:100%;}
+.first_section .btn-square{width:30px;height:30px;padding:0;text-align: center;}
+.tools-list{max-width: 6%;padding-right: 0;text-align: left;}
+.graph-menu{width:50px;}

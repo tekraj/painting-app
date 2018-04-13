@@ -97,7 +97,7 @@ $fontStyle = ['normal','bold','italic','bold italic'];
         <div class="col-md-1 tools-list">
             <div class="text-center my-1 option-menu-wrapper">
                 <a  href="#" class="btn btn-primary btn-square mx-auto js-tools" id="pencil-tool" data-tool="pencil" data-toggle="tooltip" data-placement="top" title="Pencil" data-cursor="url(images/pencil.png), auto">
-                    <span class=""><img src="images/pencil-w.png" style="width:42px;"></span>
+                    <span class=""><img src="images/pencil-w.png"></span>
                 </a>
                 <ul class="option-menu" style="display: none;">
                     <li><a href="#" class="line-width js-line-width active" data-line="1">
@@ -116,7 +116,7 @@ $fontStyle = ['normal','bold','italic','bold italic'];
             </div>
             <div class="text-center my-1 option-menu-wrapper">
                 <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" data-tool="eraser" data-toggle="tooltip" data-placement="top" title="Eraser" data-cursor="crosshair">
-                    <span class=""><img src="images/eraser-w.png" style="width:42px;"></span>
+                    <span class=""><img src="images/eraser-w.png"></span>
                 </a>
                 <div class="option-menu eraser-slider" style="display: none;">
                     <div id="eraser-slider"></div>
@@ -179,7 +179,7 @@ $fontStyle = ['normal','bold','italic','bold italic'];
             </div>
             <div class="text-center my-1 option-menu-wrapper">
                 <a href="#" style="background:#000;" class="btn btn-secondary btn-square mx-auto js-tools" data-toggle="tooltip" data-placement="top" title="Colors" id="color-indicator">
-                    <img src="images/color-w.png" style="width:42px;">
+                    <img src="images/color-w.png">
                 </a>
                 <div class="option-menu color-menu" style="display: none;">
                     <ul class="color-pallet row">
@@ -196,18 +196,18 @@ $fontStyle = ['normal','bold','italic','bold italic'];
             </div>
             <div class="text-center my-1">
                 <a href="#" class="btn btn-secondary btn-square mx-auto" data-toggle="tooltip" data-placement="top" title="Just point the mouse where you want to paste the image and Press Ctrl+V">
-                    <img src="images/paste.png" style="width:42px;">
+                    <img src="images/paste.png">
                 </a>
             </div>
             <div class="text-center my-1">
                 <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" data-tool="line" data-cursor="url(images/line-icon.png), auto" data-toggle="tooltip" data-placement="top" title="Draw Line">
-                    <img src="images/line-icon.png" style="width:42px;">
+                    <img src="images/line-icon.png">
                 </a>
             </div>
 
             <div class="text-center my-1 option-menu-wrapper">
                 <a href="#" style="background:#000;" class="btn btn-secondary btn-square mx-auto js-tools" data-toggle="tooltip" data-placement="top" title="Graphs" id="color-indicator">
-                    <img src="images/graph-w.png" style="width:42px;" alt="">
+                    <img src="images/graph-w.png" alt="">
                 </a>
 
                 <ul class="option-menu graph-menu" style="display: none;">
@@ -226,7 +226,7 @@ $fontStyle = ['normal','bold','italic','bold italic'];
             </div>
             <div class="text-center my-1 option-menu-wrapper">
                 <a href="#" class="btn btn-secondary btn-square mx-auto js-tools"  data-toggle="tooltip" data-placement="top" title="Shapes">
-                    <img src="images/shapes-w.png" style="width:42px;">
+                    <img src="images/shapes-w.png">
                 </a>
                 <ul class="option-menu shape-menu" style="display: none">
                     <li>
@@ -263,16 +263,16 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                 </ul>
             </div>
             <div class="text-center my-1">
-                <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
+                <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" data-toggle="tooltip" data-placement="top" title="Undo" id="undo-tool">
                     <img src="images/undo-w.png" style="width: 42px;">
                 </a>
             </div>
             <div class="text-center my-1">
-                <a href="#" class="btn btn-secondary btn-square mx-auto js-enable-science" data-toggle="modal" data-target="#symbol-modal">
-                    <img src="images/math-w.png" style="width:42px;">
+                <a href="#" class="btn btn-secondary btn-square mx-auto js-enable-science" data-toggle="modal" data-target="#symbol-modal"   >
+                   <span data-toggle="tooltip" data-placement="top" title="Click here to open equation editor"> <img src="images/math-w.png"></span>
                 </a>
             </div>
-            <div class="text-center my-1 option-menu-wrapper  js-enable-symbol">
+            <div class="text-center my-1 option-menu-wrapper  js-enable-symbol" >
                 <a href="#" class="btn btn-secondary btn-square mx-auto" >
                     <img src="images/science-w.png" style="width: 42px;">
                 </a>
@@ -348,91 +348,40 @@ $fontStyle = ['normal','bold','italic','bold italic'];
             </div>
 
             <div class="text-center my-1">
-                <a href="#" class="btn btn-secondary btn-square mx-auto" id="enable-subscript">
-                    <img src="images/asub-w.png" style="width:42px;" alt="">
+                <a href="#" class="btn btn-secondary btn-square mx-auto" id="enable-subscript" data-toggle="tooltip" data-placement="top" title="Click here to type subscript">
+                    <img src="images/asub-w.png" alt="">
                 </a>
 
             </div>
 
             <div class="text-center my-1">
-                <a href="#" class="btn btn-secondary btn-square mx-auto" id="enable-superscript">
-                    <img src="images/a2-w.png" style="width:42px;" alt="">
+                <a href="#" class="btn btn-secondary btn-square mx-auto" id="enable-superscript" data-toggle="tooltip" data-placement="top" title="Click here to type superscript">
+                    <img src="images/a2-w.png" alt="">
                 </a>
             </div>
 
             <div class="text-center my-1">
                 <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" id="clear-canvas" data-toggle="modal" data-target="#save-modal">
-                    <span class=""><img src="images/clear.png"></span>
+                    <span class="" data-toggle="tooltip" data-placement="top" title="Click here to clear the board"><img src="images/clear.png"></span>
                 </a>
             </div>
 
         </div>
 
-        <div class="col-md-11 border px-0">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6 px-0 canvas-writing writing">
-                        <div class="canvas-wrapper">
-                            <canvas  class="drawing-board"  id="drawing-board"></canvas>
-                            <textarea class="canvas-text-input js-text-demo" style="display: none;" id="canvas-text-input"></textarea>
-                            <canvas id="fake-canvas"   class="fake-canvas"></canvas>
-                            <canvas id="resize-canvas" style="display: none;"></canvas>
-                            <div id="text-holder" style="color:#000;"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 px-0">
-                        <form class="">
-                            <div class="form-group">
-                                <textarea class="form-control" id="exampleFormControlTextarea2" rows="17"></textarea>
-                                </textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-3 pl-0 border-right">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="Participants-tab" data-toggle="tab" href="#Participants" role="tab" aria-controls="home" aria-selected="true"><img src="images/multiple-users-silhouette.png"> Participants</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content hei-1" id="myTabContent">
-                            <div class="tab-pane fade show active px-4" id="Participants" role="tabpanel" aria-labelledby="Participants-tab">
-                                <img src="images/user.png"> | <img src="images/phone-receiver.png"> | Sasirekha
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="col-md-9 pr-0">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="participant-tab" data-toggle="tab" href="#chat" role="tab" aria-controls="home" aria-selected="true"><img src="images/comments.png"> chat</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content border  hei-2" id="myTabContent">
-                            <div class="tab-pane fade show active" id="chat" role="tabpanel" aria-labelledby="home-tab"></div>
-                        </div>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-9 px-0 my-2">
-                                    <input type="text" class="form-control" id="text-input" placeholder="Type your Text">
-                                </div>
-                                <div class="col-md-3 py-2">
-                                    <a href="#" class="mx-3"><img src="images/happy.png"></a>
-
-                                    <a href="#" class="mx-3"><img src="images/instagram-logo.png"></a>
-                                    <a class="btn btn-success mx-3 btn-sm" href="#" role="button">Send</a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="col-md-11 border px-0 canvas-list">
+            <div class="canvas-wrapper">
+                <canvas  class="drawing-board"  id="drawing-board"></canvas>
+                <textarea class="canvas-text-input js-text-demo" style="display: none;" id="canvas-text-input"></textarea>
+                <canvas id="fake-canvas"   class="fake-canvas"></canvas>
+                <canvas id="resize-canvas" style="display: none;"></canvas>
+                <div id="text-holder" style="color:#000;"></div>
             </div>
         </div>
 
-
     </div>
+</div>
+<div style="display: none;" id="canvas-image-holder">
+
 </div>
 <div class="modal" id="symbol-modal">
     <div class="modal-dialog">

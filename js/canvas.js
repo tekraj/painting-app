@@ -69,6 +69,7 @@ $(document).ready(function(){
         dc=$('#drawing-board'),
         parentDiv = dc.parent(),
         fa = $('#fake-canvas'),
+        imageHolder = $('#canvas-image-holder'),
         textLeftCord,
         currentMouse = {x:0,y:0},
         textTopCord,
@@ -489,8 +490,10 @@ $(document).ready(function(){
             }else if(currentTool=='xygraph'){
                 drawXYGraphAnimation(left,top,true);
             }
+            saveCanvasState(drawingC);
         }
         fakeCanvas.clearRect(0,0,fakeC.height,fakeC.width);
+
         mouseDown = false;
         mouseX = [];
         mouseY = [];
@@ -1153,6 +1156,7 @@ $(document).ready(function(){
         if (textEnabled) {
             writeTextDivToCanvas(textLeftCord,textTopCord,function (){
                 textHolder.hide();
+                saveCanvasState(drawingC);
             });
             textInput.val('');
             textEnabled = false;
@@ -1283,7 +1287,7 @@ $(document).ready(function(){
 
     function writeTextDivToCanvas(x,y,callback){
         var styles = textHolder.attr('style');
-        console.log(styles)
+
         var data = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">' +
             '<foreignObject width="100%" height="100%">' +
             "<div xmlns='http://www.w3.org/1999/xhtml' style='"+styles+"'>" +
@@ -1329,6 +1333,37 @@ $(document).ready(function(){
 
         img.src = "data:image/svg+xml," + data
     }
+
+    function saveCanvasState(canvas){
+        var image = new Image();
+        image.onload = function() {
+            var currentImages = imageHolder.find('img').length;
+            if(currentImages>4){
+                imageHolder.find('img:first').remove();
+            }
+            imageHolder.append(this);
+        };
+        image.src = canvas.toDataURL();
+    }
+    //undo the canvas state
+
+    $('#undo-tool').click(function(e){
+        e.preventDefault();
+
+        drawingCanvas.clearRect(0,0,drawingC.width,drawingC.height);
+        var lastImage = imageHolder.find('img:last').remove();
+        var nextLast = imageHolder.find('img:last');
+        if(nextLast){
+            var src = nextLast.attr('src');
+            var image = new Image();
+            image.onload = function() {
+                drawingCanvas.drawImage(image, 0, 0);
+            };
+            image.src = src;
+            $('#mouse-cursor').click();
+        }
+
+    })
 });
 
 function getCoords(elem) {
