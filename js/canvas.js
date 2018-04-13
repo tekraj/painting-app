@@ -17,6 +17,27 @@ if (!HTMLCanvasElement.prototype.toBlob) {
     });
 }
 
+//plugin to move cursor
+$.fn.selectRange = function (start,end){
+    if(end==undefined){
+        end = start;
+    }
+    return this.each(function(){
+        if('selectionStart' in this){
+            this.selectionStart = start;
+            this.selectionEnd = end;
+        } else if(this.setSelectionRange){
+            this.setSelectionRange(start,end);
+        }else if(this.createTextRange){
+            var range = this.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character',end);
+            range.moveStart('character',start);
+            range.select();
+        }
+    });
+}
+
 $(document).ready(function(){
 
     $('[data-toggle="tooltip"]').tooltip();
@@ -69,14 +90,14 @@ $(document).ready(function(){
         j=0,
         background = '#fff',
         currentTool = 'pencil';
-        dc.css({'cursor':cursor});
-        var parentHeight = dc.parent().height();
-        var parentWidth = dc.parent().width();
-        dc.attr({'height':parentHeight,'width':parentWidth})
-        fa.attr({'height':parentHeight,'width':parentWidth})
-        dc.parent().scroll(function(){
-            position = getCoords(drawingC);
-        });
+    dc.css({'cursor':cursor});
+    var parentHeight = dc.parent().height();
+    var parentWidth = dc.parent().width();
+    dc.attr({'height':parentHeight,'width':parentWidth})
+    fa.attr({'height':parentHeight,'width':parentWidth})
+    dc.parent().scroll(function(){
+        position = getCoords(drawingC);
+    });
     /**
      * ======================================================
      * *************** script to change the value of variables
@@ -90,13 +111,52 @@ $(document).ready(function(){
     textInput.css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
     $('.js-enable-symbol').mouseover(function(){
         symbolEnabled = true;
+    }).mouseleave(function(){
+        symbolEnabled = false;
+    });
+    //enable subscript and superscript
+    $('#enable-subscript').mouseover(function(){
+        symbolEnabled = true;
+    }).click(function (e){
+        e.preventDefault();
+        setTimeout(function(){
+            var currentTextValue = textInput.val();
+            symbolEnabled = false;
+            textInput.val(currentTextValue+"~`").change();
+            var textValue = textInput.val();
+            textInput.focus();
+            var subPosition = textValue.lastIndexOf('`');
+            textInput.selectRange(subPosition);
+            textInput.change();
+        },100)
+
+    }).mouseleave(function () {
+        symbolEnabled = false;
+    });
+    $('#enable-superscript').mouseover(function(){
+        symbolEnabled = true;
+    }).click(function (e){
+        setTimeout(function(){
+            var currentTextValue = textInput.val();
+            symbolEnabled = false;
+            textInput.val(currentTextValue+"!^").change();
+            var textValue = textInput.val();
+            textInput.focus();
+            var subPosition = textValue.lastIndexOf('^');
+            textInput.selectRange(subPosition);
+            textInput.change();
+        },100)
+    }).mouseleave(function(){
+        symbolEnabled = false;
     });
 
     $('.js-science-symbol').click(function(e){
         e.preventDefault();
+        symbolEnabled = true;
         var symbol = $(this).data().symbol;
         var currentTextValue = textInput.val();
         setTimeout(function(){
+            symbolEnabled = false;
             textInput.val(currentTextValue+symbol).change();
             textInput.focus();
         },100)
@@ -104,24 +164,7 @@ $(document).ready(function(){
     });
 
 
-    $('#x-value-sup,#x-value-sub').keydown(function(e){
-        var $this = $(this);
-        symbolEnabled = true;
-        setTimeout(function (){
-            var symbol = $this.val();
-            var currentTextValue = textInput.val();
-            if($this.hasClass('y-value-sub')){
-                symbol = '<sub>'+symbol+'</sub>';
-            }else{
-                symbol = '<sup>'+symbol+'</sup>';
-            }
-            textInput.val(currentTextValue+symbol).change();
-            $this.val('');
-            $this.blur();
-            textInput.focus();
-            symbolEnabled = false;
-        },100);
-    });
+
     //change default color
     $('.js-color-code').click(function(e){
         e.preventDefault();
@@ -235,7 +278,7 @@ $(document).ready(function(){
     $('#toLatex').on('click', function() {
         var jsonObj = $('.eqEdEquation').data('eqObject').buildJsonObj();
         var latex = generateLatex(jsonObj.operands.topLevelContainer);
-       // $('.eqEdEquation').find('.eqEdContainer').attr('')
+        // $('.eqEdEquation').find('.eqEdContainer').attr('')
         insertSymbols($('.eqEdContainer'));
     });
 
@@ -256,8 +299,8 @@ $(document).ready(function(){
 
     //detect shit key pressed for straight lines and squares
     $('body').keydown(function(e){
-       if(e.keyCode==16)
-           shiftPressed = true;
+        if(e.keyCode==16)
+            shiftPressed = true;
     });
     $('body').keyup(function(e){
 
@@ -286,17 +329,7 @@ $(document).ready(function(){
      */
 
     //click event for body
-    $('body').click(function (e){
-        if(!$(e.target).is('.js-science-symbol')){
-            if(symbolEnabled){
-                textInput.blur();
-                currentTool ='none';
-                console.log('test');
-                symbolEnabled = false;
-            }
 
-        }
-    })
     //mouseDown Event Handler
     dc.mousedown(function(e){
 
@@ -310,21 +343,21 @@ $(document).ready(function(){
             pushPencilPoints(left,top)
             drawPencil();
         }else if( currentTool=='text' && !textEnabled  ){
-             textEnabled = true;
-             textInput.show().css({left:left,top:top});
-             textLeftCord=left;
-             textTopCord = top;
+            textEnabled = true;
+            textInput.show().css({left:left,top:top});
+            textLeftCord=left;
+            textTopCord = top;
 
-             setTimeout(function(){
-                 textInput.focus();
-             },100);
+            setTimeout(function(){
+                textInput.focus();
+            },100);
 
-             setTimeout(function (){
-                 fa.show();
-                 textInput.click();
-             },300);
+            setTimeout(function (){
+                fa.show();
+                textInput.click();
+            },300);
 
-         }else if(currentTool=='line' || currentTool=='cube' || currentTool=='rectangle' ||currentTool=='oval' || currentTool=='cone' || currentTool=='pyramid' || currentTool=='xgraph' || currentTool=='xygraph' || currentTool=='cylinder'){
+        }else if(currentTool=='line' || currentTool=='cube' || currentTool=='rectangle' ||currentTool=='oval' || currentTool=='cone' || currentTool=='pyramid' || currentTool=='xgraph' || currentTool=='xygraph' || currentTool=='cylinder'){
             fa.show();
             lineStartPoint.x = left;
             lineStartPoint.y = top;
@@ -346,24 +379,24 @@ $(document).ready(function(){
 
 
 
-           if(left>canvasWidth){
-               parentDiv.scrollLeft(left);
-               rC.width = canvasWidth;
-               rC.height = canvasHeight;
-               resizeCanvas.drawImage(drawingC, 0, 0);
-               dc.attr('width',left);
-               fa.attr('width',left);
-               drawingCanvas.drawImage(rC,0,0);
-           }
-           if(top>canvasHeight){
-               parentDiv.scrollLeft(top);
-               rC.width = canvasWidth;
-               rC.height = canvasHeight;
-               resizeCanvas.drawImage(drawingC, 0, 0);
-               dc.attr('height',top);
-               fa.attr('height',top);
-               drawingCanvas.drawImage(rC,0,0);
-           }
+            if(left>canvasWidth){
+                parentDiv.scrollLeft(left);
+                rC.width = canvasWidth;
+                rC.height = canvasHeight;
+                resizeCanvas.drawImage(drawingC, 0, 0);
+                dc.attr('width',left);
+                fa.attr('width',left);
+                drawingCanvas.drawImage(rC,0,0);
+            }
+            if(top>canvasHeight){
+                parentDiv.scrollLeft(top);
+                rC.width = canvasWidth;
+                rC.height = canvasHeight;
+                resizeCanvas.drawImage(drawingC, 0, 0);
+                dc.attr('height',top);
+                fa.attr('height',top);
+                drawingCanvas.drawImage(rC,0,0);
+            }
 
             if (currentTool == 'paint-bucket') {
                 drawingCanvas.fillRect(0, 0, c.width, c.height);
@@ -379,15 +412,16 @@ $(document).ready(function(){
                 pixColor = [];
 
             } else if (currentTool == 'eraser') {
-               fa.show();
+                fa.show();
                 showEraserAnimation(left,top,eraserSize);
                 drawingCanvas.beginPath();
                 drawingCanvas.globalCompositeOperation = "destination-out";
                 drawingCanvas.arc(left,top, eraserSize, 0, Math.PI * 2, false);
                 drawingCanvas.fill();
+                drawingCanvas.globalCompositeOperation = 'source-over';
             } else if (currentTool == 'pencil') {
 
-               //if shift is pressed draw straight line
+                //if shift is pressed draw straight line
                 if(shiftPressed ){
                     fa.show();
                     if(mouseX.length>0){
@@ -463,10 +497,6 @@ $(document).ready(function(){
         pixColor =[];
     });
 
-    // fa.mouseup(function (e){
-    //
-    //
-    // });
 
     /**
      * ======================================================
@@ -534,7 +564,7 @@ $(document).ready(function(){
      * =====================================================
      */
     function drawLine(x,y){
-       drawLineAnimation(x,y,true);
+        drawLineAnimation(x,y,true);
     }
 
 
@@ -631,7 +661,7 @@ $(document).ready(function(){
         width= x-lineStartPoint.x;
         height = y-lineStartPoint.y;
         if(shiftPressed){
-                height = ((x-lineStartPoint.x)/Math.abs(x-lineStartPoint.x))*width;
+            height = ((x-lineStartPoint.x)/Math.abs(x-lineStartPoint.x))*width;
         }
         var ctx = noAnimation ? drawingCanvas : fakeCanvas;
 
@@ -897,7 +927,7 @@ $(document).ready(function(){
             dy = Math.abs(startY-endY);
 
         //draw rectainge
-       drawRectangleAnimation(x,y,noAnimation);
+        drawRectangleAnimation(x,y,noAnimation);
 
 
         //find midpoints
@@ -1044,42 +1074,49 @@ $(document).ready(function(){
             x2 = x-r*Math.cos(angleR),
             y2 = y-r*Math.sin(angleR);
 
-            if(orientation>=(Math.PI*2)){
-                x1 =  x - r*Math.cos(Math.PI/4);
-                y1 = y - r*Math.sin(Math.PI/4);
-            }
-            ctx.beginPath();
-            ctx.globalCompositeOperation="source-over";
-            ctx.moveTo(x,y);
-            ctx.lineTo(x1,y1);
-            ctx.strokeStyle = currentColor;
-            ctx.lineWidth = 2;
-            ctx.stroke();
-            ctx.moveTo(x,y);
-            ctx.lineTo(x2,y2);
-            ctx.strokeStyle = currentColor;
-            ctx.stroke();
-            ctx.lineWidth = 2;
-            ctx.closePath();
+        if(orientation>=(Math.PI*2)){
+            x1 =  x - r*Math.cos(Math.PI/4);
+            y1 = y - r*Math.sin(Math.PI/4);
+        }
+        ctx.beginPath();
+        ctx.globalCompositeOperation="source-over";
+        ctx.moveTo(x,y);
+        ctx.lineTo(x1,y1);
+        ctx.strokeStyle = currentColor;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.moveTo(x,y);
+        ctx.lineTo(x2,y2);
+        ctx.strokeStyle = currentColor;
+        ctx.stroke();
+        ctx.lineWidth = 2;
+        ctx.closePath();
 
     }
 
 
     textInput.on('focus change click keydown',function(e){
         textHolder.show();
-         setTimeout(function(){
-             var inputValue = (textInput.val() ? textInput.val() : '')+'|';
-             var textLength = (inputValue.length+1) * (fontSize/2);
-             inputValue = inputValue.replace('\n','<br>');
-             if((textLength+textLeftCord)>drawingC.width){
-                 rC.width = (textLength+textLeftCord);
-                 rC.height = drawingC.height;
-                 resizeCanvas.drawImage(drawingC, 0, 0);
-                 dc.attr('width',textLength+textLeftCord);
-                 fa.attr('width',textLength+textLeftCord);
-                 drawingCanvas.drawImage(rC,0,0);
-             }
-             textHolder.css({'left':textLeftCord,'top':textTopCord-5}).html(inputValue);
+        setTimeout(function(){
+            var inputValue = (textInput.val() ? textInput.val() : '');
+            //get cursor position
+            var currentCursorPosition = textInput[0].selectionStart;
+            var textLength = (inputValue.length+1) * (fontSize/2);
+            inputValue = inputValue.substr(0,currentCursorPosition)+'|'+inputValue.substr(currentCursorPosition,inputValue.length-currentCursorPosition);
+            inputValue = inputValue.replace('\n','<br>');
+            inputValue = inputValue.replace(/\~/g,'<sub>');
+            inputValue = inputValue.replace(/\`/g,'</sub>');
+            inputValue = inputValue.replace(/\!/g,'<sup>');
+            inputValue = inputValue.replace(/\^/g,'</sup>');
+            if((textLength+textLeftCord)>drawingC.width){
+                rC.width = (textLength+textLeftCord);
+                rC.height = drawingC.height;
+                resizeCanvas.drawImage(drawingC, 0, 0);
+                dc.attr('width',textLength+textLeftCord);
+                fa.attr('width',textLength+textLeftCord);
+                drawingCanvas.drawImage(rC,0,0);
+            }
+            textHolder.css({'left':textLeftCord,'top':textTopCord-5}).html(inputValue);
         },5);
         //  if(textAnimation)
         //     clearInterval(textAnimation);
@@ -1099,10 +1136,11 @@ $(document).ready(function(){
     textInput.blur(function (e){
 
         if(symbolEnabled){
-            console.log('test');
-            return false;
+            symbolEnabled = false;
+            return;
         }
-        $('.js-sup-sub').val('');
+
+        //$('.js-sup-sub').val('');
         //clearInterval(textAnimation);
         $(this).hide();
         currentTool = 'none';
@@ -1226,6 +1264,13 @@ $(document).ready(function(){
                         fa.attr('height',top);
                         drawingCanvas.drawImage(rC,0,0);
                     }
+                    drawingCanvas.beginPath();
+                    drawingCanvas.globalCompositeOperation="source-over";
+                    drawingCanvas.moveTo(0,0);
+                    drawingCanvas.lineTo(0,1);
+                    drawingCanvas.lineWidth = 1;
+                    drawingCanvas.stroke();
+                    drawingCanvas.closePath();
                     drawingCanvas.drawImage(img, lineStartPoint.x,lineStartPoint.y);
                 };
                 img.src = dataUrl;
@@ -1242,8 +1287,8 @@ $(document).ready(function(){
         var data = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">' +
             '<foreignObject width="100%" height="100%">' +
             "<div xmlns='http://www.w3.org/1999/xhtml' style='"+styles+"'>" +
-                textHolder.html().replace('|','')
-                +
+            textHolder.html().replace('|','')
+            +
             '</div>' +
             '</foreignObject>' +
             '</svg>';

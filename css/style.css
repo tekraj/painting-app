@@ -8,7 +8,7 @@ body {
 }
 .first_section {
     padding-left:42px;
-    
+
 }
 .writing {
     overflow-y:scroll;
@@ -175,3 +175,6 @@ body {
 .power-dropdown .y-value-sub{bottom:15px;}
 .power-dropdown .x-value-sub{padding:5px 30px 30px 5px;}
 #text-holder{position:absolute;left:0;top:0;display: none;}
+.tools-list .btn.mx-auto{padding:0;background: none;width:40px;height:40px;overflow:hidden;}
+.shape-menu li{display: inline-block;}
+.shape-menu{width: 160px;}
