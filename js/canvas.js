@@ -40,11 +40,6 @@ $.fn.selectRange = function (start,end){
 
 $(document).ready(function(){
 
-    $('[data-toggle="tooltip"]').tooltip();
-
-    //full screen
-
-
     /**
      * ======================================================
      * *************** variable declaration *****************
@@ -163,8 +158,21 @@ $(document).ready(function(){
         },100)
 
     });
+    var symbolModal = $('#symbol-modal');
+    $('.js-enable-science').mouseover(function(){
+        //symbolEnabled = true;
+    }).
+    click(function (e) {
+        e.preventDefault();
 
-
+        symbolModal.attr('style','');
+        symbolModal.modal('show');
+        clearOnMouseDown();
+        var container = $('.eqEdContainer').data("eqObject");
+        addHighlight(container);
+        var characterClickPos = container.domObj.value.offset().left;
+        addCursor(container, characterClickPos);
+    });
 
     //change default color
     $('.js-color-code').click(function(e){
@@ -277,10 +285,14 @@ $(document).ready(function(){
 
     //insert symbols
     $('#toLatex').on('click', function() {
-        var jsonObj = $('.eqEdEquation').data('eqObject').buildJsonObj();
-        var latex = generateLatex(jsonObj.operands.topLevelContainer);
-        // $('.eqEdEquation').find('.eqEdContainer').attr('')
-        insertSymbols($('.eqEdContainer'));
+        // var jsonObj = $('.eqEdEquation').data('eqObject').buildJsonObj();
+        // var latex = generateLatex(jsonObj.operands.topLevelContainer);
+        // console.log(latex);
+        // // $('.eqEdEquation').find('.eqEdContainer').attr('')
+
+        insertSymbols($('.eqEdContainer'),function(){
+            $('.modal').modal('hide');
+        });
     });
 
     //clear canvas
@@ -1238,14 +1250,17 @@ $(document).ready(function(){
     }
 
 
-    function insertSymbols(dom){
+    function insertSymbols(dom,callback){
 
         domtoimage.toPng(dom[0])
             .then(function(dataUrl) {
                 var img = new Image;
                 img.onload = function () {
-                    var width = img.width;
-                    var height = img.height;
+                    var actualWidth = img.width;
+                    var actualHeight = img.height;
+                    var factor = fontSize/35;
+                    var height =actualHeight * factor;
+                    var width = actualWidth* height/actualHeight;
                     var canvasHeight = drawingC.height;
                     var canvasWidth = drawingC.width;
                     var left = lineStartPoint.x+width;
@@ -1268,19 +1283,14 @@ $(document).ready(function(){
                         fa.attr('height',top);
                         drawingCanvas.drawImage(rC,0,0);
                     }
-                    drawingCanvas.beginPath();
-                    drawingCanvas.globalCompositeOperation="source-over";
-                    drawingCanvas.moveTo(0,0);
-                    drawingCanvas.lineTo(0,1);
-                    drawingCanvas.lineWidth = 1;
-                    drawingCanvas.stroke();
-                    drawingCanvas.closePath();
-                    drawingCanvas.drawImage(img, lineStartPoint.x,lineStartPoint.y);
+                    drawingCanvas.drawImage(img, lineStartPoint.x,lineStartPoint.y-height/4,width,height);
+                    return callback();
                 };
                 img.src = dataUrl;
 
             })
             .catch(function(error) {
+                return callback();
                 console.error('oops, something went wrong!', error);
             });
     }
@@ -1366,6 +1376,7 @@ $(document).ready(function(){
     })
 });
 
+
 function getCoords(elem) {
     var box = elem.getBoundingClientRect();
     var scrollLeft = $(elem).parent().scrollLeft();
@@ -1382,6 +1393,8 @@ function getCoords(elem) {
     var left = box.left + scrollLeft - clientLeft;
     return {top: Math.round(top), left:Math.round(left) };
 }
+
+
 
 
 

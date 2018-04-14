@@ -18,7 +18,6 @@ $fontStyle = ['normal','bold','italic','bold italic'];
     <link href="equation-editor/Fonts/TeX/font.css" rel="stylesheet" type="text/css" charset="utf-8" />
     <link href="equation-editor/css/equationEditor.css" rel="stylesheet" type="text/css" charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="css/style.css" >
-
     <title>White Board</title>
 </head>
 <body>
@@ -268,7 +267,7 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                 </a>
             </div>
             <div class="text-center my-1">
-                <a href="#" class="btn btn-secondary btn-square mx-auto js-enable-science" data-toggle="modal" data-target="#symbol-modal"   >
+                <a href="#" class="btn btn-secondary btn-square mx-auto js-enable-science"   >
                    <span data-toggle="tooltip" data-placement="top" title="Click here to open equation editor"> <img src="images/math-w.png"></span>
                 </a>
             </div>
@@ -383,7 +382,7 @@ $fontStyle = ['normal','bold','italic','bold italic'];
 <div style="display: none;" id="canvas-image-holder">
 
 </div>
-<div class="modal" id="symbol-modal">
+<div class="modal" id="symbol-modal" style="width:100%;display: block;height:0;">
     <div class="modal-dialog">
         <div class="modal-container">
             <div class="modal-content">
@@ -416,32 +415,32 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                         </ul>
                         <div class="tab-content" id="tab-content-top">
                             <div id="symbol-functions" class="tab outer active">
-                                <span class="menuItem MathJax_Main"  id="colonButton" style="font-size: 45px;">:</span>
-                                <span class="menuItem MathJax_Main" id="lessThanOrEqualToButton" style="font-size: 45px;">≤</span>
-                                <span class="menuItem MathJax_Main" id="greaterThanOrEqualToButton" style="font-size: 45px;">≥</span>
-                                <span class="menuItem MathJax_Main" id="circleOperatorButton" style="font-size: 45px;">◦</span>
-                                <span class="menuItem MathJax_Main" id="approxEqualToButton" style="font-size: 45px;">≈</span>
-                                <span class="menuItem MathJax_Main" id="belongsToButton" style="font-size: 45px;">∈</span>
-                                <span class="menuItem MathJax_Main" id="timesButton" style="font-size: 45px;">×</span>
-                                <span class="menuItem MathJax_Main" id="pmButton" style="font-size: 45px;">±</span>
-                                <span class="menuItem MathJax_Main" id="wedgeButton" style="font-size: 45px;">∧</span>
-                                <span class="menuItem MathJax_Main" id="veeButton" style="font-size: 45px;">∨</span>
-                                <span class="menuItem MathJax_Main" id="equivButton" style="font-size: 45px;">≡</span>
-                                <span class="menuItem MathJax_Main" id="congButton" style="font-size: 45px;">≅</span>
-                                <span class="menuItem MathJax_Main" id="neqButton" style="font-size: 45px;">≠</span>
-                                <span class="menuItem MathJax_Main" id="simButton" style="font-size: 45px;">∼</span>
-                                <span class="menuItem MathJax_Main" id="proptoButton" style="font-size: 45px;">∝</span>
-                                <span class="menuItem MathJax_Main" id="precButton" style="font-size: 45px;">≺</span>
-                                <span class="menuItem MathJax_Main" id="precEqButton" style="font-size: 45px;">⪯</span>
-                                <span class="menuItem MathJax_Main" id="subsetButton" style="font-size: 45px;">⊂</span>
-                                <span class="menuItem MathJax_Main" id="subsetEqButton" style="font-size: 45px;">⊆</span>
-                                <span class="menuItem MathJax_Main" id="succButton" style="font-size: 45px;">≻</span>
-                                <span class="menuItem MathJax_Main" id="succEqButton" style="font-size: 45px;">⪰</span>
-                                <span class="menuItem MathJax_Main" id="perpButton" style="font-size: 45px;">⊥</span>
-                                <span class="menuItem MathJax_Main" id="midButton" style="font-size: 45px;">∣</span>
-                                <span class="menuItem MathJax_Main" id="parallelButton" style="font-size: 45px;">∥</span>
-                                <span class="menuItem MathJax_Main" id="partialButton" style="font-size: 45px;">∂</span>
-                                <span class="menuItem MathJax_Main" id="infinityButton" style="font-size: 45px;">∞</span>
+                                <span class="menuItem MathJax_Main"  id="colonButton" style="font-size: 24px;">:</span>
+                                <span class="menuItem MathJax_Main" id="lessThanOrEqualToButton" style="font-size: 24px;">≤</span>
+                                <span class="menuItem MathJax_Main" id="greaterThanOrEqualToButton" style="font-size: 24px;">≥</span>
+                                <span class="menuItem MathJax_Main" id="circleOperatorButton" style="font-size: 24px;">◦</span>
+                                <span class="menuItem MathJax_Main" id="approxEqualToButton" style="font-size: 24px;">≈</span>
+                                <span class="menuItem MathJax_Main" id="belongsToButton" style="font-size: 24px;">∈</span>
+                                <span class="menuItem MathJax_Main" id="timesButton" style="font-size: 24px;">×</span>
+                                <span class="menuItem MathJax_Main" id="pmButton" style="font-size: 24px;">±</span>
+                                <span class="menuItem MathJax_Main" id="wedgeButton" style="font-size: 24px;">∧</span>
+                                <span class="menuItem MathJax_Main" id="veeButton" style="font-size: 24px;">∨</span>
+                                <span class="menuItem MathJax_Main" id="equivButton" style="font-size: 24px;">≡</span>
+                                <span class="menuItem MathJax_Main" id="congButton" style="font-size: 24px;">≅</span>
+                                <span class="menuItem MathJax_Main" id="neqButton" style="font-size: 24px;">≠</span>
+                                <span class="menuItem MathJax_Main" id="simButton" style="font-size: 24px;">∼</span>
+                                <span class="menuItem MathJax_Main" id="proptoButton" style="font-size: 24px;">∝</span>
+                                <span class="menuItem MathJax_Main" id="precButton" style="font-size: 24px;">≺</span>
+                                <span class="menuItem MathJax_Main" id="precEqButton" style="font-size: 24px;">⪯</span>
+                                <span class="menuItem MathJax_Main" id="subsetButton" style="font-size: 24px;">⊂</span>
+                                <span class="menuItem MathJax_Main" id="subsetEqButton" style="font-size: 24px;">⊆</span>
+                                <span class="menuItem MathJax_Main" id="succButton" style="font-size: 24px;">≻</span>
+                                <span class="menuItem MathJax_Main" id="succEqButton" style="font-size: 24px;">⪰</span>
+                                <span class="menuItem MathJax_Main" id="perpButton" style="font-size: 24px;">⊥</span>
+                                <span class="menuItem MathJax_Main" id="midButton" style="font-size: 24px;">∣</span>
+                                <span class="menuItem MathJax_Main" id="parallelButton" style="font-size: 24px;">∥</span>
+                                <span class="menuItem MathJax_Main" id="partialButton" style="font-size: 24px;">∂</span>
+                                <span class="menuItem MathJax_Main" id="infinityButton" style="font-size: 24px;">∞</span>
                             </div>
                             <div id="simple-functions" class="tab outer">
                                 <img class="menuItem" id="subscriptButton" src="equation-editor/MenuImages/png/subscript.png">
@@ -453,10 +452,10 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                                 <img class="menuItem" id="integralButton" src="equation-editor/MenuImages/png/integral.png">
                                 <img class="menuItem" id="limitButton" src="equation-editor/MenuImages/png/limit.png">
                                 <span class="menuItem MathJax_Main" style="font-size:32px;" id="function">f(x)</span>
-                                <span class="menuItem MathJax_Main" id="lnButton" style="font-size:32px">ln</span>
+                                <span class="menuItem MathJax_Main" id="lnButton" style="font-size:24px">ln</span>
                                 <img class="menuItem" id="logLowerButton" height="55" src="equation-editor/MenuImages/png/log_n.png">
-                                <span class="menuItem MathJax_Main" id="logButton" style="font-size:32px">log</span>
-                                <span class="menuItem MathJax_Main" id="logButton" style="font-size:32px">e<sup>x</sup></span>
+                                <span class="menuItem MathJax_Main" id="logButton" style="font-size:24px">log</span>
+                                <span class="menuItem MathJax_Main" id="logButton" style="font-size:24px">e<sup>x</sup></span>
                             </div>
                             <div id="trignometry-functions" class="tab outer">
                                 <span class="menuItem MathJax_Main" id="sinButton" style="font-size: 24px;">sin</span>
@@ -553,6 +552,9 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                                 <span class="menuItem MathJax_MathItalic" id="omegaButton" style="font-size: 24px;">ω</span>
                             </div>
                         </div>
+                    </div>
+                    <div id="loadingMessageOuter" style="width:100%;margin-top:10px;text-align: center;">
+                        <b>Loading Editor...</b>
                     </div>
                     <input id="hiddenFocusInput" style="width: 0; height: 0; opacity: 0; position: absolute; top: 0; left: 0;" type="text" autocapitalize="off" />
                     <div class="equation-editor"></div>

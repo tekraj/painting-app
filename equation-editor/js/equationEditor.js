@@ -40,7 +40,11 @@ var setup = function() {
         var equation = new eqEd.Equation();
         $('.equation-editor').replaceWith(equation.domObj.value);
         equation.updateAll();
-        //setupInitialContainer();
+        clearOnMouseDown();
+        var container = $('.eqEdContainer').data("eqObject");
+        addHighlight(container);
+        var characterClickPos = container.domObj.value.offset().left;
+        addCursor(container, characterClickPos);
     }
 }
 
