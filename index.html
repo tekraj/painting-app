@@ -1,10 +1,3 @@
-<?php
-$colors =  ['#e6194b','#3cb44b','#ffe119','#0082c8','#f58231','#911eb4','#46f0f0','#f032e6','#d2f53c','#fabebe','#008080','#e6beff','#aa6e28','#fffac8','#800000','#aaffc3','#808000','#ffd8b1','#000080','#808080','#FFFFFF','#000000'];
-$fonts = [['name'=>'Times New Roman','value'=>'"Times New Roman", Times, serif'],['name'=>'Arial','value'=>'Arial, Helvetica, sans-serif'],['name'=>'Courier New','value'=>'"Courier New", Courier, monospace']];
-$fontSizes = [8,9,10,11,12,13,14,16,18,20,24,30,36,42,48];
-$fontStyle = ['normal','bold','italic','bold italic'];
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -84,7 +77,7 @@ $fontStyle = ['normal','bold','italic','bold italic'];
     </a>
     <span style="font-size:12px;"><b>Slide 1/1</b></span>
     <div class="float-right">
-        <a class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#save-modal" >New Board</a>
+        <a class="btn btn-secondary btn-sm" id="new-board">New Board</a>
         <input class="btn btn-secondary btn-sm" type="button" value="Back">
         <input class="btn btn-secondary btn-sm" type="submit" value="Next">
     </div>
@@ -95,22 +88,30 @@ $fontStyle = ['normal','bold','italic','bold italic'];
     <div class="row">
         <div class="col-md-1 tools-list">
             <div class="text-center my-1 option-menu-wrapper">
-                <a  href="#" class="btn btn-primary btn-square mx-auto js-tools" id="pencil-tool" data-tool="pencil" data-toggle="tooltip" data-placement="top" title="Pencil" data-cursor="url(images/pencil.png), auto">
+                <a href="#" class="btn btn-primary btn-square mx-auto js-tools" id="pencil-tool" data-tool="pencil" data-toggle="tooltip" data-placement="top" title="Pencil" data-cursor="url(images/pencil.png), auto">
                     <span class=""><img src="images/pencil-w.png"></span>
                 </a>
                 <ul class="option-menu" style="display: none;">
-                    <li><a href="#" class="line-width js-line-width active" data-line="1">
+                    <li>
+                        <a href="#" class="line-width js-line-width active" data-line="1">
                             <span style="border-width: 2px;"></span>
-                        </a></li>
-                    <li><a href="#" class="line-width js-line-width" data-line="2">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="line-width js-line-width" data-line="2">
                             <span style="border-width: 4px;"></span>
-                        </a></li>
-                    <li><a href="#" class="line-width js-line-width" data-line="3">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="line-width js-line-width" data-line="3">
                             <span style="border-width: 6px;"></span>
-                        </a></li>
-                    <li><a href="#" class="line-width js-line-width" data-line="4">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="line-width js-line-width" data-line="4">
                             <span style="border-width: 8px;"></span>
-                        </a></li>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="text-center my-1 option-menu-wrapper">
@@ -134,44 +135,82 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                 <div class="option-menu font-menu" style="display: none;">
                     <h4>Font Properties</h4>
 
-                    <div class="row font-wrapper">
-                        <div class="col-sm-5">
-                            <h5>Font</h5>
-                            <ul>
-                                <?php
-                                $fc = 0;
-                                foreach($fonts as $font):?>
-                                    <li><a href="#" class="js-font <?php echo $fc==0 ? 'active': '' ?>" data-font='<?php echo $font['value'] ?>'><?php echo $font['name'];?></a></li>
-                                    <?php
-                                    $fc++;
-                                endforeach;
-                                ?>
-                            </ul>
-                        </div>
-                        <div class="col-sm-5">
-                            <h5>Font Style</h5>
-                            <ul>
-                                <?php foreach($fontStyle as $key=>$style):?>
-                                    <li><a href="#" class="js-font-style <?php echo $key==0 ? 'active' : '';?>" data-style="<?php echo $style ?>"><?php echo ucfirst($style);?></a></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                        <div class="col-sm-2">
-                            <h5>Size</h5>
-                            <ul>
-                                <?php foreach($fontSizes as $size):?>
-                                    <li><a href="#" class="js-font-size <?php echo $size==18 ? 'active' : ''; ?>" data-size="<?php echo $size ?>"><?php echo $size;?></a></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="demo-font-text js-text-demo">
-                                -- Hello World --
+                    <div class="option-menu font-menu" style="display: none;">
+                        <h4>Font Properties</h4>
+
+                        <div class="row font-wrapper">
+                            <div class="col-sm-5">
+                                <h5>Font</h5>
+                                <ul>
+                                    <li><a href="#" class="js-font active" data-font="Times New Roman, Times, serif">Times New Roman</a></li>
+                                    <li><a href="#" class="js-font " data-font="Arial, Helvetica, sans-serif">Arial</a></li>
+                                    <li><a href="#" class="js-font " data-font="Courier New, Courier, monospace">Courier New</a></li>
+                                </ul>
                             </div>
-                        </div>
-                        <div class="col-sm-12 text-center">
-                            <button class="btn btn-default" id="change-font">OK</button>
-                            <button class="btn btn-default" id="cancel-font">Cancel</button>
+                            <div class="col-sm-5">
+                                <h5>Font Style</h5>
+                                <ul>
+
+
+                                    <li><a href="#" class="js-font-style active" data-style="normal">Normal</a></li>
+
+
+                                    <li><a href="#" class="js-font-style " data-style="bold">Bold</a></li>
+
+
+                                    <li><a href="#" class="js-font-style " data-style="italic">Italic</a></li>
+
+
+                                    <li><a href="#" class="js-font-style " data-style="bold italic">Bold italic</a></li>
+
+
+                                </ul>
+                            </div>
+                            <div class="col-sm-2">
+                                <h5>Size</h5>
+                                <ul>
+                                    <li><a href="#" class="js-font-size " data-size="8">8</a></li>
+
+                                    <li><a href="#" class="js-font-size " data-size="9">9</a></li>
+
+                                    <li><a href="#" class="js-font-size " data-size="10">10</a></li>
+
+                                    <li><a href="#" class="js-font-size " data-size="11">11</a></li>
+
+                                    <li><a href="#" class="js-font-size " data-size="12">12</a></li>
+
+                                    <li><a href="#" class="js-font-size " data-size="13">13</a></li>
+
+                                    <li><a href="#" class="js-font-size " data-size="14">14</a></li>
+
+                                    <li><a href="#" class="js-font-size " data-size="16">16</a></li>
+
+                                    <li><a href="#" class="js-font-size active" data-size="18">18</a></li>
+
+                                    <li><a href="#" class="js-font-size " data-size="20">20</a></li>
+
+                                    <li><a href="#" class="js-font-size " data-size="24">24</a></li>
+
+                                    <li><a href="#" class="js-font-size " data-size="30">30</a></li>
+
+                                    <li><a href="#" class="js-font-size " data-size="36">36</a></li>
+
+                                    <li><a href="#" class="js-font-size " data-size="42">42</a></li>
+
+                                    <li><a href="#" class="js-font-size " data-size="48">48</a></li>
+
+
+                                </ul>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="demo-font-text js-text-demo">
+                                    -- Hello World --
+                                </div>
+                            </div>
+                            <div class="col-sm-12 text-center">
+                                <button class="btn btn-default" id="change-font">OK</button>
+                                <button class="btn btn-default" id="cancel-font">Cancel</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -182,9 +221,28 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                 </a>
                 <div class="option-menu color-menu" style="display: none;">
                     <ul class="color-pallet row">
-                        <?php foreach($colors as $color): ?>
-                            <li class="col-sm-2"><a href="#"  data-color="<?php echo $color; ?>" style="background:<?php echo $color;?>" class="color-span js-color-code"></a></li>
-                        <?php endforeach;?>
+                        <li class="col-sm-2"><a href="#" data-color="#e6194b" style="background:#e6194b" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#3cb44b" style="background:#3cb44b" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#ffe119" style="background:#ffe119" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#0082c8" style="background:#0082c8" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#f58231" style="background:#f58231" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#911eb4" style="background:#911eb4" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#46f0f0" style="background:#46f0f0" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#f032e6" style="background:#f032e6" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#d2f53c" style="background:#d2f53c" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#fabebe" style="background:#fabebe" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#008080" style="background:#008080" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#e6beff" style="background:#e6beff" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#aa6e28" style="background:#aa6e28" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#fffac8" style="background:#fffac8" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#800000" style="background:#800000" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#aaffc3" style="background:#aaffc3" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#808000" style="background:#808000" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#ffd8b1" style="background:#ffd8b1" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#000080" style="background:#000080" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#808080" style="background:#808080" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#FFFFFF" style="background:#FFFFFF" class="color-span js-color-code"></a></li>
+                        <li class="col-sm-2"><a href="#" data-color="#000000" style="background:#000000" class="color-span js-color-code"></a></li>
                     </ul>
                     <div>
                         <a href="#" id="color-spectrum" class="color-spectrum">More Colors</a>
@@ -224,13 +282,28 @@ $fontStyle = ['normal','bold','italic','bold italic'];
 
             </div>
             <div class="text-center my-1 option-menu-wrapper">
-                <a href="#" class="btn btn-secondary btn-square mx-auto js-tools"  data-toggle="tooltip" data-placement="top" title="Shapes">
+                <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" data-toggle="tooltip" data-placement="top" title="Shapes">
                     <img src="images/shapes-w.png">
                 </a>
                 <ul class="option-menu shape-menu" style="display: none">
                     <li>
+                        <a href="" class="js-tools" data-tool="line-sarrow" data-cursor="url(images/line-icon.png), auto">
+                            <img src="images/line-single-arrow.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="js-tools" data-tool="line-darrow" data-cursor="url(images/line-icon.png), auto">
+                            <img src="images/line-double-arrow.png" alt="">
+                        </a>
+                    </li>
+                    <li>
                         <a href="" class="js-tools" data-tool="rectangle" data-cursor="url(images/line-icon.png), auto">
                             <img src="images/square.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="js-tools" data-tool="rectangle-filled" data-cursor="url(images/line-icon.png), auto">
+                            <img src="images/square-filled.png" alt="">
                         </a>
                     </li>
                     <li>
@@ -243,6 +316,12 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                             <img src="images/circle.png" alt="">
                         </a>
                     </li>
+
+                    <li>
+                        <a href="" class="js-tools" data-tool="oval-filled" data-cursor="cross-hair">
+                            <img src="images/circle-filled.png" alt="">
+                        </a>
+                    </li>
                     <li>
                         <a href="" class="js-tools" data-tool="cylinder" data-cursor="cross-hair">
                             <img src="images/cylinder.png" alt="">
@@ -253,7 +332,7 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                             <img src="images/cone.png" alt="">
                         </a>
                     </li>
-                    
+
                     <li>
                         <a href="" class="js-tools" data-tool="pyramid" data-cursor="cross-hair">
                             <img src="images/prism.png" alt="">
@@ -267,58 +346,58 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                 </a>
             </div>
             <div class="text-center my-1">
-                <a href="#" class="btn btn-secondary btn-square mx-auto js-enable-science"   >
-                   <span data-toggle="tooltip" data-placement="top" title="Click here to open equation editor"> <img src="images/math-w.png"></span>
+                <a href="#" class="btn btn-secondary btn-square mx-auto js-enable-science">
+                    <span data-toggle="tooltip" data-placement="top" title="Click here to open equation editor"> <img src="images/math-w.png"></span>
                 </a>
             </div>
-            <div class="text-center my-1 option-menu-wrapper  js-enable-symbol" >
-                <a href="#" class="btn btn-secondary btn-square mx-auto" >
+            <div class="text-center my-1 option-menu-wrapper  js-enable-symbol">
+                <a href="#" class="btn btn-secondary btn-square mx-auto">
                     <img src="images/science-w.png" style="width: 42px;">
                 </a>
-                <ul class="option-menu symbol-dropdown" style="display:none;" >
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol=":" >:</span></li>
+                <ul class="option-menu symbol-dropdown" style="display:none;">
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol=":">:</span></li>
                     <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≤">≤</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≥" >≥</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="◦" >◦</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≈" >≈</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∈" >∈</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="×" >×</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="±" >±</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∧" >∧</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∨" >∨</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≡" >≡</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≅" >≅</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≠" >≠</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∼" >∼</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≥">≥</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="◦">◦</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≈">≈</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∈">∈</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="×">×</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="±">±</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∧">∧</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∨">∨</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≡">≡</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≅">≅</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≠">≠</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∼">∼</span></li>
                     <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∝">∝</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≺" >≺</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⪯" >⪯</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≺">≺</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⪯">⪯</span></li>
                     <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⊂">⊂</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⊆" >⊆</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≻" >≻</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⪰" >⪰</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⊆">⊆</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≻">≻</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⪰">⪰</span></li>
                     <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⊥">⊥</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∣" >∣</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∣">∣</span></li>
                     <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∥">∥</span></li>
                     <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∂">∂</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∞" >∞</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Γ" >Γ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Δ" >Δ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Θ" >Θ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Λ" >Λ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Ξ" >Ξ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Π" >Π</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Σ" >Σ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Υ" >Υ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Φ" >Φ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Ψ" >Ψ</span></li>
+                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∞">∞</span></li>
+                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Γ">Γ</span></li>
+                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Δ">Δ</span></li>
+                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Θ">Θ</span></li>
+                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Λ">Λ</span></li>
+                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Ξ">Ξ</span></li>
+                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Π">Π</span></li>
+                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Σ">Σ</span></li>
+                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Υ">Υ</span></li>
+                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Φ">Φ</span></li>
+                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Ψ">Ψ</span></li>
                     <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Ω">Ω</span></li>
 
                     <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="α">α</span></li>
                     <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="β">β</span></li>
                     <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="γ">γ</span></li>
                     <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="δ">δ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol=">" >ε</span></li>
+                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol=">">ε</span></li>
                     <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ϵ">ϵ</span></li>
                     <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ζ">ζ</span></li>
                     <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="η">η</span></li>
@@ -341,7 +420,7 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                     <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="φ">φ</span></li>
                     <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ϕ">ϕ</span></li>
                     <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="χ">χ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol=">" >ψ</span></li>
+                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol=">">ψ</span></li>
                     <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ω">ω</span></li>
                 </ul>
             </div>
@@ -368,19 +447,71 @@ $fontStyle = ['normal','bold','italic','bold italic'];
         </div>
 
         <div class="col-md-11 border px-0 canvas-list">
-            <div class="canvas-wrapper">
-                <canvas  class="drawing-board"  id="drawing-board"></canvas>
-                <textarea class="canvas-text-input js-text-demo" style="display: none;" id="canvas-text-input"></textarea>
-                <canvas id="fake-canvas"   class="fake-canvas"></canvas>
-                <canvas id="resize-canvas" style="display: none;"></canvas>
-                <div id="text-holder" style="color:#000;"></div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 px-0 canvas-writing writing">
+                        <div class="canvas-wrapper">
+                            <canvas class="drawing-board" id="drawing-board"></canvas>
+                            <textarea class="canvas-text-input js-text-demo" style="display: none;" id="canvas-text-input"></textarea>
+                            <canvas id="fake-canvas" class="fake-canvas"></canvas>
+                            <canvas id="resize-canvas" style="display: none;"></canvas>
+                            <div id="text-holder" style="color:#000;"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 px-0">
+                        <form class="">
+                            <div class="form-group">
+                                <textarea class="form-control" id="exampleFormControlTextarea2" rows="17"></textarea>
+                                </textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-3 pl-0 border-right">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="Participants-tab" data-toggle="tab" href="#Participants" role="tab" aria-controls="home" aria-selected="true"><img src="images/multiple-users-silhouette.png"> Participants</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content hei-1" id="myTabContent">
+                            <div class="tab-pane fade show active px-4" id="Participants" role="tabpanel" aria-labelledby="Participants-tab">
+                                <img src="images/user.png"> | <img src="images/phone-receiver.png"> | Sasirekha
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-9 pr-0">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="participant-tab" data-toggle="tab" href="#chat" role="tab" aria-controls="home" aria-selected="true"><img src="images/comments.png"> chat</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content border  hei-2" id="myTabContent">
+                            <div class="tab-pane fade show active" id="chat" role="tabpanel" aria-labelledby="home-tab"></div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-9 px-0 my-2">
+                                    <input type="text" class="form-control" id="text-input" placeholder="Type your Text">
+                                </div>
+                                <div class="col-md-3 py-2">
+                                    <a href="#" class="mx-3"><img src="images/happy.png"></a>
+
+                                    <a href="#" class="mx-3"><img src="images/instagram-logo.png"></a>
+                                    <a class="btn btn-success mx-3 btn-sm" href="#" role="button">Send</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
 </div>
 <div style="display: none;" id="canvas-image-holder">
-
 </div>
 <div class="modal" id="symbol-modal" style="width:100%;display: block;height:0;">
     <div class="modal-dialog">
@@ -398,11 +529,17 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                                 <div class="form-group row" style="margin-bottom: 0;">
                                     <label for="symbol-size" class="col-sm-3 col-form-label" style="margin-top:-3px;font-size:13px;">Size</label>
                                     <div class="col-sm-9">
-                                        <select name="symbol-size" id="symbol-size" class="form-control form-control-sm" >
-                                            <?php $symbolSize = [20,24,26,28,36,46,48,72]; ?>
-                                            <?php foreach($symbolSize as $size):?>
-                                                <option value="<?php echo $size;?>"><?php echo $size;?></option>
-                                            <?php endforeach; ?>
+                                        <select name="symbol-size" id="symbol-size" class="form-control form-control-sm">
+
+                                            <option value="20">20</option>
+                                            <option value="24">24</option>
+                                            <option value="26">26</option>
+                                            <option value="28">28</option>
+                                            <option value="36">36</option>
+                                            <option value="46">46</option>
+                                            <option value="48">48</option>
+                                            <option value="72">72</option>
+
                                         </select>
                                     </div>
                                 </div>
@@ -415,7 +552,7 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                         </ul>
                         <div class="tab-content" id="tab-content-top">
                             <div id="symbol-functions" class="tab outer active">
-                                <span class="menuItem MathJax_Main"  id="colonButton" style="font-size: 24px;">:</span>
+                                <span class="menuItem MathJax_Main" id="colonButton" style="font-size: 24px;">:</span>
                                 <span class="menuItem MathJax_Main" id="lessThanOrEqualToButton" style="font-size: 24px;">≤</span>
                                 <span class="menuItem MathJax_Main" id="greaterThanOrEqualToButton" style="font-size: 24px;">≥</span>
                                 <span class="menuItem MathJax_Main" id="circleOperatorButton" style="font-size: 24px;">◦</span>
@@ -483,29 +620,29 @@ $fontStyle = ['normal','bold','italic','bold italic'];
                                 <span class="menuItem MathJax_Main" id="cothButton" style="font-size: 24px;">coth</span>
                             </div>
                             <div id="misc-functions" class="tab outer">
-                                <span class="menuItem MathJax_Main" id="corrcoefButton" style="font-size: 24px;">corrcoef</span>
-                                <span class="menuItem MathJax_Main" id="covButton" style="font-size: 24px;">cov</span>
-                                <span class="menuItem MathJax_Main" id="medianButton" style="font-size: 24px;">median</span>
-                                <span class="menuItem MathJax_Main" id="meanButton" style="font-size: 24px;">mean</span>
-                                <span class="menuItem MathJax_Main" id="stdButton" style="font-size: 24px;">std</span>
-                                <span class="menuItem MathJax_Main" id="modButton" style="font-size: 24px;">mod</span>
-                                <span class="menuItem MathJax_Main" id="floorButton" style="font-size: 24px;">floor</span>
-                                <span class="menuItem MathJax_Main" id="ceilButton" style="font-size: 24px;">ceil</span>
-                                <span class="menuItem MathJax_Main" id="signButton" style="font-size: 24px;">sign</span>
-                                <span class="menuItem MathJax_Main" id="gcdButton" style="font-size: 24px;">gcd</span>
-                                <span class="menuItem MathJax_Main" id="lcmButton" style="font-size: 24px;">lcm</span>
-                                <span class="menuItem MathJax_Main" id="randomButton" style="font-size: 24px;">random</span>
-                                <span class="menuItem MathJax_Main" id="eyeButton" style="font-size: 24px;">eye</span>
-                                <span class="menuItem MathJax_Main" id="transposeButton" style="font-size: 24px;">transpose</span>
-                                <span class="menuItem MathJax_Main" id="inverseButton" style="font-size: 24px;">inverse</span>
-                                <span class="menuItem MathJax_Main" id="detButton" style="font-size: 24px;">det</span>
-                                <span class="menuItem MathJax_Main" id="minButton" style="font-size: 24px;">min</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="corrcoefButton" style="font-size: 24px;" data-symbol="corrcoes">corrcoef</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="covButton" style="font-size: 24px;" data-symbol="cov">cov</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="medianButton" style="font-size: 24px;" data-symbol="median">median</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="meanButton" style="font-size: 24px;" data-symbol="mean">mean</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="stdButton" style="font-size: 24px;" data-symbol="std">std</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="modButton" style="font-size: 24px;" data-symbol="mod">mod</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="floorButton" style="font-size: 24px;" data-symbol="floor">floor</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="ceilButton" style="font-size: 24px;" data-symbol="ceil">ceil</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="signButton" style="font-size: 24px;" data-symbol="sign">sign</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="gcdButton" style="font-size: 24px;" data-symbol="gcd">gcd</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="lcmButton" style="font-size: 24px;" data-symbol="lcm">lcm</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="randomButton" style="font-size: 24px;" data-symbol="random">random</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="eyeButton" style="font-size: 24px;" data-symbol="eye">eye</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="transposeButton" style="font-size: 24px;" data-symbol="transpose">transpose</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="inverseButton" style="font-size: 24px;" data-symbol="inverse">inverse</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="detButton" style="font-size: 24px;" data-symbol="det">det</span>
+                                <span class="menuItem MathJax_Main " id="minButton" style="font-size: 24px;">min</span>
                                 <span class="menuItem MathJax_Main" id="maxButton" style="font-size: 24px;">max</span>
-                                <span class="menuItem MathJax_Main" id="rowsButton" style="font-size: 24px;">rows</span>
-                                <span class="menuItem MathJax_Main" id="inverseButton" style="font-size: 24px;">columns</span>
-                                <span class="menuItem MathJax_Main" id="plotButton" style="font-size: 24px;">plot</span>
-                                <span class="menuItem MathJax_Main" id="meshgridButton" style="font-size: 24px;">meshgrid</span>
-                                <span class="menuItem MathJax_Main" id="meshButton" style="font-size: 24px;">mesh</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="rowsButton" style="font-size: 24px;" data-symbol="rows">rows</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="inverseButton" style="font-size: 24px;" data-symbol="columns">columns</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="plotButton" style="font-size: 24px;" data-symbol="plot">plot</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="meshgridButton" style="font-size: 24px;" data-symbol="meshgrid">meshgrid</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="meshButton" style="font-size: 24px;" data-symbol="mesh">mesh</span>
 
                             </div>
                             <div id="greek-alphabets" class="tab outer">
@@ -582,6 +719,8 @@ $fontStyle = ['normal','bold','italic','bold italic'];
         </div>
     </div>
 </div>
+
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="equation-editor/lib/jquery-2.0.0.js"></script>
@@ -763,3 +902,6 @@ $fontStyle = ['normal','bold','italic','bold italic'];
 <script src="js/canvas.js"></script>
 </body>
 </html>
+
+
+

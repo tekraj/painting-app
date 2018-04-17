@@ -160,7 +160,7 @@ $(document).ready(function(){
     });
     var symbolModal = $('#symbol-modal');
     $('.js-enable-science').mouseover(function(){
-        //symbolEnabled = true;
+        symbolEnabled = true;
     }).
     click(function (e) {
         e.preventDefault();
@@ -292,6 +292,10 @@ $(document).ready(function(){
 
         insertSymbols($('.eqEdContainer'),function(){
             $('.modal').modal('hide');
+            symbolEnabled = false;
+            setTimeout(function () {
+                textInput.focus().blur();
+            }, 100);
         });
     });
 
@@ -299,8 +303,16 @@ $(document).ready(function(){
     $('.js-clear-canvas').click(function(){
         var ans = $(this).data().ans;
         if(ans=='yes'){
-            this.href = drawingC.toDataURL();
-            this.download = 'canvas.png';
+            var href = drawingC.toDataURL("image/png");
+            jQuery.ajax({
+                type: 'post',
+                url: 'home/saveCanvasImage',
+                data: { imageData: href.replace('data:image/png;base64,','') },
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+
         }
         $('.modal').modal('hide');
         drawingCanvas.clearRect(0,0,drawingC.width,drawingC.height);
@@ -370,7 +382,7 @@ $(document).ready(function(){
                 textInput.click();
             },300);
 
-        }else if(currentTool=='line' || currentTool=='cube' || currentTool=='rectangle' ||currentTool=='oval' || currentTool=='cone' || currentTool=='pyramid' || currentTool=='xgraph' || currentTool=='xygraph' || currentTool=='cylinder'){
+        }else if(currentTool=='line' || currentTool=='cube' || currentTool=='rectangle' ||currentTool=='oval' || currentTool=='cone' || currentTool=='pyramid' || currentTool=='xgraph' || currentTool=='xygraph' || currentTool=='cylinder' || currentTool=='rectangle-filled' || currentTool=='oval-filled' || currentTool=='line-sarrow' ||  currentTool=='line-darrow'){
             fa.show();
             lineStartPoint.x = left;
             lineStartPoint.y = top;
@@ -472,6 +484,15 @@ $(document).ready(function(){
                 drawXGraphAnimation(left,top);
             }else if(currentTool=='xygraph'){
                 drawXYGraphAnimation(left,top);
+            }else if(currentTool=='rectangle-filled'){
+                drawRectangleAnimation(left,top,false,true);
+            }
+            else if(currentTool=='oval-filled'){
+                drawCircleAnimation(left,top,false,true);
+            }else if(currentTool=='line-sarrow'){
+                drawLineAnimation(left,top,false,'single');
+            }else if(currentTool=='line-darrow'){
+                drawLineAnimation(left,top,false,'double');
             }
         }
     });
@@ -501,6 +522,14 @@ $(document).ready(function(){
                 drawXGraphAnimation(left,top,true);
             }else if(currentTool=='xygraph'){
                 drawXYGraphAnimation(left,top,true);
+            }else if(currentTool=='rectangle-filled'){
+                drawRectangleAnimation(left,top,true,true);
+            }else if(currentTool=='oval-filled'){
+                drawCircleAnimation(left,top,true,true);
+            }else if(currentTool=='line-sarrow'){
+                drawLineAnimation(left,top,true,'single');
+            }else if(currentTool=='line-darrow'){
+                drawLineAnimation(left,top,true,'double');
             }
             saveCanvasState(drawingC);
         }
@@ -536,6 +565,7 @@ $(document).ready(function(){
             drawingCanvas.lineWidth=lineSize;
             drawingCanvas.fill();
             drawingCanvas.stroke();
+            drawingCanvas.closePath();
         }
     }
 
@@ -545,10 +575,12 @@ $(document).ready(function(){
      * =====================================================
      */
 
-    function drawLineAnimation(x,y,noAnimation){
+    function drawLineAnimation(x,y,noAnimation,type){
         var noAnimation = noAnimation ? noAnimation : false;
+        var type = type ? type : 'simple';
         var lineEndPointX = x,
             lineEndPointY = y;
+        var ctx = noAnimation ? drawingCanvas : fakeCanvas;
         fakeCanvas.clearRect(0,0,fakeCanvasMaxLenght,fakeCanvasMaxLenght);
         //if shift is pressed detect to which way we have to draw line
         if(shiftPressed){
@@ -560,7 +592,9 @@ $(document).ready(function(){
                 lineEndPointX = lineStartPoint.x;
             }
         }
-
+        if(type=='double' || type=='single'){
+            drawArrow(ctx,lineStartPoint.x,lineStartPoint.y,lineEndPointX,lineEndPointY);
+        }
         var ctx = noAnimation ? drawingCanvas : fakeCanvas;
         ctx.beginPath();
         ctx.globalCompositeOperation="source-over";
@@ -571,6 +605,11 @@ $(document).ready(function(){
         ctx.lineWidth=lineSize;
         ctx.fill();
         ctx.stroke();
+        ctx.closePath();
+        if(type=='double'){
+            drawArrow(ctx,lineEndPointX,lineEndPointY,lineStartPoint.x,lineStartPoint.y);
+
+        }
     }
 
     /**
@@ -648,10 +687,10 @@ $(document).ready(function(){
         ctx.lineTo(p0.x,p0.y);
         ctx.lineTo(p4.x,p4.y);
         ctx.lineTo(p7.x,p7.y);
-        ctx.closePath();
         ctx.lineWidth = lineSize;
         ctx.strokeStyle = currentColor;
         ctx.stroke();
+        ctx.closePath();
 
     }
 
@@ -670,9 +709,10 @@ $(document).ready(function(){
      * =====================================================
      */
 
-    function drawRectangleAnimation(x,y,noAnimation){
+    function drawRectangleAnimation(x,y,noAnimation,filled){
         fakeCanvas.clearRect(0,0,fakeCanvasMaxLenght,fakeCanvasMaxLenght);
         var noAnimation = noAnimation ? noAnimation : false;
+        var filled = filled ? filled : false;
         width= x-lineStartPoint.x;
         height = y-lineStartPoint.y;
         if(shiftPressed){
@@ -686,6 +726,11 @@ $(document).ready(function(){
         ctx.strokeStyle=currentColor;
         ctx.rect(lineStartPoint.x,lineStartPoint.y,width,height);
         ctx.stroke();
+        if(filled){
+            ctx.fillStyle = currentColor;
+            ctx.fill();
+        }
+        ctx.closePath();
 
     }
 
@@ -719,9 +764,11 @@ $(document).ready(function(){
      * *************** function for circle animation
      * =====================================================
      */
-    function drawCircleAnimation(x,y,noAnimation){
+    function drawCircleAnimation(x,y,noAnimation,fill){
         fakeCanvas.clearRect(0,0,fakeCanvasMaxLenght,fakeCanvasMaxLenght);
+        var noAnimation = noAnimation ? noAnimation : false;
         var ctx = noAnimation ? drawingCanvas : fakeCanvas;
+        var fill = fill ? fill : false;
         var width = x-lineStartPoint.x ;
         var height = y-lineStartPoint.y;
         var centerX = lineStartPoint.x + (width/2);
@@ -747,6 +794,10 @@ $(document).ready(function(){
         ctx.lineWidth = lineSize;
         ctx.strokeStyle = currentColor;
         ctx.stroke();
+        if(fill){
+            ctx.fillStyle = currentColor;
+            ctx.fill();
+        }
         ctx.closePath();
 
     }
@@ -880,34 +931,36 @@ $(document).ready(function(){
         var w = Math.ceil(Math.abs(x-lineStartPoint.x));
         var ctx = noAnimation ? drawingCanvas : fakeCanvas;
         fakeCanvas.clearRect(0,0,fakeCanvasMaxLenght,fakeCanvasMaxLenght);
-        if(noAnimation){
-            var pointsArray = [];
-            var i = x>lineStartPoint.x?lineStartPoint.x:x,
-                endP = ( x>lineStartPoint.x?x:lineStartPoint.x)+2;
-            while(i<= endP){
-                var factor = w/10;
-                pointsArray.push({x:Math.floor(i),y:lineStartPoint.y});
-                i+=factor;
-            }
-
-            for(var j in pointsArray){
-                var point = pointsArray[j];
-                ctx.beginPath();
-                ctx.globalCompositeOperation="source-over";
-                ctx.moveTo(point.x,point.y-5);
-                ctx.lineTo(point.x,point.y+5);
-                ctx.strokeStyle = currentColor;
-                ctx.lineWidth = 3;
-                ctx.stroke();
-                ctx.closePath();
-                ctx.font = 'normal 14px '+font;
-                ctx.fillStyle = currentColor;
-                ctx.fillText(j*10,point.x-3,point.y+14 );
-            }
-        }
+        // if(noAnimation){
+        //     var pointsArray = [];
+        //     var i = x>lineStartPoint.x?lineStartPoint.x:x,
+        //         endP = ( x>lineStartPoint.x?x:lineStartPoint.x)+2;
+        //     var factor = w/10;
+        //     while(i<= endP){
+        //         pointsArray.push({x:Math.floor(i),y:lineStartPoint.y});
+        //         i+=factor;
+        //     }
+        //
+        //     for(var j in pointsArray){
+        //         var point = pointsArray[j];
+        //         ctx.beginPath();
+        //         ctx.globalCompositeOperation="source-over";
+        //         ctx.moveTo(point.x,point.y-5);
+        //         ctx.lineTo(point.x,point.y+5);
+        //         ctx.strokeStyle = currentColor;
+        //         ctx.lineWidth = 3;
+        //         ctx.stroke();
+        //         ctx.closePath();
+        //         ctx.font = 'normal 14px '+font;
+        //         ctx.fillStyle = currentColor;
+        //         ctx.fillText(j*10,point.x-3,point.y+14 );
+        //     }
+        // }
         var startX = lineStartPoint.x+(x>lineStartPoint.x?-10 :10),
             endX = x+(x>lineStartPoint.x?10 :-10);
-        drawArrow(startX,lineStartPoint.y,ctx,x-lineStartPoint.x>0?0:Math.PI);
+
+        drawArrow(ctx,startX,lineStartPoint.y,endX,lineStartPoint.y);
+
         ctx.beginPath();
         ctx.globalCompositeOperation="source-over";
         ctx.moveTo(startX,lineStartPoint.y);
@@ -916,7 +969,7 @@ $(document).ready(function(){
         ctx.lineWidth = 2;
         ctx.stroke();
         ctx.closePath();
-        drawArrow(endX,lineStartPoint.y,ctx,x-lineStartPoint.x>0?Math.PI:0);
+        drawArrow(ctx,endX,lineStartPoint.y,startX,lineStartPoint.y);
     }
 
     /**
@@ -952,7 +1005,7 @@ $(document).ready(function(){
 
 
         //draw horizontal line
-        drawArrow(startX,my,ctx,(x-lineStartPoint.x)>0?0:Math.PI);
+        drawArrow(ctx,startX,my,ctx,endX,my);
         ctx.beginPath();
         ctx.globalCompositeOperation="source-over";
         ctx.moveTo(startX,my);
@@ -961,12 +1014,12 @@ $(document).ready(function(){
         ctx.lineWidth = lineSize;
         ctx.stroke();
         ctx.closePath();
-        drawArrow(endX,my,ctx,(x-lineStartPoint.x)>0?Math.PI:0);
+        drawArrow(ctx,endX,my,startX,my);
 
         //draw vertical line
 
         //draw horizontal line
-        drawArrow(mx,startY,ctx,(y-lineStartPoint.y>0)? Math.PI/2:2*Math.PI);
+        drawArrow(ctx,  mx,startY,mx,endY);
         ctx.beginPath();
         ctx.globalCompositeOperation="source-over";
         ctx.moveTo(mx,startY);
@@ -975,137 +1028,147 @@ $(document).ready(function(){
         ctx.lineWidth = lineSize;
         ctx.stroke();
         ctx.closePath();
-        drawArrow(mx,endY,ctx,(y-lineStartPoint.y>0)? 2*Math.PI : Math.PI/2);
+        drawArrow(ctx, mx,endY, mx,startY);
 
-
-        if(noAnimation){
-            //draw vertical lines
-            var pointsArrayX = [];
-            var i = (x>lineStartPoint.x?lineStartPoint.x:x)+10,
-                endPX = ( x>lineStartPoint.x?x:lineStartPoint.x);
-            while(i<= endPX){
-                var factor = (w/20)-1;
-                pointsArrayX.push({x:Math.floor(i),y:my});
-                i+=factor;
-            }
-
-            for(var j in pointsArrayX){
-                var point = pointsArrayX[j];
-                ctx.beginPath();
-                ctx.globalCompositeOperation="source-over";
-                ctx.moveTo(point.x,point.y-dy/2);
-                ctx.lineTo(point.x,point.y+dy/2);
-                ctx.lineWidth = 1;
-                ctx.strokeStyle = graphColor;
-                ctx.stroke();
-                ctx.closePath();
-
-
-                ctx.beginPath();
-                ctx.globalCompositeOperation="source-over";
-                if(j%2==0){
-
-                    ctx.moveTo(point.x,point.y-5);
-                    ctx.lineTo(point.x,point.y+5);
-                    ctx.strokeStyle = currentColor;
-                    ctx.lineWidth = 3;
-                    ctx.stroke();
-                    ctx.closePath();
-                    ctx.font = 'normal 12px '+font;
-                    ctx.fillStyle = currentColor;
-                    ctx.fillText(j-10,point.x-3,point.y+20 );
-                }else{
-                    ctx.moveTo(point.x,point.y-2);
-                    ctx.lineTo(point.x,point.y+2);
-                    ctx.strokeStyle = currentColor;
-                    ctx.lineWidth = 3;
-                    ctx.stroke();
-                    ctx.closePath();
-                }
-
-
-            }
-
-
-            //draw horizontal lines
-            var pointsArrayY = [];
-            var k = (y>lineStartPoint.y?lineStartPoint.y:y)+10,
-                endPY = ( y>lineStartPoint.y?y:lineStartPoint.y);
-            while(k<= endPY){
-                var factor = (h/20)-1;
-                pointsArrayY.push({x:mx,y:Math.floor(k)});
-                k+=factor;
-            }
-
-            for(var l in pointsArrayY){
-                var point = pointsArrayY[l];
-                ctx.beginPath();
-                ctx.globalCompositeOperation="source-over";
-                ctx.moveTo(point.x+w/2,point.y);
-                ctx.lineTo(point.x-w/2,point.y);
-                ctx.lineWidth = 1;
-                ctx.strokeStyle = graphColor;
-                ctx.stroke();
-                ctx.closePath();
-
-
-                ctx.beginPath();
-                ctx.globalCompositeOperation="source-over";
-                if(l%2==0){
-
-                    ctx.moveTo(point.x-5,point.y);
-                    ctx.lineTo(point.x+5,point.y);
-                    ctx.strokeStyle = currentColor;
-                    ctx.lineWidth = 3;
-                    ctx.stroke();
-                    ctx.closePath();
-                    ctx.font = 'normal 12px '+font;
-                    ctx.fillStyle = currentColor;
-                    ctx.fillText(10-l,point.x-20,point.y+3 );
-                }else{
-                    ctx.moveTo(point.x-2,point.y);
-                    ctx.lineTo(point.x+2,point.y);
-                    ctx.strokeStyle = currentColor;
-                    ctx.lineWidth = 3;
-                    ctx.stroke();
-                    ctx.closePath();
-                }
-
-
-            }
-
-        }
+        // if(noAnimation){
+        //     //draw vertical lines
+        //     var pointsArrayX = [];
+        //     var i = (x>lineStartPoint.x?lineStartPoint.x:x)+10,
+        //         endPX = ( x>lineStartPoint.x?x:lineStartPoint.x);
+        //     while(i<= endPX){
+        //         var factor = (w/20)-1;
+        //         pointsArrayX.push({x:Math.floor(i),y:my});
+        //         i+=factor;
+        //     }
+        //
+        //     for(var j in pointsArrayX){
+        //         var point = pointsArrayX[j];
+        //         ctx.beginPath();
+        //         ctx.globalCompositeOperation="source-over";
+        //         ctx.moveTo(point.x,point.y-dy/2);
+        //         ctx.lineTo(point.x,point.y+dy/2);
+        //         ctx.lineWidth = 1;
+        //         ctx.strokeStyle = graphColor;
+        //         ctx.stroke();
+        //         ctx.closePath();
+        //
+        //
+        //         ctx.beginPath();
+        //         ctx.globalCompositeOperation="source-over";
+        //         if(j%2==0){
+        //
+        //             ctx.moveTo(point.x,point.y-5);
+        //             ctx.lineTo(point.x,point.y+5);
+        //             ctx.strokeStyle = currentColor;
+        //             ctx.lineWidth = 3;
+        //             ctx.stroke();
+        //             ctx.closePath();
+        //             ctx.font = 'normal 12px '+font;
+        //             ctx.fillStyle = currentColor;
+        //             ctx.fillText(j-10,point.x-3,point.y+20 );
+        //         }else{
+        //             ctx.moveTo(point.x,point.y-2);
+        //             ctx.lineTo(point.x,point.y+2);
+        //             ctx.strokeStyle = currentColor;
+        //             ctx.lineWidth = 3;
+        //             ctx.stroke();
+        //             ctx.closePath();
+        //         }
+        //
+        //
+        //     }
+        //
+        //
+        //     //draw horizontal lines
+        //     var pointsArrayY = [];
+        //     var k = (y>lineStartPoint.y?lineStartPoint.y:y)+10,
+        //         endPY = ( y>lineStartPoint.y?y:lineStartPoint.y);
+        //     while(k<= endPY){
+        //         var factor = (h/20)-1;
+        //         pointsArrayY.push({x:mx,y:Math.floor(k)});
+        //         k+=factor;
+        //     }
+        //
+        //     for(var l in pointsArrayY){
+        //         var point = pointsArrayY[l];
+        //         ctx.beginPath();
+        //         ctx.globalCompositeOperation="source-over";
+        //         ctx.moveTo(point.x+w/2,point.y);
+        //         ctx.lineTo(point.x-w/2,point.y);
+        //         ctx.lineWidth = 1;
+        //         ctx.strokeStyle = graphColor;
+        //         ctx.stroke();
+        //         ctx.closePath();
+        //
+        //
+        //         ctx.beginPath();
+        //         ctx.globalCompositeOperation="source-over";
+        //         if(l%2==0){
+        //
+        //             ctx.moveTo(point.x-5,point.y);
+        //             ctx.lineTo(point.x+5,point.y);
+        //             ctx.strokeStyle = currentColor;
+        //             ctx.lineWidth = 3;
+        //             ctx.stroke();
+        //             ctx.closePath();
+        //             ctx.font = 'normal 12px '+font;
+        //             ctx.fillStyle = currentColor;
+        //             ctx.fillText(10-l,point.x-20,point.y+3 );
+        //         }else{
+        //             ctx.moveTo(point.x-2,point.y);
+        //             ctx.lineTo(point.x+2,point.y);
+        //             ctx.strokeStyle = currentColor;
+        //             ctx.lineWidth = 3;
+        //             ctx.stroke();
+        //             ctx.closePath();
+        //         }
+        //
+        //
+        //     }
+        //
+        // }
 
     }
 
 
-    function drawArrow(x,y,ctx,orientation){
-        var factor = Math.ceil(Math.sin(orientation)/Math.abs(Math.sin(orientation)));
-        var angleL = orientation+Math.PI/4;
-        var angleR = orientation+2*Math.PI/3;
-        var r = 8,
-            x1= x+r*Math.cos(angleL),
-            y1 = y+r*Math.sin(angleL),
-            x2 = x-r*Math.cos(angleR),
-            y2 = y-r*Math.sin(angleR);
 
-        if(orientation>=(Math.PI*2)){
-            x1 =  x - r*Math.cos(Math.PI/4);
-            y1 = y - r*Math.sin(Math.PI/4);
-        }
-        ctx.beginPath();
-        ctx.globalCompositeOperation="source-over";
-        ctx.moveTo(x,y);
-        ctx.lineTo(x1,y1);
-        ctx.strokeStyle = currentColor;
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        ctx.moveTo(x,y);
-        ctx.lineTo(x2,y2);
-        ctx.strokeStyle = currentColor;
-        ctx.stroke();
-        ctx.lineWidth = 2;
-        ctx.closePath();
+
+    function drawArrow(context, fromx, fromy, tox, toy){
+        var x_center = tox;
+        var y_center = toy;
+
+        var angle;
+        var x;
+        var y;
+        var r = 8;
+
+        context.beginPath();
+        context.globalCompositeOperation="source-over";
+        angle = Math.atan2(toy-fromy,tox-fromx)
+        context.moveTo(x_center, y_center);
+
+        angle += (1/3)*(2*Math.PI)
+        x = r*Math.cos(angle) + x_center;
+        y = r*Math.sin(angle) + y_center;
+
+        context.lineTo(x, y);
+        context.strokeStyle = currentColor;
+        context.lineWidth = lineSize;
+        context.stroke();
+        context.closePath();
+
+        context.beginPath();
+        context.globalCompositeOperation="source-over";
+        context.moveTo(x_center, y_center);
+        angle += (1/3)*(2*Math.PI)
+        x = r*Math.cos(angle) + x_center;
+        y = r*Math.sin(angle) + y_center;
+        context.lineTo(x, y);
+        context.strokeStyle = currentColor;
+        context.lineWidth = lineSize;
+        context.stroke();
+        context.closePath();
+
 
     }
 
@@ -1131,7 +1194,7 @@ $(document).ready(function(){
                 fa.attr('width',textLength+textLeftCord);
                 drawingCanvas.drawImage(rC,0,0);
             }
-            textHolder.css({'left':textLeftCord,'top':textTopCord-5}).html(inputValue);
+            textHolder.css({ 'left': textLeftCord, 'top': textTopCord - 5 }).html(inputValue);
         },5);
         //  if(textAnimation)
         //     clearInterval(textAnimation);
@@ -1253,11 +1316,12 @@ $(document).ready(function(){
     function insertSymbols(dom,callback){
 
         domtoimage.toPng(dom[0])
-            .then(function(dataUrl) {
+            .then(function (dataUrl) {
                 var img = new Image;
                 img.onload = function () {
                     var actualWidth = img.width;
                     var actualHeight = img.height;
+                    console.log(actualHeight);
                     var factor = fontSize/35;
                     var height =actualHeight * factor;
                     var width = actualWidth* height/actualHeight;
@@ -1283,7 +1347,10 @@ $(document).ready(function(){
                         fa.attr('height',top);
                         drawingCanvas.drawImage(rC,0,0);
                     }
-                    drawingCanvas.drawImage(img, lineStartPoint.x,lineStartPoint.y-height/4,width,height);
+                    var pointX = lineStartPoint.x + textHolder.width();
+                    var pointY = lineStartPoint.y - height / 3;
+
+                    drawingCanvas.drawImage(img,pointX ,pointY+5, width, height);
                     return callback();
                 };
                 img.src = dataUrl;
@@ -1297,18 +1364,17 @@ $(document).ready(function(){
 
     function writeTextDivToCanvas(x,y,callback){
         var styles = textHolder.attr('style');
-
-        var data = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">' +
+        var htmlString = textHolder.html().replace('|', '');
+        var data = '<svg xmlns="http://www.w3.org/2000/svg" width="' + textHolder.width() + '" height="' + textHolder.height()+ '">' +
             '<foreignObject width="100%" height="100%">' +
             "<div xmlns='http://www.w3.org/1999/xhtml' style='"+styles+"'>" +
-            textHolder.html().replace('|','')
+            htmlString
             +
             '</div>' +
             '</foreignObject>' +
             '</svg>';
 
         data = encodeURIComponent(data);
-
 
         var img = new Image();
 
@@ -1357,23 +1423,26 @@ $(document).ready(function(){
     }
     //undo the canvas state
 
-    $('#undo-tool').click(function(e){
+    $('#undo-tool').click(function (e) {
         e.preventDefault();
 
-        drawingCanvas.clearRect(0,0,drawingC.width,drawingC.height);
+        drawingCanvas.clearRect(0, 0, drawingC.width, drawingC.height);
         var lastImage = imageHolder.find('img:last').remove();
         var nextLast = imageHolder.find('img:last');
-        if(nextLast){
+        if (nextLast) {
             var src = nextLast.attr('src');
             var image = new Image();
-            image.onload = function() {
+            image.onload = function () {
                 drawingCanvas.drawImage(image, 0, 0);
             };
             image.src = src;
             $('#mouse-cursor').click();
         }
 
-    })
+    });
+    $('#new-board').click(function () {
+        drawingCanvas.clearRect(0, 0, drawingC.width, drawingC.height);
+    });
 });
 
 
