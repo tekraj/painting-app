@@ -757,6 +757,7 @@ $(document).ready(function(){
         fakeCanvas.fillStyle = '#fff';
         fakeCanvas.stroke();
         fakeCanvas.fill();
+        fakeCanvas.closePath();
     }
 
     /**
@@ -931,31 +932,33 @@ $(document).ready(function(){
         var w = Math.ceil(Math.abs(x-lineStartPoint.x));
         var ctx = noAnimation ? drawingCanvas : fakeCanvas;
         fakeCanvas.clearRect(0,0,fakeCanvasMaxLenght,fakeCanvasMaxLenght);
-        // if(noAnimation){
-        //     var pointsArray = [];
-        //     var i = x>lineStartPoint.x?lineStartPoint.x:x,
-        //         endP = ( x>lineStartPoint.x?x:lineStartPoint.x)+2;
-        //     var factor = w/10;
-        //     while(i<= endP){
-        //         pointsArray.push({x:Math.floor(i),y:lineStartPoint.y});
-        //         i+=factor;
-        //     }
-        //
-        //     for(var j in pointsArray){
-        //         var point = pointsArray[j];
-        //         ctx.beginPath();
-        //         ctx.globalCompositeOperation="source-over";
-        //         ctx.moveTo(point.x,point.y-5);
-        //         ctx.lineTo(point.x,point.y+5);
-        //         ctx.strokeStyle = currentColor;
-        //         ctx.lineWidth = 3;
-        //         ctx.stroke();
-        //         ctx.closePath();
-        //         ctx.font = 'normal 14px '+font;
-        //         ctx.fillStyle = currentColor;
-        //         ctx.fillText(j*10,point.x-3,point.y+14 );
-        //     }
-        // }
+        if(noAnimation){
+            var pointsArray = [];
+            var i = x>lineStartPoint.x?lineStartPoint.x:x,
+                endP = ( x>lineStartPoint.x?x:lineStartPoint.x)+2;
+            var factor = w/10;
+            while(i<= endP){
+
+                pointsArray.push({x:Math.floor(i),y:lineStartPoint.y});
+                i+=factor;
+            }
+
+            for(var j in pointsArray){
+
+                var point = pointsArray[j];
+                ctx.beginPath();
+                ctx.globalCompositeOperation="source-over";
+                ctx.moveTo(point.x,point.y-5);
+                ctx.lineTo(point.x,point.y+5);
+                ctx.strokeStyle = currentColor;
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                ctx.closePath();
+                ctx.font = 'normal 14px '+font;
+                ctx.fillStyle = currentColor;
+                ctx.fillText(j*10,point.x-3,point.y+14 );
+            }
+        }
         var startX = lineStartPoint.x+(x>lineStartPoint.x?-10 :10),
             endX = x+(x>lineStartPoint.x?10 :-10);
 
@@ -1030,103 +1033,103 @@ $(document).ready(function(){
         ctx.closePath();
         drawArrow(ctx, mx,endY, mx,startY);
 
-        // if(noAnimation){
-        //     //draw vertical lines
-        //     var pointsArrayX = [];
-        //     var i = (x>lineStartPoint.x?lineStartPoint.x:x)+10,
-        //         endPX = ( x>lineStartPoint.x?x:lineStartPoint.x);
-        //     while(i<= endPX){
-        //         var factor = (w/20)-1;
-        //         pointsArrayX.push({x:Math.floor(i),y:my});
-        //         i+=factor;
-        //     }
-        //
-        //     for(var j in pointsArrayX){
-        //         var point = pointsArrayX[j];
-        //         ctx.beginPath();
-        //         ctx.globalCompositeOperation="source-over";
-        //         ctx.moveTo(point.x,point.y-dy/2);
-        //         ctx.lineTo(point.x,point.y+dy/2);
-        //         ctx.lineWidth = 1;
-        //         ctx.strokeStyle = graphColor;
-        //         ctx.stroke();
-        //         ctx.closePath();
-        //
-        //
-        //         ctx.beginPath();
-        //         ctx.globalCompositeOperation="source-over";
-        //         if(j%2==0){
-        //
-        //             ctx.moveTo(point.x,point.y-5);
-        //             ctx.lineTo(point.x,point.y+5);
-        //             ctx.strokeStyle = currentColor;
-        //             ctx.lineWidth = 3;
-        //             ctx.stroke();
-        //             ctx.closePath();
-        //             ctx.font = 'normal 12px '+font;
-        //             ctx.fillStyle = currentColor;
-        //             ctx.fillText(j-10,point.x-3,point.y+20 );
-        //         }else{
-        //             ctx.moveTo(point.x,point.y-2);
-        //             ctx.lineTo(point.x,point.y+2);
-        //             ctx.strokeStyle = currentColor;
-        //             ctx.lineWidth = 3;
-        //             ctx.stroke();
-        //             ctx.closePath();
-        //         }
-        //
-        //
-        //     }
-        //
-        //
-        //     //draw horizontal lines
-        //     var pointsArrayY = [];
-        //     var k = (y>lineStartPoint.y?lineStartPoint.y:y)+10,
-        //         endPY = ( y>lineStartPoint.y?y:lineStartPoint.y);
-        //     while(k<= endPY){
-        //         var factor = (h/20)-1;
-        //         pointsArrayY.push({x:mx,y:Math.floor(k)});
-        //         k+=factor;
-        //     }
-        //
-        //     for(var l in pointsArrayY){
-        //         var point = pointsArrayY[l];
-        //         ctx.beginPath();
-        //         ctx.globalCompositeOperation="source-over";
-        //         ctx.moveTo(point.x+w/2,point.y);
-        //         ctx.lineTo(point.x-w/2,point.y);
-        //         ctx.lineWidth = 1;
-        //         ctx.strokeStyle = graphColor;
-        //         ctx.stroke();
-        //         ctx.closePath();
-        //
-        //
-        //         ctx.beginPath();
-        //         ctx.globalCompositeOperation="source-over";
-        //         if(l%2==0){
-        //
-        //             ctx.moveTo(point.x-5,point.y);
-        //             ctx.lineTo(point.x+5,point.y);
-        //             ctx.strokeStyle = currentColor;
-        //             ctx.lineWidth = 3;
-        //             ctx.stroke();
-        //             ctx.closePath();
-        //             ctx.font = 'normal 12px '+font;
-        //             ctx.fillStyle = currentColor;
-        //             ctx.fillText(10-l,point.x-20,point.y+3 );
-        //         }else{
-        //             ctx.moveTo(point.x-2,point.y);
-        //             ctx.lineTo(point.x+2,point.y);
-        //             ctx.strokeStyle = currentColor;
-        //             ctx.lineWidth = 3;
-        //             ctx.stroke();
-        //             ctx.closePath();
-        //         }
-        //
-        //
-        //     }
-        //
-        // }
+        if(noAnimation){
+            //draw vertical lines
+            var pointsArrayX = [];
+            var i = (x>lineStartPoint.x?lineStartPoint.x:x)+10,
+                endPX = ( x>lineStartPoint.x?x:lineStartPoint.x);
+            while(i<= endPX){
+                var factor = (w/20)-1;
+                pointsArrayX.push({x:Math.floor(i),y:my});
+                i+=factor;
+            }
+
+            for(var j in pointsArrayX){
+                var point = pointsArrayX[j];
+                ctx.beginPath();
+                ctx.globalCompositeOperation="source-over";
+                ctx.moveTo(point.x,point.y-dy/2);
+                ctx.lineTo(point.x,point.y+dy/2);
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = graphColor;
+                ctx.stroke();
+                ctx.closePath();
+
+
+                ctx.beginPath();
+                ctx.globalCompositeOperation="source-over";
+                if(j%2==0){
+
+                    ctx.moveTo(point.x,point.y-5);
+                    ctx.lineTo(point.x,point.y+5);
+                    ctx.strokeStyle = currentColor;
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    ctx.closePath();
+                    ctx.font = 'normal 12px '+font;
+                    ctx.fillStyle = currentColor;
+                    ctx.fillText(j-10,point.x-3,point.y+20 );
+                }else{
+                    ctx.moveTo(point.x,point.y-2);
+                    ctx.lineTo(point.x,point.y+2);
+                    ctx.strokeStyle = currentColor;
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+
+
+            }
+
+
+            //draw horizontal lines
+            var pointsArrayY = [];
+            var k = (y>lineStartPoint.y?lineStartPoint.y:y)+10,
+                endPY = ( y>lineStartPoint.y?y:lineStartPoint.y);
+            while(k<= endPY){
+                var factor = (h/20)-1;
+                pointsArrayY.push({x:mx,y:Math.floor(k)});
+                k+=factor;
+            }
+
+            for(var l in pointsArrayY){
+                var point = pointsArrayY[l];
+                ctx.beginPath();
+                ctx.globalCompositeOperation="source-over";
+                ctx.moveTo(point.x+w/2,point.y);
+                ctx.lineTo(point.x-w/2,point.y);
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = graphColor;
+                ctx.stroke();
+                ctx.closePath();
+
+
+                ctx.beginPath();
+                ctx.globalCompositeOperation="source-over";
+                if(l%2==0){
+
+                    ctx.moveTo(point.x-5,point.y);
+                    ctx.lineTo(point.x+5,point.y);
+                    ctx.strokeStyle = currentColor;
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    ctx.closePath();
+                    ctx.font = 'normal 12px '+font;
+                    ctx.fillStyle = currentColor;
+                    ctx.fillText(10-l,point.x-20,point.y+3 );
+                }else{
+                    ctx.moveTo(point.x-2,point.y);
+                    ctx.lineTo(point.x+2,point.y);
+                    ctx.strokeStyle = currentColor;
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+
+
+            }
+
+        }
 
     }
 
