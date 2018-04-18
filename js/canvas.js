@@ -1150,7 +1150,7 @@ $(document).ready(function(){
         angle = Math.atan2(toy-fromy,tox-fromx)
         context.moveTo(x_center, y_center);
 
-        angle += (1/3)*(2*Math.PI)
+        angle += (1/12)*(7*Math.PI);
         x = r*Math.cos(angle) + x_center;
         y = r*Math.sin(angle) + y_center;
 
@@ -1163,7 +1163,7 @@ $(document).ready(function(){
         context.beginPath();
         context.globalCompositeOperation="source-over";
         context.moveTo(x_center, y_center);
-        angle += (1/3)*(2*Math.PI)
+        angle += (1/12)*(7*Math.PI);
         x = r*Math.cos(angle) + x_center;
         y = r*Math.sin(angle) + y_center;
         context.lineTo(x, y);

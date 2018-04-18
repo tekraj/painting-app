@@ -748,6 +748,8 @@ var setupMenuEvents = function() {
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'max', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
 
     $(document).on('touchstart mousedown', '#minButton', function (e) {
@@ -756,6 +758,8 @@ var setupMenuEvents = function() {
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'min', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
 
     $(document).on('touchstart mousedown', '#supButton', function (e) {
@@ -780,14 +784,45 @@ var setupMenuEvents = function() {
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'sin', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
-
+    $(document).on('touchstart mousedown', '#arcsinButton', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var equation = getEquation();
+        var functionWrapper = new eqEd.FunctionWrapper(equation, 'arcsin', "MathJax_Main");
+        insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
+    });
     $(document).on('touchstart mousedown', '#cosButton', function (e) {
         e.preventDefault();
         e.stopPropagation();
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'cos', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
+    });
+    $(document).on('touchstart mousedown', '.js-extra-symbol', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var equation = getEquation();
+        var symbol = $(this).data().symbol;
+        var symbolWrapper = new eqEd.FunctionWrapper(equation, symbol, "MathJax_Main");
+        insertWrapper(symbolWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
+    });
+    $(document).on('touchstart mousedown', '#arccosButton', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var equation = getEquation();
+        var functionWrapper = new eqEd.FunctionWrapper(equation, 'arccos', "MathJax_Main");
+        insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
 
     $(document).on('touchstart mousedown', '#tanButton', function (e) {
@@ -796,38 +831,80 @@ var setupMenuEvents = function() {
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'tan', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
-
+    $(document).on('touchstart mousedown', '#arctanButton', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var equation = getEquation();
+        var functionWrapper = new eqEd.FunctionWrapper(equation, 'arctan', "MathJax_Main");
+        insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
+    });
     $(document).on('touchstart mousedown', '#cotButton', function (e) {
         e.preventDefault();
         e.stopPropagation();
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'cot', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
-
+    $(document).on('touchstart mousedown', '#arccotButton', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var equation = getEquation();
+        var functionWrapper = new eqEd.FunctionWrapper(equation, 'arccot', "MathJax_Main");
+        insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
+    });
     $(document).on('touchstart mousedown', '#secButton', function (e) {
         e.preventDefault();
         e.stopPropagation();
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'sec', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
-
+    $(document).on('touchstart mousedown', '#arcsecButton', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var equation = getEquation();
+        var functionWrapper = new eqEd.FunctionWrapper(equation, 'arcsec', "MathJax_Main");
+        insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
+    });
     $(document).on('touchstart mousedown', '#cscButton', function (e) {
         e.preventDefault();
         e.stopPropagation();
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'csc', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
-
+    $(document).on('touchstart mousedown', '#arccscButton', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var equation = getEquation();
+        var functionWrapper = new eqEd.FunctionWrapper(equation, 'arccsc', "MathJax_Main");
+        insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
+    });
     $(document).on('touchstart mousedown', '#sinhButton', function (e) {
         e.preventDefault();
         e.stopPropagation();
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'sinh', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
 
     $(document).on('touchstart mousedown', '#coshButton', function (e) {
@@ -836,6 +913,8 @@ var setupMenuEvents = function() {
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'cosh', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
 
     $(document).on('touchstart mousedown', '#tanhButton', function (e) {
@@ -844,6 +923,8 @@ var setupMenuEvents = function() {
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'tanh', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
 
     $(document).on('touchstart mousedown', '#cothButton', function (e) {
@@ -852,6 +933,8 @@ var setupMenuEvents = function() {
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'coth', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
 
     $(document).on('touchstart mousedown', '#sechButton', function (e) {
@@ -860,6 +943,8 @@ var setupMenuEvents = function() {
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'sech', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
 
     $(document).on('touchstart mousedown', '#cschButton', function (e) {
@@ -868,6 +953,8 @@ var setupMenuEvents = function() {
         var equation = getEquation();
         var functionWrapper = new eqEd.FunctionWrapper(equation, 'csch', "MathJax_Main");
         insertWrapper(functionWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
     });
 
     $(document).on('touchstart mousedown', '#limitButton', function (e) {
@@ -1469,6 +1556,25 @@ var setupMenuEvents = function() {
         var symbolWrapper = new eqEd.SymbolWrapper(equation, '∞', "MathJax_Main");
         insertWrapper(symbolWrapper);
     });
+    $(document).on('touchstart mousedown', '#exButton', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var equation = getEquation();
+        var symbolWrapper = new eqEd.FunctionWrapper(equation, 'e', "MathJax_Main");
+        insertWrapper(symbolWrapper);
+        var superscriptWrapper = new eqEd.SuperscriptWrapper(equation);
+        insertWrapper(superscriptWrapper);
+    });
+    $(document).on('touchstart mousedown', '#functionButton', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var equation = getEquation();
+        var symbolWrapper = new eqEd.FunctionWrapper(equation, 'f', "MathJax_Main");
+        insertWrapper(symbolWrapper);
+        var brackedWrapper = new eqEd.BracketPairWrapper(equation,'parenthesisBracket');
+        insertWrapper(brackedWrapper);
+    });
+
 };
 
 $(document).on('click', '.tabs .tab-links a', function(e)  {

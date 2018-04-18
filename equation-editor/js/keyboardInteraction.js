@@ -67,7 +67,8 @@ var setupKeyboardEvents = function() {
         '!',
         '$',
         '%',
-        '.'
+        '.',
+        ','
     ];
 
     var operatorCharacters = [
