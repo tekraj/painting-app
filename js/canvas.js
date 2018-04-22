@@ -86,6 +86,8 @@ $(document).ready(function(){
             lineStartPoint ={x:0,y:0},
             lineEndPoint = {x:0,y:0},
             j=0,
+            pdfEnabled=false,
+            pdfReaderWrapper = $('#pdf-reader'),
             background = '#fff',
             currentTool = 'pencil';
         dc.css({'cursor':cursor});
@@ -203,7 +205,12 @@ $(document).ready(function(){
         });
         $('.js-tools').click(function (e){
             e.preventDefault();
-
+            if(pdfEnabled){
+                alert('Currently You are in Read Mode');
+                return false;
+            }
+            $('.js-tools').removeClass('active');
+            $(this).addClass('active');
             currentTool = $(this).data().tool;
             var toolCursor = $(this).data().cursor;
 
@@ -285,6 +292,42 @@ $(document).ready(function(){
             $('.option-menu').hide();
         });
 
+        //browse cloud
+        $('#browse-cloud').click(function (e){
+            e.preventDefault();
+            $.ajax({
+                type : 'get',
+                url : 'js/file.json',
+                success : function (response) {
+                    $('#tree-holder').jstree({
+                        'core': {
+                            'data': response
+                        }
+                    });
+                    $('#cloud-modal').modal('show');
+                }
+            })
+        });
+
+        //read file
+        $(document).on('click','.js-read-cloud-file',function(){
+           var file = $(this).attr('file');
+           $('#cloud-modal').modal('hide');
+            $('canvas').hide();
+            pdfReaderWrapper.show();
+            pdfEnabled = true;
+            pdfReaderWrapper.html(' <object data="'+file+'" type="application/pdf" width="600" height="490"></object>');
+        });
+
+        //enable canvas
+        $('#enable-drawing').click(function (e){
+            e.preventDefault();
+            $('.js-tools').removeClass('.active');
+            $(this).addClass('active');
+            $('canvas').show();
+            pdfReaderWrapper.hide();
+            pdfEnabled = false;
+        }) ;
 
         //insert symbols
         $('#toLatex').on('click', function() {
@@ -1506,11 +1549,11 @@ $(document).ready(function(){
         }
 
     /**
-     *
      * @param x
      * @param y
      * @param callback
      */
+
     function writeTextDivToCanvas(x,y,callback){
         var styles = textHolder.attr('style');
         var htmlString = textHolder.html().replace('|', '');
@@ -1655,7 +1698,7 @@ $(document).ready(function(){
                 draggingShape.rectArea = {x1:x1,y1:y1,x2:x2,y2:y2};
                 drawMultipleShapes(canvasShape,false);
                 var dx = x2-x1,dy = y2-y1;
-                if(!canvasShape.shape=='image'){
+                if(canvasShape.shape!='image'){
                     draggingShape.img = fakeCanvas.getImageData(draggingShape.rectArea.x1,draggingShape.rectArea.y1,dx,dy);
                 }
                 canvasObjects.splice(i,1);//remove that objects from canvas;
@@ -1664,7 +1707,9 @@ $(document).ready(function(){
         }
         return false;
     }
+
     //{startX:lineStartPoint.x,startY:lineStartPoint.y,endX:left,endY:top,shift:shiftPressed,color:currentColor,lineSize:lineSize});
+
     /**
      * function to redraw canvas
      */
@@ -1704,7 +1749,6 @@ $(document).ready(function(){
             };
             img.src = draggingShape.data.image;
         }else{
-
             fakeCanvas.putImageData(draggingShape.img,draggingShape.rectArea.x1+dragX,draggingShape.rectArea.y1+dragY)
         }
         fakeCanvas.beginPath();

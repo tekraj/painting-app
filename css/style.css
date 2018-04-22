@@ -175,10 +175,28 @@ body {
 .power-dropdown .y-value-sub{bottom:15px;}
 .power-dropdown .x-value-sub{padding:5px 30px 30px 5px;}
 #text-holder{position:absolute;left:0;top:0;display: none;}
-.tools-list .btn.mx-auto{padding:0;background: none;width:30px;height:30px;overflow:hidden;}
+.tools-list .btn.mx-auto{padding:0;background: none;width:30px;height:30px;overflow:hidden;box-shadow:none!important;}
 .shape-menu li{display: inline-block;}
 .shape-menu{width: 160px;}
 .mx-auto img{max-width:100%;}
 .first_section .btn-square{width:30px;height:30px;padding:0;text-align: center;}
 .tools-list{max-width: 6%;padding-right: 0;text-align: left;}
 .graph-menu{width:50px;}
+
+.tools-list .btn.mx-auto.active{border:3px solid #0082c8!important;box-shadow:none;}
+.btn-square{box-shadow: none!important;}
+.btn-square.active{border:3px solid #0082c8!important;box-shadow:none;}
+#cloud-modal h5{margin:0;font-size:13px;}
+#cloud-modal .btn-close {
+    padding: 0;
+    outline: none!important;
+    background: none!important;
+    margin-top: -12px;
+    left: 6px;
+    position: relative;
+}
+#cloud-modal .modal-header {
+    padding: 10px 15px 10px 15px;
+}
+#cloud-modal .modal-content{width:350px;}
+#cloud-modal .modal-body{max-height:400px;overflow-y:auto;background:#fafafa;}
