@@ -186,6 +186,7 @@ $(document).ready(function(){
             currentColor = color;
             $('#color-indicator').css('background',color);
             $('#canvas-text-input').css('color',color);
+            textHolder.css('color',color);
             currentTool = 'none';
             dc.css({'cursor':cursor});
         });
@@ -325,6 +326,7 @@ $(document).ready(function(){
             $('.js-tools').removeClass('.active');
             $(this).addClass('active');
             $('canvas').show();
+            position = getCoords(drawingC)
             pdfReaderWrapper.hide();
             pdfEnabled = false;
         }) ;
