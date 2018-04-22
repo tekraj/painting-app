@@ -42,8 +42,8 @@
     <a href="#" class="btn btn-primary btn-square js-tools" id="mouse-cursor" data-tool="none" data-cursor="default">
         <span class=""><img src="images/computer-mouse-cursor.png"></span>
     </a>
-    <a href="#" class="btn btn-secondary btn-square">
-        <span class=""><i class="fa fa-arrows"></i></span>
+    <a href="#" class="btn btn-secondary btn-square js-tools" data-tool="drag" data-cursor="url(images/drag.png), auto">
+        <img src="images/drag.png" alt="" style="width:20px;">
     </a>
     <a href="#" class="btn btn-secondary btn-square">
         <span class="font">Wb</span>
@@ -134,83 +134,78 @@
                 </a>
                 <div class="option-menu font-menu" style="display: none;">
                     <h4>Font Properties</h4>
+                    <div class="row font-wrapper">
+                        <div class="col-sm-5">
+                            <h5>Font</h5>
+                            <ul>
+                                <li><a href="#" class="js-font active" data-font="Times New Roman, Times, serif">Times New Roman</a></li>
+                                <li><a href="#" class="js-font " data-font="Arial, Helvetica, sans-serif">Arial</a></li>
+                                <li><a href="#" class="js-font " data-font="Courier New, Courier, monospace">Courier New</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-5">
+                            <h5>Font Style</h5>
+                            <ul>
 
-                    <div class="option-menu font-menu" style="display: none;">
-                        <h4>Font Properties</h4>
 
-                        <div class="row font-wrapper">
-                            <div class="col-sm-5">
-                                <h5>Font</h5>
-                                <ul>
-                                    <li><a href="#" class="js-font active" data-font="Times New Roman, Times, serif">Times New Roman</a></li>
-                                    <li><a href="#" class="js-font " data-font="Arial, Helvetica, sans-serif">Arial</a></li>
-                                    <li><a href="#" class="js-font " data-font="Courier New, Courier, monospace">Courier New</a></li>
-                                </ul>
+                                <li><a href="#" class="js-font-style active" data-style="normal">Normal</a></li>
+
+
+                                <li><a href="#" class="js-font-style " data-style="bold">Bold</a></li>
+
+
+                                <li><a href="#" class="js-font-style " data-style="italic">Italic</a></li>
+
+
+                                <li><a href="#" class="js-font-style " data-style="bold italic">Bold italic</a></li>
+
+
+                            </ul>
+                        </div>
+                        <div class="col-sm-2">
+                            <h5>Size</h5>
+                            <ul>
+                                <li><a href="#" class="js-font-size " data-size="8">8</a></li>
+
+                                <li><a href="#" class="js-font-size " data-size="9">9</a></li>
+
+                                <li><a href="#" class="js-font-size " data-size="10">10</a></li>
+
+                                <li><a href="#" class="js-font-size " data-size="11">11</a></li>
+
+                                <li><a href="#" class="js-font-size " data-size="12">12</a></li>
+
+                                <li><a href="#" class="js-font-size " data-size="13">13</a></li>
+
+                                <li><a href="#" class="js-font-size " data-size="14">14</a></li>
+
+                                <li><a href="#" class="js-font-size " data-size="16">16</a></li>
+
+                                <li><a href="#" class="js-font-size active" data-size="18">18</a></li>
+
+                                <li><a href="#" class="js-font-size " data-size="20">20</a></li>
+
+                                <li><a href="#" class="js-font-size " data-size="24">24</a></li>
+
+                                <li><a href="#" class="js-font-size " data-size="30">30</a></li>
+
+                                <li><a href="#" class="js-font-size " data-size="36">36</a></li>
+
+                                <li><a href="#" class="js-font-size " data-size="42">42</a></li>
+
+                                <li><a href="#" class="js-font-size " data-size="48">48</a></li>
+
+
+                            </ul>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="demo-font-text js-text-demo">
+                                -- Hello World --
                             </div>
-                            <div class="col-sm-5">
-                                <h5>Font Style</h5>
-                                <ul>
-
-
-                                    <li><a href="#" class="js-font-style active" data-style="normal">Normal</a></li>
-
-
-                                    <li><a href="#" class="js-font-style " data-style="bold">Bold</a></li>
-
-
-                                    <li><a href="#" class="js-font-style " data-style="italic">Italic</a></li>
-
-
-                                    <li><a href="#" class="js-font-style " data-style="bold italic">Bold italic</a></li>
-
-
-                                </ul>
-                            </div>
-                            <div class="col-sm-2">
-                                <h5>Size</h5>
-                                <ul>
-                                    <li><a href="#" class="js-font-size " data-size="8">8</a></li>
-
-                                    <li><a href="#" class="js-font-size " data-size="9">9</a></li>
-
-                                    <li><a href="#" class="js-font-size " data-size="10">10</a></li>
-
-                                    <li><a href="#" class="js-font-size " data-size="11">11</a></li>
-
-                                    <li><a href="#" class="js-font-size " data-size="12">12</a></li>
-
-                                    <li><a href="#" class="js-font-size " data-size="13">13</a></li>
-
-                                    <li><a href="#" class="js-font-size " data-size="14">14</a></li>
-
-                                    <li><a href="#" class="js-font-size " data-size="16">16</a></li>
-
-                                    <li><a href="#" class="js-font-size active" data-size="18">18</a></li>
-
-                                    <li><a href="#" class="js-font-size " data-size="20">20</a></li>
-
-                                    <li><a href="#" class="js-font-size " data-size="24">24</a></li>
-
-                                    <li><a href="#" class="js-font-size " data-size="30">30</a></li>
-
-                                    <li><a href="#" class="js-font-size " data-size="36">36</a></li>
-
-                                    <li><a href="#" class="js-font-size " data-size="42">42</a></li>
-
-                                    <li><a href="#" class="js-font-size " data-size="48">48</a></li>
-
-
-                                </ul>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="demo-font-text js-text-demo">
-                                    -- Hello World --
-                                </div>
-                            </div>
-                            <div class="col-sm-12 text-center">
-                                <button class="btn btn-default" id="change-font">OK</button>
-                                <button class="btn btn-default" id="cancel-font">Cancel</button>
-                            </div>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <button class="btn btn-default" id="change-font">OK</button>
+                            <button class="btn btn-default" id="cancel-font">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -269,12 +264,12 @@
 
                 <ul class="option-menu graph-menu" style="display: none;">
                     <li>
-                        <a href="" class="js-tools" data-tool="xgraph">
+                        <a href="" class="js-tools" data-tool="xgraph" data-cursor="crosshair">
                             <img src="images/graph-x.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="xygraph">
+                        <a href="" class="js-tools" data-tool="xygraph"  data-cursor="crosshair">
                             <img src="images/graph-xy.png" alt="">
                         </a>
                     </li>
@@ -307,34 +302,34 @@
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="cube" data-cursor="corss-hair">
+                        <a href="" class="js-tools" data-tool="cube" data-cursor="crosshair">
                             <img src="images/cube.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="oval" data-cursor="cross-hair">
+                        <a href="" class="js-tools" data-tool="oval" data-cursor="crosshair">
                             <img src="images/circle.png" alt="">
                         </a>
                     </li>
 
                     <li>
-                        <a href="" class="js-tools" data-tool="oval-filled" data-cursor="cross-hair">
+                        <a href="" class="js-tools" data-tool="oval-filled" data-cursor="crosshair">
                             <img src="images/circle-filled.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="cylinder" data-cursor="cross-hair">
+                        <a href="" class="js-tools" data-tool="cylinder" data-cursor="crosshair">
                             <img src="images/cylinder.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="cone" data-cursor="cross-hair">
+                        <a href="" class="js-tools" data-tool="cone" data-cursor="crosshair">
                             <img src="images/cone.png" alt="">
                         </a>
                     </li>
 
                     <li>
-                        <a href="" class="js-tools" data-tool="pyramid" data-cursor="cross-hair">
+                        <a href="" class="js-tools" data-tool="pyramid" data-cursor="crosshair">
                             <img src="images/prism.png" alt="">
                         </a>
                     </li>
