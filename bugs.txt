@@ -1,0 +1,59 @@
+)All icons in the Top are not showing Title =>DONE
+
+2) One icon is Blank=>DONE
+
+3) Cancel and save Popup msg should have a proper Message Box=> What will be message Please mention it.
+
+4) New Board button should be properly shown, Make it Bold white. =>Please Ask your designer to make it more attractive
+
+5) Choosing Text after the eraser option, Eraser is getting shown on the screen while testing => I don't found this issue.
+I have tested it several times. If you still  found this issue if possible can you share a video of this.
+
+6) After Choosing Cancel, Disabled Pencil icon is getting shown on the screen. =>Fixed
+
+7) For colored and different styled text, the Text option is getting disabled and there is a need to click on Text Icon again.
+=>Fixed
+8) Bold and Normal Text having no difference=>Fixed
+
+9) On clicking anywhere in whiteboard, Writing text from keyboard should be automatically enabled.
+=>DONE
+10) Give a look to the Back and Next button with an arrow.DONE
+
+11) Give a dialogue box for printing option before print i.e whether to print current side, all side or chat only
+DONE
+12) Switch to author mode and side view mode should change the icon simultaneously.=>
+ I dont find any  functionality in Desktop App. Can you describe it more
+
+13) Once the place of the cursor is changed, the previously selected Text icon is disabled.
+=>Fixed
+14) New Board, Back, Next Buttons should also have Titles
+=>Fixed
+15) Increase the size of smiley and camera button. It should cover whole space equally
+=> Where are these button. Please Send screen shot with mentioning these butttons.
+16) Pencil Mark should be smooth after writing/drawing.
+=>Working on it. As it comsumes a lot of memory so I'm trying to findout
+the best method for this.
+
+
+17) Chat and Participants Button should have some effects while moving the cursor into it.
+=> I'm working on chat system. It will be functional soon.
+18) Change Background color for every icon suggestion.=>DONE
+19) Change the color of the menu bar=>DONE
+20) Both sides of slides should have the same size and equally aligned.=>DONE
+21) Color Picker Dialogue Box is missing after choosing more colors.=>FIxed
+22) Make circles to show the colors and give hollow outline while moving the cursor on the particular color.=>DONE
+23) On and off of cursor is not clear. The color of cursor button is not showing properly whether the cursor is on or off. The icon outline should remain blue until the cursor is on.
+24) Remove the space in the left side and make all icons big and more Visible.=>DONE
+25) In the Suggestion of Shapes, Same Types of shape should be inlined.=>
+26) Select Draw Line-> Draw Line-> Click on the Erase -> Automatically a line is drawn on the screen.
+=> I can't replicate this issue. I will test it more.
+27) After clicking on special characters backspace is not working. It is working when I test it in my local machine. Can you pleas send me the screen shot of it.
+28) Editing of a previously written word is not working. => I will do it later.
+This is very complex task. I have idea about it but it will take little bit more time.
+If you need it immediately I will implement later.
+29)Portal Is not responsive.
+30) Clear is not working in math editor => Yes As I have already aware about it
+that ASP.NET webpage has issue with ajax. I have implemented in my local machine
+but your developer is not able to replicate it. I will implement it on his machine.
+31) Replicate and Size Maximize during dragging the math equation.
+Not clear. Can you explain more about it

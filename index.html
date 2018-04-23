@@ -4,92 +4,119 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="font-awesome/css/fontawesome.css">
-    <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+
     <link href="equation-editor/Fonts/TeX/font.css" rel="stylesheet" type="text/css" charset="utf-8" />
     <link href="equation-editor/css/equationEditor.css" rel="stylesheet" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="js-tree/themes/default/style.min.css">
+    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+    <link rel="stylesheet" href="plugins/jquery-ui/jquery-ui.min.css">
+    <link href="css/board-css.min.css" rel="stylesheet">
+    <link href="css/themes/all-themes.css" rel="stylesheet" />
+    <link rel="stylesheet" href="plugins/spectrum/spectrum.css">
     <link rel="stylesheet" type="text/css" href="css/style.css" >
     <title>White Board</title>
 </head>
 <body>
-<header class="container-fluid">
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">File</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Edit</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Sessions</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " href="#">Tools</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Session Log</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Favorites</a>
-        </li>
-    </ul>
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
 
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="nav-link active" href="#">File</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Edit</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Sessions</a>
+                    </li>
+                    <li>
+                        <a class="nav-link " href="#">Tools</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Session Log</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Favorites</a>
+                    </li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
 </header>
-<hr class="mt-0 mb-2 clearfix">
-<div class="first_section container-fluid">
-    <a href="#" class="btn btn-primary btn-square js-tools" id="mouse-cursor" data-tool="none" data-cursor="default">
-        <span class=""><img src="images/computer-mouse-cursor.png"></span>
-    </a>
-    <a href="#" class="btn btn-secondary btn-square js-tools" data-tool="drag" data-toggle="tooltip" data-placement="top" title="Drag Shapes" data-cursor="url(images/drag.png), auto">
-        <img src="images/drag.png" alt="" style="width:20px;">
-    </a>
-    <a href="#" class="btn btn-secondary btn-square" id="enable-drawing">
-        <span class="font">Wb</span>
-    </a>
-    <a href="#" class="btn btn-secondary btn-square">
-        <span class=""><img src="images/internet.png"></span>
-    </a>
-    <!--<a href="#" class="btn btn-secondary btn-square">-->
-        <!--<span class=""><i class="fa fa-pie-chart" aria-hidden="true"></i></span>-->
-    <!--</a>-->
-    <a href="#" class="btn btn-secondary btn-square" id="browse-cloud">
-        <img src="images/cloud.png" style="width:20px;" alt="">
-    </a>
-    <a href="#" class="btn btn-secondary btn-square">
-        <span class=""><img src="images/note.png"></span>
-    </a>
-    <a href="#" class="btn btn-secondary btn-square">
-        <span class=""><img src="images/email.png"></span>
-    </a>
-    <a href="#" class="btn btn-secondary btn-square" id="print-canvas">
-        <span class=""><img src="images/printer-.png" width="16px;"></span>
-    </a>
-    <a href="#" class="btn btn-secondary btn-square">
-        <span class=""><img src="images/share-connection-sing.png"></span>
-    </a>
-    <a href="#" class="btn btn-secondary btn-square">
-        <span class=""><img src="images/black-back-closed-envelope-shape.png"></span>
-    </a>
-    <a href="#" class="btn btn-secondary btn-square">
-        <span class=""><img src="images/monitor.png"></span>
-    </a>
-    <span style="font-size:12px;"><b>Slide 1/1</b></span>
-    <div class="float-right">
-        <a class="btn btn-secondary btn-sm" id="new-board">New Board</a>
-        <input class="btn btn-secondary btn-sm" type="button" value="Back">
-        <input class="btn btn-secondary btn-sm" type="submit" value="Next">
-    </div>
 
+<div class="container-fluid top-functions">
+    <div class="row">
+        <div class="col-sm-9">
+            <a href="#" class="btn btn-primary btn-square js-tools" id="mouse-cursor" data-tool="none" data-cursor="default">
+                <img src="images/computer-mouse-cursor.png">
+            </a>
+            <a href="#" class="btn btn-primary btn-square js-tools" data-tool="drag" data-toggle="tooltip" data-placement="top" title="Drag Shapes" data-cursor="url(images/drag.png), auto">
+                <img src="images/drag.png" alt="" style="width:20px;">
+            </a>
+            <a href="#" class="btn btn-primary btn-square active" id="enable-drawing" data-toggle="tooltip" data-placement="bottom" title="Switch to Drawing">
+                <span class="font">Wb</span>
+            </a>
+            <a href="#" class="btn btn-primary btn-square" id="reader-mode-indicator" data-toggle="tooltip" data-placement="bottom" title="When this is active it shows Reading mode is enabled">
+                <img src="images/internet.png">
+            </a>
+            <!--<a href="#" class="btn btn-primary btn-square">-->
+            <!--<span class=""><i class="fa fa-pie-chart" aria-hidden="true"></i></span>-->
+            <!--</a>-->
+            <a href="#" class="btn btn-primary btn-square" id="browse-cloud" data-toggle="tooltip" data-placement="bottom" title="WhiteBoard Cloud">
+                <img src="images/cloud.png" style="width:20px;" alt="">
+            </a>
+            <a href="#" class="btn btn-primary btn-square">
+                <span class=""><img src="images/note.png"></span>
+            </a>
+            <a href="#" class="btn btn-primary btn-square" data-toggle="tooltip" data-placement="bottom" title="Email">
+                <img src="images/email.png">
+            </a>
+            <a href="#" class="btn btn-primary btn-square" data-toggle="modal" data-target="#print-modal"  title="Print This drawing">
+                <img src="images/printer-.png">
+            </a>
+            <a href="#" class="btn btn-primary btn-square" data-toggle="tooltip" data-placement="bottom" title="Share drawing">
+                <img src="images/share-connection-sing.png">
+            </a>
+            <a href="#" class="btn btn-primary btn-square" data-toggle="tooltip" data-placement="bottom" title="Send to mail">
+                <img src="images/black-back-closed-envelope-shape.png">
+            </a>
+            <a href="#" class="btn btn-primary btn-square" data-toggle="tooltip" data-placement="bottom" title="Slides">
+                <img src="images/monitor.png">
+            </a>
+            <span style="font-size:12px;"><b>Slide 1/1</b></span>
+        </div>
+        <div class="col-sm-3 text-right">
+            <a class="btn btn-primary btn-sm" id="new-board" data-toggle="tooltip" data-placement="bottom" title="Clear this board and draw on new board">New Board</a>
+            <button class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="bottom" title="Back to previous board"><i class="material-icons">arrow_back</i></button>
+            <button class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="bottom" title="Next Board"><i class="material-icons">arrow_forward</i></button>
+        </div>
+    </div>
 </div>
 
-<div class="second-section container-fluid mt-3">
+<div class="container-fluid can">
     <div class="row">
         <div class="col-md-1 tools-list">
             <div class="text-center my-1 option-menu-wrapper">
-                <a href="#" class="btn btn-primary btn-square mx-auto js-tools" id="pencil-tool" data-tool="pencil" data-toggle="tooltip" data-placement="top" title="Pencil" data-cursor="url(images/pencil.png), auto">
+                <a href="#" class="btn btn-default js-tools" id="pencil-tool" data-tool="pencil" data-toggle="tooltip" data-placement="top" title="Pencil" data-cursor="url(images/pencil.png), auto">
                     <span class=""><img src="images/pencil-w.png"></span>
                 </a>
                 <ul class="option-menu" style="display: none;">
@@ -116,8 +143,8 @@
                 </ul>
             </div>
             <div class="text-center my-1 option-menu-wrapper">
-                <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" data-tool="eraser" data-toggle="tooltip" data-placement="top" title="Eraser" data-cursor="crosshair">
-                    <span class=""><img src="images/eraser-w.png"></span>
+                <a href="#" class="btn btn-default js-tools" data-tool="eraser" data-toggle="tooltip" data-placement="top" title="Eraser" data-cursor="crosshair">
+                    <img src="images/eraser-w.png">
                 </a>
                 <div class="option-menu eraser-slider" style="display: none;">
                     <div id="eraser-slider"></div>
@@ -125,12 +152,12 @@
 
             </div>
             <div class="text-center my-1 ">
-                <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" data-tool="text" data-cursor="url(images/text.png), auto" data-toggle="tooltip" data-placement="top" title="Text">
+                <a href="#" class="btn btn-default js-tools" id="enable-text-tool" data-tool="text" data-cursor="url(images/text.png), auto" data-toggle="tooltip" data-placement="top" title="Text">
                     <img src="images/text-w.png" style="width:42px">
                 </a>
             </div>
             <div class="text-center my-1  option-menu-wrapper">
-                <a href="#" class="btn btn-secondary btn-square mx-auto js-tools">
+                <a href="#" class="btn btn-default btn-square mx-auto js-fonts js-tools">
                     <img src="images/font-w.png" style="width:42px">
                 </a>
                 <div class="option-menu font-menu" style="display: none;">
@@ -212,7 +239,7 @@
                 </div>
             </div>
             <div class="text-center my-1 option-menu-wrapper">
-                <a href="#" style="background:#000;" class="btn btn-secondary btn-square mx-auto js-tools" data-toggle="tooltip" data-placement="top" title="Colors" id="color-indicator">
+                <a href="#" style="background:#000;" class="btn js-tools" data-toggle="tooltip" data-placement="top" title="Colors" id="color-indicator">
                     <img src="images/color-w.png">
                 </a>
                 <div class="option-menu color-menu" style="display: none;">
@@ -246,18 +273,18 @@
                 </div>
             </div>
             <div class="text-center my-1">
-                <a href="#" class="btn btn-secondary btn-square mx-auto" data-toggle="tooltip" data-placement="top" title="Just point the mouse where you want to paste the image and Press Ctrl+V">
+                <a href="#" class="btn btn-default btn-square mx-auto" data-toggle="tooltip" data-placement="top" title="Just point the mouse where you want to paste the image and Press Ctrl+V">
                     <img src="images/paste.png">
                 </a>
             </div>
             <div class="text-center my-1">
-                <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" data-tool="line" data-cursor="url(images/line-icon.png), auto" data-toggle="tooltip" data-placement="top" title="Draw Line">
+                <a href="#" class="btn btn-default js-tools" data-tool="line" data-cursor="url(images/line-icon.png), auto" data-toggle="tooltip" data-placement="top" title="Draw Line">
                     <img src="images/line-icon.png">
                 </a>
             </div>
 
             <div class="text-center my-1 option-menu-wrapper">
-                <a href="#" style="background:#000;" class="btn btn-secondary btn-square mx-auto js-tools" data-toggle="tooltip" data-placement="top" title="Graphs" id="color-indicator">
+                <a href="#" style="background:#000;" class="btn btn-default js-tools" data-toggle="tooltip" data-placement="top" title="Graphs" id="color-indicator">
                     <img src="images/graph-w.png" alt="">
                 </a>
 
@@ -276,7 +303,7 @@
 
             </div>
             <div class="text-center my-1 option-menu-wrapper">
-                <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" data-toggle="tooltip" data-placement="top" title="Shapes">
+                <a href="#" class="btn btn-default js-tools" data-toggle="tooltip" data-placement="top" title="Shapes">
                     <img src="images/shapes-w.png">
                 </a>
                 <ul class="option-menu shape-menu" style="display: none">
@@ -335,17 +362,17 @@
                 </ul>
             </div>
             <div class="text-center my-1">
-                <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" data-toggle="tooltip" data-placement="top" title="Undo" id="undo-tool">
+                <a href="#" class="btn btn-default js-tools" data-toggle="tooltip" data-placement="top" title="Undo" id="undo-tool">
                     <img src="images/undo-w.png" style="width: 42px;">
                 </a>
             </div>
             <div class="text-center my-1">
-                <a href="#" class="btn btn-secondary btn-square mx-auto js-enable-science">
+                <a href="#" class="btn btn-default btn-square mx-auto js-enable-science">
                     <span data-toggle="tooltip" data-placement="top" title="Click here to open equation editor"> <img src="images/math-w.png"></span>
                 </a>
             </div>
             <div class="text-center my-1 option-menu-wrapper  js-enable-symbol">
-                <a href="#" class="btn btn-secondary btn-square mx-auto">
+                <a href="#" class="btn btn-default btn-square mx-auto">
                     <img src="images/science-w.png" style="width: 42px;">
                 </a>
                 <ul class="option-menu symbol-dropdown" style="display:none;">
@@ -420,20 +447,20 @@
             </div>
 
             <div class="text-center my-1">
-                <a href="#" class="btn btn-secondary btn-square mx-auto" id="enable-subscript" data-toggle="tooltip" data-placement="top" title="Click here to type subscript">
+                <a href="#" class="btn btn-default btn-square mx-auto" id="enable-subscript" data-toggle="tooltip" data-placement="top" title="Click here to type subscript">
                     <img src="images/asub-w.png" alt="">
                 </a>
 
             </div>
 
             <div class="text-center my-1">
-                <a href="#" class="btn btn-secondary btn-square mx-auto" id="enable-superscript" data-toggle="tooltip" data-placement="top" title="Click here to type superscript">
+                <a href="#" class="btn btn-default btn-square mx-auto" id="enable-superscript" data-toggle="tooltip" data-placement="top" title="Click here to type superscript">
                     <img src="images/a2-w.png" alt="">
                 </a>
             </div>
 
             <div class="text-center my-1">
-                <a href="#" class="btn btn-secondary btn-square mx-auto js-tools" id="clear-canvas" data-toggle="modal" data-target="#save-modal">
+                <a href="#" class="btn btn-default js-tools" id="clear-canvas" data-toggle="modal" data-target="#save-modal">
                     <span class="" data-toggle="tooltip" data-placement="top" title="Click here to clear the board"><img src="images/clear.png"></span>
                 </a>
             </div>
@@ -441,8 +468,8 @@
         </div>
 
         <div class="col-md-11 border px-0 canvas-list">
-            <div class="container-fluid">
-                <div class="row">
+
+            <div class="row">
                     <div class="col-md-6 px-0 canvas-writing writing">
                         <div class="canvas-wrapper">
                             <canvas class="drawing-board" id="drawing-board"></canvas>
@@ -455,12 +482,9 @@
                     </div>
 
                     <div class="col-md-6 px-0">
-                        <form class="">
-                            <div class="form-group">
-                                <textarea class="form-control" id="exampleFormControlTextarea2" rows="17"></textarea>
-                                </textarea>
-                            </div>
-                        </form>
+                        <div class="session-canvas-wrapper">
+                            <canvas  class="session-canvas" id="session-canvas"></canvas>
+                        </div>
                     </div>
                     <div class="col-md-3 pl-0 border-right">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -477,12 +501,12 @@
 
                     </div>
                     <div class="col-md-9 pr-0">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <ul class="nav nav-tabs" id="myTab1" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="participant-tab" data-toggle="tab" href="#chat" role="tab" aria-controls="home" aria-selected="true"><img src="images/comments.png"> chat</a>
                             </li>
                         </ul>
-                        <div class="tab-content border  hei-2" id="myTabContent">
+                        <div class="tab-content border  hei-2" id="myTabContent2">
                             <div class="tab-pane fade show active" id="chat" role="tabpanel" aria-labelledby="home-tab"></div>
                         </div>
                         <div class="container-fluid">
@@ -501,7 +525,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
         </div>
 
     </div>
@@ -521,10 +545,10 @@
                     <div class="tabs">
                         <ul class="outer-tab-links tab-links">
                             <li class="outerTab" style="width:140px;">
-                                <div class="form-group row" style="margin-bottom: 0;">
-                                    <label for="symbol-size" class="col-sm-3 col-form-label" style="margin-top:-3px;font-size:13px;">Size</label>
+                                <div class="form-group row symbol-select-dropdown" style="margin-bottom: 0;">
+                                    <label for="symbol-size" class="col-sm-3 col-form-label" style="margin-top:7px;font-size:13px;">Size</label>
                                     <div class="col-sm-9">
-                                        <select name="symbol-size" id="symbol-size" class="form-control form-control-sm">
+                                        <select name="symbol-size" id="symbol-size" class="form-control small">
 
                                             <option value="20">20</option>
                                             <option value="24">24</option>
@@ -634,7 +658,7 @@
                                 <span class="menuItem MathJax_Main " id="minButton" style="font-size: 24px;">min</span>
                                 <span class="menuItem MathJax_Main" id="maxButton" style="font-size: 24px;">max</span>
                                 <span class="menuItem MathJax_Main js-extra-symbol" id="rowsButton" style="font-size: 24px;" data-symbol="rows">rows</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="inverseButton" style="font-size: 24px;" data-symbol="columns">columns</span>
+                                <span class="menuItem MathJax_Main js-extra-symbol" id="columnButton" style="font-size: 24px;" data-symbol="columns">columns</span>
                                 <span class="menuItem MathJax_Main js-extra-symbol" id="plotButton" style="font-size: 24px;" data-symbol="plot">plot</span>
                                 <span class="menuItem MathJax_Main js-extra-symbol" id="meshgridButton" style="font-size: 24px;" data-symbol="meshgrid">meshgrid</span>
                                 <span class="menuItem MathJax_Main js-extra-symbol" id="meshButton" style="font-size: 24px;" data-symbol="mesh">mesh</span>
@@ -692,8 +716,8 @@
                     <div class="equation-editor"></div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-default btn-sm">Copy To Editor</button>
-                    <button class="btn btn-default btn-sm">Clear</button>
+                    <!--<button class="btn btn-default btn-sm">Copy To Editor</button>-->
+                    <button class="btn btn-default btn-sm" id="clear-math-editor">Clear</button>
                     <button class="btn btn-default btn-sm" id="toLatex">Insert</button>
                 </div>
             </div>
@@ -731,13 +755,32 @@
         </div>
     </div>
 </div>
+<div class="modal" id="print-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Print Options</h5>
+                <button class="btn btn-close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-primary" id="print-current-slide">Print Current Slide</button>
+                <button class="btn btn-primary" id="print-all-slides">Print All Slides</button>
+                <button class="btn btn-primary" id="print-chat">Print Chat</button>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="equation-editor/lib/jquery-2.0.0.js"></script>
 <script src="js/proper.min.js"></script>
-<script src="jquery-ui/jquery-ui.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/node-waves/waves.js"></script>
 
 <!--    scripts for equation editor -->
 
@@ -911,6 +954,7 @@
 <script src="equation-editor/js/latexGenerator.js"></script>
 <script src="js/dom-to-image.js"></script>
 <script src="js-tree/jstree.js"></script>
+<script src="plugins/spectrum/spectrum.js"></script>
 <script src="js/canvas.js"></script>
 </body>
 </html>

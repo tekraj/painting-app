@@ -13,8 +13,6 @@ router.post('/',function (req,res){
             res.send('Unauthorised Access');
         res.send('AuthenticatedUser');
     })
-
 });
 
 module.exports = router;
-

@@ -51,6 +51,9 @@ $(document).ready(function(){
             fakeCanvas = fakeC.getContext('2d'),
             rC = document.getElementById('resize-canvas'),
             resizeCanvas = rC.getContext('2d'),
+            sessionC = document.getElementById('session-canvas'),
+            sessionCanvas = sessionC.getContext('2d'),
+            sc = $('#session-canvas'),
             cursor = 'default',
             currentColor = '#000',
             font = $('.js-font.active').data().font,
@@ -67,6 +70,7 @@ $(document).ready(function(){
             parentDiv = dc.parent(),
             fa = $('#fake-canvas'),
             imageHolder = $('#canvas-image-holder'),
+            $enableTextTool = $('#enable-text-tool'),
             textLeftCord,
             currentMouse = {x:0,y:0},
             textTopCord,
@@ -89,12 +93,13 @@ $(document).ready(function(){
             pdfEnabled=false,
             pdfReaderWrapper = $('#pdf-reader'),
             background = '#fff',
-            currentTool = 'pencil';
+            currentTool = 'text';
         dc.css({'cursor':cursor});
         var parentHeight = dc.parent().height();
         var parentWidth = dc.parent().width();
-        dc.attr({'height':parentHeight-8,'width':parentWidth-5})
-        fa.attr({'height':parentHeight-8,'width':parentWidth-5})
+        dc.attr({'height':parentHeight-8,'width':parentWidth-5});
+        fa.attr({'height':parentHeight-8,'width':parentWidth-5});
+        sc.attr({'height':parentHeight-8,'width':parentWidth-5});
         dc.parent().scroll(function(){
             position = getCoords(drawingC);
         });
@@ -133,7 +138,11 @@ $(document).ready(function(){
         }).mouseleave(function () {
             symbolEnabled = false;
         });
-
+        //clear math editor
+    $('#clear-math-editor').click(function (e) {
+        e.preventDefault();
+        $('.eqEdWrapper').remove();
+    })
         $('#enable-superscript').mouseover(function(){
             symbolEnabled = true;
         }).click(function (e){
@@ -184,11 +193,19 @@ $(document).ready(function(){
             e.preventDefault();
             var color = $(this).data().color;
             currentColor = color;
-            $('#color-indicator').css('background',color);
+            $('.js-color-code').removeClass('active');
+            $(this).addClass('active');
+            $('#color-indicator').css({'background':color});
             $('#canvas-text-input').css('color',color);
             textHolder.css('color',color);
             currentTool = 'none';
             dc.css({'cursor':cursor});
+            setTimeout(function(){
+                if($enableTextTool.hasClass('active')){
+                    $enableTextTool.click();
+                }
+
+            },50);
         });
 
         //change tools
@@ -210,8 +227,10 @@ $(document).ready(function(){
                 alert('Currently You are in Read Mode');
                 return false;
             }
+
             $('.js-tools').removeClass('active');
             $(this).addClass('active');
+
             currentTool = $(this).data().tool;
             var toolCursor = $(this).data().cursor;
 
@@ -281,11 +300,28 @@ $(document).ready(function(){
             font = $('.js-font.active').data().font;
             fontSize = $('.js-font-size.active').data().size;
             fontStyle = $('.js-font-style.active').data().style;
-            $('.js-text-demo,#text-holder').css({'font-family':font,'font-size':fontSize,'font-style':fontStyle});
+            $('.js-text-demo,#text-holder').css({'font-family':font,'font-size':fontSize});
+
+            if(fontStyle=='italic' || fontStyle=='bold italic'){
+                $('.js-text-demo,#text-holder').css({'font-style':'italic'});
+            }else{
+                $('.js-text-demo,#text-holder').css({'font-style':'normal'});
+            }
+            if(fontStyle=='bold' || fontStyle=='bold italic'){
+                $('.js-text-demo,#text-holder').css({'font-weight':'bold'});
+            }else{
+                $('.js-text-demo,#text-holder').css({'font-weight':'normal'});
+            }
+
+
             dc.css({'cursor':cursor});
             currentTool = 'none';
             $('.option-menu').hide();
             $('.eqEdEquation').css({'font-size':fontSize});
+            setTimeout(function(){
+                $enableTextTool.click();
+            },50);
+
         });
 
         $('#cancel-font').click(function (e){
@@ -312,9 +348,13 @@ $(document).ready(function(){
 
         //read file
         $(document).on('click','.js-read-cloud-file',function(){
+            $('.canvas-wrapper').addClass('no-scroll');
            var file = $(this).attr('file');
            $('#cloud-modal').modal('hide');
-            $('canvas').hide();
+            $('.js-tools').removeClass('.active');
+            $('#enable-drawing').removeClass('active');
+            $('.canvas-wrapper').find('canvas').hide();
+            $('#reader-mode-indicator').addClass('active');
             pdfReaderWrapper.show();
             pdfEnabled = true;
             pdfReaderWrapper.html(' <object data="'+file+'" type="application/pdf" width="600" height="490"></object>');
@@ -322,13 +362,15 @@ $(document).ready(function(){
 
         //enable canvas
         $('#enable-drawing').click(function (e){
+            $('.canvas-wrapper').removeClass('no-scroll');
             e.preventDefault();
             $('.js-tools').removeClass('.active');
             $(this).addClass('active');
-            $('canvas').show();
+            $('.canvas-wrapper').find('canvas').show();
             position = getCoords(drawingC)
             pdfReaderWrapper.hide();
             pdfEnabled = false;
+            $('#reader-mode-indicator').removeClass('active');
         }) ;
 
         //insert symbols
@@ -352,7 +394,7 @@ $(document).ready(function(){
             var ans = $(this).data().ans;
             if(ans=='yes'){
                 var href = drawingC.toDataURL("image/png");
-                jQuery.ajax({
+                $.ajax({
                     type: 'post',
                     url: 'home/saveCanvasImage',
                     data: { imageData: href.replace('data:image/png;base64,','') },
@@ -360,7 +402,7 @@ $(document).ready(function(){
                         console.log(response);
                     }
                 });
-
+                dc.css('cursor','default');
             }
             $('.modal').modal('hide');
             drawingCanvas.clearRect(0,0,drawingC.width,drawingC.height);
@@ -415,20 +457,19 @@ $(document).ready(function(){
             if(currentTool=='pencil'){
                 pushPencilPoints(left,top)
                 drawPencil(drawingCanvas);
-            }else if( currentTool=='text' && !textEnabled  ){
+            }else if( currentTool=='text' && !textEnabled){
+
+                fa.show();
                 textEnabled = true;
+                textHolder.show();
                 textInput.show().css({left:left,top:top});
                 textLeftCord=left;
                 textTopCord = top;
-
                 setTimeout(function(){
                     textInput.focus();
                 },100);
 
-                setTimeout(function (){
-                    fa.show();
-                    textInput.click();
-                },300);
+
 
             }else if(currentTool=='line' || currentTool=='cube' || currentTool=='rectangle' ||currentTool=='oval' || currentTool=='cone' || currentTool=='pyramid' || currentTool=='xgraph' || currentTool=='xygraph' || currentTool=='cylinder' || currentTool=='rectangle-filled' || currentTool=='oval-filled' || currentTool=='line-sarrow' ||  currentTool=='line-darrow'){
                 fa.show();
@@ -441,6 +482,9 @@ $(document).ready(function(){
                    showDragUIAnimation(left,top);
                }
             }
+            // else if(currentTool=='none'){
+            //     $enableTextTool.click();
+            // }
 
         });
         //mousemove
@@ -556,9 +600,8 @@ $(document).ready(function(){
 
             var left = e.pageX - position.left;
             var top = e.pageY - position.top;
-            fa.hide();
-
             if(mouseDown){
+                fa.hide();
                 if(currentTool=='drag'){
                     drawShapeAgain();
                 }else if(currentTool=='pencil'){
@@ -1361,12 +1404,13 @@ $(document).ready(function(){
                 //get cursor position
                 var currentCursorPosition = textInput[0].selectionStart;
                 var textLength = (inputValue.length+1) * (fontSize/2);
-                inputValue = inputValue.substr(0,currentCursorPosition)+'|'+inputValue.substr(currentCursorPosition,inputValue.length-currentCursorPosition);
-                inputValue = inputValue.replace('\n','<br>');
+                var textValue = inputValue.substr(0,currentCursorPosition)+'|'+inputValue.substr(currentCursorPosition,inputValue.length-currentCursorPosition);
+                textCursor = false;
                 inputValue = inputValue.replace(/\~/g,'<sub>');
                 inputValue = inputValue.replace(/\`/g,'</sub>');
                 inputValue = inputValue.replace(/\!/g,'<sup>');
                 inputValue = inputValue.replace(/\^/g,'</sup>');
+                inputValue = inputValue.replace('\n','<br>');
                 if((textLength+textLeftCord)>drawingC.width){
                     rC.width = (textLength+textLeftCord);
                     rC.height = drawingC.height;
@@ -1375,22 +1419,33 @@ $(document).ready(function(){
                     fa.attr('width',textLength+textLeftCord);
                     drawingCanvas.drawImage(rC,0,0);
                 }
-                textHolder.css({ 'left': textLeftCord, 'top': textTopCord - 5 }).html(inputValue);
+                textHolder.css({ 'left': textLeftCord, 'top': textTopCord - 5 }).html(textValue);
+
+                // if(textAnimation)
+                //     clearInterval(textAnimation);
+                // textAnimation = setInterval(function (){
+                //     var cursorValue = (textInput.val() ? textInput.val() : '');
+                //     //get cursor position
+                //     var currentCursorPosition = textInput[0].selectionStart;
+                //     var textLength = (cursorValue.length+1) * (fontSize/2);
+                //     if(textCursor){
+                //         cursorValue = cursorValue.substr(0,currentCursorPosition)+'|'+cursorValue.substr(currentCursorPosition,cursorValue.length-currentCursorPosition);
+                //         textCursor= false;
+                //     }
+                //     else{
+                //         textCursor = true;
+                //     }
+                //     cursorValue = cursorValue.replace(/\~/g,'<sub>');
+                //     cursorValue = cursorValue.replace(/\`/g,'</sub>');
+                //     cursorValue = cursorValue.replace(/\!/g,'<sup>');
+                //     cursorValue = cursorValue.replace(/\^/g,'</sup>');
+                //     cursorValue = cursorValue.replace('\n','<br>');
+                //
+                //     textHolder.html(cursorValue);
+                // },500);
             },5);
-            //  if(textAnimation)
-            //     clearInterval(textAnimation);
-            // textAnimation = setInterval(function (){
-            //     var inputValue = (textInput.val() ? textInput.val() : '');
-            //     inputValue = inputValue.replace('\n','<br>');
-            //     if(textCursor){
-            //         inputValue = inputValue+'|';
-            //         textCursor= false;
-            //     }
-            //     else{
-            //         textCursor = true;
-            //     }
-            //     textHolder.html(inputValue);
-            // },500);
+
+
         });
         textInput.blur(function (e){
 
@@ -1400,28 +1455,30 @@ $(document).ready(function(){
             }
 
             //$('.js-sup-sub').val('');
-            //clearInterval(textAnimation);
-            $(this).hide();
+            clearInterval(textAnimation);
             currentTool = 'none';
             var textVal = $(this).val() ? $(this).val() : '';
 
             var left = lineStartPoint.x,
                 top = lineStartPoint.y;
 
-            $('#mouse-cursor').click();
             if (textEnabled) {
                 writeTextDivToCanvas(textLeftCord,textTopCord,function (){
                     textHolder.hide();
+                    textHolder.html('');
                     saveCanvasState(drawingC);
                 });
                 textInput.val('');
                 textEnabled = false;
+                $enableTextTool.click();
+
             }
         });
 
         //print canvas
-        $('#print-canvas').click(function (e){
+        $('#print-current-slide').click(function (e){
             e.preventDefault();
+            $('#print-modal').modal('hide');
             var dataUrl = drawingC.toDataURL();
 
             var printContent = '<!Doctype html>' +
@@ -1431,7 +1488,7 @@ $(document).ready(function(){
                 '<img src="'+dataUrl+'">' +
                 '</body>' +
                 '</html>';
-            var printWindow = window.open('','',width=$('body').width(),height=$('body').height());
+            var printWindow = window.open('','',width=$('#drawing-board').width(),height=$('#drawing-board').height());
             printWindow.document.write(printContent);
             printWindow.document.addEventListener('load',function(){
                 printWindow.focus();
@@ -1440,7 +1497,25 @@ $(document).ready(function(){
                 printWindow.close();
             },true)
 
-        })
+        });
+        $('#color-spectrum').spectrum({
+            showPalette:true,
+            color: 'blanchedalmond',
+            palette: [
+                ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
+                ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
+                ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
+                ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
+                ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
+                ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
+                ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
+                ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
+            ],
+            change: function(color) {
+                currentColor = color;
+                $('#color-indicator').css('background',color);
+            }
+        });
 
         $('#paste-tool').click(function (){
             document.execCommand("Paste");
