@@ -10,9 +10,7 @@ body {
     padding-left:42px;
 
 }
-.writing {
-    overflow-y:scroll;
-}
+
 .nav-tabs li a {
     border: 1px solid !important;
     border-bottom-left-radius: 12px;
@@ -31,7 +29,13 @@ body {
     font-style: italic;
 }
 
-.canvas-wrapper,.session-canvas-wrapper{overflow: auto;height: 507px;border:5px solid #ccc;position: relative;}
+.canvas-wrapper, .session-canvas-wrapper {
+    overflow: auto;
+    height: 450px;
+    border: 2px solid #e8e8e8;
+    position: relative;
+    background: #fff;
+}
 .drawing-board{background:#fff;}
 .session-canvas{background: #fff;}
 .canvas-text-input{
@@ -46,6 +50,7 @@ body {
     left: 0;
     outline: none;
     white-space: pre-wrap;
+    height: auto;
 }
 .option-menu-wrapper{position: relative;}
 .option-menu {
@@ -175,11 +180,11 @@ body {
 .power-dropdown input{display: inline-block;width:40px;position: absolute;right:15px;}
 .power-dropdown .y-value-sub{bottom:15px;}
 .power-dropdown .x-value-sub{padding:5px 30px 30px 5px;}
-#text-holder{position:absolute;left:0;top:0;display: none;}
-
+#text-holder{position:absolute;left:0;top:0;display: none;width:auto;height:auto;}
+#text-holder p{margin:0;padding:0;line-height: normal;}
 
 .shape-menu li{display: inline-block;}
-.shape-menu{width: 160px;}
+.shape-menu{width: 160px;text-align:left;padding:3px 10px;}
 .mx-auto img{max-width:100%;}
 
 .tools-list{max-width: 6%;padding-right: 0;text-align: left;}
@@ -237,7 +242,21 @@ body {
     height: 28px;
     padding: 3px 10px;
 }
-.sp-button-container.sp-cf{display: none;}
-.sp-choose.sp-cancel{display: none!important;}
-.sp-picker-container{width: 200px!important;}
-.sp-fill{width: 100%;}
+.sp-input{background:#fff;}
+.btn-sm i{display: inline-block;vertical-align: middle;top:-1px!important;}
+.participant-list{height:214px;background:#fff;overflow-y: auto;border: 1px solid #eceaea;}
+.chat-room {height:160px;overflow-y: auto;background: #fff;border: 1px solid #eceaea;}
+.chat-board{margin-bottom:60px;box-shadow: 0px 0px 1px 1px #d4d4d4;margin-top:10px;padding-bottom:20px;}
+#chat-input-area {margin-top:10px;background:#ccc;padding:5px;}
+#chat-input-area .input-group{margin:0;}
+#chat-input-area .input-group-addon{padding-left:4px;}
+.header.header-default{background: #e2e2e2;padding-bottom: 15px;
+    padding-top: 15px;}
+.header.header-default h2{font-size:15px;}
+#chat-input-area .dropdown-menu {
+    top: initial;
+    bottom: 25px;
+    left:-33px;
+}
+#chat-input-area .list-inline>li{vertical-align: middle;}
+#enable-text-tool.border{background: #1f91f3 !important;}

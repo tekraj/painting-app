@@ -16,7 +16,13 @@ if (!HTMLCanvasElement.prototype.toBlob) {
         }
     });
 }
+Array.prototype.max = function() {
+    return Math.max.apply(Math, this);
+};
 
+Array.prototype.min = function() {
+    return Math.min.apply(Math, this);
+};
 //plugin to move cursor
 $.fn.selectRange = function (start,end){
     if(end==undefined){
@@ -59,7 +65,7 @@ $(document).ready(function(){
             font = $('.js-font.active').data().font,
             fontSize = $('.js-font-size.active').data().size,
             fontStyle = $('.js-font-style.active').data().style,
-            lineSize = 2,
+            lineSize = 1,
             position = getCoords(drawingC),
             textInput = $('#canvas-text-input'),
             textEnabled = false,
@@ -74,8 +80,7 @@ $(document).ready(function(){
             textLeftCord,
             currentMouse = {x:0,y:0},
             textTopCord,
-            mouseX= [],
-            mouseY= [],
+            pencilPoints=[],
             shiftPressed  = false,
             textAnimation,
             textCursor = true,
@@ -257,7 +262,7 @@ $(document).ready(function(){
             e.preventDefault();
             $('.js-line-width').removeClass('active');
             $(this).addClass('active');
-            lineSize = $(this).data().line * 2;
+            lineSize = $(this).data().line;
             $('.option-menu').hide();
         });
 
@@ -407,9 +412,7 @@ $(document).ready(function(){
             $('.modal').modal('hide');
             drawingCanvas.clearRect(0,0,drawingC.width,drawingC.height);
             drag =[];
-            mouseX = [];
-            mouseY = [];
-            pixColor =[];
+            pencilPoints=[];
         });
 
         //detect shit key pressed for straight lines and squares
@@ -420,10 +423,9 @@ $(document).ready(function(){
         $('body').keyup(function(e){
 
             if(currentTool=='p-line'){
+                drawLine(lineStartPoint.x,lineStartPoint.y,lineEndPoint.x,lineEndPoint.y);
                 currentTool='pencil';
-                drawLine(lineEndPoint.x,lineEndPoint.y);
                 fa.hide();
-
             }
             shiftPressed = false;
 
@@ -431,10 +433,7 @@ $(document).ready(function(){
 
         //function for pushing the values in the arraysx
         function pushPencilPoints(x,y,tf){
-            mouseX.push(x);
-            mouseY.push(y);
-            pixColor.push(currentColor);
-            drag.push(tf);
+           pencilPoints.push({x:x,y:y});
         }
 
         /**
@@ -458,17 +457,25 @@ $(document).ready(function(){
                 pushPencilPoints(left,top)
                 drawPencil(drawingCanvas);
             }else if( currentTool=='text' && !textEnabled){
-
+                //check for text edit
                 fa.show();
                 textEnabled = true;
+                $enableTextTool.addClass('border');
                 textHolder.show();
-                textInput.show().css({left:left,top:top});
-                textLeftCord=left;
-                textTopCord = top;
+                var isPrevTextField = checkTextEdit(left,top);
+                if(isPrevTextField!==false){
+                    textInput.show().css({left:isPrevTextField.left,top:isPrevTextField.top});
+                    textInput.val(isPrevTextField.html);
+                    textLeftCord=isPrevTextField.left;
+                    textTopCord = isPrevTextField.top;
+                }else{
+                    textInput.show().css({left:left,top:top});
+                    textLeftCord=left;
+                    textTopCord = top;
+                }
                 setTimeout(function(){
                     textInput.focus();
-                },100);
-
+                },10);
 
 
             }else if(currentTool=='line' || currentTool=='cube' || currentTool=='rectangle' ||currentTool=='oval' || currentTool=='cone' || currentTool=='pyramid' || currentTool=='xgraph' || currentTool=='xygraph' || currentTool=='cylinder' || currentTool=='rectangle-filled' || currentTool=='oval-filled' || currentTool=='line-sarrow' ||  currentTool=='line-darrow'){
@@ -500,8 +507,6 @@ $(document).ready(function(){
                 var canvasHeight = drawingC.height;
                 var canvasWidth = drawingC.width;
 
-
-
                 if(left>canvasWidth){
                     parentDiv.scrollLeft(left);
                     rC.width = canvasWidth;
@@ -531,9 +536,7 @@ $(document).ready(function(){
                     background = currentColor;
                     paintBucket = false;
                     drag = [];
-                    mouseX = [];
-                    mouseY = [];
-                    pixColor = [];
+
 
                 } else if (currentTool == 'eraser') {
                     fa.show();
@@ -548,19 +551,17 @@ $(document).ready(function(){
                     //if shift is pressed draw straight line
                     if(shiftPressed ){
                         fa.show();
-                        if(mouseX.length>0){
-                            lineStartPoint.x = mouseX[mouseX.length-1];
-                            lineStartPoint.y = mouseY[mouseY.length-1];
+                        if(pencilPoints.length>0){
+                            lineStartPoint.x = pencilPoints[pencilPoints.length-1].x;
+                            lineStartPoint.y = pencilPoints[pencilPoints.length-1].y;
                         }else{
                             lineStartPoint.x = left;
                             lineStartPoint.y = top;
                         }
-                        mouseX = [];
-                        mouseY  =[];
+                        pencilPoints = [];
                         currentTool= 'p-line';
                     }else{
-
-                        pushPencilPoints(left,top, true)
+                        pushPencilPoints(left,top, true);
                         drawPencil(drawingCanvas);
                     }
 
@@ -605,7 +606,8 @@ $(document).ready(function(){
                 if(currentTool=='drag'){
                     drawShapeAgain();
                 }else if(currentTool=='pencil'){
-                    saveCanvasObjects('pencil',{lineSize:lineSize,color:currentColor,mouseX:mouseX,mouseY:mouseY});
+
+                    saveCanvasObjects('pencil',{lineSize:lineSize,color:currentColor,pencilPoints : pencilPoints});
                 }else if(currentTool=='line'){
                     drawLine(lineStartPoint.x,lineStartPoint.y,left,top);
                     saveCanvasObjects('line',{startX:lineStartPoint.x,startY:lineStartPoint.y,endX:left,endY:top,shift:shiftPressed,color:currentColor,lineSize:lineSize});
@@ -649,15 +651,18 @@ $(document).ready(function(){
                 saveCanvasState(drawingC);
             }
             fakeCanvas.clearRect(0,0,fakeC.height,fakeC.width);
-
             mouseDown = false;
-            mouseX = [];
-            mouseY = [];
-            pixColor =[];
+            pencilPoints = [];
             lineEndPoint.x = left;
             lineEndPoint.y = top;
         });
 
+        function midPointBtw(p1, p2) {
+            return {
+                x: p1.x + (p2.x - p1.x) / 2,
+                y: p1.y + (p2.y - p1.y) / 2
+            };
+        }
 
         /**
          * ======================================================
@@ -666,26 +671,27 @@ $(document).ready(function(){
          */
 
         function drawPencil(ctx){
+            var p1 = pencilPoints[0];
+            var p2 = pencilPoints[1];
 
-            for(i=0;i<mouseX.length;i++){
-                ctx.beginPath();
-                ctx.globalCompositeOperation="source-over";
-                if(drag[i] && i){
-                    ctx.moveTo(mouseX[i-1],mouseY[i-1]);
-                }
-                else{
-                    ctx.moveTo(mouseX[i]-1,mouseY[i]);
-                }
-
-                ctx.lineTo(mouseX[i],mouseY[i])
-                ctx.closePath();
-                ctx.strokeStyle= currentColor;
-                ctx.lineWidth=lineSize;
-                ctx.fill();
-                ctx.stroke();
-                ctx.closePath();
+            ctx.beginPath();
+            ctx.globalCompositeOperation="source-over";
+            ctx.moveTo(p1.x, p1.y);
+            for (var i = 1, len = pencilPoints.length; i < len; i++) {
+                var midPoint = midPointBtw(p1, p2);
+                ctx.quadraticCurveTo(p1.x, p1.y, midPoint.x, midPoint.y);
+                p1 = pencilPoints[i];
+                p2 = pencilPoints[i+1];
             }
 
+           // ctx.lineTo(p1.x, p1.y);
+            ctx.lineJoin = ctx.lineCap = 'round';
+            // ctx.shadowBlur = 0.001;
+            // ctx.shadowColor = currentColor;
+            ctx.strokeStyle= currentColor;
+            ctx.lineWidth=lineSize;
+            ctx.stroke();
+            ctx.closePath();
 
         }
 
@@ -1404,48 +1410,24 @@ $(document).ready(function(){
                 //get cursor position
                 var currentCursorPosition = textInput[0].selectionStart;
                 var textLength = (inputValue.length+1) * (fontSize/2);
-                var textValue = inputValue.substr(0,currentCursorPosition)+'|'+inputValue.substr(currentCursorPosition,inputValue.length-currentCursorPosition);
-                textCursor = false;
+                inputValue = '<p style="margin:0;padding:0;">'+inputValue.substr(0,currentCursorPosition)+'|'+inputValue.substr(currentCursorPosition,inputValue.length-currentCursorPosition);
                 inputValue = inputValue.replace(/\~/g,'<sub>');
                 inputValue = inputValue.replace(/\`/g,'</sub>');
                 inputValue = inputValue.replace(/\!/g,'<sup>');
                 inputValue = inputValue.replace(/\^/g,'</sup>');
-                inputValue = inputValue.replace('\n','<br>');
-                if((textLength+textLeftCord)>drawingC.width){
-                    rC.width = (textLength+textLeftCord);
-                    rC.height = drawingC.height;
-                    resizeCanvas.drawImage(drawingC, 0, 0);
-                    dc.attr('width',textLength+textLeftCord);
-                    fa.attr('width',textLength+textLeftCord);
-                    drawingCanvas.drawImage(rC,0,0);
-                }
-                textHolder.css({ 'left': textLeftCord, 'top': textTopCord - 5 }).html(textValue);
-
-                // if(textAnimation)
-                //     clearInterval(textAnimation);
-                // textAnimation = setInterval(function (){
-                //     var cursorValue = (textInput.val() ? textInput.val() : '');
-                //     //get cursor position
-                //     var currentCursorPosition = textInput[0].selectionStart;
-                //     var textLength = (cursorValue.length+1) * (fontSize/2);
-                //     if(textCursor){
-                //         cursorValue = cursorValue.substr(0,currentCursorPosition)+'|'+cursorValue.substr(currentCursorPosition,cursorValue.length-currentCursorPosition);
-                //         textCursor= false;
-                //     }
-                //     else{
-                //         textCursor = true;
-                //     }
-                //     cursorValue = cursorValue.replace(/\~/g,'<sub>');
-                //     cursorValue = cursorValue.replace(/\`/g,'</sub>');
-                //     cursorValue = cursorValue.replace(/\!/g,'<sup>');
-                //     cursorValue = cursorValue.replace(/\^/g,'</sup>');
-                //     cursorValue = cursorValue.replace('\n','<br>');
+                inputValue = inputValue.replace(/(?:\r\n|\r|\n)/g, '</p><p  style="margin:0;padding:0;">');
+                inputValue += '</p>';
                 //
-                //     textHolder.html(cursorValue);
-                // },500);
+                // if((textLength+textLeftCord)>drawingC.width){
+                //     rC.width = (textLength+textLeftCord);
+                //     rC.height = drawingC.height;
+                //     resizeCanvas.drawImage(drawingC, 0, 0);
+                //     dc.attr('width',textLength+textLeftCord);
+                //     fa.attr('width',textLength+textLeftCord);
+                //     drawingCanvas.drawImage(rC,0,0);
+                // }
+                textHolder.css({ 'left': textLeftCord, 'top': textTopCord - 5 }).html(inputValue);
             },5);
-
-
         });
         textInput.blur(function (e){
 
@@ -1466,12 +1448,16 @@ $(document).ready(function(){
                 writeTextDivToCanvas(textLeftCord,textTopCord,function (){
                     textHolder.hide();
                     textHolder.html('');
+                    textInput.val('');
+                    textInput.hide();
                     saveCanvasState(drawingC);
-                });
-                textInput.val('');
-                textEnabled = false;
-                $enableTextTool.click();
+                    setTimeout(function(){
+                        $enableTextTool.click();
+                    },50);
 
+                });
+                textEnabled = false;
+                $enableTextTool.removeClass('border');
             }
         });
 
@@ -1501,6 +1487,8 @@ $(document).ready(function(){
         $('#color-spectrum').spectrum({
             showPalette:true,
             color: 'blanchedalmond',
+            preferredFormat: "hex3",
+            showInput: true,
             palette: [
                 ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
                 ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
@@ -1512,8 +1500,9 @@ $(document).ready(function(){
                 ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
             ],
             change: function(color) {
-                currentColor = color;
-                $('#color-indicator').css('background',color);
+                currentColor = color.toHexString();
+                $('#color-indicator').css('background',currentColor);
+                textHolder.css('color',currentColor);
             }
         });
 
@@ -1583,7 +1572,6 @@ $(document).ready(function(){
                     img.onload = function () {
                         var actualWidth = img.width;
                         var actualHeight = img.height;
-                        console.log(actualHeight);
                         var factor = fontSize/35;
                         var height =actualHeight * factor;
                         var width = actualWidth* height/actualHeight;
@@ -1613,7 +1601,7 @@ $(document).ready(function(){
                         var pointY = lineStartPoint.y - height / 3;
 
                         drawingCanvas.drawImage(img,pointX ,pointY+5, width, height);
-                        saveCanvasObjects('image',{startX:pointX-10,startY:pointY-10,endX:pointX+img.width+2,endY:pointY-2+img.height,image:dataUrl});
+                        saveCanvasObjects('image',{startX:pointX-10,startY:pointY-10,endX:pointX+width+2,endY:pointY-2+height,image:dataUrl});
                         return callback();
                     };
                     img.src = dataUrl;
@@ -1633,8 +1621,11 @@ $(document).ready(function(){
 
     function writeTextDivToCanvas(x,y,callback){
         var styles = textHolder.attr('style');
-        var htmlString = textHolder.html().replace('|', '');
-        var data = '<svg xmlns="http://www.w3.org/2000/svg" width="' + textHolder.width() + '" height="' + textHolder.height()+ '">' +
+        var htmlString = textHolder.parent().html().replace('|', '');
+
+        var height = parseInt(textHolder.height())+20;
+
+        var data = '<svg xmlns="http://www.w3.org/2000/svg" width="' + textHolder.width() + '" height="'+height+'">' +
             '<foreignObject width="100%" height="100%">' +
             "<div xmlns='http://www.w3.org/1999/xhtml' style='"+styles+"'>" +
             htmlString
@@ -1672,10 +1663,10 @@ $(document).ready(function(){
                 fa.attr('height',top);
                 drawingCanvas.drawImage(rC,0,0);
             }
-            drawingCanvas.drawImage(img, x,y-2);
-            saveCanvasObjects('image',{startX:x-10,startY:y-12,endX:x+img.width+2,endY:y-20+img.height,image:"data:image/svg+xml," + data});
+            drawingCanvas.drawImage(img, x,y-5);
+            saveCanvasObjects('image-text',{textLeftCord:textLeftCord,textTop:textTopCord,startX:x-10,startY:y-10,endX:x+img.width+2,endY:y-40+img.height,image:"data:image/svg+xml," + data,html:textInput.val()});
             return callback();
-        }
+        };
         img.src = "data:image/svg+xml," + data
     }
 
@@ -1715,7 +1706,8 @@ $(document).ready(function(){
     });
     $('#new-board').click(function () {
         drawingCanvas.clearRect(0, 0, drawingC.width, drawingC.height);
-        canvasObjects = {};
+        canvasObjects = [];
+        pencilPoints = [];
     });
 
     /**
@@ -1735,7 +1727,7 @@ $(document).ready(function(){
     function initializeDrag(x,y){
         fa.show();
         for(var i=0;i<canvasObjects.length;i++){
-          //  {lineSize:lineSize,color:currentColor,data:{mouseX:mouseX,mouseY:mouseY}
+
             var canvasShape = canvasObjects[i];
             if(!canvasShape)
                 continue;
@@ -1746,10 +1738,12 @@ $(document).ready(function(){
 
             var x1,y1,x2,y2;
             if(canvasShape.shape=='pencil'){
-                x1 = shapeData.mouseX[0] >  shapeData.mouseX[ shapeData.mouseX.length-1] ?  shapeData.mouseX[shapeData.mouseX.length-1] :shapeData.mouseX[0];
-                x2 = shapeData.mouseX[0] >  shapeData.mouseX[ shapeData.mouseX.length-1] ? shapeData.mouseX[0] : shapeData.mouseX[shapeData.mouseX.length-1];
-                y1 = shapeData.mouseY[0] >  shapeData.mouseY[ shapeData.mouseY.length-1] ?  shapeData.mouseY[shapeData.mouseY.length-1] :shapeData.mouseY[0];
-                y2 = shapeData.mouseY[0] >  shapeData.mouseY[ shapeData.mouseY.length-1] ? shapeData.mouseY[0] : shapeData.mouseY[shapeData.mouseY.length-1];
+                var pPoints = shapeData.pencilPoints;
+                x1 =pPoints[0].x > pPoints[pPoints.length-1].x ? pPoints[pPoints.length-1].x :pPoints[0].x;
+                x2 =pPoints[0].x > pPoints[pPoints.length-1].x ?pPoints[0].x :pPoints[pPoints.length-1].x;
+                y1 =pPoints[0].y > pPoints[pPoints.length-1].y ? pPoints[pPoints.length-1] :pPoints[0].y;
+                y2 =pPoints[0].y > pPoints[pPoints.length-1].y ?pPoints[0].y : pPoints[pPoints.length-1].y;
+
             }
             else {
                 x1 = shapeData.startX > shapeData.endX ? shapeData.endX : shapeData.startX;
@@ -1775,7 +1769,7 @@ $(document).ready(function(){
                 draggingShape.rectArea = {x1:x1,y1:y1,x2:x2,y2:y2};
                 drawMultipleShapes(canvasShape,false);
                 var dx = x2-x1,dy = y2-y1;
-                if(canvasShape.shape!='image'){
+                if(canvasShape.shape!='image' || canvasShape!='image-text'){
                     draggingShape.img = fakeCanvas.getImageData(draggingShape.rectArea.x1,draggingShape.rectArea.y1,dx,dy);
                 }
                 canvasObjects.splice(i,1);//remove that objects from canvas;
@@ -1819,7 +1813,7 @@ $(document).ready(function(){
         //draw outer layer
         fakeCanvas.clearRect(0,0,fakeCanvasMaxLenght,fakeCanvasMaxLenght);
 
-        if(draggingShape.shape==='image'){
+        if(draggingShape.shape==='image' || draggingShape.shape==='image-text'){
             var img = new Image();
             img.onload =function (){
                 fakeCanvas.drawImage(img,draggingShape.rectArea.x1+dragX,draggingShape.rectArea.y1+dragY)
@@ -1850,8 +1844,7 @@ $(document).ready(function(){
         lineSize =  shapeData.lineSize;
         var shape = canvasShape.shape;
         if(shape=='pencil'){
-            mouseX = shapeData.mouseX;
-            mouseY = shapeData.mouseY;
+            pencilPoints = shapeData.pencilPoints;
             drawPencil(noAnimation?drawingCanvas:fakeCanvas);
         }else if(shape=='line'){
             shiftPressed = shapeData.shift;
@@ -1884,7 +1877,7 @@ $(document).ready(function(){
         }else if(shape=='line-darrow'){
             shiftPressed = shapeData.shift;
             drawLineAnimation(shapeData.startX,shapeData.startY,shapeData.endX,shapeData.endY,noAnimation,'double');
-        }else if(shape=='image'){
+        }else if(shape=='image' || shape=='image-text'){
             var ctx = noAnimation ? drawingCanvas : fakeCanvas;
             var img = new Image();
             img.onload = function() {
@@ -1909,14 +1902,14 @@ $(document).ready(function(){
         var shape = draggingShape.shape;
         if(shape=='pencil'){
 
-            var newMX = [];
-            var newMY  = [];
-            for(var i in shapeData.mouseX){
-                newMX.push(shapeData.mouseX[i]+dx);
-                newMY.push(shapeData.mouseY[i]+dy);
+            var newMXY  = [];
+            for(var i in shapeData.pencilPoints){
+                var sdx = shapeData.pencilPoints[i].x+dx;
+                var sdy = shapeData.pencilPoints[i].y+dy;
+                if(sdx && sdy)
+                    newMXY.push({x:sdx,y:sdy});
             }
-            draggingShape.data.mouseX = newMX;
-            draggingShape.data.mouseY = newMY;
+            draggingShape.data.pencilPoints = newMXY;
             drawMultipleShapes(draggingShape,true);
         }else{
             draggingShape.data.startX =  draggingShape.data.startX+dx;
@@ -1924,9 +1917,33 @@ $(document).ready(function(){
             draggingShape.data.endX =  draggingShape.data.endX+dx;
             draggingShape.data.endY =  draggingShape.data.endY+dy;
             drawMultipleShapes(draggingShape,true);
+
         }
         canvasObjects.push(draggingShape);
         draggingShape = {};
+    }
+
+    //check for text edit option
+    function checkTextEdit(x,y){
+        for(var i=0; i<canvasObjects.length;i++) {
+            var canvasShape = canvasObjects[i];
+            if (canvasShape.shape != 'image-text')
+                continue;
+            var shapeData = canvasShape.data;
+            x1 = shapeData.startX > shapeData.endX ? shapeData.endX : shapeData.startX;
+            x2 = shapeData.startX > shapeData.endX ? shapeData.startX : shapeData.endX;
+            y1 = shapeData.startY > shapeData.endY ? shapeData.endY : shapeData.startY;
+            y2 = shapeData.startY > shapeData.endY ? shapeData.Y : shapeData.endY;
+            dx = x2-x1;
+            dy = y2-y1;
+            if(x>=x1-10 && x<=x2+10 && y>=y1-10 && y<=y2+10){
+
+                canvasObjects.splice(i,1);
+                redrawCanvas();
+                return {left:shapeData.textLeftCord,top:shapeData.textTopCord,html:shapeData.html.replace('|')};
+            }
+        }
+        return false;
     }
 });
 

@@ -17,7 +17,8 @@ I have tested it several times. If you still  found this issue if possible can y
 
 9) On clicking anywhere in whiteboard, Writing text from keyboard should be automatically enabled.
 =>DONE
-10) Give a look to the Back and Next button with an arrow.DONE
+10) Give a look to the Back and Next button with an arrow
+=>DONE
 
 11) Give a dialogue box for printing option before print i.e whether to print current side, all side or chat only
 DONE
@@ -29,8 +30,8 @@ DONE
 14) New Board, Back, Next Buttons should also have Titles
 =>Fixed
 15) Increase the size of smiley and camera button. It should cover whole space equally
-=> Where are these button. Please Send screen shot with mentioning these butttons.
-16) Pencil Mark should be smooth after writing/drawing.
+=> Fixed
+16) Pencil Mark should be smooth after writing/drawing. =>DONE Now Pencil is working smoothly.
 =>Working on it. As it comsumes a lot of memory so I'm trying to findout
 the best method for this.
 
@@ -44,14 +45,17 @@ the best method for this.
 22) Make circles to show the colors and give hollow outline while moving the cursor on the particular color.=>DONE
 23) On and off of cursor is not clear. The color of cursor button is not showing properly whether the cursor is on or off. The icon outline should remain blue until the cursor is on.
 24) Remove the space in the left side and make all icons big and more Visible.=>DONE
-25) In the Suggestion of Shapes, Same Types of shape should be inlined.=>
+25) In the Suggestion of Shapes, Same Types of shape should be inlined.=>DONE
 26) Select Draw Line-> Draw Line-> Click on the Erase -> Automatically a line is drawn on the screen.
 => I can't replicate this issue. I will test it more.
-27) After clicking on special characters backspace is not working. It is working when I test it in my local machine. Can you pleas send me the screen shot of it.
+27) After clicking on special characters backspace is not working.
+=>It is working when I test it in my local machine. Can you pleas send me the screen shot of it.
 28) Editing of a previously written word is not working. => I will do it later.
 This is very complex task. I have idea about it but it will take little bit more time.
 If you need it immediately I will implement later.
+
 29)Portal Is not responsive.
+
 30) Clear is not working in math editor => Yes As I have already aware about it
 that ASP.NET webpage has issue with ajax. I have implemented in my local machine
 but your developer is not able to replicate it. I will implement it on his machine.
