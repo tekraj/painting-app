@@ -1,10 +1,14 @@
-)All icons in the Top are not showing Title =>DONE
+)All icons in the Top are not showing Title
+ =>DONE
 
-2) One icon is Blank=>DONE
+2) One icon is Blank
+=>DONE
 
-3) Cancel and save Popup msg should have a proper Message Box=> What will be message Please mention it.
+3) Cancel and save Popup msg should have a proper Message Box
+=> What will be message Please mention it.
 
-4) New Board button should be properly shown, Make it Bold white. =>Please Ask your designer to make it more attractive
+4) New Board button should be properly shown, Make it Bold white.
+=>Please Ask your designer to make it more attractive
 
 5) Choosing Text after the eraser option, Eraser is getting shown on the screen while testing => I don't found this issue.
 I have tested it several times. If you still  found this issue if possible can you share a video of this.
@@ -31,29 +35,39 @@ DONE
 =>Fixed
 15) Increase the size of smiley and camera button. It should cover whole space equally
 => Fixed
-16) Pencil Mark should be smooth after writing/drawing. =>DONE Now Pencil is working smoothly.
+16) Pencil Mark should be smooth after writing/drawing.
+=>DONE Now Pencil is working smoothly.
 =>Working on it. As it comsumes a lot of memory so I'm trying to findout
 the best method for this.
 
 
 17) Chat and Participants Button should have some effects while moving the cursor into it.
 => I'm working on chat system. It will be functional soon.
-18) Change Background color for every icon suggestion.=>DONE
-19) Change the color of the menu bar=>DONE
-20) Both sides of slides should have the same size and equally aligned.=>DONE
-21) Color Picker Dialogue Box is missing after choosing more colors.=>FIxed
-22) Make circles to show the colors and give hollow outline while moving the cursor on the particular color.=>DONE
+18) Change Background color for every icon suggestion.
+=>DONE
+19) Change the color of the menu bar
+=>DONE
+20) Both sides of slides should have the same size and equally aligned.
+=>DONE
+21) Color Picker Dialogue Box is missing after choosing more colors.
+=>FIxed
+22) Make circles to show the colors and give hollow outline while moving the cursor on the particular color.
+=>DONE
 23) On and off of cursor is not clear. The color of cursor button is not showing properly whether the cursor is on or off. The icon outline should remain blue until the cursor is on.
-24) Remove the space in the left side and make all icons big and more Visible.=>DONE
-25) In the Suggestion of Shapes, Same Types of shape should be inlined.=>DONE
+=>Fixed
+24) Remove the space in the left side and make all icons big and more Visible.
+=>DONE
+25) In the Suggestion of Shapes, Same Types of shape should be inlined.
+=>DONE
 26) Select Draw Line-> Draw Line-> Click on the Erase -> Automatically a line is drawn on the screen.
 => I can't replicate this issue. I will test it more.
 27) After clicking on special characters backspace is not working.
 =>It is working when I test it in my local machine. Can you pleas send me the screen shot of it.
-28) Editing of a previously written word is not working. => I will do it later.
+28) Editing of a previously written word is not working.
+=> I will do it later.
 This is very complex task. I have idea about it but it will take little bit more time.
 If you need it immediately I will implement later.
-
+=>Done
 29)Portal Is not responsive.
 
 30) Clear is not working in math editor => Yes As I have already aware about it
@@ -61,3 +75,50 @@ that ASP.NET webpage has issue with ajax. I have implemented in my local machine
 but your developer is not able to replicate it. I will implement it on his machine.
 31) Replicate and Size Maximize during dragging the math equation.
 Not clear. Can you explain more about it
+=>Fixed
+
+=========================================================================================================
+=======================================2018-04-25 Bugs====================================================
+===========================================================================================================
+
+
+1) Delay in Typing=>1 =>FIXED
+2) Single Click while Dragging replace the pencil mark and Text =>2
+=>Fixed
+3) Cancel Button is not proper in the font properties
+4) No participant is getting shown while clicking 'Participants' => Chat functionality
+5) Screen Shrinks during any Dialogue Box Opening
+6) Titles for session note is missing
+7) All Dialogue box should come in the middle of the screen
+8) Write 'Notification' in the place of 'Email' in the Icon Title
+9) Write 'Switch To Webshare' in the place of '... Reading Mode is enabled'
+10) Write 'Slide View Mode' in the place of ' Slides'
+11) Remove Shadow from the smiley icon suggestion and add Smileys for the same.
+12) Dragging Issue. Drag and drop should be done from any point on the line or shape drawn.=>3
+=>Fixed
+
+13) Make 'Font' icon more visible.
+14) If Text is previously Selected and then the color is selected automatically text is getting disabled.
+    Same for other options also e.g shape, Line etc =>4=>Fixed
+
+15)Text Goes out of the box in Math editor =>5
+16) Ask First to select Text Tool for Inserting Equation if another icon is selected Previously.=>6
+=>Fixed
+17) In More Colors, Show the selected color shade also. ====Can you  describe it more
+18) Editing of text. The cursor should be allowed to add any text in middle also.=>7
+19) Editing of Special Characters => 8
+FIXED
+20) Cancellation of Special Characters is not working =>9
+FIXED(SPECIAL CHARACTER means ~! etc or the equation)
+If equation I will do it later.
+And I'm not sure we can edit it or not as it uses latex symbols
+21) Make Buttons of Participants and Chat
+22) After Cancellation, Text Option should be automatically active =>10
+=>DONE
+23) Undo Option should work one by one on all the last attempts. =>11 =>FIXED
+24)'Draw Shape' Title Missing
+25) Dialogue box for more option in colors should be shown in the middle.
+Either Make cancel icon in the right top corner or make a similar button like 'Choose'
+=>12 Fixed There is already cancel button in the dialouge.
+26)Make 'Font' icon more visible.
+27) Clicking on the text after selecting any other color changes the color of the whole Text=>FIXED

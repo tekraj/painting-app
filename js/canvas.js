@@ -60,6 +60,7 @@ $(document).ready(function(){
             sessionC = document.getElementById('session-canvas'),
             sessionCanvas = sessionC.getContext('2d'),
             sc = $('#session-canvas'),
+            checkCursorPosition = 0,
             cursor = 'default',
             currentColor = '#000',
             font = $('.js-font.active').data().font,
@@ -86,6 +87,7 @@ $(document).ready(function(){
             textCursor = true,
             pixColor =  [],
             drag= [],
+            $canvasWrapper = $('.canvas-wrapper'),
             symbolEnabled = false,
             scienceEnabled = false,
             graphColor = '#ccc',
@@ -126,16 +128,23 @@ $(document).ready(function(){
         });
         //enable subscript and superscript
         $('#enable-subscript').mouseover(function(){
+            if(textEnabled){
+                symbolEnabled = true;
+            }
             symbolEnabled = true;
         }).click(function (e){
             e.preventDefault();
+            if(!textEnabled){
+                alert('Please select text first.')
+                return false;
+            }
             setTimeout(function(){
                 var currentTextValue = textInput.val();
                 symbolEnabled = false;
-                textInput.val(currentTextValue+"~`").change();
+                textInput.val(currentTextValue+"¦҂").change();
                 var textValue = textInput.val();
                 textInput.focus();
-                var subPosition = textValue.lastIndexOf('`');
+                var subPosition = textValue.lastIndexOf('҂');
                 textInput.selectRange(subPosition);
                 textInput.change();
             },100)
@@ -149,15 +158,21 @@ $(document).ready(function(){
         $('.eqEdWrapper').remove();
     })
         $('#enable-superscript').mouseover(function(){
-            symbolEnabled = true;
+            if(textEnabled){
+                symbolEnabled = true;
+            }
         }).click(function (e){
+            if(!textEnabled){
+                alert('Please select text first.')
+                return false;
+            }
             setTimeout(function(){
                 var currentTextValue = textInput.val();
                 symbolEnabled = false;
-                textInput.val(currentTextValue+"!^").change();
+                textInput.val(currentTextValue+"°⌁").change();
                 var textValue = textInput.val();
                 textInput.focus();
-                var subPosition = textValue.lastIndexOf('^');
+                var subPosition = textValue.lastIndexOf('⌁');
                 textInput.selectRange(subPosition);
                 textInput.change();
             },100)
@@ -167,6 +182,10 @@ $(document).ready(function(){
 
         $('.js-science-symbol').click(function(e){
             e.preventDefault();
+            if(!textEnabled){
+                alert('Please select text first.')
+                return false;
+            }
             symbolEnabled = true;
             var symbol = $(this).data().symbol;
             var currentTextValue = textInput.val();
@@ -179,11 +198,17 @@ $(document).ready(function(){
         });
         var symbolModal = $('#symbol-modal');
         $('.js-enable-science').mouseover(function(){
-            symbolEnabled = true;
+            if(textEnabled){
+                symbolEnabled = true;
+            }
+
         }).
         click(function (e) {
             e.preventDefault();
-
+            if(!textEnabled){
+                alert('Please select text first.')
+                return false;
+            }
             symbolModal.attr('style','');
             symbolModal.modal('show');
             clearOnMouseDown();
@@ -192,7 +217,13 @@ $(document).ready(function(){
             var characterClickPos = container.domObj.value.offset().left;
             addCursor(container, characterClickPos);
         });
-
+        $('.js-color-code-wrapper').mouseover(function(){
+            if(textEnabled){
+                symbolEnabled = true;
+            }
+        }).mouseleave(function(){
+            symbolEnabled = false;
+        })
         //change default color
         $('.js-color-code').click(function(e){
             e.preventDefault();
@@ -203,14 +234,10 @@ $(document).ready(function(){
             $('#color-indicator').css({'background':color});
             $('#canvas-text-input').css('color',color);
             textHolder.css('color',color);
-            currentTool = 'none';
-            dc.css({'cursor':cursor});
-            setTimeout(function(){
-                if($enableTextTool.hasClass('active')){
-                    $enableTextTool.click();
-                }
-
-            },50);
+            if(textEnabled){
+                textInput.focus();
+                symbolEnabled = false;
+            }
         });
 
         //change tools
@@ -243,6 +270,7 @@ $(document).ready(function(){
                 dc.css({'cursor':toolCursor});
             }
         });
+
 
         // code for eraser slider
         $('#eraser-slider').slider({
@@ -353,12 +381,12 @@ $(document).ready(function(){
 
         //read file
         $(document).on('click','.js-read-cloud-file',function(){
-            $('.canvas-wrapper').addClass('no-scroll');
+            $canvasWrapper.addClass('no-scroll');
            var file = $(this).attr('file');
            $('#cloud-modal').modal('hide');
             $('.js-tools').removeClass('.active');
             $('#enable-drawing').removeClass('active');
-            $('.canvas-wrapper').find('canvas').hide();
+            $canvasWrapper.find('canvas').hide();
             $('#reader-mode-indicator').addClass('active');
             pdfReaderWrapper.show();
             pdfEnabled = true;
@@ -367,11 +395,11 @@ $(document).ready(function(){
 
         //enable canvas
         $('#enable-drawing').click(function (e){
-            $('.canvas-wrapper').removeClass('no-scroll');
+            $canvasWrapper.removeClass('no-scroll');
             e.preventDefault();
             $('.js-tools').removeClass('.active');
             $(this).addClass('active');
-            $('.canvas-wrapper').find('canvas').show();
+            $canvasWrapper.find('canvas').show();
             position = getCoords(drawingC)
             pdfReaderWrapper.hide();
             pdfEnabled = false;
@@ -398,6 +426,7 @@ $(document).ready(function(){
         $('.js-clear-canvas').click(function(){
             var ans = $(this).data().ans;
             if(ans=='yes'){
+                $enableTextTool.click();
                 var href = drawingC.toDataURL("image/png");
                 $.ajax({
                     type: 'post',
@@ -452,13 +481,16 @@ $(document).ready(function(){
                 top = e.pageY-position.top;
             lineStartPoint.x = left;
             lineStartPoint.y = top;
-
+            lineEndPoint.x = left;
+            lineEndPoint.y = top;
             if(currentTool=='pencil'){
                 pushPencilPoints(left,top)
                 drawPencil(drawingCanvas);
             }else if( currentTool=='text' && !textEnabled){
                 //check for text edit
                 fa.show();
+                $enableTextTool.addClass('active');
+                dc.css('cursor','url(images/text.png), auto');
                 textEnabled = true;
                 $enableTextTool.addClass('border');
                 textHolder.show();
@@ -606,8 +638,8 @@ $(document).ready(function(){
                 if(currentTool=='drag'){
                     drawShapeAgain();
                 }else if(currentTool=='pencil'){
-
-                    saveCanvasObjects('pencil',{lineSize:lineSize,color:currentColor,pencilPoints : pencilPoints});
+                    var minMaxPoints = findMinMaxXYPoints(pencilPoints);
+                    saveCanvasObjects('pencil',{lineSize:lineSize,color:currentColor,pencilPoints : pencilPoints,minMaxPoints:minMaxPoints});
                 }else if(currentTool=='line'){
                     drawLine(lineStartPoint.x,lineStartPoint.y,left,top);
                     saveCanvasObjects('line',{startX:lineStartPoint.x,startY:lineStartPoint.y,endX:left,endY:top,shift:shiftPressed,color:currentColor,lineSize:lineSize});
@@ -648,7 +680,6 @@ $(document).ready(function(){
                     drawLineAnimation(lineStartPoint.x,lineStartPoint.y,left,top,true,'double');
                     saveCanvasObjects('line-darrow',{startX:lineStartPoint.x,startY:lineStartPoint.y,endX:left,endY:top,shift:shiftPressed,color:currentColor,lineSize:lineSize});
                 }
-                saveCanvasState(drawingC);
             }
             fakeCanvas.clearRect(0,0,fakeC.height,fakeC.width);
             mouseDown = false;
@@ -662,6 +693,20 @@ $(document).ready(function(){
                 x: p1.x + (p2.x - p1.x) / 2,
                 y: p1.y + (p2.y - p1.y) / 2
             };
+        }
+
+
+        function findMinMaxXYPoints(points){
+            var pointX =[];
+            var pointY = [];
+            for(var i in points){
+                var point = points[i];
+                if(point.x && point.y){
+                    pointX.push(point.x);
+                    pointY.push(point.y);
+                }
+            }
+            return {minX:Math.min(...pointX),minY:Math.min(...pointY),maxX:Math.max(...pointX),maxY:Math.max(...pointY)}
         }
 
         /**
@@ -1370,7 +1415,7 @@ $(document).ready(function(){
             var angle;
             var x;
             var y;
-            var r = 4*lineSize;
+            var r = lineSize > 1 ?(4*lineSize) : 8;
 
             context.beginPath();
             context.globalCompositeOperation="source-over";
@@ -1403,18 +1448,18 @@ $(document).ready(function(){
         }
 
 
-        textInput.on('focus change click keydown',function(e){
+        textInput.on('focus change click input',function(e){
             textHolder.show();
-            setTimeout(function(){
+
                 var inputValue = (textInput.val() ? textInput.val() : '');
                 //get cursor position
                 var currentCursorPosition = textInput[0].selectionStart;
-                var textLength = (inputValue.length+1) * (fontSize/2);
+                ///var textLength = (inputValue.length+1) * (fontSize/2);
                 inputValue = '<p style="margin:0;padding:0;">'+inputValue.substr(0,currentCursorPosition)+'|'+inputValue.substr(currentCursorPosition,inputValue.length-currentCursorPosition);
-                inputValue = inputValue.replace(/\~/g,'<sub>');
-                inputValue = inputValue.replace(/\`/g,'</sub>');
-                inputValue = inputValue.replace(/\!/g,'<sup>');
-                inputValue = inputValue.replace(/\^/g,'</sup>');
+                inputValue = inputValue.replace(/\¦/g,'<sub>');
+                inputValue = inputValue.replace(/\҂/g,'</sub>');
+                inputValue = inputValue.replace(/\°/g,'<sup>');
+                inputValue = inputValue.replace(/\⌁/g,'</sup>');
                 inputValue = inputValue.replace(/(?:\r\n|\r|\n)/g, '</p><p  style="margin:0;padding:0;">');
                 inputValue += '</p>';
                 //
@@ -1427,7 +1472,7 @@ $(document).ready(function(){
                 //     drawingCanvas.drawImage(rC,0,0);
                 // }
                 textHolder.css({ 'left': textLeftCord, 'top': textTopCord - 5 }).html(inputValue);
-            },5);
+
         });
         textInput.blur(function (e){
 
@@ -1437,27 +1482,22 @@ $(document).ready(function(){
             }
 
             //$('.js-sup-sub').val('');
-            clearInterval(textAnimation);
-            currentTool = 'none';
+
             var textVal = $(this).val() ? $(this).val() : '';
 
             var left = lineStartPoint.x,
                 top = lineStartPoint.y;
 
             if (textEnabled) {
+
                 writeTextDivToCanvas(textLeftCord,textTopCord,function (){
                     textHolder.hide();
                     textHolder.html('');
                     textInput.val('');
                     textInput.hide();
-                    saveCanvasState(drawingC);
-                    setTimeout(function(){
-                        $enableTextTool.click();
-                    },50);
-
+                    $enableTextTool.removeClass('border');
                 });
                 textEnabled = false;
-                $enableTextTool.removeClass('border');
             }
         });
 
@@ -1484,7 +1524,12 @@ $(document).ready(function(){
             },true)
 
         });
-        $('#color-spectrum').spectrum({
+
+        $('#color-spectrum').mouseover(function(){
+            if(textEnabled){
+                symbolEnabled = true;
+            }
+        }).spectrum({
             showPalette:true,
             color: 'blanchedalmond',
             preferredFormat: "hex3",
@@ -1503,6 +1548,10 @@ $(document).ready(function(){
                 currentColor = color.toHexString();
                 $('#color-indicator').css('background',currentColor);
                 textHolder.css('color',currentColor);
+                if(textEnabled){
+                    textInput.focus();
+                    symbolEnabled = false;
+                }
             }
         });
 
@@ -1664,7 +1713,7 @@ $(document).ready(function(){
                 drawingCanvas.drawImage(rC,0,0);
             }
             drawingCanvas.drawImage(img, x,y-5);
-            saveCanvasObjects('image-text',{textLeftCord:textLeftCord,textTop:textTopCord,startX:x-10,startY:y-10,endX:x+img.width+2,endY:y-40+img.height,image:"data:image/svg+xml," + data,html:textInput.val()});
+            saveCanvasObjects('image-text',{textLeftCord:textLeftCord,textTopCord:textTopCord,startX:x-10,startY:y-10,endX:x+img.width+2,endY:y-40+img.height,image:"data:image/svg+xml," + data,html:textInput.val()});
             return callback();
         };
         img.src = "data:image/svg+xml," + data
@@ -1684,30 +1733,18 @@ $(document).ready(function(){
                 imageHolder.append(this);
             };
             image.src = canvas.toDataURL();
-        }
+    }
     //undo the canvas state
 
     $('#undo-tool').click(function (e) {
-        e.preventDefault();
-
-        drawingCanvas.clearRect(0, 0, drawingC.width, drawingC.height);
-        var lastImage = imageHolder.find('img:last').remove();
-        var nextLast = imageHolder.find('img:last');
-        if (nextLast) {
-            var src = nextLast.attr('src');
-            var image = new Image();
-            image.onload = function () {
-                drawingCanvas.drawImage(image, 0, 0);
-            };
-            image.src = src;
-            $('#mouse-cursor').click();
-        }
-
+        canvasObjects.splice(canvasObjects.length-1);
+        redrawCanvas();
     });
     $('#new-board').click(function () {
         drawingCanvas.clearRect(0, 0, drawingC.width, drawingC.height);
         canvasObjects = [];
         pencilPoints = [];
+        $enableTextTool.click();
     });
 
     /**
@@ -1738,38 +1775,53 @@ $(document).ready(function(){
 
             var x1,y1,x2,y2;
             if(canvasShape.shape=='pencil'){
-                var pPoints = shapeData.pencilPoints;
-                x1 =pPoints[0].x > pPoints[pPoints.length-1].x ? pPoints[pPoints.length-1].x :pPoints[0].x;
-                x2 =pPoints[0].x > pPoints[pPoints.length-1].x ?pPoints[0].x :pPoints[pPoints.length-1].x;
-                y1 =pPoints[0].y > pPoints[pPoints.length-1].y ? pPoints[pPoints.length-1] :pPoints[0].y;
-                y2 =pPoints[0].y > pPoints[pPoints.length-1].y ?pPoints[0].y : pPoints[pPoints.length-1].y;
-
+                var pPoints = shapeData.minMaxPoints;
+                console.log(pPoints);
+                x1 = pPoints.minX;
+                x2 = pPoints.maxX+5;
+                y1 = pPoints.minY;
+                y2 = pPoints.maxY+5;
             }
             else {
-                x1 = shapeData.startX > shapeData.endX ? shapeData.endX : shapeData.startX;
-                x2 = shapeData.startX > shapeData.endX ? shapeData.startX : shapeData.endX;
-                y1 = shapeData.startY > shapeData.endY ? shapeData.endY : shapeData.startY;
-                y2 = shapeData.startY > shapeData.endY ? shapeData.Y : shapeData.endY;
+                x1 = Math.min(shapeData.startX,shapeData.endX);
+                x2 = Math.max(shapeData.startX,shapeData.endX);
+                y1 = Math.min(shapeData.startY,shapeData.endY);
+                y2 = Math.max(shapeData.startY,shapeData.endY);
                 dx = x2-x1;
                 dy = y2-y1;
+                if(dy<10){
+                    x1 = x1-15;
+                    x2 = x2+15;
+                }
+                if(dx<10){
+                    y1 = y1-15;
+                    y2 = y2+15;
+                }
                 if(canvasShape.shape=='cube'  ){
                     x1 = x1- dx/2;
                     y1 = y1 - dy;
                     x2 = x2+ (2*dx);
 
-                }else if( canvasShape.shape=='cone' || canvasShape.shape=='pyramid'){
+                }else if( canvasShape.shape=='cone' ){
                     x1 = x1-dx;
+                }else if(canvasShape.shape=='pyramid'){
+                    x1 = x1-dx;
+                    x2 = x2+(2.5*dx/2);
+                    y2 = y2+dy/4;
+                }else if(canvasShape.shape=='xgraph'){
+                    y1 = y1-30;
+                    y2 = y2+30;
                 }
             }
 
 
 
-            if(x>=x1-10 && x<=x2+10 && y>=y1-10 && y<=y2+10){
+            if(x>=x1-15 && x<=x2+15 && y>=y1-15 && y<=y2+15){
                 draggingShape = canvasShape;
-                draggingShape.rectArea = {x1:x1,y1:y1,x2:x2,y2:y2};
+                draggingShape.rectArea = {x1:x1-5,y1:y1-5,x2:x2+5,y2:y2+5};
                 drawMultipleShapes(canvasShape,false);
                 var dx = x2-x1,dy = y2-y1;
-                if(canvasShape.shape!='image' || canvasShape!='image-text'){
+                if(canvasShape.shape!='image' || canvasShape!='image-text' || canvasShape.shape!='line'){
                     draggingShape.img = fakeCanvas.getImageData(draggingShape.rectArea.x1,draggingShape.rectArea.y1,dx,dy);
                 }
                 canvasObjects.splice(i,1);//remove that objects from canvas;
@@ -1819,6 +1871,8 @@ $(document).ready(function(){
                 fakeCanvas.drawImage(img,draggingShape.rectArea.x1+dragX,draggingShape.rectArea.y1+dragY)
             };
             img.src = draggingShape.data.image;
+        }else if(draggingShape.shape=='line'){
+            drawLineAnimation(draggingShape.data.startX+dragX,draggingShape.data.startY+dragY,draggingShape.data.endX+dragX,draggingShape.data.endY+dragY)
         }else{
             fakeCanvas.putImageData(draggingShape.img,draggingShape.rectArea.x1+dragX,draggingShape.rectArea.y1+dragY)
         }
@@ -1909,7 +1963,13 @@ $(document).ready(function(){
                 if(sdx && sdy)
                     newMXY.push({x:sdx,y:sdy});
             }
+            var minMaxPoints = draggingShape.data.minMaxPoints;
+            minMaxPoints.minX = minMaxPoints.minX+dx;
+            minMaxPoints.maxX = minMaxPoints.maxX+dx;
+            minMaxPoints.minY = minMaxPoints.minY+dy;
+            minMaxPoints.maxY = minMaxPoints.maxY+dy;
             draggingShape.data.pencilPoints = newMXY;
+            draggingShape.data.minMaxPoints = minMaxPoints;
             drawMultipleShapes(draggingShape,true);
         }else{
             draggingShape.data.startX =  draggingShape.data.startX+dx;
@@ -1930,14 +1990,14 @@ $(document).ready(function(){
             if (canvasShape.shape != 'image-text')
                 continue;
             var shapeData = canvasShape.data;
-            x1 = shapeData.startX > shapeData.endX ? shapeData.endX : shapeData.startX;
-            x2 = shapeData.startX > shapeData.endX ? shapeData.startX : shapeData.endX;
-            y1 = shapeData.startY > shapeData.endY ? shapeData.endY : shapeData.startY;
-            y2 = shapeData.startY > shapeData.endY ? shapeData.Y : shapeData.endY;
+            x1 = Math.min(shapeData.startX,shapeData.endX);
+            x2 = Math.max(shapeData.startX,shapeData.endX);
+            y1 = Math.min(shapeData.startY,shapeData.endY);
+            y2 = Math.min(shapeData.startY,shapeData.endY);
+
             dx = x2-x1;
             dy = y2-y1;
-            if(x>=x1-10 && x<=x2+10 && y>=y1-10 && y<=y2+10){
-
+            if(x>=x1-10 && x<=x2+10 && y>=y1-20 && y<=y2+20){
                 canvasObjects.splice(i,1);
                 redrawCanvas();
                 return {left:shapeData.textLeftCord,top:shapeData.textTopCord,html:shapeData.html.replace('|')};

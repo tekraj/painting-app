@@ -71,9 +71,9 @@
             <a href="#" class="btn btn-primary btn-square js-tools" id="mouse-cursor" data-tool="none" data-cursor="default">
                 <img src="images/computer-mouse-cursor.png">
             </a>
-            <a href="#" class="btn btn-primary btn-square js-tools" data-tool="drag" data-toggle="tooltip" data-placement="top" title="Drag Shapes" data-cursor="url(images/drag.png), auto">
-                <img src="images/drag.png" alt="" style="width:20px;">
-            </a>
+            <button  class="btn btn-primary btn-square js-tools" data-tool="drag" data-toggle="tooltip" data-placement="top" title="Drag Shapes" data-cursor="url(images/drag.png), auto" style="background:url(images/drag.png) no-repeat center;width:35px;height:30px;position:relative;z-index: 999;">
+                &nbsp;
+            </button>
             <a href="#" class="btn btn-primary btn-square active" id="enable-drawing" data-toggle="tooltip" data-placement="bottom" title="Switch to Drawing">
                 <span class="font">Wb</span>
             </a>
@@ -240,8 +240,8 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center my-1 option-menu-wrapper">
-                <a href="#" style="background:#000;" class="btn js-tools" data-toggle="tooltip" data-placement="top" title="Colors" id="color-indicator">
+            <div class="text-center my-1 option-menu-wrapper js-color-code-wrapper">
+                <a href="#" style="background:#000;" class="btn extra-tools" data-toggle="tooltip" data-placement="top" title="Colors" id="color-indicator">
                     <img src="images/color-w.png">
                 </a>
                 <div class="option-menu color-menu" style="display: none;">
@@ -286,7 +286,7 @@
             </div>
 
             <div class="text-center my-1 option-menu-wrapper">
-                <a href="#" style="background:#000;" class="btn btn-default js-tools" data-toggle="tooltip" data-placement="top" title="Graphs" id="color-indicator">
+                <a href="#" style="background:#000;" class="btn btn-default js-tools" data-toggle="tooltip" data-placement="top" title="Graphs">
                     <img src="images/graph-w.png" alt="">
                 </a>
 
@@ -310,54 +310,54 @@
                 </a>
                 <ul class="option-menu shape-menu" style="display: none">
                     <li>
-                        <a href="" class="js-tools" data-tool="line-sarrow" data-cursor="url(images/line-icon.png), auto">
+                        <a href="" class="js-tools" data-tool="line-sarrow" data-cursor="url(images/line-icon.png), auto" data-toggle="tooltip" data-placement="top" title="Draw single arrowed line">
                             <img src="images/line-single-arrow.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="line-darrow" data-cursor="url(images/line-icon.png), auto">
+                        <a href="" class="js-tools" data-tool="line-darrow" data-cursor="url(images/line-icon.png), auto" data-toggle="tooltip" data-placement="top" title="Draw double arrowed line">
                             <img src="images/line-double-arrow.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="rectangle" data-cursor="url(images/line-icon.png), auto">
+                        <a href="" class="js-tools" data-tool="rectangle" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw rectangle">
                             <img src="images/square.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="rectangle-filled" data-cursor="url(images/line-icon.png), auto">
+                        <a href="" class="js-tools" data-tool="rectangle-filled" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw filled rectangle">
                             <img src="images/square-filled.png" alt="">
                         </a>
                     </li>
 
                     <li>
-                        <a href="" class="js-tools" data-tool="oval" data-cursor="crosshair">
+                        <a href="" class="js-tools" data-tool="oval" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw oval,circle">
                             <img src="images/circle.png" alt="">
                         </a>
                     </li>
 
                     <li>
-                        <a href="" class="js-tools" data-tool="oval-filled" data-cursor="crosshair">
+                        <a href="" class="js-tools" data-tool="oval-filled" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw filled oval,circle">
                             <img src="images/circle-filled.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="cylinder" data-cursor="crosshair">
+                        <a href="" class="js-tools" data-tool="cylinder" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw cylinder">
                             <img src="images/cylinder.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="cone" data-cursor="crosshair">
+                        <a href="" class="js-tools" data-tool="cone" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw cone">
                             <img src="images/cone.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="cube" data-cursor="crosshair">
+                        <a href="" class="js-tools" data-tool="cube" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw cube">
                             <img src="images/cube.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="pyramid" data-cursor="crosshair">
+                        <a href="" class="js-tools" data-tool="pyramid" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw prims">
                             <img src="images/prism.png" alt="">
                         </a>
                     </li>

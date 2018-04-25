@@ -170,7 +170,7 @@ body {
     bottom: 0;
     top: initial;
 }
-.symbol-dropdown li{width:60px;float:left;}
+.symbol-dropdown li{width:35px;float:left;}
 .symbol-dropdown span{font-size:24px!important;}
 .power-dropdown .x-value-sub, .power-dropdown .x-value-sup {
     display: inline-block;
@@ -260,3 +260,22 @@ body {
 }
 #chat-input-area .list-inline>li{vertical-align: middle;}
 #enable-text-tool.border{background: #1f91f3 !important;}
+.sp-container.sp-light{top:30%!important;}
+.sp-cancel {
+    background-color: #eeeeee;
+    background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+    background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+    background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
+    background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+    background-image: linear-gradient(to bottom, #eeeeee, #cccccc);
+    border: 1px solid #ccc;
+    border-bottom: 1px solid #bbb;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1;
+    padding: 1px 4px;
+    text-align: center;
+    text-shadow: 0 1px 0 #eee;
+    vertical-align: middle;
+    text-transform: capitalize;
+}
