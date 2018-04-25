@@ -290,3 +290,6 @@ body {
     float: left;
     box-sizing: border-box;
 }
+.modal-open {
+    overflow-y: scroll;
+}
