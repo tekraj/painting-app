@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="font-awesome/css/fontawesome.css">
 
-    <link href="equation-editor/Fonts/TeX/font.css" rel="stylesheet" type="text/css" charset="utf-8" />
-    <link href="equation-editor/css/equationEditor.css" rel="stylesheet" type="text/css" charset="utf-8" />
+    <link href="equation-editor/mathquill.css" rel="stylesheet">
+    <link href="equation-editor/matheditor.css" rel="stylesheet">
     <link rel="stylesheet" href="js-tree/themes/default/style.min.css">
     <link href="plugins/node-waves/waves.css" rel="stylesheet" />
     <!-- Animation Css -->
@@ -378,43 +378,43 @@
                     <img src="images/science-w.png" style="width: 42px;">
                 </a>
                 <ul class="option-menu symbol-dropdown" style="display:none;">
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol=":">:</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≤">≤</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≥">≥</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="◦">◦</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≈">≈</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∈">∈</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="×">×</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="±">±</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∧">∧</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∨">∨</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≡">≡</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≅">≅</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≠">≠</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∼">∼</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∝">∝</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≺">≺</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⪯">⪯</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⊂">⊂</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⊆">⊆</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="≻">≻</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⪰">⪰</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="⊥">⊥</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∣">∣</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∥">∥</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∂">∂</span></li>
-                    <li> <span class="menuItem MathJax_Main js-science-symbol" data-symbol="∞">∞</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Γ">Γ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Δ">Δ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Θ">Θ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Λ">Λ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Ξ">Ξ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Π">Π</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Σ">Σ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Υ">Υ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Φ">Φ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Ψ">Ψ</span></li>
-                    <li><span class="menuItem MathJax_Main js-science-symbol" data-symbol="Ω">Ω</span></li>
+                    <li> <span class="js-science-symbol" data-symbol=":">:</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="≤">≤</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="≥">≥</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="◦">◦</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="≈">≈</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="∈">∈</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="×">×</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="±">±</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="∧">∧</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="∨">∨</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="≡">≡</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="≅">≅</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="≠">≠</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="∼">∼</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="∝">∝</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="≺">≺</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="⪯">⪯</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="⊂">⊂</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="⊆">⊆</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="≻">≻</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="⪰">⪰</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="⊥">⊥</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="∣">∣</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="∥">∥</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="∂">∂</span></li>
+                    <li> <span class="js-science-symbol" data-symbol="∞">∞</span></li>
+                    <li><span class="js-science-symbol" data-symbol="Γ">Γ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="Δ">Δ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="Θ">Θ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="Λ">Λ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="Ξ">Ξ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="Π">Π</span></li>
+                    <li><span class="js-science-symbol" data-symbol="Σ">Σ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="Υ">Υ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="Φ">Φ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="Ψ">Ψ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="Ω">Ω</span></li>
 
                     <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="α">α</span></li>
                     <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="β">β</span></li>
@@ -621,7 +621,7 @@
 </div>
 <div style="display: none;" id="canvas-image-holder">
 </div>
-<div class="modal" id="symbol-modal" style="width:100%;display: block;height:0;">
+<div class="modal" id="symbol-modal" >
     <div class="modal-dialog">
         <div class="modal-container">
             <div class="modal-content">
@@ -632,8 +632,8 @@
                 <div class="modal-body">
 
                     <div class="tabs">
-                        <ul class="outer-tab-links tab-links">
-                            <li class="outerTab" style="width:140px;">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" style="width:170px;" >
                                 <div class="form-group row symbol-select-dropdown" style="margin-bottom: 0;">
                                     <label for="symbol-size" class="col-sm-3 col-form-label" style="margin-top:7px;font-size:13px;">Size</label>
                                     <div class="col-sm-9">
@@ -652,157 +652,170 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="outerTab active"><a href="#symbol-functions">Symbols</a></li>
-                            <li class="outerTab"><a href="#simple-functions">Functions</a></li>
-                            <li class="outerTab"><a href="#trignometry-functions">Trignometry</a></li>
-                            <li class="outerTab"><a href="#misc-functions">Miscellaneous</a></li>
-                            <li class="outerTab"><a href="#greek-alphabets">Greek Alphabets</a></li>
+                            <li role="presentation" class="active"><a href="#symbol-functions" aria-controls="symbol-functions" role="tab" data-toggle="tab">Symbols</a></li>
+                            <li role="presentation"><a href="#simple-functions" aria-controls="simple-functions" role="tab" data-toggle="tab">Functions</a></li>
+                            <li role="presentation"><a href="#trignometry-functions" aria-controls="trignometry-functions" role="tab" data-toggle="tab">Trignometry</a></li>
+                            <li role="presentation"><a href="#misc-functions"  aria-controls="misc-functions" role="tab" data-toggle="tab">Miscellaneous</a></li>
+                            <li role="presentation"><a href="#greek-alphabets" aria-controls="greek-alphabets" role="tab" data-toggle="tab">Greek Alphabets</a></li>
                         </ul>
-                        <div class="tab-content" id="tab-content-top">
-                            <div id="symbol-functions" class="tab outer active">
-                                <span class="menuItem MathJax_Main" id="colonButton" style="font-size: 24px;">:</span>
-                                <span class="menuItem MathJax_Main" id="lessThanOrEqualToButton" style="font-size: 24px;">≤</span>
-                                <span class="menuItem MathJax_Main" id="greaterThanOrEqualToButton" style="font-size: 24px;">≥</span>
-                                <span class="menuItem MathJax_Main" id="circleOperatorButton" style="font-size: 24px;">◦</span>
-                                <span class="menuItem MathJax_Main" id="approxEqualToButton" style="font-size: 24px;">≈</span>
-                                <span class="menuItem MathJax_Main" id="belongsToButton" style="font-size: 24px;">∈</span>
-                                <span class="menuItem MathJax_Main" id="timesButton" style="font-size: 24px;">×</span>
-                                <span class="menuItem MathJax_Main" id="pmButton" style="font-size: 24px;">±</span>
-                                <span class="menuItem MathJax_Main" id="wedgeButton" style="font-size: 24px;">∧</span>
-                                <span class="menuItem MathJax_Main" id="veeButton" style="font-size: 24px;">∨</span>
-                                <span class="menuItem MathJax_Main" id="equivButton" style="font-size: 24px;">≡</span>
-                                <span class="menuItem MathJax_Main" id="congButton" style="font-size: 24px;">≅</span>
-                                <span class="menuItem MathJax_Main" id="neqButton" style="font-size: 24px;">≠</span>
-                                <span class="menuItem MathJax_Main" id="simButton" style="font-size: 24px;">∼</span>
-                                <span class="menuItem MathJax_Main" id="proptoButton" style="font-size: 24px;">∝</span>
-                                <span class="menuItem MathJax_Main" id="precButton" style="font-size: 24px;">≺</span>
-                                <span class="menuItem MathJax_Main" id="precEqButton" style="font-size: 24px;">⪯</span>
-                                <span class="menuItem MathJax_Main" id="subsetButton" style="font-size: 24px;">⊂</span>
-                                <span class="menuItem MathJax_Main" id="subsetEqButton" style="font-size: 24px;">⊆</span>
-                                <span class="menuItem MathJax_Main" id="succButton" style="font-size: 24px;">≻</span>
-                                <span class="menuItem MathJax_Main" id="succEqButton" style="font-size: 24px;">⪰</span>
-                                <span class="menuItem MathJax_Main" id="perpButton" style="font-size: 24px;">⊥</span>
-                                <span class="menuItem MathJax_Main" id="midButton" style="font-size: 24px;">∣</span>
-                                <span class="menuItem MathJax_Main" id="parallelButton" style="font-size: 24px;">∥</span>
-                                <span class="menuItem MathJax_Main" id="partialButton" style="font-size: 24px;">∂</span>
-                                <span class="menuItem MathJax_Main" id="infinityButton" style="font-size: 24px;">∞</span>
+                        <div class="tab-content" id="tap-panel-symbols">
+                            <div role="tabpanel" class="tab-pane active" id="symbol-functions">
+                                <a href="" class="">:</a>
+                                <a href="" class="">≤</a>
+                                <a href="" class="">≥</a>
+                                <a href="" class="">◦</a>
+                                <a href="" class="">≈</a>
+                                <a href="" class="">∈</a>
+                                <a href="" class="">×</a>
+                                <a href="" class="">±</a>
+                                <a href="" class="">∧</a>
+                                <a href="" class="">∨</a>
+                                <a href="" class="">≡</a>
+                                <a href="" class="">≅</a>
+                                <a href="" class="">≠</a>
+                                <a href="" class="">∼</a>
+                                <a href="" class="">∝</a>
+                                <a href="" class="">≺</a>
+                                <a href="" class="">⪯</a>
+                                <a href="" class="">⊂</a>
+                                <a href="" class="">⊆</a>
+                                <a href="" class="">≻</a>
+                                <a href="" class="">⪰</a>
+                                <a href="" class="">⊥</a>
+                                <a href="" class="">∣</a>
+                                <a href="" class="">∥</a>
+                                <a href="" class="">∂</a>
+                                <a href="" class="">∞</a>
                             </div>
-                            <div id="simple-functions" class="tab outer">
-                                <img class="menuItem" id="subscriptButton" src="equation-editor/MenuImages/png/subscript.png">
-                                <img class="menuItem" id="superscriptButton" src="equation-editor/MenuImages/png/superscript.png">
-                                <img class="menuItem" id="stackedFractionButton" src="equation-editor/MenuImages/png/stackedFraction.png">
-                                <img class="menuItem" id="sumBigOperatorButton" src="equation-editor/MenuImages/png/sum.png">
-                                <img class="menuItem" id="bigSqCapBigOperatorButton" src="equation-editor/MenuImages/png/bigSqCap.png">
-                                <img class="menuItem" id="integralNoUpperNoLowerButton" src="equation-editor/MenuImages/png/integralNoUpperNoLower.png">
-                                <img class="menuItem" id="integralButton" src="equation-editor/MenuImages/png/integral.png">
-                                <img class="menuItem" id="limitButton" src="equation-editor/MenuImages/png/limit.png">
-                                <span class="menuItem MathJax_Main" style="font-size:32px;" id="functionButton">f(x)</span>
-                                <span class="menuItem MathJax_Main" id="lnButton" style="font-size:24px">ln</span>
-                                <img class="menuItem" id="logLowerButton" height="55" src="equation-editor/MenuImages/png/log_n.png">
-                                <span class="menuItem MathJax_Main" id="logButton" style="font-size:24px">log</span>
-                                <span class="menuItem MathJax_Main" id="exButton" style="font-size:24px">e<sup>x</sup></span>
+                            <div id="simple-functions" role="tabpanel" class="tab-pane">
+                                <a href="">
+                                    <img   src="equation-editor/MenuImages/png/subscript.png">
+                                </a>
+                                <a href="">
+                                    <img  src="equation-editor/MenuImages/png/superscript.png">
+                                </a>
+                                <a href="">
+                                    <img  src="equation-editor/MenuImages/png/stackedFraction.png">
+                                </a>
+                                <a href="">
+                                    <img class="menuItem" id="sumBigOperatorButton" src="equation-editor/MenuImages/png/sum.png">
+                                </a>
+                                <a href="">
+                                    <img  src="equation-editor/MenuImages/png/bigSqCap.png">
+                                </a>
+                                <a href="">
+                                    <img  src="equation-editor/MenuImages/png/integralNoUpperNoLower.png">
+                                </a>
+                                <a href="">
+                                    <img  src="equation-editor/MenuImages/png/integral.png">
+                                </a>
+                                <a href="">
+                                    <img  src="equation-editor/MenuImages/png/limit.png" style="width:40px;">
+                                </a>
+                                <a href="">
+                                    f(x)
+                                </a>
+                                <a href="" class="">ln</a>
+                                <a href="">
+                                    <img src="equation-editor/MenuImages/png/log_n.png">
+                                </a>
+
+                                <a href="" class="">log</a>
+                                <a href class="">e<sup>x</sup></a>
                             </div>
-                            <div id="trignometry-functions" class="tab outer">
-                                <span class="menuItem MathJax_Main" id="sinButton" style="font-size: 24px;">sin</span>
-                                <span class="menuItem MathJax_Main" id="arcsinButton" style="font-size: 24px;">arcsin</span>
-                                <span class="menuItem MathJax_Main" id="sinhButton" style="font-size: 24px;">sinh</span>
-
-                                <span class="menuItem MathJax_Main" id="cosButton" style="font-size: 24px;">cos</span>
-                                <span class="menuItem MathJax_Main" id="arccosButton" style="font-size: 24px;">arccos</span>
-                                <span class="menuItem MathJax_Main" id="coshButton" style="font-size: 24px;">cosh</span>
-
-                                <span class="menuItem MathJax_Main" id="arctanButton" style="font-size: 24px;">tan</span>
-                                <span class="menuItem MathJax_Main" id="tanhButton" style="font-size: 24px;">arctan</span>
-                                <span class="menuItem MathJax_Main" id="tanhButton" style="font-size: 24px;">tanh</span>
-
-                                <span class="menuItem MathJax_Main" id="cscButton" style="font-size: 24px;">csc</span>
-                                <span class="menuItem MathJax_Main" id="arccscButton" style="font-size: 24px;">arccsc</span>
-                                <span class="menuItem MathJax_Main" id="cschButton" style="font-size: 24px;">csch</span>
-
-                                <span class="menuItem MathJax_Main" id="secButton" style="font-size: 24px;">sec</span>
-                                <span class="menuItem MathJax_Main" id="arcsecButton" style="font-size: 24px;">arcsec</span>
-                                <span class="menuItem MathJax_Main" id="sechButton" style="font-size: 24px;">sech</span>
-
-                                <span class="menuItem MathJax_Main" id="cotButton" style="font-size: 24px;">cot</span>
-                                <span class="menuItem MathJax_Main" id="arccothButton" style="font-size: 24px;">arccot</span>
-                                <span class="menuItem MathJax_Main" id="cothButton" style="font-size: 24px;">coth</span>
+                            <div id="trignometry-functions" role="tabpanel" class="tab-pane">
+                                <a href="" class="" >sin</a>
+                                <a href="" class="" >arcsin</a>
+                                <a href="" class="">sinh</a>
+                                <a href="" class="">cos</a>
+                                <a href="" class="">arccos</a>
+                                <a href="" class="">cosh</a>
+                                <a href="" class="">tan</a>
+                                <a href="" class="">arctan</a>
+                                <a href="" class="">tanh</a>
+                                <a href="" class="">csc</a>
+                                <a href="" class="">arccsc</a>
+                                <a href="" class="">csch</a>
+                                <a href="" class="">sec</a>
+                                <a href="" class="">arcsec</a>
+                                <a href="" class="">sech</a>
+                                <a href="" class="">cot</a>
+                                <a href="" class="">arccot</a>
+                                <a href="" class="">coth</a>
                             </div>
-                            <div id="misc-functions" class="tab outer">
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="corrcoefButton" style="font-size: 24px;" data-symbol="corrcoes">corrcoef</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="covButton" style="font-size: 24px;" data-symbol="cov">cov</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="medianButton" style="font-size: 24px;" data-symbol="median">median</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="meanButton" style="font-size: 24px;" data-symbol="mean">mean</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="stdButton" style="font-size: 24px;" data-symbol="std">std</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="modButton" style="font-size: 24px;" data-symbol="mod">mod</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="floorButton" style="font-size: 24px;" data-symbol="floor">floor</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="ceilButton" style="font-size: 24px;" data-symbol="ceil">ceil</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="signButton" style="font-size: 24px;" data-symbol="sign">sign</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="gcdButton" style="font-size: 24px;" data-symbol="gcd">gcd</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="lcmButton" style="font-size: 24px;" data-symbol="lcm">lcm</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="randomButton" style="font-size: 24px;" data-symbol="random">random</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="eyeButton" style="font-size: 24px;" data-symbol="eye">eye</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="transposeButton" style="font-size: 24px;" data-symbol="transpose">transpose</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="inverseButton" style="font-size: 24px;" data-symbol="inverse">inverse</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="detButton" style="font-size: 24px;" data-symbol="det">det</span>
-                                <span class="menuItem MathJax_Main " id="minButton" style="font-size: 24px;">min</span>
-                                <span class="menuItem MathJax_Main" id="maxButton" style="font-size: 24px;">max</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="rowsButton" style="font-size: 24px;" data-symbol="rows">rows</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="columnButton" style="font-size: 24px;" data-symbol="columns">columns</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="plotButton" style="font-size: 24px;" data-symbol="plot">plot</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="meshgridButton" style="font-size: 24px;" data-symbol="meshgrid">meshgrid</span>
-                                <span class="menuItem MathJax_Main js-extra-symbol" id="meshButton" style="font-size: 24px;" data-symbol="mesh">mesh</span>
+                            <div id="misc-functions" role="tabpanel" class="tab-pane">
+                                <a href="" class="">corrcoef</a>
+                                <a href="" class="">cov</a>
+                                <a href="" class="">median</a>
+                                <a href="" class="">std</a>
+                                <a href="" class="">mod</a>
+                                <a href="" class="">floor</a>
+                                <a href="" class="">ceil</a>
+                                <a href="" class="">sign</a>
+                                <a href="" class="">gcd</a>
+                                <a href="" class="">lcm</a>
+                                <a href="" class="">random</a>
+                                <a href="" class="">eye</a>
+                                <a href="" class="">transpose</a>
+                                <a href="" class="">inverse</a>
+                                <a href="" class="">det</a>
+                                <a href="" class="">min</a>
+                                <a href="" class="">max</a>
+                                <a href="" class="">rows</a>
+                                <a href="" class="">columns</a>
+                                <a href="" class="">plot</a>
+                                <a href="" class="">meshgrid</a>
+                                <a href="" class="">mesh</a>
 
                             </div>
-                            <div id="greek-alphabets" class="tab outer">
-                                <span class="menuItem MathJax_Main" id="gammaUpperButton" style="font-size: 24px;">Γ</span>
-                                <span class="menuItem MathJax_Main" id="deltaUpperButton" style="font-size: 24px;">Δ</span>
-                                <span class="menuItem MathJax_Main" id="thetaUpperButton" style="font-size: 24px;">Θ</span>
-                                <span class="menuItem MathJax_Main" id="lambdaUpperButton" style="font-size: 24px;">Λ</span>
-                                <span class="menuItem MathJax_Main" id="xiUpperButton" style="font-size: 24px;">Ξ</span>
-                                <span class="menuItem MathJax_Main" id="piUpperButton" style="font-size: 24px;">Π</span>
-                                <span class="menuItem MathJax_Main" id="sigmaUpperButton" style="font-size: 24px;">Σ</span>
-                                <span class="menuItem MathJax_Main" id="upsilonUpperButton" style="font-size: 24px;">Υ</span>
-                                <span class="menuItem MathJax_Main" id="phiUpperButton" style="font-size: 24px;">Φ</span>
-                                <span class="menuItem MathJax_Main" id="psiUpperButton" style="font-size: 24px;">Ψ</span>
-                                <span class="menuItem MathJax_Main" id="omegaUpperButton" style="font-size: 24px;">Ω</span>
+                            <div id="greek-alphabets" role="tabpanel" class="tab-pane">
+                                <a href="" class="">Γ</a>
+                                <a href="" class="">Δ</a>
+                                <a href="" class="">Θ</a>
+                                <a href="" class="">Λ</a>
+                                <a href="" class="">Ξ</a>
+                                <a href="" class="">Π</a>
+                                <a href="" class="">Σ</a>
+                                <a href="" class="">Υ</a>
+                                <a href="" class="">Φ</a>
+                                <a href="" class="">Ψ</a>
+                                <a href="" class="">Ω</a>
 
-                                <span class="menuItem MathJax_MathItalic" id="alphaButton" style="font-size: 24px;">α</span>
-                                <span class="menuItem MathJax_MathItalic" id="betaButton" style="font-size: 24px;">β</span>
-                                <span class="menuItem MathJax_MathItalic" id="gammaButton" style="font-size: 24px;">γ</span>
-                                <span class="menuItem MathJax_MathItalic" id="deltaButton" style="font-size: 24px;">δ</span>
-                                <span class="menuItem MathJax_MathItalic" id="varEpsilonButton" style="font-size: 24px;">ε</span>
-                                <span class="menuItem MathJax_MathItalic" id="epsilonButton" style="font-size: 24px;">ϵ</span>
-                                <span class="menuItem MathJax_MathItalic" id="zetaButton" style="font-size: 24px;">ζ</span>
-                                <span class="menuItem MathJax_MathItalic" id="etaButton" style="font-size: 24px;">η</span>
-                                <span class="menuItem MathJax_MathItalic" id="thetaButton" style="font-size: 24px;">θ</span>
-                                <span class="menuItem MathJax_MathItalic" id="varThetaButton" style="font-size: 24px;">ϑ</span>
-                                <span class="menuItem MathJax_MathItalic" id="iotaButton" style="font-size: 24px;">ι</span>
-                                <span class="menuItem MathJax_MathItalic" id="kappaButton" style="font-size: 24px;">κ</span>
-                                <span class="menuItem MathJax_MathItalic" id="lambdaButton" style="font-size: 24px;">λ</span>
-                                <span class="menuItem MathJax_MathItalic" id="muButton" style="font-size: 24px;">μ</span>
-                                <span class="menuItem MathJax_MathItalic" id="nuButton" style="font-size: 24px;">ν</span>
-                                <span class="menuItem MathJax_MathItalic" id="xiButton" style="font-size: 24px;">ξ</span>
-                                <span class="menuItem MathJax_MathItalic" id="piButton" style="font-size: 24px;">π</span>
-                                <span class="menuItem MathJax_MathItalic" id="varPiButton" style="font-size: 24px;">ϖ</span>
-                                <span class="menuItem MathJax_MathItalic" id="rhoButton" style="font-size: 24px;">ρ</span>
-                                <span class="menuItem MathJax_MathItalic" id="varRhoButton" style="font-size: 24px;">ϱ</span>
-                                <span class="menuItem MathJax_MathItalic" id="sigmaButton" style="font-size: 24px;">σ</span>
-                                <span class="menuItem MathJax_MathItalic" id="varSigmaButton" style="font-size: 24px;">ς</span>
-                                <span class="menuItem MathJax_MathItalic" id="tauButton" style="font-size: 24px;">τ</span>
-                                <span class="menuItem MathJax_MathItalic" id="upsilonButton" style="font-size: 24px;">υ</span>
-                                <span class="menuItem MathJax_MathItalic" id="varPhiButton" style="font-size: 24px;">φ</span>
-                                <span class="menuItem MathJax_MathItalic" id="phiButton" style="font-size: 24px;">ϕ</span>
-                                <span class="menuItem MathJax_MathItalic" id="chiButton" style="font-size: 24px;">χ</span>
-                                <span class="menuItem MathJax_MathItalic" id="psiButton" style="font-size: 24px;">ψ</span>
-                                <span class="menuItem MathJax_MathItalic" id="omegaButton" style="font-size: 24px;">ω</span>
+                                <a href="" class="">α</a>
+                                <a href="" class="">β</a>
+                                <a href="" class="">γ</a>
+                                <a href="" class="">δ</a>
+                                <a href="" class="">ε</a>
+                                <a href="" class="">ϵ</a>
+                                <a href="" class="">ζ</a>
+                                <a href="" class="">η</a>
+                                <a href="" class="">θ</a>
+                                <a href="" class="">ϑ</a>
+                                <a href="" class="">ι</a>
+                                <a href="" class="">κ</a>
+                                <a href="" class="">λ</a>
+                                <a href="" class="">μ</a>
+                                <a href="" class="">ν</a>
+                                <a href="" class="">ξ</a>
+                                <a href="" class="">π</a>
+                                <a href="" class="">ϖ</a>
+                                <a href="" class="">ρ</a>
+                                <a href="" class="">ϱ</a>
+                                <a href="" class="">σ</a>
+                                <a href="" class="">ς</a>
+                                <a href="" class="">τ</a>
+                                <a href="" class="">υ</a>
+                                <a href="" class="">φ</a>
+                                <a href="" class="">ϕ</a>
+                                <a href="" class="">χ</a>
+                                <a href="" class="">ψ</a>
+                                <a href="" class="">ω</a>
                             </div>
                         </div>
                     </div>
-                    <div id="loadingMessageOuter" style="width:100%;margin-top:10px;text-align: center;">
-                        <b>Loading Editor...</b>
-                    </div>
-                    <input id="hiddenFocusInput" style="width: 0; height: 0; opacity: 0; position: absolute; top: 0; left: 0;" type="text" autocapitalize="off" />
-                    <div class="equation-editor"></div>
+                   <div id="equation-editor-wrapper">
+
+                   </div>
                 </div>
                 <div class="modal-footer">
                     <!--<button class="btn btn-default btn-sm">Copy To Editor</button>-->
@@ -865,182 +878,14 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="equation-editor/lib/jquery-2.0.0.js"></script>
+<script src="js/jquery.min.js"></script>
 <script src="js/proper.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="plugins/node-waves/waves.js"></script>
 
-<!--    scripts for equation editor -->
-
-
-<script src="equation-editor/lib/underscore-1.6.0.js"></script>
-<script src="equation-editor/lib/mousetrap-1.4.6.js"></script>
-<script src="equation-editor/lib/spin.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
-<script src="equation-editor/js/property.js"></script>
-<script src="equation-editor/js/init.js"></script>
-<script src="equation-editor/js/fontMetrics.js"></script>
-<script src="equation-editor/js/equation-components/misc/equationComponent.js"></script>
-<script src="equation-editor/js/equation-components/misc/boundEquationComponent.js"></script>
-<script src="equation-editor/js/equation.js"></script>
-<script src="equation-editor/js/equation-components/dom/equationDom.js"></script>
-<script src="equation-editor/js/equation-components/containers/container.js"></script>
-<script src="equation-editor/js/equation-components/dom/containerDom.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/wrapper.js"></script>
-<script src="equation-editor/js/equation-components/dom/wrapperDom.js"></script>
-<script src="equation-editor/js/equation-components/misc/symbol.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/symbolWrapper.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/operatorWrapper.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/emptyContainerWrapper.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/topLevelEmptyContainerWrapper.js"></script>
-<script src="equation-editor/js/equation-components/misc/topLevelEmptyContainerMessage.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/squareEmptyContainerWrapper.js"></script>
-<script src="equation-editor/js/equation-components/containers/squareEmptyContainer.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/squareEmptyContainerFillerWrapper.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/stackedFractionWrapper.js"></script>
-<script src="equation-editor/js/equation-components/containers/stackedFractionNumeratorContainer.js"></script>
-<script src="equation-editor/js/equation-components/containers/stackedFractionDenominatorContainer.js"></script>
-<script src="equation-editor/js/equation-components/misc/stackedFractionHorizontalBar.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/superscriptWrapper.js"></script>
-<script src="equation-editor/js/equation-components/containers/superscriptContainer.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/subscriptWrapper.js"></script>
-<script src="equation-editor/js/equation-components/containers/subscriptContainer.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/superscriptAndSubscriptWrapper.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/squareRootWrapper.js"></script>
-<script src="equation-editor/js/equation-components/misc/squareRootOverBar.js"></script>
-<script src="equation-editor/js/equation-components/misc/squareRootRadical.js"></script>
-<script src="equation-editor/js/equation-components/misc/squareRootDiagonal.js"></script>
-<script src="equation-editor/js/equation-components/containers/squareRootRadicandContainer.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/nthRootWrapper.js"></script>
-<script src="equation-editor/js/equation-components/misc/nthRootOverBar.js"></script>
-<script src="equation-editor/js/equation-components/misc/nthRootRadical.js"></script>
-<script src="equation-editor/js/equation-components/misc/nthRootDiagonal.js"></script>
-<script src="equation-editor/js/equation-components/containers/nthRootRadicandContainer.js"></script>
-<script src="equation-editor/js/equation-components/containers/nthRootDegreeContainer.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/bracketWrapper.js"></script>
-<script src="equation-editor/js/equation-components/misc/bracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/wholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/topBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/middleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/bottomBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftParenthesisBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightParenthesisBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftParenthesisWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftParenthesisTopBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftParenthesisMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftParenthesisBottomBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightParenthesisWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightParenthesisTopBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightParenthesisMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightParenthesisBottomBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftSquareBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftSquareWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftSquareTopBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftSquareMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftSquareBottomBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightSquareBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightSquareWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightSquareTopBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightSquareMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightSquareBottomBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftCurlyBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftCurlyWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftCurlyTopBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftCurlyMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftCurlyBottomBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightCurlyBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightCurlyWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightCurlyTopBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightCurlyMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightCurlyBottomBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftAngleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftAngleWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightAngleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightAngleWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftFloorBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftFloorWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftFloorMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftFloorBottomBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightFloorBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightFloorWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightFloorMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightFloorBottomBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftCeilBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftCeilWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftCeilTopBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftCeilMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightCeilBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightCeilWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightCeilTopBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightCeilMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftAbsValBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightAbsValBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftAbsValWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftAbsValMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightAbsValWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightAbsValMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftNormBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightNormBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftNormWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/leftNormMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightNormWholeBracket.js"></script>
-<script src="equation-editor/js/equation-components/misc/rightNormMiddleBracket.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/bracketPairWrapper.js"></script>
-<script src="equation-editor/js/equation-components/containers/bracketContainer.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/bigOperatorWrapper.js"></script>
-<script src="equation-editor/js/equation-components/containers/bigOperatorUpperLimitContainer.js"></script>
-<script src="equation-editor/js/equation-components/containers/bigOperatorLowerLimitContainer.js"></script>
-<script src="equation-editor/js/equation-components/containers/bigOperatorOperandContainer.js"></script>
-<script src="equation-editor/js/equation-components/misc/bigOperatorSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/sumBigOperatorSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/bigCapBigOperatorSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/bigCupBigOperatorSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/bigSqCapBigOperatorSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/bigSqCupBigOperatorSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/bigSqCupBigOperatorSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/prodBigOperatorSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/coProdBigOperatorSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/bigVeeBigOperatorSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/bigWedgeBigOperatorSymbol.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/integralWrapper.js"></script>
-<script src="equation-editor/js/equation-components/misc/integralSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/doubleIntegralSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/tripleIntegralSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/contourIntegralSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/contourDoubleIntegralSymbol.js"></script>
-<script src="equation-editor/js/equation-components/misc/contourTripleIntegralSymbol.js"></script>
-<script src="equation-editor/js/equation-components/containers/integralUpperLimitContainer.js"></script>
-<script src="equation-editor/js/equation-components/containers/integralLowerLimitContainer.js"></script>
-<script src="equation-editor/js/equation-components/misc/word.js"></script>
-<script src="equation-editor/js/equation-components/misc/functionWord.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/functionWrapper.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/functionLowerWrapper.js"></script>
-<script src="equation-editor/js/equation-components/misc/functionLowerWord.js"></script>
-<script src="equation-editor/js/equation-components/containers/functionLowerContainer.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/logLowerWrapper.js"></script>
-<script src="equation-editor/js/equation-components/misc/logLowerWord.js"></script>
-<script src="equation-editor/js/equation-components/containers/logLowerContainer.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/limitWrapper.js"></script>
-<script src="equation-editor/js/equation-components/containers/limitLeftContainer.js"></script>
-<script src="equation-editor/js/equation-components/containers/limitRightContainer.js"></script>
-<script src="equation-editor/js/equation-components/misc/limitWord.js"></script>
-<script src="equation-editor/js/equation-components/misc/limitSymbol.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/matrixWrapper.js"></script>
-<script src="equation-editor/js/equation-components/containers/matrixContainer.js"></script>
-<script src="equation-editor/js/equation-components/wrappers/accentWrapper.js"></script>
-<script src="equation-editor/js/equation-components/misc/accentSymbol.js"></script>
-<script src="equation-editor/js/equation-components/containers/accentContainer.js"></script>
-<script src="equation-editor/js/equation-components/containers/topLevelContainer.js"></script>
-<script src="equation-editor/js/blinkingCursor.js"></script>
-<script src="equation-editor/js/mouseInteraction.js"></script>
-<script src="equation-editor/js/addWrapperUtil.js"></script>
-<script src="equation-editor/js/keyboardInteraction.js"></script>
-<script src="equation-editor/js/menuInteraction.js"></script>
-<script src="equation-editor/js/equationEditor.js"></script>
-<script src="equation-editor/js/latexGenerator.js"></script>
+<script src="equation-editor/mathquill.min.js"></script>
+<script src="equation-editor/matheditor.js"></script>
 <script src="js/dom-to-image.js"></script>
 <script src="js-tree/jstree.js"></script>
 <script src="plugins/spectrum/spectrum.js"></script>

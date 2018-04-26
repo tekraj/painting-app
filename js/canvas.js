@@ -46,6 +46,8 @@ $.fn.selectRange = function (start,end){
 
 $(document).ready(function(){
 
+        var mathEditor = new MathEditor('equation-editor-wrapper');
+        mathEditor.setTemplate('floating-toolbar',300,300);
         /**
          * ======================================================
          * *************** variable declaration *****************
@@ -205,17 +207,12 @@ $(document).ready(function(){
         }).
         click(function (e) {
             e.preventDefault();
-            if(!textEnabled){
-                alert('Please select text first.')
-                return false;
-            }
-            symbolModal.attr('style','');
+            // if(!textEnabled){
+            //     alert('Please select text first.')
+            //     return false;
+            // }
             symbolModal.modal('show');
-            clearOnMouseDown();
-            var container = $('.eqEdContainer').data("eqObject");
-            addHighlight(container);
-            var characterClickPos = container.domObj.value.offset().left;
-            addCursor(container, characterClickPos);
+
         });
         $('.js-color-code-wrapper').mouseover(function(){
             if(textEnabled){

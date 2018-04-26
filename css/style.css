@@ -11,11 +11,11 @@ body {
 
 }
 
-.nav-tabs li a {
-    border: 1px solid !important;
-    border-bottom-left-radius: 12px;
-    border-top-right-radius: 12px !important;
-}
+/*.nav-tabs li a {*/
+    /*border: 1px solid !important;*/
+    /*border-bottom-left-radius: 12px;*/
+    /*border-top-right-radius: 12px !important;*/
+/*}*/
 .hei-1 {
     height:205px;
 }
@@ -237,11 +237,11 @@ body {
     top: -6px;
 }
 .tab-links li{margin-top:0;}
-.symbol-select-dropdown{position:relative;top:8px;}
-.symbol-select-dropdown .form-control{
-    height: 28px;
-    padding: 3px 10px;
-}
+/*.symbol-select-dropdown{position:relative;top:8px;}*/
+/*.symbol-select-dropdown .form-control{*/
+    /*height: 28px;*/
+    /*padding: 3px 10px;*/
+/*}*/
 .sp-input{background:#fff;}
 .btn-sm i{display: inline-block;vertical-align: middle;top:-1px!important;}
 .participant-list{height:214px;background:#fff;overflow-y: auto;border: 1px solid #eceaea;}
@@ -294,3 +294,9 @@ body {
     padding-right: 0px !important;
     overflow-y: auto;
 }
+#tap-panel-symbols{background:#fff;padding:10px 15px;min-height: 170px;}
+.nav-tabs li.active a:hover, .nav-tabs li.active a:active, .nav-tabs li.active a:focus{background:#fff!important;}
+#tap-panel-symbols .tab-pane a{display: inline-block;color:#000;margin-right:10px;font-size:20px;padding:5px;text-decoration: none!important;}
+#tap-panel-symbols .tab-pane a img{width:30px;}
+#equation-editor-wrapper{min-height: 150px!important;border:1px solid #ccc;width:100%!important;max-width:none!important;margin-top:20px;max-width:none;}
+.matheditor-wrapper-equation-editor-wrapper{max-width: none!important;width:100%!important;}
