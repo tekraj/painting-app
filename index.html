@@ -22,7 +22,10 @@
     <link href="css/themes/all-themes.css" rel="stylesheet" />
     <link rel="stylesheet" href="plugins/spectrum/spectrum.css">
     <link rel="stylesheet" type="text/css" href="css/style.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="lib/css/emoji.css" rel="stylesheet">
     <title>White Board</title>
+
 </head>
 <body>
 <header>
@@ -77,19 +80,19 @@
             <a href="#" class="btn btn-primary btn-square active" id="enable-drawing" data-toggle="tooltip" data-placement="bottom" title="Switch to Drawing">
                 <span class="font">Wb</span>
             </a>
-            <a href="#" class="btn btn-primary btn-square" id="reader-mode-indicator" data-toggle="tooltip" data-placement="bottom" title="When this is active it shows Reading mode is enabled">
+            <a href="#" class="btn btn-primary btn-square" id="reader-mode-indicator" data-toggle="tooltip" data-placement="bottom" title="Switch To Webshare">
                 <img src="images/internet.png">
             </a>
             <!--<a href="#" class="btn btn-primary btn-square">-->
             <!--<span class=""><i class="fa fa-pie-chart" aria-hidden="true"></i></span>-->
             <!--</a>-->
             <a href="#" class="btn btn-primary btn-square" id="browse-cloud" data-toggle="tooltip" data-placement="bottom" title="WhiteBoard Cloud">
-                <img src="images/cloud.png" style="width:20px;" alt="">
+                <img src="images/cloud.png" style="width:20px;"  alt="">
             </a>
-            <a href="#" class="btn btn-primary btn-square">
-                <span class=""><img src="images/note.png"></span>
+            <a href="#" class="btn btn-primary btn-square" title="Session Note" >
+                <span class=""><img src="images/note.png" ></span>
             </a>
-            <a href="#" class="btn btn-primary btn-square" data-toggle="tooltip" data-placement="bottom" title="Email">
+            <a href="#" class="btn btn-primary btn-square" data-toggle="tooltip" data-placement="bottom" title="Notifications">
                 <img src="images/email.png">
             </a>
             <a href="#" class="btn btn-primary btn-square" data-toggle="modal" data-target="#print-modal"  title="Print This drawing">
@@ -101,7 +104,7 @@
             <a href="#" class="btn btn-primary btn-square" data-toggle="tooltip" data-placement="bottom" title="Send to mail">
                 <img src="images/black-back-closed-envelope-shape.png">
             </a>
-            <a href="#" class="btn btn-primary btn-square" data-toggle="tooltip" data-placement="bottom" title="Slides">
+            <a href="#" class="btn btn-primary btn-square" data-toggle="tooltip" data-placement="bottom" title="Slide View Mode">
                 <img src="images/monitor.png">
             </a>
             <span style="font-size:12px;"><b>Slide 1/1</b></span>
@@ -160,7 +163,7 @@
             </div>
             <div class="text-center my-1  option-menu-wrapper">
                 <a href="#" class="btn btn-default btn-square mx-auto js-fonts js-tools">
-                    <img src="images/font-w.png" style="width:42px">
+                    <img src="images/1.png" style="width:42px">
                 </a>
                 <div class="option-menu font-menu" style="display: none;">
                     <h4>Font Properties</h4>
@@ -235,13 +238,13 @@
                         </div>
                         <div class="col-sm-12 text-center">
                             <button class="btn btn-default" id="change-font">OK</button>
-                            <button class="btn btn-default" id="cancel-font">Cancel</button>
+                            <button class="btn btn-default" id="cancel-font" style="width:50px !important;">Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="text-center my-1 option-menu-wrapper js-color-code-wrapper">
-                <a href="#" style="background:#000;" class="btn extra-tools" data-toggle="tooltip" data-placement="top" title="Colors" id="color-indicator">
+            <div class="text-center my-1 option-menu-wrapper">
+                <a href="#" style="background:#000;" class="btn js-tools" data-toggle="tooltip" data-placement="top" title="Colors" id="color-indicator">
                     <img src="images/color-w.png">
                 </a>
                 <div class="option-menu color-menu" style="display: none;">
@@ -286,7 +289,7 @@
             </div>
 
             <div class="text-center my-1 option-menu-wrapper">
-                <a href="#" style="background:#000;" class="btn btn-default js-tools" data-toggle="tooltip" data-placement="top" title="Graphs">
+                <a href="#" style="background:#000;" class="btn btn-default js-tools" data-toggle="tooltip" data-placement="top" title="Graphs" id="color-indicator">
                     <img src="images/graph-w.png" alt="">
                 </a>
 
@@ -310,54 +313,54 @@
                 </a>
                 <ul class="option-menu shape-menu" style="display: none">
                     <li>
-                        <a href="" class="js-tools" data-tool="line-sarrow" data-cursor="url(images/line-icon.png), auto" data-toggle="tooltip" data-placement="top" title="Draw single arrowed line">
+                        <a href="" class="js-tools" data-tool="line-sarrow" data-cursor="url(images/line-icon.png), auto">
                             <img src="images/line-single-arrow.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="line-darrow" data-cursor="url(images/line-icon.png), auto" data-toggle="tooltip" data-placement="top" title="Draw double arrowed line">
+                        <a href="" class="js-tools" data-tool="line-darrow" data-cursor="url(images/line-icon.png), auto">
                             <img src="images/line-double-arrow.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="rectangle" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw rectangle">
+                        <a href="" class="js-tools" data-tool="rectangle" data-cursor="url(images/line-icon.png), auto">
                             <img src="images/square.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="rectangle-filled" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw filled rectangle">
+                        <a href="" class="js-tools" data-tool="rectangle-filled" data-cursor="url(images/line-icon.png), auto">
                             <img src="images/square-filled.png" alt="">
                         </a>
                     </li>
 
                     <li>
-                        <a href="" class="js-tools" data-tool="oval" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw oval,circle">
+                        <a href="" class="js-tools" data-tool="oval" data-cursor="crosshair">
                             <img src="images/circle.png" alt="">
                         </a>
                     </li>
 
                     <li>
-                        <a href="" class="js-tools" data-tool="oval-filled" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw filled oval,circle">
+                        <a href="" class="js-tools" data-tool="oval-filled" data-cursor="crosshair">
                             <img src="images/circle-filled.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="cylinder" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw cylinder">
+                        <a href="" class="js-tools" data-tool="cylinder" data-cursor="crosshair">
                             <img src="images/cylinder.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="cone" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw cone">
+                        <a href="" class="js-tools" data-tool="cone" data-cursor="crosshair">
                             <img src="images/cone.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="cube" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw cube">
+                        <a href="" class="js-tools" data-tool="cube" data-cursor="crosshair">
                             <img src="images/cube.png" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="js-tools" data-tool="pyramid" data-cursor="crosshair" data-toggle="tooltip" data-placement="top" title="Draw prims">
+                        <a href="" class="js-tools" data-tool="pyramid" data-cursor="crosshair">
                             <img src="images/prism.png" alt="">
                         </a>
                     </li>
@@ -472,152 +475,155 @@
         <div class="col-md-11 border px-0 canvas-list">
 
             <div class="row">
-                    <div class="col-md-6 px-0 canvas-writing writing">
-                        <div class="canvas-wrapper">
-                            <canvas class="drawing-board" id="drawing-board"></canvas>
-                            <textarea class="canvas-text-input js-text-demo" style="display: none;" id="canvas-text-input"></textarea>
-                            <canvas id="fake-canvas" class="fake-canvas"></canvas>
-                            <canvas id="resize-canvas" style="display: none;"></canvas>
-                            <div>
-                                <div id="text-holder" style="color:#000;"></div>
-                            </div>
-
-                            <div id="pdf-reader" style="display: none;"></div>
+                <div class="col-md-6 px-0 canvas-writing writing">
+                    <div class="canvas-wrapper">
+                        <canvas class="drawing-board" id="drawing-board"></canvas>
+                        <textarea class="canvas-text-input js-text-demo" style="display: none;" id="canvas-text-input"></textarea>
+                        <canvas id="fake-canvas" class="fake-canvas"></canvas>
+                        <canvas id="resize-canvas" style="display: none;"></canvas>
+                        <div>
+                            <div id="text-holder" style="color:#000;"></div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6 px-0">
-                        <div class="session-canvas-wrapper">
-                            <canvas  class="session-canvas" id="session-canvas"></canvas>
-                        </div>
+                        <div id="pdf-reader" style="display: none;"></div>
                     </div>
+                </div>
+
+                <div class="col-md-6 px-0">
+                    <div class="session-canvas-wrapper">
+                        <canvas  class="session-canvas" id="session-canvas"></canvas>
+                    </div>
+                </div>
 
             </div>
             <br>
-            <div class="card">
-                <div class="header header-default">
-                    <div class="row ">
-                        <div class="col-sm-3">
-                            <h2>Participants</h2>
-                        </div>
-                        <div class="col-sm-9">
-                            <h2>Chat</h2>
-                        </div>
+            <div class="row " style="    margin-top: -29px;">
+                <div class="col-sm-4">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a style="margin-left: -64px;" class="nav-link active" id="Participants-tab" data-toggle="tab" href="#Participants" role="tab"  style="background-color:lightgrey; border:2px solid grey; "aria-controls="home" aria-selected="true"><img src="images/multiple-users-silhouette.png"> <b style="color:black;">Participants</b></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-8">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="participant-tab" data-toggle="tab" href="#chat" role="tab" style="border:2px solidgrey;"aria-controls="home" aria-selected="true"><img src="images/comments.png"><b style="color:black;"> Chat</b></a>
+                        </li>
+                    </ul><br>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <div class="row">
+                <div class="col-sm-4">
+
+                    <div class="participant-list">
+                        <ul></ul>
                     </div>
                 </div>
-                <div class="body">
-                    <div class="row">
-                        <div class="col-sm-3">
+                <div class="col-sm-8">
 
-                            <div class="participant-list">
-                                <ul></ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-9">
+                    <div class="chat-room"></div>
+                    <div id="chat-input-area" class="chat-input">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="chat-input" id="chat-input">
+                            <ul class="input-group-addon list-inline">
+                                <li class="dropdown">
+                                    <a herf="#" class=" dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img
+                                            src="images/icons/ic_tag_faces_black_24dp_1x.png" alt=""></a>
+                                    <ul class="dropdown-menu dropdown-menu-left">
 
-                            <div class="chat-room"></div>
-                            <div id="chat-input-area" class="chat-input">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="chat-input" id="chat-input">
-                                    <ul class="input-group-addon list-inline">
-                                        <li class="dropdown">
-                                            <a herf="#" class=" dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img
-                                                    src="images/icons/ic_tag_faces_black_24dp_1x.png" alt=""></a>
-                                            <ul class="dropdown-menu dropdown-menu-left">
+                                        <li class="body">
+                                            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 254px;">
+                                                <ul class="menu" style="overflow: hidden; width: auto; height: 254px;">
+                                                    <li>
+                                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                            <div class="icon-circle bg-cyan"><i class="fa fa-smile-o" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="menu-info">
+                                                                <h4>Great Job</h4>
 
-                                                <li class="body">
-                                                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 254px;">
-                                                        <ul class="menu" style="overflow: hidden; width: auto; height: 254px;">
-                                                        <li>
-                                                            <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                                <div class="icon-circle bg-cyan">
-                                                                    <i class="material-icons">add_shopping_cart</i>
-                                                                </div>
-                                                                <div class="menu-info">
-                                                                    <h4>Great Job</h4>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                            <div class="icon-circle bg-cyan"><i class="fa fa-smile-o" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="menu-info">
+                                                                <h4>can I help you?</h4>
 
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                                <div class="icon-circle bg-cyan">
-                                                                    <i class="material-icons">add_shopping_cart</i>
-                                                                </div>
-                                                                <div class="menu-info">
-                                                                    <h4>can I help you?</h4>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                            <div class="icon-circle bg-cyan">
+                                                                <i class="fa fa-smile-o" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="menu-info">
+                                                                <h4>I have an idea!</h4>
 
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                                    <div class="icon-circle bg-cyan">
-                                                                        <i class="material-icons">add_shopping_cart</i>
-                                                                    </div>
-                                                                    <div class="menu-info">
-                                                                        <h4>I have an idea!</h4>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                            <div class="icon-circle bg-cyan">
+                                                                <i class="fa fa-smile-o" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="menu-info">
+                                                                <h4>Try Again!</h4>
 
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                                    <div class="icon-circle bg-cyan">
-                                                                        <i class="material-icons">add_shopping_cart</i>
-                                                                    </div>
-                                                                    <div class="menu-info">
-                                                                        <h4>Try Again!</h4>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                            <div class="icon-circle bg-cyan">
+                                                                <i class="fa fa-smile-o" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="menu-info">
+                                                                <h4>yes!</h4>
 
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                                    <div class="icon-circle bg-cyan">
-                                                                        <i class="material-icons">add_shopping_cart</i>
-                                                                    </div>
-                                                                    <div class="menu-info">
-                                                                        <h4>yes!</h4>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                            <div class="icon-circle bg-cyan"><i class="fa fa-smile-o" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="menu-info">
+                                                                <h4>hello!</h4>
 
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                                    <div class="icon-circle bg-cyan">
-                                                                        <i class="material-icons">add_shopping_cart</i>
-                                                                    </div>
-                                                                    <div class="menu-info">
-                                                                        <h4>hello!</h4>
-
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                    </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="input-group-addon">Send</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" ><img src="images/icons/ic_add_a_photo_black_24dp_1x.png" alt=""></a>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </li>
                                     </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="input-group-addon">Send</a>
+                                </li>
+                                <li>
+                                    <a href="#" ><img src="images/icons/ic_add_a_photo_black_24dp_1x.png" alt=""></a>
+                                </li>
+                            </ul>
 
-                                </div>
-
-                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
+
+</div>
+
+</div>
 </div>
 <div style="display: none;" id="canvas-image-holder">
 </div>
@@ -1047,6 +1053,7 @@
 <script src="js/canvas.js"></script>
 </body>
 </html>
+
 
 
 
