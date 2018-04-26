@@ -58,7 +58,7 @@ body {
     width: 100px;
     list-style: none;
     padding: 5px;
-    background: #fff;
+    background: lightyellow;
     border: 1px solid #ccc;
     margin: 0;
     left: 48px;
@@ -244,8 +244,8 @@ body {
 /*}*/
 .sp-input{background:#fff;}
 .btn-sm i{display: inline-block;vertical-align: middle;top:-1px!important;}
-.participant-list{height:214px;background:#fff;overflow-y: auto;border: 1px solid #eceaea;}
-.chat-room {height:160px;overflow-y: auto;background: #fff;border: 1px solid #eceaea;}
+.participant-list{height:214px;background:#fff;overflow-y: auto;border: 1px solid #eceaea;margin-top: -16px;margin-left: 83px;}
+.chat-room {height:160px;overflow-y: auto;background: #fff;border: 1px solid #eceaea;margin-top: -16px;}
 .chat-board{margin-bottom:60px;box-shadow: 0px 0px 1px 1px #d4d4d4;margin-top:10px;padding-bottom:20px;}
 #chat-input-area {margin-top:10px;background:#ccc;padding:5px;}
 #chat-input-area .input-group{margin:0;}
