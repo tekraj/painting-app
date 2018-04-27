@@ -300,3 +300,10 @@ body {
 #tap-panel-symbols .tab-pane a img{width:30px;}
 #equation-editor-wrapper{min-height: 150px!important;border:1px solid #ccc;width:100%!important;max-width:none!important;margin-top:20px;max-width:none;}
 .matheditor-wrapper-equation-editor-wrapper{max-width: none!important;width:100%!important;}
+#symbol-modal .modal-body{position:relative;}
+.matheditor-toolbar-equation-editor-wrapper {
+    width: auto!important;
+    max-width: none!important;
+    border-radius: 0!important;
+    position: relative!important;
+}

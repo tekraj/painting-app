@@ -122,3 +122,34 @@ Either Make cancel icon in the right top corner or make a similar button like 'C
 =>12 Fixed There is already cancel button in the dialouge.
 26)Make 'Font' icon more visible.
 27) Clicking on the text after selecting any other color changes the color of the whole Text=>FIXED
+
+
+
+
+White Board Bug
+
+1.Text with single click => It is working. I don't know what types of single click text you want.
+
+2.Cannot Write Just after Cancellation => Fixed
+
+3.Even After Selecting Text, still the popup to select text first while taking inputs from Special Characters, Subscript,
+
+4.Placing any text in the Previously written Text
+
+5.Sometimes previously cancelled text is also showing while Text input
+
+6.Sometimes UNDO button is not clearing previous Input and
+
+7.Still Not Responsive
+
+8.Math Editor Dialogue Box is not centralized and moving to a different position.
+
+9.Selected Smiley on Chat Box should come as a text along with the respective smiley in the Chat box.
+
+10.File Uploading Dialogue Box in Chat is missing. Icon shows nothing.
+
+11. After Choosing Font, Text option should be automatically activated.
+
+12. Text is going out of the box.
+
+13. While changing color in the text input, it makes the whole sentence of same color.

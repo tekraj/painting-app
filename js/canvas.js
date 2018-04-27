@@ -164,6 +164,7 @@ $(document).ready(function(){
                 symbolEnabled = true;
             }
         }).click(function (e){
+            console.log(mathEditor.getLatex())
             if(!textEnabled){
                 alert('Please select text first.')
                 return false;

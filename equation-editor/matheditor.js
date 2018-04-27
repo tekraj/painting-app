@@ -14,9 +14,58 @@ function MathEditor(id){
     }
     mathed_tmp = ((typeof mathed_tmp != 'undefined')? mathed_tmp : {});
     this.template = 'default';
-    this.default_toolbar_buttons = ["fraction","square_root","cube_root","root",'superscript','subscript','multiplication','division','plus_minus','pi','degree','not_equal','greater_equal','less_equal','greater_than','less_than','angle','parallel_to','perpendicular','triangle','parallelogram','round_brackets'];
-    this.default_toolbar_tabs = ["General","Symbols","Geometry"];
-    button_meta = {"fraction": {latex: "\\frac{}{}", moveto: "Up", movefor: 1, tab: 1, icon:'\\frac{\\square}{\\square}'}, "mix_fraction": {latex: "\\frac{}{}", moveto: "Up", movefor: 1, tab: 1, icon:'\\frac{\\square}{\\square}'}, "square_root": {latex: "\\sqrt{}", moveto: "Left", movefor: 1, tab: 1, icon:'\\sqrt{\\square}'}, "cube_root": {latex: "\\sqrt[3]{}", moveto: "Left", movefor: 1, tab: 1, icon:'\\sqrt[3]{\\square}'}, "root": {latex: "\\sqrt[{}]{}", moveto: "Left", movefor: 2, tab: 1, icon:'\\sqrt[\\square]{\\square}'}, "superscript": {latex: "\\^{}", moveto: "Up", movefor: 1, tab: 1, icon:'\\square^2'}, "subscript": {latex: "\\_{}", moveto: "Down", movefor: 1, tab: 1, icon:'\\square_{2}'}, "multiplication": {latex: "\\times", tab: 2, icon:'\\times'}, "division": {latex: "\\div", tab: 2, icon:'\\div'}, "plus_minus": {latex: "\\pm", tab: 2, icon:'\\pm'}, "pi": {latex: "\\pi", tab: 2, icon:'\\pi'}, "degree": {latex: "\\degree", tab: 2, icon:'\\degree'}, "not_equal": {latex: "\\neq", tab: 2, icon:'\\neq'}, "greater_equal": {latex: "\\geq", tab: 2, icon:'\\geq'}, "less_equal": {latex: "\\leq", tab: 2, icon:'\\leq'}, "greater_than": {latex: "\\gt", tab: 2, icon:'\\gt'}, "less_than": {latex: "\\lt", tab: 2, icon:'\\lt'}, "angle": {latex: "\\angle", tab: 3, icon:'\\angle'}, "parallel_to": {latex: "\\parallel", tab: 3, icon:'\\parallel'}, "perpendicular": {latex: "\\perpendicular", tab: 3, icon:'\\perpendicular'}, "triangle": {latex: "\\triangle", tab: 3, icon:'\\triangle'}, "parallelogram": {latex: "\\parallelogram", tab: 3, icon:'\\parallelogram'}, "round_brackets": {latex: "\\left(\\right)",moveto: "Left", movefor: 1, tab: 1, icon:'\\left(\\square\\right)'} };
+    this.default_toolbar_buttons = [
+        "colon",
+        'greater_equal',
+        'less_equal',
+        "circle",
+        "fraction",
+        "square_root",
+        "cube_root",
+        "root",
+        'superscript',
+        'subscript',
+        'multiplication',
+        'division',
+        'plus_minus',
+        'pi',
+        'degree',
+        'not_equal',
+        'greater_than',
+        'less_than',
+        'angle',
+        'parallel_to',
+        'perpendicular',
+        'triangle',
+        'parallelogram',
+        'round_brackets'
+    ];
+    this.default_toolbar_tabs = ["Symbols","Functions","Trignometry","Miscellaneous","Greek Alphabets"];
+    button_meta = {
+        "colon": {latex: ":", tab: 1, icon:':'},
+        "less_equal": {latex: "\\leq", tab: 1, icon:'\\leq'},
+        "greater_equal": {latex: "\\geq", tab: 1, icon:'\\geq'},
+        "circle": {latex: "\\circ", tab: 1, icon:'\\circ'},
+        "fraction": {latex: "\\frac{}{}", moveto: "Up", movefor: 1, tab: 1, icon:'\\frac{\\square}{\\square}' },
+        "mix_fraction": {latex: "\\frac{}{}", moveto: "Up", movefor: 1, tab: 1, icon:'\\frac{\\square}{\\square}' },
+        "square_root": {latex: "\\sqrt{}", moveto: "Left", movefor: 1, tab: 1, icon:'\\sqrt{\\square}' },
+        "cube_root": {latex: "\\sqrt[3]{}", moveto: "Left", movefor: 1, tab: 1, icon:'\\sqrt[3]{\\square}'  },
+        "root": {latex: "\\sqrt[{}]{}", moveto: "Left", movefor: 2, tab: 1, icon:'\\sqrt[\\square]{\\square}'},
+        "superscript": {latex: "\\^{}", moveto: "Up", movefor: 1, tab: 1, icon:'\\square^2'},
+        "subscript": {latex: "\\_{}", moveto: "Down", movefor: 1, tab: 1, icon:'\\square_{2}'},
+        "multiplication": {latex: "\\times", tab: 2, icon:'\\times'}, "division": {latex: "\\div", tab: 2, icon:'\\div'},
+        "plus_minus": {latex: "\\pm", tab: 2, icon:'\\pm'}, "pi": {latex: "\\pi", tab: 2, icon:'\\pi'},
+        "degree": {latex: "\\degree", tab: 2, icon:'\\degree'}, "not_equal": {latex: "\\neq", tab: 2, icon:'\\neq'},
+
+        "greater_than": {latex: "\\gt", tab: 2, icon:'\\gt'},
+        "less_than": {latex: "\\lt", tab: 2, icon:'\\lt'},
+        "angle": {latex: "\\angle", tab: 3, icon:'\\angle'},
+        "parallel_to": {latex: "\\parallel", tab: 3, icon:'\\parallel'},
+        "perpendicular": {latex: "\\perpendicular", tab: 3, icon:'\\perpendicular'},
+        "triangle": {latex: "\\triangle", tab: 3, icon:'\\triangle'},
+        "parallelogram": {latex: "\\parallelogram", tab: 3, icon:'\\parallelogram'},
+        "round_brackets": {latex: "\\left(\\right)",moveto: "Left", movefor: 1, tab: 1, icon:'\\left(\\square\\right)'}
+        };
     keyboard_keys = {'letters': [{'value': 'q', 'type': 'write', 'class':'ks', 'display':'q', 'new_line': false}, {'value': 'w', 'type': 'write', 'class':'ks', 'display':'w', 'new_line': false}, {'value': 'e', 'type': 'write', 'class':'ks', 'display':'e', 'new_line': false}, {'value': 'r', 'type': 'write', 'class':'ks', 'display':'r', 'new_line': false}, {'value': 't', 'type': 'write', 'class':'ks', 'display':'t', 'new_line': false}, {'value': 'y', 'type': 'write', 'class':'ks', 'display':'y', 'new_line': false}, {'value': 'u', 'type': 'write', 'class':'ks', 'display':'u', 'new_line': false}, {'value': 'i', 'type': 'write', 'class':'ks', 'display':'i', 'new_line': false}, {'value': 'o', 'type': 'write', 'class':'ks', 'display':'o', 'new_line': false}, {'value': 'p', 'type': 'write', 'class':'ks', 'display':'p', 'new_line': true}, {'value': 'a', 'type': 'write', 'class':'ks', 'display':'a', 'new_line': false}, {'value': 's', 'type': 'write', 'class':'ks', 'display':'s', 'new_line': false}, {'value': 'd', 'type': 'write', 'class':'ks', 'display':'d', 'new_line': false}, {'value': 'f', 'type': 'write', 'class':'ks', 'display':'f', 'new_line': false}, {'value': 'g', 'type': 'write', 'class':'ks', 'display':'g', 'new_line': false}, {'value': 'h', 'type': 'write', 'class':'ks', 'display':'h', 'new_line': false}, {'value': 'j', 'type': 'write', 'class':'ks', 'display':'j', 'new_line': false}, {'value': 'k', 'type': 'write', 'class':'ks', 'display':'k', 'new_line': false}, {'value': 'l', 'type': 'write', 'class':'ks', 'display':'l', 'new_line': true}, {'value': 'CapsLock', 'type': 'custom', 'class':'ks long icon', 'display':'&#8673;', 'new_line': false}, {'value': 'z', 'type': 'write', 'class':'ks', 'display':'z', 'new_line': false}, {'value': 'x', 'type': 'write', 'class':'ks', 'display':'x', 'new_line': false}, {'value': 'c', 'type': 'write', 'class':'ks', 'display':'c', 'new_line': false}, {'value': 'v', 'type': 'write', 'class':'ks', 'display':'v', 'new_line': false}, {'value': 'b', 'type': 'write', 'class':'ks', 'display':'b', 'new_line': false}, {'value': 'n', 'type': 'write', 'class':'ks', 'display':'n', 'new_line': false}, {'value': 'm', 'type': 'write', 'class':'ks', 'display':'m', 'new_line': false}, {'value': 'Backspace', 'type': 'keystroke', 'class':'ks long icon', 'display':'&#8678;', 'new_line': true}, {'value': 'numpad', 'type': 'custom', 'class':'ks long', 'display':'123', 'new_line': false}, {'value': ',', 'type': 'write', 'class':'ks', 'display':',', 'new_line': false}, {'value': '\\ ', 'type': 'write', 'class':'ks too_long', 'display':'Space', 'new_line': false}, {'value': '.', 'type': 'write', 'class':'ks', 'display':'.', 'new_line': false}, {'value': 'close', 'type': 'custom', 'class':'ks long takeup', 'display':'X', 'new_line': false}], 'numbers': [{'value': '1', 'type': 'write', 'class':'ks', 'display':'1', 'new_line': false}, {'value': '2', 'type': 'write', 'class':'ks', 'display':'2', 'new_line': false}, {'value': '3', 'type': 'write', 'class':'ks', 'display':'3', 'new_line': false}, {'value': '+', 'type': 'write', 'class':'ks', 'display':'+', 'new_line': false}, {'value': '-', 'type': 'write', 'class':'ks', 'display':'&#8315;', 'new_line': true}, {'value': '4', 'type': 'write', 'class':'ks', 'display':'4', 'new_line': false}, {'value': '5', 'type': 'write', 'class':'ks', 'display':'5', 'new_line': false}, {'value': '6', 'type': 'write', 'class':'ks', 'display':'6', 'new_line': false}, {'value': '\\times', 'type': 'write', 'class':'ks', 'display':'&times;', 'new_line': false}, {'value': '/', 'type': 'write', 'class':'ks', 'display':'&#247;', 'new_line': true}, {'value': '7', 'type': 'write', 'class':'ks', 'display':'7', 'new_line': false}, {'value': '8', 'type': 'write', 'class':'ks', 'display':'8', 'new_line': false}, {'value': '9', 'type': 'write', 'class':'ks', 'display':'9', 'new_line': false}, {'value': '=', 'type': 'write', 'class':'ks', 'display':'=', 'new_line': false}, {'value': 'Backspace', 'type': 'keystroke', 'class':'ks long icon', 'display':'&#8678;', 'new_line': true}, {'value': 'letters', 'type': 'custom', 'class':'ks long', 'display':'ABC', 'new_line': false}, {'value': '0', 'type': 'write', 'class':'ks', 'display':'0', 'new_line': false}, {'value': '?', 'type': 'write', 'class':'ks', 'display':'?', 'new_line': false}, {'value': '%', 'type': 'write', 'class':'ks', 'display':'%', 'new_line': false}, {'value': 'close', 'type': 'custom', 'class':'ks long takeup', 'display':'X', 'new_line': false}]};
     this.MQ = MathQuill.getInterface(2);
     this.answerSpan = document.getElementById(id);
@@ -28,7 +77,7 @@ function MathEditor(id){
     };
     this.answerMathField= this.MQ.MathField(this.answerSpan, config);
     setToolbar(this.default_toolbar_buttons,this.answerSpan,this.answerMathField,this.topElements,this.default_toolbar_tabs,this.tabEnabled,this.isMobile);
-    // basicStyling(this.answerSpan,this.topElements);
+    basicStyling(this.answerSpan,this.topElements);
 }
 
 MathEditor.prototype.getValue = function(){
@@ -82,12 +131,13 @@ MathEditor.prototype.setTemplate = function(name){
         this.topElements.toolbar.css('margin-top',answerSpanHeight+13).hide();
         this.topElements.buttons.css('margin-right','5').css('margin-bottom','5');
         mathed_tmp[editor_id] = this.topElements
-        jq(this.answerSpan).focusin(function(o){
-            jq.each(mathed_tmp, function(k,v){
-                v.toolbar.hide();
-            });
-            //mathed_tmp[$(o.currentTarget).attr('id')].toolbar.show();
-        });
+        // jq(this.answerSpan).focusin(function(o){
+        //     jq.each(mathed_tmp, function(k,v){
+        //         v.toolbar.hide();
+        //     });
+
+            mathed_tmp['equation-editor-wrapper'].toolbar.show();
+        // });
     }else{
         console.warn("MathEditor: "+name+" is an invalid template name");
     }
@@ -172,7 +222,7 @@ setCloseButton = function(top_elements, answer_span){
     btnhtml = "<div class='close-btn'><span id='close-btn-"+editor_id+"'>X</span></div>"
     jq(btnhtml).insertBefore(top_elements.wrapper.find('.matheditor-btn-span:first'));
     jq('#close-btn-'+editor_id).on('click',function(e){
-        top_elements.toolbar.hide();
+        //top_elements.toolbar.hide();
     });
 }
 
@@ -186,7 +236,7 @@ setToolbar = function(btns,answer_span,answer_math_field,top_elements,tabs,tabEn
     editor_id = jq(answer_span).attr('id')
     wrapper_html = "<div class='matheditor-wrapper-"+editor_id+"'></div>";
     html = "<div class='matheditor-toolbar-"+editor_id+"'>";
-    if(tabEnabled){
+    // if(tabEnabled){
         html += "<ul class='tabs-"+editor_id+"'>";
         required_tabs.forEach(function(o,idx){
             if(idx==0){
@@ -203,6 +253,7 @@ setToolbar = function(btns,answer_span,answer_math_field,top_elements,tabs,tabEn
                 html += "<div id='tab-"+(idx+1).toString()+"-"+editor_id+"' class='tab-content-me'>";
             }
             required_buttons.forEach(function(b){
+
                 if(button_meta[b].tab == idx+1){
                     if(button_meta[b]){
                         html+="<span class='matheditor-btn-span'><i title='"+b.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}).replace('_',' ')+"' data-latex='"+button_meta[b].latex+"' data-moveto='"+button_meta[b].moveto+"' data-movefor='"+button_meta[b].movefor+"' id='matheditor-btn-"+b+"' class='op-btn'><span id='selectable-"+b+"-"+editor_id+"' class='op-btn-icon'>"+button_meta[b].icon+"</span></i></span>";
@@ -214,15 +265,15 @@ setToolbar = function(btns,answer_span,answer_math_field,top_elements,tabs,tabEn
             html+="</div>"
         });
 
-    }else{
-        required_buttons.forEach(function(b){
-            if(button_meta[b]){
-                html+="<span class='matheditor-btn-span'><a title='"+b.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}).replace('_',' ')+"' data-latex='"+button_meta[b].latex+"' data-moveto='"+button_meta[b].moveto+"' data-movefor='"+button_meta[b].movefor+"' id='matheditor-btn-"+b+"' class='op-btn'><span id='selectable-"+b+"-"+editor_id+"' class='op-btn-icon'>"+button_meta[b].icon+"</span></a></span>";
-            }else{
-                console.warn("MathEditor: '"+b+"' is an invalid button");
-            }
-        });
-    }
+    // }else{
+    //     required_buttons.forEach(function(b){
+    //         if(button_meta[b]){
+    //             html+="<span class='matheditor-btn-span'><a title='"+b.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}).replace('_',' ')+"' data-latex='"+button_meta[b].latex+"' data-moveto='"+button_meta[b].moveto+"' data-movefor='"+button_meta[b].movefor+"' id='matheditor-btn-"+b+"' class='op-btn'><span id='selectable-"+b+"-"+editor_id+"' class='op-btn-icon'>"+button_meta[b].icon+"</span></a></span>";
+    //         }else{
+    //             console.warn("MathEditor: '"+b+"' is an invalid button");
+    //         }
+    //     });
+    // }
     html+="</div>"
 
     jq(answer_span).wrap(wrapper_html);
