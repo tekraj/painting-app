@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="font-awesome/css/fontawesome.css">
 
-    <link href="equation-editor/mathquill.css" rel="stylesheet">
-    <link href="equation-editor/matheditor.css" rel="stylesheet">
+
     <link rel="stylesheet" href="js-tree/themes/default/style.min.css">
     <link href="plugins/node-waves/waves.css" rel="stylesheet" />
     <!-- Animation Css -->
@@ -21,6 +20,8 @@
     <link href="css/board-css.min.css" rel="stylesheet">
     <link href="css/themes/all-themes.css" rel="stylesheet" />
     <link rel="stylesheet" href="plugins/spectrum/spectrum.css">
+    <link href="equation-editor/mathquill.css" rel="stylesheet">
+    <link href="equation-editor/matheditor.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css" >
     <title>White Board</title>
 
@@ -634,192 +635,7 @@
                     <button class="btn btn-close btn-sm" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-
-                    <div class="tabs">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" style="width:170px;" >
-                                <div class="form-group row symbol-select-dropdown" style="margin-bottom: 0;">
-                                    <label for="symbol-size" class="col-sm-3 col-form-label" style="margin-top:7px;font-size:13px;">Size</label>
-                                    <div class="col-sm-9">
-                                        <select name="symbol-size" id="symbol-size" class="form-control small">
-
-                                            <option value="20">20</option>
-                                            <option value="24">24</option>
-                                            <option value="26">26</option>
-                                            <option value="28">28</option>
-                                            <option value="36">36</option>
-                                            <option value="46">46</option>
-                                            <option value="48">48</option>
-                                            <option value="72">72</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                            </li>
-                            <li role="presentation" class="active"><a href="#symbol-functions" aria-controls="symbol-functions" role="tab" data-toggle="tab">Symbols</a></li>
-                            <li role="presentation"><a href="#simple-functions" aria-controls="simple-functions" role="tab" data-toggle="tab">Functions</a></li>
-                            <li role="presentation"><a href="#trignometry-functions" aria-controls="trignometry-functions" role="tab" data-toggle="tab">Trignometry</a></li>
-                            <li role="presentation"><a href="#misc-functions"  aria-controls="misc-functions" role="tab" data-toggle="tab">Miscellaneous</a></li>
-                            <li role="presentation"><a href="#greek-alphabets" aria-controls="greek-alphabets" role="tab" data-toggle="tab">Greek Alphabets</a></li>
-                        </ul>
-                        <div class="tab-content" id="tap-panel-symbols">
-                            <div role="tabpanel" class="tab-pane active" id="symbol-functions">
-                                <a href="" class="">:</a>
-                                <a href="" class="">≤</a>
-                                <a href="" class="">≥</a>
-                                <a href="" class="">◦</a>
-                                <a href="" class="">≈</a>
-                                <a href="" class="">∈</a>
-                                <a href="" class="">×</a>
-                                <a href="" class="">±</a>
-                                <a href="" class="">∧</a>
-                                <a href="" class="">∨</a>
-                                <a href="" class="">≡</a>
-                                <a href="" class="">≅</a>
-                                <a href="" class="">≠</a>
-                                <a href="" class="">∼</a>
-                                <a href="" class="">∝</a>
-                                <a href="" class="">≺</a>
-                                <a href="" class="">⪯</a>
-                                <a href="" class="">⊂</a>
-                                <a href="" class="">⊆</a>
-                                <a href="" class="">≻</a>
-                                <a href="" class="">⪰</a>
-                                <a href="" class="">⊥</a>
-                                <a href="" class="">∣</a>
-                                <a href="" class="">∥</a>
-                                <a href="" class="">∂</a>
-                                <a href="" class="">∞</a>
-                            </div>
-                            <div id="simple-functions" role="tabpanel" class="tab-pane">
-                                <a href="">
-                                    <img   src="equation-editor/MenuImages/png/subscript.png">
-                                </a>
-                                <a href="">
-                                    <img  src="equation-editor/MenuImages/png/superscript.png">
-                                </a>
-                                <a href="">
-                                    <img  src="equation-editor/MenuImages/png/stackedFraction.png">
-                                </a>
-                                <a href="">
-                                    <img class="menuItem" id="sumBigOperatorButton" src="equation-editor/MenuImages/png/sum.png">
-                                </a>
-                                <a href="">
-                                    <img  src="equation-editor/MenuImages/png/bigSqCap.png">
-                                </a>
-                                <a href="">
-                                    <img  src="equation-editor/MenuImages/png/integralNoUpperNoLower.png">
-                                </a>
-                                <a href="">
-                                    <img  src="equation-editor/MenuImages/png/integral.png">
-                                </a>
-                                <a href="">
-                                    <img  src="equation-editor/MenuImages/png/limit.png" style="width:40px;">
-                                </a>
-                                <a href="">
-                                    f(x)
-                                </a>
-                                <a href="" class="">ln</a>
-                                <a href="">
-                                    <img src="equation-editor/MenuImages/png/log_n.png">
-                                </a>
-
-                                <a href="" class="">log</a>
-                                <a href class="">e<sup>x</sup></a>
-                            </div>
-                            <div id="trignometry-functions" role="tabpanel" class="tab-pane">
-                                <a href="" class="" >sin</a>
-                                <a href="" class="" >arcsin</a>
-                                <a href="" class="">sinh</a>
-                                <a href="" class="">cos</a>
-                                <a href="" class="">arccos</a>
-                                <a href="" class="">cosh</a>
-                                <a href="" class="">tan</a>
-                                <a href="" class="">arctan</a>
-                                <a href="" class="">tanh</a>
-                                <a href="" class="">csc</a>
-                                <a href="" class="">arccsc</a>
-                                <a href="" class="">csch</a>
-                                <a href="" class="">sec</a>
-                                <a href="" class="">arcsec</a>
-                                <a href="" class="">sech</a>
-                                <a href="" class="">cot</a>
-                                <a href="" class="">arccot</a>
-                                <a href="" class="">coth</a>
-                            </div>
-                            <div id="misc-functions" role="tabpanel" class="tab-pane">
-                                <a href="" class="">corrcoef</a>
-                                <a href="" class="">cov</a>
-                                <a href="" class="">median</a>
-                                <a href="" class="">std</a>
-                                <a href="" class="">mod</a>
-                                <a href="" class="">floor</a>
-                                <a href="" class="">ceil</a>
-                                <a href="" class="">sign</a>
-                                <a href="" class="">gcd</a>
-                                <a href="" class="">lcm</a>
-                                <a href="" class="">random</a>
-                                <a href="" class="">eye</a>
-                                <a href="" class="">transpose</a>
-                                <a href="" class="">inverse</a>
-                                <a href="" class="">det</a>
-                                <a href="" class="">min</a>
-                                <a href="" class="">max</a>
-                                <a href="" class="">rows</a>
-                                <a href="" class="">columns</a>
-                                <a href="" class="">plot</a>
-                                <a href="" class="">meshgrid</a>
-                                <a href="" class="">mesh</a>
-
-                            </div>
-                            <div id="greek-alphabets" role="tabpanel" class="tab-pane">
-                                <a href="" class="">Γ</a>
-                                <a href="" class="">Δ</a>
-                                <a href="" class="">Θ</a>
-                                <a href="" class="">Λ</a>
-                                <a href="" class="">Ξ</a>
-                                <a href="" class="">Π</a>
-                                <a href="" class="">Σ</a>
-                                <a href="" class="">Υ</a>
-                                <a href="" class="">Φ</a>
-                                <a href="" class="">Ψ</a>
-                                <a href="" class="">Ω</a>
-
-                                <a href="" class="">α</a>
-                                <a href="" class="">β</a>
-                                <a href="" class="">γ</a>
-                                <a href="" class="">δ</a>
-                                <a href="" class="">ε</a>
-                                <a href="" class="">ϵ</a>
-                                <a href="" class="">ζ</a>
-                                <a href="" class="">η</a>
-                                <a href="" class="">θ</a>
-                                <a href="" class="">ϑ</a>
-                                <a href="" class="">ι</a>
-                                <a href="" class="">κ</a>
-                                <a href="" class="">λ</a>
-                                <a href="" class="">μ</a>
-                                <a href="" class="">ν</a>
-                                <a href="" class="">ξ</a>
-                                <a href="" class="">π</a>
-                                <a href="" class="">ϖ</a>
-                                <a href="" class="">ρ</a>
-                                <a href="" class="">ϱ</a>
-                                <a href="" class="">σ</a>
-                                <a href="" class="">ς</a>
-                                <a href="" class="">τ</a>
-                                <a href="" class="">υ</a>
-                                <a href="" class="">φ</a>
-                                <a href="" class="">ϕ</a>
-                                <a href="" class="">χ</a>
-                                <a href="" class="">ψ</a>
-                                <a href="" class="">ω</a>
-                            </div>
-                        </div>
-                    </div>
                    <div id="equation-editor-wrapper">
-
-                   </div>
                 </div>
                 <div class="modal-footer">
                     <!--<button class="btn btn-default btn-sm">Copy To Editor</button>-->
@@ -830,7 +646,7 @@
         </div>
     </div>
 </div>
-
+</div>
 <div class="modal" id="save-modal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -888,7 +704,7 @@
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="plugins/node-waves/waves.js"></script>
 
-<script src="equation-editor/mathquill.min.js"></script>
+ <script src="equation-editor/mathquill.min.js"></script>
 <script src="equation-editor/matheditor.js"></script>
 <script src="js/dom-to-image.js"></script>
 <script src="js-tree/jstree.js"></script>

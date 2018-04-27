@@ -307,3 +307,24 @@ body {
     border-radius: 0!important;
     position: relative!important;
 }
+#tab-2-equation-editor-wrapper .matheditor-btn-span{height:70px;width:70px!important;}
+#tab-2-equation-editor-wrapper .matheditor-btn-span .mq-root-block {
+    height: 70px!important;
+    width: 70px!important;
+
+}
+
+#tab-3-equation-editor-wrapper .matheditor-btn-span{height:35px!important;width:100px!important;}
+#tab-3-equation-editor-wrapper .matheditor-btn-span .mq-root-block {
+    height: 35px!important;
+    width: 100px!important;
+    line-height: 25px;
+}
+#tab-4-equation-editor-wrapper .matheditor-btn-span{height:35px!important;width:70px!important;}
+#tab-4-equation-editor-wrapper .matheditor-btn-span .mq-root-block {
+    height:35px!important;width:70px!important;
+    line-height: 30px;
+}
+.tab-content-me{min-height: 150px;}
+#tab-1-equation-editor-wrapper .close-btn{display: none;}
+.mq-root-block, .mq-math-mode .mq-root-block{width:auto;}

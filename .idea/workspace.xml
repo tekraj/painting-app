@@ -8,6 +8,247 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/bugs.txt" afterPath="$PROJECT_DIR$/bugs.txt" />
       <change beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/bigCapOperator.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/bigCupOperator.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/bigSqCapOperator.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/bigSqCupOperator.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/bigVeeOperator.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/bigWedgeOperator.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/coProdOperator.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/iiint.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/iint.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/int.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/oiiint.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/oiint.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/oint.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/prodOperator.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/radical.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/radicalDiagonalLine.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/Images/sumOperator.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/absBracketPair.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/angleBracketPair.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/barAccent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigCap.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigCapInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigCapNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigCapNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigCapNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigCapSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigCup.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigCupInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigCupNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigCupNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigCupNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigCupSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigSqCap.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigSqCapInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigSqCapNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigSqCapNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigSqCapNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigSqCapSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigSqCup.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigSqCupInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigSqCupNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigSqCupNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigSqCupNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigSqCupSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigVee.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigVeeInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigVeeNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigVeeNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigVeeNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigVeeSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigWedge.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigWedgeInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigWedgeNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigWedgeNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigWedgeNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/bigWedgeSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/ceilBracketPair.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/coProd.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/coProdInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/coProdNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/coProdNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/coProdNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/coProdSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/contourIntegral.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/contourIntegralInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/contourIntegralNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/contourIntegralNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/contourIntegralNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/contourIntegralSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/curlyBracketPair.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/dotAccent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/doubleContourIntegral.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/doubleContourIntegralInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/doubleContourIntegralNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/doubleContourIntegralNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/doubleContourIntegralNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/doubleContourIntegralSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/doubleIntegral.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/doubleIntegralInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/doubleIntegralNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/doubleIntegralNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/doubleIntegralNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/doubleIntegralSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/floorBracketPair.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/hatAccent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/integral.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/integralInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/integralNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/integralNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/integralNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/integralSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/limit.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/log_n.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/maxLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/minLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/normBracketPair.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/nthRoot.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/parenthesesBracketPair.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/prod.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/prodInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/prodNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/prodNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/prodNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/prodSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/squareBracketPair.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/squareRoot.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/stackedFraction.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/subscript.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/sum.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/sumInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/sumNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/sumNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/sumNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/sumSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/superscript.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/superscriptAndSubscript.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/tripleContourIntegral.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/tripleContourIntegralInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/tripleContourIntegralNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/tripleContourIntegralNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/tripleContourIntegralNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/tripleContourIntegralSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/tripleIntegral.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/tripleIntegralInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/tripleIntegralNoUpper.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/tripleIntegralNoUpperInline.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/tripleIntegralNoUpperNoLower.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/tripleIntegralSymbol.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/png/vectorAccent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/absBracketPair.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/angleBracketPair.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/barAccent.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigCap.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigCapInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigCapNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigCapNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigCapNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigCapSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigCup.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigCupInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigCupNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigCupNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigCupNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigCupSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigSqCap.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigSqCapInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigSqCapNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigSqCapNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigSqCapNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigSqCapSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigSqCup.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigSqCupInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigSqCupNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigSqCupNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigSqCupNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigSqCupSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigVee.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigVeeInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigVeeNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigVeeNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigVeeNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigVeeSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigWedge.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigWedgeInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigWedgeNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigWedgeNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigWedgeNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/bigWedgeSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/ceilBracketPair.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/coProd.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/coProdInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/coProdNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/coProdNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/coProdNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/coProdSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/contourIntegral.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/contourIntegralInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/contourIntegralNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/contourIntegralNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/contourIntegralNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/contourIntegralSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/curlyBracketPair.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/dotAccent.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/doubleContourIntegral.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/doubleContourIntegralInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/doubleContourIntegralNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/doubleContourIntegralNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/doubleContourIntegralNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/doubleContourIntegralSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/doubleIntegral.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/doubleIntegralInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/doubleIntegralNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/doubleIntegralNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/doubleIntegralNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/doubleIntegralSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/floorBracketPair.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/hatAccent.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/integral.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/integralInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/integralNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/integralNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/integralNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/integralSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/limit.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/log_n.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/maxLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/minLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/normBracketPair.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/nthRoot.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/parenthesesBracketPair.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/prod.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/prodInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/prodNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/prodNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/prodNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/prodSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/squareBracketPair.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/squareRoot.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/stackedFraction.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/subscript.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/sum.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/sumInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/sumNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/sumNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/sumNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/sumSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/superscript.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/superscriptAndSubscript.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/tripleContourIntegral.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/tripleContourIntegralInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/tripleContourIntegralNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/tripleContourIntegralNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/tripleContourIntegralNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/tripleContourIntegralSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/tripleIntegral.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/tripleIntegralInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/tripleIntegralNoUpper.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/tripleIntegralNoUpperInline.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/tripleIntegralNoUpperNoLower.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/tripleIntegralSymbol.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/equation-editor/MenuImages/svg/vectorAccent.svg" afterPath="" />
       <change beforePath="$PROJECT_DIR$/equation-editor/matheditor.js" afterPath="$PROJECT_DIR$/equation-editor/matheditor.js" />
       <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change beforePath="$PROJECT_DIR$/js/canvas.js" afterPath="$PROJECT_DIR$/js/canvas.js" />
@@ -35,27 +276,34 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+            <state relative-caret-position="428">
+              <caret line="663" column="0" lean-forward="true" selection-start-line="663" selection-start-column="0" selection-end-line="663" selection-end-column="0" />
               <folding>
                 <element signature="n#ul#0;n#div#11;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="canvas.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="bugs.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bugs.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="524">
+              <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="canvas.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/canvas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="48" column="12" lean-forward="false" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+            <state relative-caret-position="602">
+              <caret line="1662" column="139" lean-forward="false" selection-start-line="1662" selection-start-column="139" selection-end-line="1662" selection-end-column="139" />
               <folding>
-                <marker date="1524847445121" expanded="true" signature="54725:54744" ph="..." />
-                <marker date="1524847445121" expanded="true" signature="55218:55237" ph="..." />
+                <marker date="1524864692016" expanded="true" signature="55002:55021" ph="..." />
+                <marker date="1524864692016" expanded="true" signature="55495:55514" ph="..." />
               </folding>
             </state>
           </provider>
@@ -64,28 +312,18 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="668">
-              <caret line="306" column="0" lean-forward="false" selection-start-line="306" selection-start-column="0" selection-end-line="306" selection-end-column="0" />
+            <state relative-caret-position="712">
+              <caret line="329" column="56" lean-forward="false" selection-start-line="329" selection-start-column="56" selection-end-line="329" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="matheditor.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="matheditor.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/equation-editor/matheditor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="47" column="33" lean-forward="false" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="matheditor.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/equation-editor/matheditor.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-4364">
+              <caret line="342" column="38" lean-forward="false" selection-start-line="342" selection-start-column="21" selection-end-line="342" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -94,19 +332,9 @@
       <file leaf-file-name="mathquill.min.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/equation-editor/mathquill.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="10" column="23606" lean-forward="false" selection-start-line="10" selection-start-column="23601" selection-end-line="10" selection-end-column="23606" />
-              <folding>
-                <marker date="1489059555000" expanded="true" signature="10706:10713" ph="..." />
-                <marker date="1489059555000" expanded="true" signature="60807:60813" ph="..." />
-                <marker date="1489059555000" expanded="true" signature="64433:64461" ph="..." />
-                <marker date="1489059555000" expanded="true" signature="64463:64470" ph="..." />
-                <marker date="1489059555000" expanded="true" signature="66308:66336" ph="..." />
-                <marker date="1489059555000" expanded="true" signature="66338:66345" ph="..." />
-                <marker date="1489059555000" expanded="true" signature="67092:67099" ph="√" />
-                <marker date="1489059555000" expanded="true" signature="67602:67608" ph="→" />
-                <marker date="1489059555000" expanded="true" signature="67849:67856" ph="√" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="10" column="18390" lean-forward="false" selection-start-line="10" selection-start-column="18385" selection-end-line="10" selection-end-column="18390" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -115,21 +343,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>blur(function</find>
-      <find>input</find>
-      <find>sp-input</find>
-      <find>spectrum</find>
-      <find>do you want to</find>
-      <find>&lt;svg</find>
-      <find>symbol-modal</find>
-      <find>js-enable-science</find>
-      <find>symbol-size</find>
-      <find>select</find>
-      <find>matheditor-toolbar</find>
-      <find>focus</find>
-      <find>display</find>
-      <find>btn</find>
-      <find>btn-span</find>
       <find>emoji</find>
       <find>toolbar</find>
       <find>toolbar-</find>
@@ -144,6 +357,21 @@
       <find>limit</find>
       <find>alpha</find>
       <find>field.write</find>
+      <find>simeq</find>
+      <find>cong</find>
+      <find>subseteq</find>
+      <find>pm</find>
+      <find>partial</find>
+      <find>dc.mous</find>
+      <find>clear-canvas</find>
+      <find>dc.mouse</find>
+      <find>undo</find>
+      <find>js-clear</find>
+      <find>alert</find>
+      <find>insertsYmbols</find>
+      <find>mathm</find>
+      <find>image</find>
+      <find>insertSymbols</find>
       <find>latex</find>
     </findStrings>
     <dirStrings>
@@ -178,11 +406,13 @@
         <option value="$PROJECT_DIR$/plugins/spectrum/spectrum.js" />
         <option value="$PROJECT_DIR$/equation-editor/js/equation-components/misc/integralSymbol.js" />
         <option value="$PROJECT_DIR$/js/jquery.min.js" />
+        <option value="$USER_HOME$/Downloads/MathquillBasedEditor-master/MathquillBasedEditor-master/lib/matheditor.js" />
+        <option value="$USER_HOME$/Downloads/MathquillBasedEditor-master/MathquillBasedEditor-master/index.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/bugs.txt" />
         <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/js/canvas.js" />
         <option value="$PROJECT_DIR$/equation-editor/matheditor.js" />
+        <option value="$PROJECT_DIR$/js/canvas.js" />
       </list>
     </option>
   </component>
@@ -194,10 +424,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="y" value="20" />
+    <option name="x" value="-14" />
     <option name="width" value="1346" />
-    <option name="height" value="688" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -247,18 +476,18 @@
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\painting-app\equation-editor" />
+      <recent name="C:\xampp\htdocs\painting-app\equation-editor\lib" />
+      <recent name="C:\xampp\htdocs\painting-app\images" />
+      <recent name="C:\xampp\htdocs\painting-app\images\icons" />
+      <recent name="C:\xampp\htdocs\painting-app\plugins\spectrum" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\painting-app\plugins" />
       <recent name="C:\xampp\htdocs\painting-app\chat-application\route" />
       <recent name="C:\xampp\htdocs\painting-app\equation-editor\Fonts\TeX\otf" />
       <recent name="C:\xampp\htdocs\painting-app\equation-editor" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\painting-app\equation-editor" />
-      <recent name="C:\xampp\htdocs\painting-app\images" />
-      <recent name="C:\xampp\htdocs\painting-app\images\icons" />
-      <recent name="C:\xampp\htdocs\painting-app\plugins\spectrum" />
-      <recent name="C:\xampp\htdocs\painting-app\plugins" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -321,12 +550,12 @@
       <workItem from="1524673382503" duration="8707000" />
       <workItem from="1524768576766" duration="368000" />
       <workItem from="1524805657140" duration="1929000" />
-      <workItem from="1524841851217" duration="5307000" />
+      <workItem from="1524841851217" duration="21560000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="284803000" />
+    <option name="totallyTimeSpent" value="301056000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -376,8 +605,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/equation-editor/js/equation.js" />
-    <entry file="file://$PROJECT_DIR$/equation-editor/js/equationEditor.js" />
     <entry file="file://$PROJECT_DIR$/equation-editor/js/equation-components/misc/accentSymbol.js" />
     <entry file="file://$PROJECT_DIR$/equation-editor/app/html/EquationEditor.html" />
     <entry file="file://$PROJECT_DIR$/MathJax-2.4-latest/extensions/MathML/content-mathml.js" />
@@ -502,41 +729,10 @@
     <entry file="file://$PROJECT_DIR$/equation-editor/js/equation-components/misc/integralSymbol.js" />
     <entry file="file://$PROJECT_DIR$/equation-editor/MathquillBasedEditor/lib/matheditor.js" />
     <entry file="file://$PROJECT_DIR$/equation-editor/MathquillBasedEditor/index.html" />
-    <entry file="file://$PROJECT_DIR$/equation-editor/mathquill.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/jquery.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
           <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/MathquillBasedEditor-master/MathquillBasedEditor-master/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="25" column="45" lean-forward="true" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bugs.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="142" column="22" lean-forward="true" selection-start-line="142" selection-start-column="22" selection-end-line="142" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="668">
-          <caret line="306" column="0" lean-forward="false" selection-start-line="306" selection-start-column="0" selection-end-line="306" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -556,54 +752,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/equation-editor/mathquill.min.js">
+    <entry file="file://$PROJECT_DIR$/equation-editor/mathquill.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="10" column="23606" lean-forward="false" selection-start-line="10" selection-start-column="23601" selection-end-line="10" selection-end-column="23606" />
-          <folding>
-            <marker date="1489059555000" expanded="true" signature="10706:10713" ph="..." />
-            <marker date="1489059555000" expanded="true" signature="60807:60813" ph="..." />
-            <marker date="1489059555000" expanded="true" signature="64433:64461" ph="..." />
-            <marker date="1489059555000" expanded="true" signature="64463:64470" ph="..." />
-            <marker date="1489059555000" expanded="true" signature="66308:66336" ph="..." />
-            <marker date="1489059555000" expanded="true" signature="66338:66345" ph="..." />
-            <marker date="1489059555000" expanded="true" signature="67092:67099" ph="√" />
-            <marker date="1489059555000" expanded="true" signature="67602:67608" ph="→" />
-            <marker date="1489059555000" expanded="true" signature="67849:67856" ph="√" />
-          </folding>
+        <state relative-caret-position="-396">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/canvas.js">
+    <entry file="file://$USER_HOME$/Downloads/MathquillBasedEditor-master/MathquillBasedEditor-master/lib/matheditor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="48" column="12" lean-forward="false" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
-          <folding>
-            <marker date="1524847445121" expanded="true" signature="54725:54744" ph="..." />
-            <marker date="1524847445121" expanded="true" signature="55218:55237" ph="..." />
-          </folding>
+        <state relative-caret-position="286">
+          <caret line="19" column="8" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="21" selection-end-column="111" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/equation-editor/lib/matheditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="23" column="14" lean-forward="false" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/MathquillBasedEditor-master/MathquillBasedEditor-master/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="49" lean-forward="false" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+        <state relative-caret-position="428">
+          <caret line="663" column="0" lean-forward="true" selection-start-line="663" selection-start-column="0" selection-end-line="663" selection-end-column="0" />
           <folding>
             <element signature="n#ul#0;n#div#11;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bugs.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="712">
+          <caret line="329" column="56" lean-forward="false" selection-start-line="329" selection-start-column="56" selection-end-line="329" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/equation-editor/matheditor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="47" column="33" lean-forward="false" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+        <state relative-caret-position="-4364">
+          <caret line="342" column="38" lean-forward="false" selection-start-line="342" selection-start-column="21" selection-end-line="342" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/equation-editor/mathquill.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="10" column="18390" lean-forward="false" selection-start-line="10" selection-start-column="18385" selection-end-line="10" selection-end-column="18390" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="1662" column="139" lean-forward="false" selection-start-line="1662" selection-start-column="139" selection-end-line="1662" selection-end-column="139" />
+          <folding>
+            <marker date="1524864692016" expanded="true" signature="55002:55021" ph="..." />
+            <marker date="1524864692016" expanded="true" signature="55495:55514" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

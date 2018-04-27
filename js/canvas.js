@@ -137,7 +137,7 @@ $(document).ready(function(){
         }).click(function (e){
             e.preventDefault();
             if(!textEnabled){
-                alert('Please select text first.')
+                alert('Please select text and click anywhere in the board.');
                 return false;
             }
             setTimeout(function(){
@@ -164,9 +164,9 @@ $(document).ready(function(){
                 symbolEnabled = true;
             }
         }).click(function (e){
-            console.log(mathEditor.getLatex())
+
             if(!textEnabled){
-                alert('Please select text first.')
+                alert('Please select text and click anywhere in the board.');
                 return false;
             }
             setTimeout(function(){
@@ -178,6 +178,7 @@ $(document).ready(function(){
                 var subPosition = textValue.lastIndexOf('⌁');
                 textInput.selectRange(subPosition);
                 textInput.change();
+                symbolEnabled = false;
             },100)
         }).mouseleave(function(){
             symbolEnabled = false;
@@ -411,11 +412,12 @@ $(document).ready(function(){
             // console.log(latex);
             // // $('.eqEdEquation').find('.eqEdContainer').attr('')
 
-            insertSymbols($('.eqEdContainer'),function(){
-                $('.modal').modal('hide');
+            insertSymbols(function(){
+
                 symbolEnabled = false;
                 setTimeout(function () {
                     textInput.focus().blur();
+                    $('.modal').modal('hide');
                 }, 100);
             });
         });
@@ -434,12 +436,14 @@ $(document).ready(function(){
                         console.log(response);
                     }
                 });
-                dc.css('cursor','default');
+
             }
             $('.modal').modal('hide');
             drawingCanvas.clearRect(0,0,drawingC.width,drawingC.height);
             drag =[];
             pencilPoints=[];
+            canvasObjects = [];
+            $enableTextTool.click();
         });
 
         //detect shit key pressed for straight lines and squares
@@ -484,29 +488,33 @@ $(document).ready(function(){
             if(currentTool=='pencil'){
                 pushPencilPoints(left,top)
                 drawPencil(drawingCanvas);
-            }else if( currentTool=='text' && !textEnabled){
-                //check for text edit
-                fa.show();
-                $enableTextTool.addClass('active');
-                dc.css('cursor','url(images/text.png), auto');
-                textEnabled = true;
-                $enableTextTool.addClass('border');
-                textHolder.show();
-                var isPrevTextField = checkTextEdit(left,top);
-                if(isPrevTextField!==false){
-                    textInput.show().css({left:isPrevTextField.left,top:isPrevTextField.top});
-                    textInput.val(isPrevTextField.html);
-                    textLeftCord=isPrevTextField.left;
-                    textTopCord = isPrevTextField.top;
-                }else{
-                    textInput.show().css({left:left,top:top});
-                    textLeftCord=left;
-                    textTopCord = top;
+            }else if( currentTool=='text'){
+                if(!textEnabled){
+                    textInput.blur();
                 }
                 setTimeout(function(){
-                    textInput.focus();
-                },10);
-
+                    //check for text edit
+                    fa.show();
+                    $enableTextTool.addClass('active');
+                    dc.css('cursor','url(images/text.png), auto');
+                    textEnabled = true;
+                    $enableTextTool.addClass('border');
+                    textHolder.show();
+                    var isPrevTextField = checkTextEdit(left,top);
+                    if(isPrevTextField!==false){
+                        textInput.show().css({left:isPrevTextField.left,top:isPrevTextField.top});
+                        textInput.val(isPrevTextField.html);
+                        textLeftCord=isPrevTextField.left;
+                        textTopCord = isPrevTextField.top;
+                    }else{
+                        textInput.show().css({left:left,top:top});
+                        textLeftCord=left;
+                        textTopCord = top;
+                    }
+                    setTimeout(function(){
+                        textInput.focus();
+                    },10);
+                },50);
 
             }else if(currentTool=='line' || currentTool=='cube' || currentTool=='rectangle' ||currentTool=='oval' || currentTool=='cone' || currentTool=='pyramid' || currentTool=='xgraph' || currentTool=='xygraph' || currentTool=='cylinder' || currentTool=='rectangle-filled' || currentTool=='oval-filled' || currentTool=='line-sarrow' ||  currentTool=='line-darrow'){
                 fa.show();
@@ -1616,17 +1624,16 @@ $(document).ready(function(){
      * @param dom
      * @param callback
      */
-    function insertSymbols(dom,callback){
-
-            domtoimage.toPng(dom[0])
-                .then(function (dataUrl) {
-                    var img = new Image;
+    function insertSymbols(callback){
+        var latex = mathEditor.getLatex();
+        //$.get(',function(response){
+                 var img = new Image();
                     img.onload = function () {
-                        var actualWidth = img.width;
-                        var actualHeight = img.height;
-                        var factor = fontSize/35;
-                        var height =actualHeight * factor;
-                        var width = actualWidth* height/actualHeight;
+                        //var actualWidth = img.width;
+                        // var actualHeight = img.height;
+                        // var factor = fontSize/35;
+                        var height =  img.height;
+                        var width = img.width;
                         var canvasHeight = drawingC.height;
                         var canvasWidth = drawingC.width;
                         var left = lineStartPoint.x+width;
@@ -1652,18 +1659,14 @@ $(document).ready(function(){
                         var  pointX = lineStartPoint.x + textHolder.width();
                         var pointY = lineStartPoint.y - height / 3;
 
-                        drawingCanvas.drawImage(img,pointX ,pointY+5, width, height);
-                        saveCanvasObjects('image',{startX:pointX-10,startY:pointY-10,endX:pointX+width+2,endY:pointY-2+height,image:dataUrl});
+                        drawingCanvas.drawImage(img,pointX ,pointY+3, width, height);
+                        saveCanvasObjects('image',{startX:pointX-10,startY:pointY-10,endX:pointX+width+2,endY:pointY-2+height,image:img.src});
                         return callback();
                     };
-                    img.src = dataUrl;
+                    img.src = 'http://www.wiris.net/demo/editor/render?format=svg&latex='+latex;
+        //});
 
-                })
-                .catch(function(error) {
-                    return callback();
-                    console.error('oops, something went wrong!', error);
-                });
-        }
+    }
 
     /**
      * @param x
@@ -1740,6 +1743,9 @@ $(document).ready(function(){
     //undo the canvas state
 
     $('#undo-tool').click(function (e) {
+        textHolder.val('');
+        textInput.val('');
+        $enableTextTool.removeClass('js-tools border');
         canvasObjects.splice(canvasObjects.length-1);
         redrawCanvas();
     });
