@@ -7,7 +7,7 @@
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
     <meta http-equiv="pragma" content="no-cache">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">-->
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="font-awesome/css/fontawesome.css">
 
@@ -160,7 +160,7 @@
                     <img src="images/text-w.png" style="width:42px">
                 </a>
             </div>
-            <div class="text-center my-1  option-menu-wrapper">
+            <div class="text-center my-1 font-menu-wrapper  option-menu-wrapper">
                 <a href="#" class="btn btn-default btn-square mx-auto js-fonts js-tools">
                     <img src="images/1.png" style="width:42px">
                 </a>
@@ -170,9 +170,9 @@
                         <div class="col-sm-5">
                             <h5>Font</h5>
                             <ul>
-                                <li><a href="#" class="js-font active" data-font="Times New Roman, Times, serif">Times New Roman</a></li>
-                                <li><a href="#" class="js-font " data-font="Arial, Helvetica, sans-serif">Arial</a></li>
-                                <li><a href="#" class="js-font " data-font="Courier New, Courier, monospace">Courier New</a></li>
+                                <li><a href="#" class="js-font active" data-font="sefif">Times New Roman</a></li>
+                                <li><a href="#" class="js-font " data-font="arial">Arial</a></li>
+                                <li><a href="#" class="js-font " data-font="monospace">Courier New</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-5">
@@ -371,7 +371,7 @@
                 </a>
             </div>
             <div class="text-center my-1">
-                <a href="#" class="btn btn-default btn-square mx-auto js-enable-science">
+                <a href="#" class="btn btn-default btn-square mx-auto js-show-equation-modal">
                     <span data-toggle="tooltip" data-placement="top" title="Click here to open equation editor"> <img src="images/math-w.png"></span>
                 </a>
             </div>
@@ -418,35 +418,35 @@
                     <li><span class="js-science-symbol" data-symbol="Ψ">Ψ</span></li>
                     <li><span class="js-science-symbol" data-symbol="Ω">Ω</span></li>
 
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="α">α</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="β">β</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="γ">γ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="δ">δ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol=">">ε</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ϵ">ϵ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ζ">ζ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="η">η</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="θ">θ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ϑ">ϑ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ι">ι</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="κ">κ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="λ">λ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="μ">μ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ν">ν</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ξ">ξ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="π">π</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ϖ">ϖ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ρ">ρ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ϱ">ϱ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="σ">σ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ς">ς</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="τ">τ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="υ">υ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="φ">φ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ϕ">ϕ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="χ">χ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol=">">ψ</span></li>
-                    <li><span class="menuItem MathJax_MathItalic js-science-symbol" data-symbol="ω">ω</span></li>
+                    <li><span class="js-science-symbol" data-symbol="α">α</span></li>
+                    <li><span class="js-science-symbol" data-symbol="β">β</span></li>
+                    <li><span class="js-science-symbol" data-symbol="γ">γ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="δ">δ</span></li>
+                    <li><span class="js-science-symbol" data-symbol=">">ε</span></li>
+                    <li><span class="js-science-symbol" data-symbol="ϵ">ϵ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="ζ">ζ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="η">η</span></li>
+                    <li><span class="js-science-symbol" data-symbol="θ">θ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="ϑ">ϑ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="ι">ι</span></li>
+                    <li><span class="js-science-symbol" data-symbol="κ">κ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="λ">λ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="μ">μ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="ν">ν</span></li>
+                    <li><span class="js-science-symbol" data-symbol="ξ">ξ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="π">π</span></li>
+                    <li><span class="js-science-symbol" data-symbol="ϖ">ϖ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="ρ">ρ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="ϱ">ϱ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="σ">σ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="ς">ς</span></li>
+                    <li><span class="js-science-symbol" data-symbol="τ">τ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="υ">υ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="φ">φ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="ϕ">ϕ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="χ">χ</span></li>
+                    <li><span class="js-science-symbol" data-symbol=">">ψ</span></li>
+                    <li><span class="js-science-symbol" data-symbol="ω">ω</span></li>
                 </ul>
             </div>
 
@@ -477,14 +477,15 @@
                 <div class="col-md-6 px-0 canvas-writing writing">
                     <div class="canvas-wrapper">
                         <canvas class="drawing-board" id="drawing-board"></canvas>
-                        <textarea class="canvas-text-input js-text-demo" style="display: none;" id="canvas-text-input"></textarea>
                         <canvas id="fake-canvas" class="fake-canvas"></canvas>
                         <canvas id="resize-canvas" style="display: none;"></canvas>
                         <div>
-                            <div id="text-holder" style="color:#000;"></div>
-                        </div>
+                            <div id="text-holder" contenteditable>
 
+                            </div>
+                        </div>
                         <div id="pdf-reader" style="display: none;"></div>
+                        <div id="drag-div"></div>
                     </div>
                 </div>
 
@@ -496,137 +497,136 @@
 
             </div>
             <br>
-            <div class="row " style="    margin-top: -29px;">
-                <div class="col-sm-4">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a style="margin-left: -64px;" class="nav-link active" id="Participants-tab" data-toggle="tab" href="#Participants" role="tab"  style="background-color:lightgrey; border:2px solid grey; "aria-controls="home" aria-selected="true"><img src="images/multiple-users-silhouette.png"> <b style="color:black;">Participants</b></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-8">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="participant-tab" data-toggle="tab" href="#chat" role="tab" style="border:2px solidgrey;"aria-controls="home" aria-selected="true"><img src="images/comments.png"><b style="color:black;"> Chat</b></a>
-                        </li>
-                    </ul><br>
-                </div>
-            </div>
-        </div>
-        <div class="body">
-            <div class="row">
-                <div class="col-sm-4">
-
-                    <div class="participant-list">
-                        <ul></ul>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-
-                    <div class="chat-room"></div>
-                    <div id="chat-input-area" class="chat-input">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="chat-input" id="chat-input">
-                            <ul class="input-group-addon list-inline">
-                                <li class="dropdown">
-                                    <a herf="#" class=" dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img
-                                            src="images/icons/ic_tag_faces_black_24dp_1x.png" alt=""></a>
-                                    <ul class="dropdown-menu dropdown-menu-left">
-
-                                        <li class="body">
-                                            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 254px;">
-                                                <ul class="menu" style="overflow: hidden; width: auto; height: 254px;">
-                                                    <li>
-                                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                            <div class="icon-circle bg-cyan"><i class="fa fa-smile-o" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="menu-info">
-                                                                <h4>Great Job</h4>
-
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                            <div class="icon-circle bg-cyan"><i class="fa fa-smile-o" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="menu-info">
-                                                                <h4>can I help you?</h4>
-
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                            <div class="icon-circle bg-cyan">
-                                                                <i class="fa fa-smile-o" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="menu-info">
-                                                                <h4>I have an idea!</h4>
-
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                            <div class="icon-circle bg-cyan">
-                                                                <i class="fa fa-smile-o" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="menu-info">
-                                                                <h4>Try Again!</h4>
-
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                            <div class="icon-circle bg-cyan">
-                                                                <i class="fa fa-smile-o" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="menu-info">
-                                                                <h4>yes!</h4>
-
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                            <div class="icon-circle bg-cyan"><i class="fa fa-smile-o" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="menu-info">
-                                                                <h4>hello!</h4>
-
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#" class="input-group-addon">Send</a>
-                                </li>
-                                <li>
-                                    <a href="#" ><img src="images/icons/ic_add_a_photo_black_24dp_1x.png" alt=""></a>
-                                </li>
-                            </ul>
+            <div class="card">
+                <div class="header">
+                    <div class="row ">
+                        <div class="col-sm-4">
+                            <a  class="nav-link active" id="participants-tab" data-toggle="tab" href="#participants" role="tab"  style="background-color:lightgrey; border:2px solid grey; "aria-controls="home" aria-selected="true"><img src="images/multiple-users-silhouette.png"> <b style="color:black;">Participants</b></a>
 
                         </div>
+                        <div class="col-sm-8">
+                            <a class="nav-link active" id="participant-tab" data-toggle="tab" href="#chat" role="tab" style="border:2px solidgrey;"aria-controls="home" aria-selected="true"><img src="images/comments.png"><b style="color:black;"> Chat</b></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="body">
+                    <div class="row">
+                        <div class="col-sm-4">
 
+                            <div class="participant-list">
+                                <ul></ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+
+                            <div class="chat-room"></div>
+                            <div id="chat-input-area" class="chat-input">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="chat-input" id="chat-input">
+                                    <ul class="input-group-addon list-inline">
+                                        <li class="dropdown">
+                                            <a herf="#" class=" dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img
+                                                    src="images/icons/ic_tag_faces_black_24dp_1x.png" alt=""></a>
+                                            <ul class="dropdown-menu dropdown-menu-left">
+
+                                                <li class="body">
+                                                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 254px;">
+                                                        <ul class="menu" style="overflow: hidden; width: auto; height: 254px;">
+                                                            <li>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                                    <div class="icon-circle bg-cyan"><i class="fa fa-smile-o" aria-hidden="true"></i>
+                                                                    </div>
+                                                                    <div class="menu-info">
+                                                                        <h4>Great Job</h4>
+
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                                    <div class="icon-circle bg-cyan"><i class="fa fa-smile-o" aria-hidden="true"></i>
+                                                                    </div>
+                                                                    <div class="menu-info">
+                                                                        <h4>can I help you?</h4>
+
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                                    <div class="icon-circle bg-cyan">
+                                                                        <i class="fa fa-smile-o" aria-hidden="true"></i>
+                                                                    </div>
+                                                                    <div class="menu-info">
+                                                                        <h4>I have an idea!</h4>
+
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                                    <div class="icon-circle bg-cyan">
+                                                                        <i class="fa fa-smile-o" aria-hidden="true"></i>
+                                                                    </div>
+                                                                    <div class="menu-info">
+                                                                        <h4>Try Again!</h4>
+
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                                    <div class="icon-circle bg-cyan">
+                                                                        <i class="fa fa-smile-o" aria-hidden="true"></i>
+                                                                    </div>
+                                                                    <div class="menu-info">
+                                                                        <h4>yes!</h4>
+
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                                    <div class="icon-circle bg-cyan"><i class="fa fa-smile-o" aria-hidden="true"></i>
+                                                                    </div>
+                                                                    <div class="menu-info">
+                                                                        <h4>hello!</h4>
+
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="input-group-addon">Send</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" ><img src="images/icons/ic_add_a_photo_black_24dp_1x.png" alt=""></a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
+
     </div>
 
 </div>
 
-</div>
-</div>
+
 <div style="display: none;" id="canvas-image-holder">
 </div>
-<div class="modal" id="symbol-modal" >
+<div class="modal fade" id="symbol-modal" >
     <div class="modal-dialog">
         <div class="modal-container">
             <div class="modal-content">

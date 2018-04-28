@@ -171,7 +171,7 @@ body {
     top: initial;
 }
 .symbol-dropdown li{width:35px;float:left;}
-.symbol-dropdown span{font-size:24px!important;}
+.symbol-dropdown span{font-size:24px!important;cursor: pointer;}
 .power-dropdown .x-value-sub, .power-dropdown .x-value-sup {
     display: inline-block;
     font-size: 30px;
@@ -180,7 +180,7 @@ body {
 .power-dropdown input{display: inline-block;width:40px;position: absolute;right:15px;}
 .power-dropdown .y-value-sub{bottom:15px;}
 .power-dropdown .x-value-sub{padding:5px 30px 30px 5px;}
-#text-holder{position:absolute;left:0;top:0;display: none;width:auto;height:auto;}
+#text-holder{position:absolute;left:0;top:0;width:auto;height:auto;min-width:50px;min-height:25px;outline:none!important;}
 #text-holder p{margin:0;padding:0;line-height: normal;}
 
 .shape-menu li{display: inline-block;}
@@ -298,7 +298,7 @@ body {
 .nav-tabs li.active a:hover, .nav-tabs li.active a:active, .nav-tabs li.active a:focus{background:#fff!important;}
 #tap-panel-symbols .tab-pane a{display: inline-block;color:#000;margin-right:10px;font-size:20px;padding:5px;text-decoration: none!important;}
 #tap-panel-symbols .tab-pane a img{width:30px;}
-#equation-editor-wrapper{min-height: 150px!important;border:1px solid #ccc;width:100%!important;max-width:none!important;margin-top:20px;max-width:none;}
+#equation-editor-wrapper{background:#fff!important;color:#000!important;min-height: 150px!important;border:1px solid #ccc;width:100%!important;max-width:none!important;margin-top:20px;max-width:none;}
 .matheditor-wrapper-equation-editor-wrapper{max-width: none!important;width:100%!important;}
 #symbol-modal .modal-body{position:relative;}
 .matheditor-toolbar-equation-editor-wrapper {
@@ -327,4 +327,13 @@ body {
 }
 .tab-content-me{min-height: 150px;}
 #tab-1-equation-editor-wrapper .close-btn{display: none;}
-.mq-root-block, .mq-math-mode .mq-root-block{width:auto;}
+.modal.active{
+    background: rgba(0,0,0,0.1);
+    display: block;
+}
+#drag-div{position:absolute;width:30px;height:30px;border:1px dotted #ccc;z-index: 99;top:0;left:0;display: none;}
+#equation-editor-wrapper .mq-root-block{
+    display: inline-block!important;
+    width: auto!important;
+    max-width: 100%!important;
+}
