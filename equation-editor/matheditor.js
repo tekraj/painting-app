@@ -424,6 +424,7 @@ keyboardButtons = function(type,editor_id){
 }
 
 keyboardAction = function(top_elements,answer_span,field){
+
     caps = false;
     editor_id = jq(answer_span).attr('id')
     jq('#keys-'+editor_id).find('a').on('click', function(o){

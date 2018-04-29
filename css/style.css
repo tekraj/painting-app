@@ -170,8 +170,18 @@ body {
     bottom: 0;
     top: initial;
 }
-.symbol-dropdown li{width:35px;float:left;}
-.symbol-dropdown span{font-size:24px!important;cursor: pointer;}
+.symbol-dropdown li{width:36px;float:left;}
+.symbol-dropdown span {
+    font-size: 20px!important;
+    cursor: pointer;
+    padding: 0px 0px;
+    border: 1px solid #ccc;
+    width: 90%;
+    display: inline-block;
+    height: 33px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+}
 .power-dropdown .x-value-sub, .power-dropdown .x-value-sup {
     display: inline-block;
     font-size: 30px;

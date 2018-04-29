@@ -161,7 +161,7 @@ $(document).ready(function(){
         $('.js-science-symbol').click(function(e){
             e.preventDefault();
             if(!$enableTextTool.hasClass('active')){
-                alert('Please select text first.')
+                alert('Please select text and click anywhere in the board.')
                 return false;
             }
 
@@ -177,6 +177,9 @@ $(document).ready(function(){
         $('.js-show-equation-modal').click(function (e) {
             e.preventDefault();
             symbolModal.modal('show');
+        });
+        symbolModal.on('shown.bs.modal',function(){
+            $('#equation-editor-wrapper').find('.mq-root-block').click();
         });
         $('.color-menu  ').mouseover(function(){
                 symbolEnabled = true;
@@ -469,6 +472,7 @@ $(document).ready(function(){
                 writeTextDivToCanvas(textLeftCord,textTopCord,function (){
                     textHolder.css({'color':currentColor,'font-size':fontSize,'font-family':font,'font-weight':fontWeight,'font-style': fontStyle}).html('');
                     textHolder.show();
+
                     $enableTextTool.addClass('active');
                     dc.css('cursor','url(images/text.png), auto');
                     $enableTextTool.addClass('border');
@@ -476,8 +480,8 @@ $(document).ready(function(){
                     if(isPrevTextField!==false){
                         textHolder.css(isPrevTextField.cssObj).html(isPrevTextField.html);
                         textLeftCord=isPrevTextField.left;
-                        textTopCord = isPrevTextField.top;
-                        textHolder.css({left:textLeftCord,top:textTopCord});
+                        textTopCord = isPrevTextField.top-1;
+                        textHolder.css({left:textLeftCord,top:textTopCord-1});
                     }else{
                         textHolder.css({left:left,top:top});
                         textLeftCord=left;
@@ -1595,7 +1599,7 @@ $(document).ready(function(){
                         // var actualHeight = img.height;
                         // var factor = fontSize/35;
                         var height =  img.height;
-                        var width = img.width+20;
+                        var width = img.width;
                         var canvasHeight = drawingC.height;
                         var canvasWidth = drawingC.width;
                         var left = lineStartPoint.x+width;
