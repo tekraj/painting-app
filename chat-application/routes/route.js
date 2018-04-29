@@ -8,11 +8,12 @@ router.use(function(req,res,next){
 });
 
 router.post('/',function (req,res){
-    auth.IsAuthenticated(req,res,function(response){
-        if(!response)
-            res.send('Unauthorised Access');
-        res.send('AuthenticatedUser');
-    })
+    res.send(req.body);
+    // auth.IsAuthenticated(req,res,function(response){
+    //     if(!response)
+    //         res.send('Unauthorised Access');
+    //     res.send('AuthenticatedUser');
+    // })
 });
 
 module.exports = router;

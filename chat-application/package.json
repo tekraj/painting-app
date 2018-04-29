@@ -7,10 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tek Raj Pant",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "socket.io": "*",
     "express": "*",
     "mssql": "*"
-  }
+  },
+  "engines": {
+    "node": "6.10.3"
+  },
+  "keywords": [
+  "Chatting Application",
+  "heroku"
+  ]
 }

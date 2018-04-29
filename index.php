@@ -1,4 +1,35 @@
-<!doctype html>
+<?php
+    $upload_dir = 'uploads/';
+    if(isset($_POST) && isset($_POST['imageData']) ){
+        $base64 = $_POST['imageData'];
+        $image_base64 = base64_decode($base64);
+        $file = $upload_dir . uniqid() . 'canvas_image.png';
+        file_put_contents($file, $image_base64);
+        echo $file;
+        exit;
+    }
+
+function get_client_ip() {
+    $ipaddress = '';
+    if (isset($_SERVER['HTTP_CLIENT_IP']))
+        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if(isset($_SERVER['HTTP_X_FORWARDED']))
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if(isset($_SERVER['HTTP_FORWARDED']))
+        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    else if(isset($_SERVER['REMOTE_ADDR']))
+        $ipaddress = $_SERVER['REMOTE_ADDR'];
+    else
+        $ipaddress = 'UNKNOWN';
+    return preg_replace('/\./','',$ipaddress);
+}
+
+?>
+<!Doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -26,7 +57,7 @@
     <title>White Board</title>
 
 </head>
-<body>
+<body data-ip="<?php echo get_client_ip(); ?>" data-user="<?php echo 'whiteboard_'. time(); ?>">
 <header>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -497,7 +528,7 @@
 
             </div>
             <br>
-            <div class="card">
+            <div class="card chat-card">
                 <div class="header">
                     <div class="row ">
                         <div class="col-sm-4">
@@ -511,16 +542,21 @@
                 </div>
                 <div class="body">
                     <div class="row">
-                        <div class="col-sm-4">
-
+                        <div class="col-sm-3">
                             <div class="participant-list">
-                                <ul></ul>
+                                <ul id="online-users">
+
+                                </ul>
                             </div>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-9">
 
-                            <div class="chat-room"></div>
-                            <div id="chat-input-area" class="chat-input">
+                            <div  class="chat-room">
+                               <ul id="chat-board">
+
+                               </ul>
+                            </div>
+                            <form id="chat-input-area" class="chat-input">
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="chat-input" id="chat-input">
                                     <ul class="input-group-addon list-inline">
@@ -601,16 +637,15 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="#" class="input-group-addon">Send</a>
+                                            <button type="submit" class="input-group-addon">Send</button>
                                         </li>
                                         <li>
-                                            <a href="#" ><img src="images/icons/ic_add_a_photo_black_24dp_1x.png" alt=""></a>
+                                            <input type="file" id="attach-file" style="display: none;">
+                                            <a href="#" class="js-attach-file" ><img src="images/icons/ic_add_a_photo_black_24dp_1x.png" alt=""></a>
                                         </li>
                                     </ul>
-
                                 </div>
-
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -695,10 +730,26 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="file-download-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn btn-close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body text-center">
 
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/jquery.min.js"></script>
+<script src="chatjs/socket.io.js"></script>
+<script src="chatjs/chat.js"></script>
 <script src="js/proper.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -710,6 +761,7 @@
 <script src="js-tree/jstree.js"></script>
 <script src="plugins/spectrum/spectrum.js"></script>
 <script src="js/canvas.js"></script>
+
 </body>
 </html>
 

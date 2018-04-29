@@ -13,8 +13,10 @@ exports.tutorTable = 'tbltutor';
 exports.getData = function (query,callback) {
     sql.connect(config, function (err) {
 
-        if (err)
+        if (err){
+            sql.close();
             return callback(false);
+        }
 
         var request = new sql.Request();
         request.query(query, function (err, recordset) {
@@ -23,9 +25,8 @@ exports.getData = function (query,callback) {
             } else {
                 return callback(recordset);
             }
-
+            sql.close();
         });
-
 
     });
 }

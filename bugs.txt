@@ -156,3 +156,8 @@ I have checked and found it is not moving anywhere. Please have a look on it.
 
 
 13. While changing color in the text input, it makes the whole sentence of same color. =>FIXEd
+
+//bugs send from whats app
+one click not working =>fixed
+color shape, text combination =>fixed
+line splittiong on equation editor =>fixed

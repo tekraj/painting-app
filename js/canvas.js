@@ -177,7 +177,7 @@ $(document).ready(function(){
         $('.js-show-equation-modal').click(function (e) {
            setTimeout(function(){
                symbolModal.modal('show');
-           },100);
+           },50);
         });
         $('.color-menu  ').mouseover(function(){
                 symbolEnabled = true;
@@ -193,14 +193,15 @@ $(document).ready(function(){
             $('#color-indicator').css({'background':color});
             $('#canvas-text-input').css('color',color);
             currentColor = color;
-            if(textHolder.text().trim().length<1){
-                textHolder.css('color',currentColor);
-            }else{
-                pasteHtmlAtCaret("<span style='color:"+currentColor+";'> </span>", textHolder[0]);
+            if(currentTool=='text'){
+                if(textHolder.text().trim().length<1){
+                    textHolder.css('color',currentColor);
+                    textHolder[0].focus();
+                }else{
+                    pasteHtmlAtCaret("<span style='color:"+currentColor+";'> </span>", textHolder[0]);
+                }
             }
-            if(!$enableTextTool.hasClass('active')){
-                $enableTextTool.click();
-            }
+
 
         });
 
@@ -318,14 +319,10 @@ $(document).ready(function(){
                 fontWeight = 'normal';
 
             }
-
-
-            dc.css({'cursor':cursor});
-            currentTool = 'none';
+            $enableTextTool.click();
             $('.option-menu').hide();
-            $('.eqEdEquation').css({'font-size':fontSize});
             setTimeout(function(){
-                $enableTextTool.click();
+                textHolder[0].focus();
             },50);
 
         });
@@ -385,31 +382,45 @@ $(document).ready(function(){
             insertSymbols(function(){
                 symbolEnabled = false;
                 $('.modal').modal('hide');
+                $('#equation-editor-wrapper').find('.mq-root-block').html('');
             });
         });
-
+        var fileDownloadModal = $('#file-download-modal');
         //clear canvas
         $('.js-clear-canvas').click(function(){
             var ans = $(this).data().ans;
             if(ans=='yes'){
-                $enableTextTool.click();
                 var href = drawingC.toDataURL("image/png");
                 $.ajax({
                     type: 'post',
-                    url: 'home/saveCanvasImage',
+                    url: 'index.php',
                     data: { imageData: href.replace('data:image/png;base64,','') },
                     success: function (response) {
-                        console.log(response);
+                        if(response){
+                            fileDownloadModal.find('.modal-body').html('<h4>Your drawing is saved. <a href="'+response+'" download>Click here to download it.</a></h4>')
+                            fileDownloadModal.modal('show');
+                        }
                     }
                 });
 
             }
+
             $('.modal').modal('hide');
             drawingCanvas.clearRect(0,0,drawingC.width,drawingC.height);
             drag =[];
+            currentColor = '#000';
+            lineSize = 2;
+            font = 'serif';
+            fontSize = 18;
+            fontStyle = 'normal';
+            textHolder.css({'font-size':fontSize,'color':currentColor,'font-style':'normal','font-weight':'normal'});
+            dc.attr({'height':parentHeight-8,'width':parentWidth-5});
+            fa.attr({'height':parentHeight-8,'width':parentWidth-5});
+            sc.attr({'height':parentHeight-8,'width':parentWidth-5});
             pencilPoints=[];
             canvasObjects = [];
             $enableTextTool.click();
+            $('#color-indicator').css('background','#000');
         });
 
         //detect shit key pressed for straight lines and squares
@@ -473,7 +484,11 @@ $(document).ready(function(){
                         textLeftCord=left;
                         textTopCord = top;
                     }
-                    textHolder[0].focus();
+                    if(isPrevTextField==false) {
+                        setTimeout(function () {
+                            textHolder[0].focus();
+                        }, 50);
+                    }
                 });
 
             }else if(currentTool=='line' || currentTool=='cube' || currentTool=='rectangle' ||currentTool=='oval' || currentTool=='cone' || currentTool=='pyramid' || currentTool=='xgraph' || currentTool=='xygraph' || currentTool=='cylinder' || currentTool=='rectangle-filled' || currentTool=='oval-filled' || currentTool=='line-sarrow' ||  currentTool=='line-darrow'){
@@ -1498,13 +1513,13 @@ $(document).ready(function(){
                 $('.sp-container').css('display','none');
                 currentColor = color.toHexString();
                 $('#color-indicator').css('background',currentColor);
-                if(textHolder.text().trim().length<1){
-                    textHolder.css('color',currentColor);
-                }else{
-                    pasteHtmlAtCaret("<span style='color:"+currentColor+";'> </span>", textHolder[0]);
-                }
-                if(!$enableTextTool.hasClass('active')){
-                    $enableTextTool.click();
+                if(currentTool=='text'){
+                    if(textHolder.text().trim().length<1){
+                        textHolder.css('color',currentColor);
+                        textHolder[0].focus();
+                    }else{
+                        pasteHtmlAtCaret("<span style='color:"+currentColor+";'> </span>", textHolder[0]);
+                    }
                 }
             }
         });
@@ -1635,7 +1650,7 @@ $(document).ready(function(){
         if( htmlString.trim().length<1)
             return callback();
 
-        htmlString = htmlString.replace(/&nbsp;/g,'');
+        htmlString = htmlString.replace(/&nbsp;/g,' ');
 
 
         var height = parseInt(textHolder.height())+20;
@@ -1713,10 +1728,21 @@ $(document).ready(function(){
     });
 
     $('#new-board').click(function () {
-        drawingCanvas.clearRect(0, 0, drawingC.width, drawingC.height);
+        drawingCanvas.clearRect(0,0,drawingC.width,drawingC.height);
+        drag =[];
+        currentColor = '#000';
+        lineSize = 2;
+        font = 'serif';
+        fontSize = 18;
+        fontStyle = 'normal';
+        textHolder.css({'font-size':fontSize,'color':currentColor,'font-style':'normal','font-weight':'normal'});
+        dc.attr({'height':parentHeight-8,'width':parentWidth-5});
+        fa.attr({'height':parentHeight-8,'width':parentWidth-5});
+        sc.attr({'height':parentHeight-8,'width':parentWidth-5});
+        pencilPoints=[];
         canvasObjects = [];
-        pencilPoints = [];
         $enableTextTool.click();
+        $('#color-indicator').css('background','#000');
     });
 
     /**
@@ -1795,7 +1821,7 @@ $(document).ready(function(){
                 drawMultipleShapes(canvasShape,false,true);
                 var dx = x2-x1,dy = y2-y1;
                 if(canvasShape.shape!=='image' && canvasShape.shape!=='image-text' && canvasShape.shape!=='line'){
-                    draggingShape.img = fakeCanvas.getImageData(draggingShape.rectArea.x1,draggingShape.rectArea.y1,dx,dy);
+                    draggingShape.img = fakeCanvas.getImageData(draggingShape.rectArea.x1,draggingShape.rectArea.y1,dx,dy+20);
                 }
                 canvasObjects.splice(i,1);//remove that objects from canvas;
                 return true;
