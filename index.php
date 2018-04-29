@@ -749,7 +749,6 @@ function get_client_ip() {
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/jquery.min.js"></script>
 <script src="chatjs/socket.io.js"></script>
-<script src="chatjs/chat.js"></script>
 <script src="js/proper.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>

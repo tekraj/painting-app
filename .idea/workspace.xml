@@ -5,24 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5ca4867-5c4c-489f-a662-b597cd44f06b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chat-application/socket/chat.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatjs/chat.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatjs/socket.io.dev.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatjs/socket.io.dev.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatjs/socket.io.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatjs/socket.io.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatjs/socket.io.slim.dev.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatjs/socket.io.slim.dev.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatjs/socket.io.slim.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatjs/socket.io.slim.js.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/chatjs/chat.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bugs.txt" afterPath="$PROJECT_DIR$/bugs.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat-application/package.json" afterPath="$PROJECT_DIR$/chat-application/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat-application/repositories/db.js" afterPath="$PROJECT_DIR$/chat-application/repositories/db.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat-application/routes/route.js" afterPath="$PROJECT_DIR$/chat-application/routes/route.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat-application/server.js" afterPath="$PROJECT_DIR$/chat-application/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/canvas.js" afterPath="$PROJECT_DIR$/js/canvas.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,12 +30,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="chat.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
+      <file leaf-file-name="canvas.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/canvas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-              <folding />
+            <state relative-caret-position="283">
+              <caret line="1519" column="86" lean-forward="false" selection-start-line="1519" selection-start-column="86" selection-end-line="1519" selection-end-column="86" />
+              <folding>
+                <element signature="e#851#1404#0" expanded="false" />
+                <element signature="e#67800#70246#0" expanded="false" />
+                <element signature="e#77799#78625#0" expanded="false" />
+                <element signature="e#79461#79613#0" expanded="false" />
+                <element signature="e#79828#80086#0" expanded="false" />
+                <element signature="e#80264#80425#0" expanded="false" />
+                <element signature="e#80461#81358#0" expanded="false" />
+                <element signature="e#81405#82117#0" expanded="false" />
+                <marker date="1525023120625" expanded="true" signature="5340:5346" ph="..." />
+                <marker date="1525023120625" expanded="true" signature="5340:5363" ph="..." />
+                <marker date="1525023120625" expanded="true" signature="5365:5371" ph=" " />
+                <marker date="1525023120625" expanded="true" signature="6057:6063" ph="..." />
+                <marker date="1525023120625" expanded="true" signature="6081:6087" ph=" " />
+                <marker date="1525023120625" expanded="true" signature="6448:6454" ph="..." />
+                <marker date="1525023120625" expanded="true" signature="7647:7670" ph="..." />
+                <marker date="1525023120625" expanded="true" signature="7672:7678" ph=" " />
+                <marker date="1525023120625" expanded="true" signature="58319:58342" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15771">
+              <caret line="751" column="0" lean-forward="false" selection-start-line="751" selection-start-column="0" selection-end-line="751" selection-end-column="0" />
+              <folding>
+                <marker date="1525020512585" expanded="true" signature="1098:1149" ph="..." />
+                <marker date="1525020512585" expanded="true" signature="2516:2532" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,9 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dc.mousedown</find>
-      <find>spectrum</find>
-      <find>canvas</find>
       <find>mousedown</find>
       <find>saveCanvas</find>
       <find>saveCanvasOj</find>
@@ -89,6 +102,9 @@
       <find>download it</find>
       <find>participant</find>
       <find>chat-room</find>
+      <find>function saveCanvasObjects</find>
+      <find>symbolModal</find>
+      <find>spectrum</find>
     </findStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs\painting-app\equation-editor</dir>
@@ -122,17 +138,17 @@
         <option value="$PROJECT_DIR$/equation-editor/mathquill.min.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/bugs.txt" />
-        <option value="$PROJECT_DIR$/js/canvas.js" />
         <option value="$PROJECT_DIR$/chat-application/repositories/auth.js" />
         <option value="$PROJECT_DIR$/chat-application/repositories/db.js" />
         <option value="$PROJECT_DIR$/chat-application/routes/route.js" />
         <option value="$PROJECT_DIR$/chat-application/server.js" />
         <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/chat-application/socket/chat.js" />
         <option value="D:/nodejs/chat-app/.gitignore" />
         <option value="$PROJECT_DIR$/chat-application/package.json" />
         <option value="$PROJECT_DIR$/chatjs/chat.js" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/js/canvas.js" />
       </list>
     </option>
   </component>
@@ -276,12 +292,12 @@
       <workItem from="1524805657140" duration="1929000" />
       <workItem from="1524841851217" duration="21560000" />
       <workItem from="1524979428440" duration="19414000" />
-      <workItem from="1525005206954" duration="4748000" />
+      <workItem from="1525005206954" duration="7078000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="366360000" />
+    <option name="totallyTimeSpent" value="368690000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -436,6 +452,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
           <caret line="10" column="19340" lean-forward="true" selection-start-line="10" selection-start-column="19340" selection-end-line="10" selection-end-column="19340" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -464,21 +481,6 @@
     <entry file="file://$PROJECT_DIR$/uploads/5ae5660f16685canvas_image.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/canvas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="913">
-          <caret line="401" column="25" lean-forward="true" selection-start-line="401" selection-start-column="25" selection-end-line="401" selection-end-column="25" />
-          <folding>
-            <element signature="e#851#1404#0" expanded="false" />
-            <marker date="1524984939452" expanded="true" signature="5340:5346" ph="..." />
-            <marker date="1524984939452" expanded="true" signature="6051:6057" ph="..." />
-            <marker date="1524984939452" expanded="true" signature="6437:6443" ph="..." />
-            <marker date="1524984939452" expanded="true" signature="7659:7682" ph="..." />
-            <marker date="1524984939452" expanded="true" signature="58326:58349" ph="..." />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chat-application/repositories/db.js">
@@ -561,17 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11655">
-          <caret line="555" column="0" lean-forward="false" selection-start-line="555" selection-start-column="0" selection-end-line="555" selection-end-column="0" />
-          <folding>
-            <marker date="1525002574266" expanded="true" signature="1098:1149" ph="..." />
-            <marker date="1525002574266" expanded="true" signature="2516:2532" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -613,9 +604,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15771">
+          <caret line="751" column="0" lean-forward="false" selection-start-line="751" selection-start-column="0" selection-end-line="751" selection-end-column="0" />
+          <folding>
+            <marker date="1525020512585" expanded="true" signature="1098:1149" ph="..." />
+            <marker date="1525020512585" expanded="true" signature="2516:2532" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="1519" column="86" lean-forward="false" selection-start-line="1519" selection-start-column="86" selection-end-line="1519" selection-end-column="86" />
+          <folding>
+            <element signature="e#851#1404#0" expanded="false" />
+            <element signature="e#67800#70246#0" expanded="false" />
+            <element signature="e#77799#78625#0" expanded="false" />
+            <element signature="e#79461#79613#0" expanded="false" />
+            <element signature="e#79828#80086#0" expanded="false" />
+            <element signature="e#80264#80425#0" expanded="false" />
+            <element signature="e#80461#81358#0" expanded="false" />
+            <element signature="e#81405#82117#0" expanded="false" />
+            <marker date="1525023120625" expanded="true" signature="5340:5346" ph="..." />
+            <marker date="1525023120625" expanded="true" signature="5340:5363" ph="..." />
+            <marker date="1525023120625" expanded="true" signature="5365:5371" ph=" " />
+            <marker date="1525023120625" expanded="true" signature="6057:6063" ph="..." />
+            <marker date="1525023120625" expanded="true" signature="6081:6087" ph=" " />
+            <marker date="1525023120625" expanded="true" signature="6448:6454" ph="..." />
+            <marker date="1525023120625" expanded="true" signature="7647:7670" ph="..." />
+            <marker date="1525023120625" expanded="true" signature="7672:7678" ph=" " />
+            <marker date="1525023120625" expanded="true" signature="58319:58342" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
