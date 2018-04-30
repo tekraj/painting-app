@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d5ca4867-5c4c-489f-a662-b597cd44f06b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/equation-editor/matheditor.js" afterPath="$PROJECT_DIR$/equation-editor/matheditor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/equation-editor/mathquill.css" afterPath="$PROJECT_DIR$/equation-editor/mathquill.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/canvas.js" afterPath="$PROJECT_DIR$/js/canvas.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,29 +32,29 @@
       <file leaf-file-name="canvas.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/canvas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="182" column="11" lean-forward="true" selection-start-line="182" selection-start-column="11" selection-end-line="182" selection-end-column="11" />
+            <state relative-caret-position="84">
+              <caret line="142" column="10" lean-forward="true" selection-start-line="142" selection-start-column="10" selection-end-line="142" selection-end-column="10" />
               <folding>
                 <element signature="e#851#1404#0" expanded="false" />
-                <element signature="e#7218#7911#0" expanded="false" />
-                <element signature="e#19582#24805#0" expanded="false" />
-                <element signature="e#67966#70412#0" expanded="false" />
-                <element signature="e#77965#78791#0" expanded="false" />
-                <element signature="e#79627#79779#0" expanded="false" />
-                <element signature="e#79994#80252#0" expanded="false" />
-                <element signature="e#80430#80591#0" expanded="false" />
-                <element signature="e#80627#81524#0" expanded="false" />
-                <element signature="e#81571#82283#0" expanded="false" />
-                <marker date="1525027517900" expanded="true" signature="5340:5346" ph="..." />
-                <marker date="1525027517900" expanded="true" signature="5340:5363" ph="..." />
-                <marker date="1525027517900" expanded="true" signature="5365:5371" ph=" " />
-                <marker date="1525027517900" expanded="true" signature="6057:6063" ph="..." />
-                <marker date="1525027517900" expanded="true" signature="6081:6087" ph=" " />
-                <marker date="1525027517900" expanded="true" signature="6474:6480" ph="..." />
-                <marker date="1525027517900" expanded="true" signature="7811:7834" ph="..." />
-                <marker date="1525027517900" expanded="true" signature="7836:7842" ph=" " />
-                <marker date="1525027517900" expanded="true" signature="58488:58511" ph="..." />
-                <marker date="1525027517900" expanded="true" signature="58513:58519" ph=" " />
+                <element signature="e#7213#7906#0" expanded="false" />
+                <element signature="e#19577#24800#0" expanded="false" />
+                <element signature="e#67740#70186#0" expanded="false" />
+                <element signature="e#77739#78565#0" expanded="false" />
+                <element signature="e#79401#79553#0" expanded="false" />
+                <element signature="e#79768#80026#0" expanded="false" />
+                <element signature="e#80204#80365#0" expanded="false" />
+                <element signature="e#80401#81298#0" expanded="false" />
+                <element signature="e#81345#82057#0" expanded="false" />
+                <marker date="1525028564123" expanded="true" signature="5340:5346" ph="..." />
+                <marker date="1525028564123" expanded="true" signature="5340:5363" ph="..." />
+                <marker date="1525028564123" expanded="true" signature="5365:5371" ph=" " />
+                <marker date="1525028564123" expanded="true" signature="6057:6063" ph="..." />
+                <marker date="1525028564123" expanded="true" signature="6081:6087" ph=" " />
+                <marker date="1525028564123" expanded="true" signature="6474:6480" ph="..." />
+                <marker date="1525028564123" expanded="true" signature="7806:7829" ph="..." />
+                <marker date="1525028564123" expanded="true" signature="7831:7837" ph=" " />
+                <marker date="1525028564123" expanded="true" signature="58483:58506" ph="..." />
+                <marker date="1525028564123" expanded="true" signature="58508:58514" ph=" " />
               </folding>
             </state>
           </provider>
@@ -65,8 +63,8 @@
       <file leaf-file-name="mathquill.min.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/equation-editor/mathquill.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="10" column="19340" lean-forward="true" selection-start-line="10" selection-start-column="19340" selection-end-line="10" selection-end-column="19340" />
+            <state relative-caret-position="210">
+              <caret line="10" column="19340" lean-forward="false" selection-start-line="10" selection-start-column="19340" selection-end-line="10" selection-end-column="19340" />
               <folding />
             </state>
           </provider>
@@ -75,11 +73,11 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="53" column="64" lean-forward="false" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="64" />
+            <state relative-caret-position="13944">
+              <caret line="664" column="30" lean-forward="false" selection-start-line="664" selection-start-column="30" selection-end-line="664" selection-end-column="30" />
               <folding>
-                <marker date="1525026950200" expanded="true" signature="1098:1149" ph="..." />
-                <marker date="1525026950200" expanded="true" signature="2516:2532" ph="..." />
+                <marker date="1525028457299" expanded="true" signature="1098:1149" ph="..." />
+                <marker date="1525028457299" expanded="true" signature="2516:2532" ph="..." />
               </folding>
             </state>
           </provider>
@@ -88,8 +86,8 @@
       <file leaf-file-name="mathquill.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/equation-editor/mathquill.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="129" column="1" lean-forward="true" selection-start-line="129" selection-start-column="1" selection-end-line="129" selection-end-column="1" />
+            <state relative-caret-position="2709">
+              <caret line="129" column="1" lean-forward="false" selection-start-line="129" selection-start-column="1" selection-end-line="129" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -98,8 +96,8 @@
       <file leaf-file-name="matheditor.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/equation-editor/matheditor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="368" column="0" lean-forward="true" selection-start-line="368" selection-start-column="0" selection-end-line="368" selection-end-column="0" />
+            <state relative-caret-position="7728">
+              <caret line="368" column="0" lean-forward="false" selection-start-line="368" selection-start-column="0" selection-end-line="368" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -108,7 +106,7 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
+            <state relative-caret-position="3843">
               <caret line="183" column="1" lean-forward="false" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
               <folding />
             </state>
@@ -119,7 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>drawLine</find>
       <find>insertSYmobl</find>
       <find>&lt;var</find>
       <find>editable</find>
@@ -131,7 +128,6 @@
       <find>change-font</find>
       <find>dc.</find>
       <find>drawShapeAgain</find>
-      <find>toLatex</find>
       <find>clear</find>
       <find>new-bo</find>
       <find>clear-cana</find>
@@ -149,6 +145,8 @@
       <find>insertSymbols</find>
       <find>focus</find>
       <find>symbolModal</find>
+      <find>toLatex</find>
+      <find>bs.moda</find>
     </findStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs\painting-app\equation-editor</dir>
@@ -190,9 +188,9 @@
         <option value="$PROJECT_DIR$/chat-application/package.json" />
         <option value="$PROJECT_DIR$/chatjs/chat.js" />
         <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/equation-editor/mathquill.css" />
         <option value="$PROJECT_DIR$/equation-editor/matheditor.js" />
+        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/js/canvas.js" />
       </list>
     </option>
@@ -207,10 +205,11 @@
     <handled-path value="$PROJECT_DIR$/chat-application/node_modules" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-14" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
     <option name="width" value="1346" />
-    <option name="height" value="1038" />
+    <option name="height" value="688" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -260,13 +259,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../nic" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
   </component>
   <component name="RecentsManager">
@@ -347,18 +346,18 @@
       <workItem from="1524805657140" duration="1929000" />
       <workItem from="1524841851217" duration="21560000" />
       <workItem from="1524979428440" duration="19414000" />
-      <workItem from="1525005206954" duration="11328000" />
+      <workItem from="1525005206954" duration="12433000" />
+      <workItem from="1525076242441" duration="1829000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="372940000" />
+    <option name="totallyTimeSpent" value="375874000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32721713" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33409786" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295107" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -520,7 +519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -528,11 +526,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="119" column="58" lean-forward="false" selection-start-line="119" selection-start-column="58" selection-end-line="119" selection-end-column="81" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <marker date="1524682890309" expanded="true" signature="2426:2433" ph="..." />
-            <marker date="1524682890309" expanded="true" signature="5971:6000" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -540,7 +533,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="1" column="5" lean-forward="false" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -569,7 +561,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -584,7 +575,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -599,7 +589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -607,7 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -615,7 +603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -623,86 +610,78 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/chatjs/chat.js" />
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
+        <state relative-caret-position="3843">
           <caret line="183" column="1" lean-forward="false" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="53" column="64" lean-forward="false" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="64" />
-          <folding>
-            <marker date="1525026950200" expanded="true" signature="1098:1149" ph="..." />
-            <marker date="1525026950200" expanded="true" signature="2516:2532" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/equation-editor/mathquill.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="10" column="19340" lean-forward="true" selection-start-line="10" selection-start-column="19340" selection-end-line="10" selection-end-column="19340" />
+        <state relative-caret-position="210">
+          <caret line="10" column="19340" lean-forward="false" selection-start-line="10" selection-start-column="19340" selection-end-line="10" selection-end-column="19340" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/equation-editor/mathquill.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="129" column="1" lean-forward="true" selection-start-line="129" selection-start-column="1" selection-end-line="129" selection-end-column="1" />
+        <state relative-caret-position="2709">
+          <caret line="129" column="1" lean-forward="false" selection-start-line="129" selection-start-column="1" selection-end-line="129" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/equation-editor/matheditor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="368" column="0" lean-forward="true" selection-start-line="368" selection-start-column="0" selection-end-line="368" selection-end-column="0" />
+        <state relative-caret-position="7728">
+          <caret line="368" column="0" lean-forward="false" selection-start-line="368" selection-start-column="0" selection-end-line="368" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13944">
+          <caret line="664" column="30" lean-forward="false" selection-start-line="664" selection-start-column="30" selection-end-line="664" selection-end-column="30" />
+          <folding>
+            <marker date="1525028457299" expanded="true" signature="1098:1149" ph="..." />
+            <marker date="1525028457299" expanded="true" signature="2516:2532" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/canvas.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="182" column="11" lean-forward="true" selection-start-line="182" selection-start-column="11" selection-end-line="182" selection-end-column="11" />
+        <state relative-caret-position="84">
+          <caret line="142" column="10" lean-forward="true" selection-start-line="142" selection-start-column="10" selection-end-line="142" selection-end-column="10" />
           <folding>
             <element signature="e#851#1404#0" expanded="false" />
-            <element signature="e#7218#7911#0" expanded="false" />
-            <element signature="e#19582#24805#0" expanded="false" />
-            <element signature="e#67966#70412#0" expanded="false" />
-            <element signature="e#77965#78791#0" expanded="false" />
-            <element signature="e#79627#79779#0" expanded="false" />
-            <element signature="e#79994#80252#0" expanded="false" />
-            <element signature="e#80430#80591#0" expanded="false" />
-            <element signature="e#80627#81524#0" expanded="false" />
-            <element signature="e#81571#82283#0" expanded="false" />
-            <marker date="1525027517900" expanded="true" signature="5340:5346" ph="..." />
-            <marker date="1525027517900" expanded="true" signature="5340:5363" ph="..." />
-            <marker date="1525027517900" expanded="true" signature="5365:5371" ph=" " />
-            <marker date="1525027517900" expanded="true" signature="6057:6063" ph="..." />
-            <marker date="1525027517900" expanded="true" signature="6081:6087" ph=" " />
-            <marker date="1525027517900" expanded="true" signature="6474:6480" ph="..." />
-            <marker date="1525027517900" expanded="true" signature="7811:7834" ph="..." />
-            <marker date="1525027517900" expanded="true" signature="7836:7842" ph=" " />
-            <marker date="1525027517900" expanded="true" signature="58488:58511" ph="..." />
-            <marker date="1525027517900" expanded="true" signature="58513:58519" ph=" " />
+            <element signature="e#7213#7906#0" expanded="false" />
+            <element signature="e#19577#24800#0" expanded="false" />
+            <element signature="e#67740#70186#0" expanded="false" />
+            <element signature="e#77739#78565#0" expanded="false" />
+            <element signature="e#79401#79553#0" expanded="false" />
+            <element signature="e#79768#80026#0" expanded="false" />
+            <element signature="e#80204#80365#0" expanded="false" />
+            <element signature="e#80401#81298#0" expanded="false" />
+            <element signature="e#81345#82057#0" expanded="false" />
+            <marker date="1525028564123" expanded="true" signature="5340:5346" ph="..." />
+            <marker date="1525028564123" expanded="true" signature="5340:5363" ph="..." />
+            <marker date="1525028564123" expanded="true" signature="5365:5371" ph=" " />
+            <marker date="1525028564123" expanded="true" signature="6057:6063" ph="..." />
+            <marker date="1525028564123" expanded="true" signature="6081:6087" ph=" " />
+            <marker date="1525028564123" expanded="true" signature="6474:6480" ph="..." />
+            <marker date="1525028564123" expanded="true" signature="7806:7829" ph="..." />
+            <marker date="1525028564123" expanded="true" signature="7831:7837" ph=" " />
+            <marker date="1525028564123" expanded="true" signature="58483:58506" ph="..." />
+            <marker date="1525028564123" expanded="true" signature="58508:58514" ph=" " />
           </folding>
         </state>
       </provider>

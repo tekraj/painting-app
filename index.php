@@ -661,7 +661,7 @@ function get_client_ip() {
 
 <div style="display: none;" id="canvas-image-holder">
 </div>
-<div class="modal fade" id="symbol-modal" >
+<div class="modal" id="symbol-modal" >
     <div class="modal-dialog">
         <div class="modal-container">
             <div class="modal-content">

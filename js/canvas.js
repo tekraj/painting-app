@@ -177,9 +177,9 @@ $(document).ready(function(){
         $('.js-show-equation-modal').click(function (e) {
             e.preventDefault();
             symbolModal.modal('show');
-        });
-        symbolModal.on('shown.bs.modal',function(){
-            $('#equation-editor-wrapper').find('.mq-root-block').click();
+            setTimeout(function(){
+                $('#equation-editor-wrapper').find('.mq-root-block').click();
+            },100);
         });
         $('.color-menu  ').mouseover(function(){
                 symbolEnabled = true;
@@ -1594,10 +1594,6 @@ $(document).ready(function(){
             .then(function (dataUrl) {
                 var img = new Image();
                     img.onload = function () {
-                        img.crossOrigin = "Anonymous";
-                        //var actualWidth = img.width;
-                        // var actualHeight = img.height;
-                        // var factor = fontSize/35;
                         var height =  img.height;
                         var width = img.width;
                         var canvasHeight = drawingC.height;
