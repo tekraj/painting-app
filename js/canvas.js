@@ -476,7 +476,7 @@ $(document).ready(function(){
                     if(isPrevTextField!==false){
                         textHolder.css(isPrevTextField.cssObj).html(isPrevTextField.html);
                         textLeftCord=isPrevTextField.left;
-                        textTopCord = isPrevTextField.top;
+                        textTopCord = isPrevTextField.top-2;
                         textHolder.css({left:textLeftCord,top:textTopCord});
                     }else{
                         textHolder.css({left:left,top:top});
@@ -1622,7 +1622,7 @@ $(document).ready(function(){
                         var pointY = lineStartPoint.y - height / 3;
 
                         drawingCanvas.drawImage(img,pointX ,pointY+10, width, height);
-                        saveCanvasObjects('image',{startX:pointX,startY:pointY+10,endX:pointX+width+2,endY:pointY-2+height,image:dataUrl});
+                        saveCanvasObjects('image',{startX:pointX,startY:pointY,endX:pointX+width+2,endY:pointY-2+height,image:dataUrl});
                         return callback();
                     };
                 //img.src = 'http://www.wiris.net/demo/editor/render?format=svg&latex='+latex;
@@ -1931,7 +1931,13 @@ $(document).ready(function(){
             var ctx = noAnimation ? drawingCanvas : fakeCanvas;
             var img = new Image();
             img.onload = function() {
-                ctx.drawImage(img, shapeData.startX+10,shapeData.startY+10);
+                var l = shapeData.textLeftCord;
+                var t = shapeData.textTopCord;
+                if(shape=='image'){
+                    l = shapeData.startX;
+                    t = shapeData.startY;
+                }
+                ctx.drawImage(img, l,t);
             };
             img.src = shapeData.image;
         }
