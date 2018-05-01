@@ -161,7 +161,7 @@ $(document).ready(function(){
         $('.js-science-symbol').click(function(e){
             e.preventDefault();
             if(!$enableTextTool.hasClass('active')){
-                alert('Please select text and click anywhere in the board.')
+                alert('Please select text first.')
                 return false;
             }
 
@@ -177,9 +177,7 @@ $(document).ready(function(){
         $('.js-show-equation-modal').click(function (e) {
             e.preventDefault();
             symbolModal.modal('show');
-            setTimeout(function(){
-                $('#equation-editor-wrapper').find('.mq-root-block').click();
-            },100);
+            $('#equation-editor-wrapper').find(".mq-root-block").append('<span>&nbsp;</span>').click();
         });
         $('.color-menu  ').mouseover(function(){
                 symbolEnabled = true;
@@ -472,7 +470,6 @@ $(document).ready(function(){
                 writeTextDivToCanvas(textLeftCord,textTopCord,function (){
                     textHolder.css({'color':currentColor,'font-size':fontSize,'font-family':font,'font-weight':fontWeight,'font-style': fontStyle}).html('');
                     textHolder.show();
-
                     $enableTextTool.addClass('active');
                     dc.css('cursor','url(images/text.png), auto');
                     $enableTextTool.addClass('border');
@@ -480,8 +477,8 @@ $(document).ready(function(){
                     if(isPrevTextField!==false){
                         textHolder.css(isPrevTextField.cssObj).html(isPrevTextField.html);
                         textLeftCord=isPrevTextField.left;
-                        textTopCord = isPrevTextField.top-1;
-                        textHolder.css({left:textLeftCord,top:textTopCord-1});
+                        textTopCord = isPrevTextField.top-2;
+                        textHolder.css({left:textLeftCord,top:textTopCord});
                     }else{
                         textHolder.css({left:left,top:top});
                         textLeftCord=left;
@@ -1590,12 +1587,16 @@ $(document).ready(function(){
     function insertSymbols(callback){
         var latex = mathEditor.getLatex();
         //$.get(',function(response){
-        domtoimage.toPng($('#equation-editor-wrapper .mq-root-block')[0])
+        domtoimage.toSvg($('#equation-editor-wrapper .mq-root-block')[0])
             .then(function (dataUrl) {
                 var img = new Image();
                     img.onload = function () {
+                        img.crossOrigin = "Anonymous";
+                        //var actualWidth = img.width;
+                        // var actualHeight = img.height;
+                        // var factor = fontSize/35;
                         var height =  img.height;
-                        var width = img.width;
+                        var width = img.width+20;
                         var canvasHeight = drawingC.height;
                         var canvasWidth = drawingC.width;
                         var left = lineStartPoint.x+width;
@@ -1619,10 +1620,10 @@ $(document).ready(function(){
                             drawingCanvas.drawImage(rC,0,0);
                         }
                         var  pointX = lineStartPoint.x + (textDivWidth-30);
-                        var pointY = lineStartPoint.y - height / 3;
+                        var pointY = lineStartPoint.y - height / 3 +10;
 
-                        drawingCanvas.drawImage(img,pointX ,pointY+10, width, height);
-                        saveCanvasObjects('image',{startX:pointX,startY:pointY+10,endX:pointX+width+2,endY:pointY-2+height,image:dataUrl});
+                        drawingCanvas.drawImage(img,pointX ,pointY, width, height);
+                        saveCanvasObjects('image',{startX:pointX,startY:pointY,endX:pointX+width+2,endY:pointY-2+height,image:dataUrl});
                         return callback();
                     };
                 //img.src = 'http://www.wiris.net/demo/editor/render?format=svg&latex='+latex;
@@ -1865,9 +1866,15 @@ $(document).ready(function(){
         fakeCanvas.clearRect(0,0,fakeCanvasMaxLenght,fakeCanvasMaxLenght);
 
         if(draggingShape.shape=='image' || draggingShape.shape=='image-text'){
+            var l = draggingShape.data.textLeftCord;
+            var t = draggingShape.data.textTopCord;
+            if(draggingShape.shape=='image'){
+                l = draggingShape.data.startX;
+                t = draggingShape.data.startY;
+            }
             var img = new Image();
-            img.onload =function (){
-                fakeCanvas.drawImage(img,draggingShape.rectArea.x1+dragX+15,draggingShape.rectArea.y1+dragY+15)
+            img.onload = function() {
+                fakeCanvas.drawImage(img, l+dragX,t+dragY);
             };
             img.src = draggingShape.data.image;
         }else if(draggingShape.shape=='line'){
@@ -1877,8 +1884,6 @@ $(document).ready(function(){
         }
         dragDiv.css({left:draggingShape.rectArea.x1+dragX-10,top:draggingShape.rectArea.y1+dragY-10,width:dx+30,height:dy+30});
 
-        var dx =  draggingShape.rectArea.x2-draggingShape.rectArea.x1;
-        var dy =  draggingShape.rectArea.y2-draggingShape.rectArea.y1;
     }
 
     /**
@@ -1929,9 +1934,16 @@ $(document).ready(function(){
             drawLineAnimation(shapeData.startX,shapeData.startY,shapeData.endX,shapeData.endY,shapeData.color,shapeData.lineSize,noAnimation,'double');
         }else if(!isFirst && (shape=='image' || shape=='image-text')){
             var ctx = noAnimation ? drawingCanvas : fakeCanvas;
+            var l = shapeData.textLeftCord;
+            var t = shapeData.textTopCord;
+            if(shape=='image'){
+                l = shapeData.startX;
+                t = shapeData.startY;
+            }
             var img = new Image();
             img.onload = function() {
-                ctx.drawImage(img, shapeData.startX+10,shapeData.startY+10);
+
+                ctx.drawImage(img, l,t);
             };
             img.src = shapeData.image;
         }
@@ -1970,14 +1982,13 @@ $(document).ready(function(){
         }else{
             if(shape==='image-text'){
                 draggingShape.data.textLeftCord = draggingShape.data.textLeftCord+dx;
-                draggingShape.data.textTopCord = draggingShape.data.textTopCord+dx;
+                draggingShape.data.textTopCord = draggingShape.data.textTopCord+dy;
             }
             draggingShape.data.startX =  draggingShape.data.startX+dx;
             draggingShape.data.startY =  draggingShape.data.startY+dy;
             draggingShape.data.endX =  draggingShape.data.endX+dx;
             draggingShape.data.endY =  draggingShape.data.endY+dy;
             drawMultipleShapes(draggingShape,true);
-
         }
         canvasObjects.push(draggingShape);
         draggingShape = {};

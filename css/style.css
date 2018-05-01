@@ -181,6 +181,11 @@ body {
     height: 33px;
     margin-right: 2px;
     margin-bottom: 2px;
+    border-radius:3px;
+}
+.symbol-dropdown span:hover{
+    background: #2196F3;
+    color: #fff;
 }
 .power-dropdown .x-value-sub, .power-dropdown .x-value-sup {
     display: inline-block;
@@ -190,7 +195,7 @@ body {
 .power-dropdown input{display: inline-block;width:40px;position: absolute;right:15px;}
 .power-dropdown .y-value-sub{bottom:15px;}
 .power-dropdown .x-value-sub{padding:5px 30px 30px 5px;}
-#text-holder{position:absolute;left:0;top:0;width:auto;height:auto;min-width:50px;min-height:25px;outline:none!important;}
+#text-holder{position:absolute;left:0;top:0;width:auto;height:auto;min-width:50px;min-height:25px;outline:none!important;margin:0;padding:0;}
 #text-holder p{margin:0;padding:0;line-height: normal;}
 
 .shape-menu li{display: inline-block;}
