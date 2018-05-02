@@ -166,27 +166,12 @@ body {
 .outerTab.active a, .outerTab.active a:hover{background:#fff;}
 #tab-content-top{background:#fff;}
 .symbol-dropdown {
-    width: 600px;
+    width: 450px;
     bottom: 0;
     top: initial;
 }
-.symbol-dropdown li{width:36px;float:left;}
-.symbol-dropdown span {
-    font-size: 20px!important;
-    cursor: pointer;
-    padding: 0px 0px;
-    border: 1px solid #ccc;
-    width: 90%;
-    display: inline-block;
-    height: 33px;
-    margin-right: 2px;
-    margin-bottom: 2px;
-    border-radius:3px;
-}
-.symbol-dropdown span:hover{
-    background: #2196F3;
-    color: #fff;
-}
+.symbol-dropdown li{float:left;margin-right:2px;}
+
 .power-dropdown .x-value-sub, .power-dropdown .x-value-sup {
     display: inline-block;
     font-size: 30px;
@@ -353,7 +338,7 @@ body {
     width: auto!important;
     max-width: 100%!important;
 }
-.mq-cursor{position:absolute!important;}
+.mq-cursor{position:absolute!important;margin-top:5px;}
 .mq-sqrt-prefix{transform:none!important;}
 
 #online-users{list-style: none;padding:0;}
@@ -398,3 +383,65 @@ body {
     color:#a8a8a8;
 }
 .chat-card .header{padding:10px 20px;}
+
+.symbol-dropdown .btn{
+    position:relative;
+    width:29px;
+    height:29px;
+    line-height: 29px;
+}
+.symbol-dropdown .btn:before {
+    content: '';
+    background-color: aliceblue;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-transform: scale(0.001, 0.001);
+    transform: scale(0.001, 0.001);
+}
+.symbol-dropdown .btn:focus {
+    outline: 0;
+    color: #fff!important;
+}
+.symbol-dropdown .btn:focus:before {
+    -webkit-animation: effect_dylan 0.8s ease-out;
+    animation: effect_dylan 0.8s ease-out;
+}
+@-webkit-keyframes effect_dylan {
+    50% {
+        -webkit-transform: scale(1,1);
+        transform: scale(3.5, 3.5);
+        opacity: 0;
+    }
+    99% {
+        -webkit-transform: scale(0.001, 0.001);
+        transform: scale(0.001, 0.001);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: scale(0.001, 0.001);
+        transform: scale(0.001, 0.001);
+        opacity: 1;
+    }
+}
+@keyframes effect_dylan {
+    50% {
+        -webkit-transform: scale(3.5, 3.5);
+        transform: scale(3.5, 3.5);
+        opacity: 0;
+    }
+    99% {
+        -webkit-transform: scale(0.001, 0.001);
+        transform: scale(0.001, 0.001);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: scale(0.001, 0.001);
+        transform: scale(0.001, 0.001);
+        opacity: 1;
+    }
+}
+

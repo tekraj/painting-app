@@ -176,8 +176,15 @@ $(document).ready(function(){
         var symbolModal = $('#symbol-modal');
         $('.js-show-equation-modal').click(function (e) {
             e.preventDefault();
-            symbolModal.modal('show');
-            $('#equation-editor-wrapper').find(".mq-root-block").append('<span>&nbsp;</span>').click();
+            writeTextDivToCanvas(textLeftCord,textTopCord,function(){
+                textHolder.html('');
+                textHolder.hide();
+                symbolModal.modal('show');
+                setTimeout(function(){
+                    $('#equation-editor-wrapper').find(".mq-root-block").append('<span>&nbsp;</span>').click();
+                },100);
+            });
+
         });
         $('.color-menu  ').mouseover(function(){
                 symbolEnabled = true;
@@ -402,7 +409,6 @@ $(document).ready(function(){
                         }
                     }
                 });
-
             }
 
             $('.modal').modal('hide');
@@ -468,8 +474,9 @@ $(document).ready(function(){
             }else if( currentTool==='text'){
                 textEnabled = true;
                 writeTextDivToCanvas(textLeftCord,textTopCord,function (){
-                    textHolder.css({'color':currentColor,'font-size':fontSize,'font-family':font,'font-weight':fontWeight,'font-style': fontStyle}).html('');
                     textHolder.show();
+                    console.log(currentColor);
+                    textHolder.css({'color':currentColor,'font-size':fontSize,'font-family':font,'font-weight':fontWeight,'font-style': fontStyle}).html('');
                     $enableTextTool.addClass('active');
                     dc.css('cursor','url(images/text.png), auto');
                     $enableTextTool.addClass('border');
@@ -1693,7 +1700,7 @@ $(document).ready(function(){
                 drawingCanvas.drawImage(rC,0,0);
             }
             drawingCanvas.drawImage(img, x,y+2);
-            var cssObj = {'color':currentColor,'font-size':fontSize,'font-family':font,'font-weight':fontWeight,'font-style': fontStyle};
+            var cssObj = {'color':textHolder.css('color'),'font-size':textHolder.css('font-size'),'font-family':textHolder.css('font-family'),'font-weight':textHolder.css('font-weight'),'font-style': textHolder.css('font-style')};
             saveCanvasObjects('image-text',{textLeftCord:x,textTopCord:y+2,startX:x-10,startY:y-10,endX:x+img.width+2,endY:y-40+img.height,image:"data:image/svg+xml," + data,html:textHolder.html(),cssObj:cssObj});
             return callback();
         };

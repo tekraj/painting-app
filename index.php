@@ -201,7 +201,7 @@ function get_client_ip() {
                         <div class="col-sm-5">
                             <h5>Font</h5>
                             <ul>
-                                <li><a href="#" class="js-font active" data-font="sefif">Times New Roman</a></li>
+                                <li><a href="#" class="js-font active" data-font="serif">Times New Roman</a></li>
                                 <li><a href="#" class="js-font " data-font="arial">Arial</a></li>
                                 <li><a href="#" class="js-font " data-font="monospace">Courier New</a></li>
                             </ul>
@@ -411,73 +411,73 @@ function get_client_ip() {
                     <img src="images/science-w.png" style="width: 42px;">
                 </a>
                 <ul class="option-menu symbol-dropdown" style="display:none;">
-                    <li> <span class="js-science-symbol" data-symbol=":">:</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="≤">≤</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="≥">≥</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="◦">◦</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="≈">≈</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="∈">∈</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="×">×</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="±">±</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="∧">∧</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="∨">∨</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="≡">≡</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="≅">≅</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="≠">≠</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="∼">∼</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="∝">∝</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="≺">≺</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="⪯">⪯</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="⊂">⊂</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="⊆">⊆</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="≻">≻</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="⪰">⪰</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="⊥">⊥</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="∣">∣</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="∥">∥</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="∂">∂</span></li>
-                    <li> <span class="js-science-symbol" data-symbol="∞">∞</span></li>
-                    <li><span class="js-science-symbol" data-symbol="Γ">Γ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="Δ">Δ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="Θ">Θ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="Λ">Λ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="Ξ">Ξ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="Π">Π</span></li>
-                    <li><span class="js-science-symbol" data-symbol="Σ">Σ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="Υ">Υ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="Φ">Φ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="Ψ">Ψ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="Ω">Ω</span></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol=":">:</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≤">≤</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≥">≥</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="◦">◦</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≈">≈</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∈">∈</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="×">×</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="±">±</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∧">∧</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∨">∨</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≡">≡</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≅">≅</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≠">≠</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∼">∼</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∝">∝</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≺">≺</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⪯">⪯</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⊂">⊂</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⊆">⊆</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≻">≻</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⪰">⪰</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⊥">⊥</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∣">∣</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∥">∥</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∂">∂</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∞">∞</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Γ">Γ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Δ">Δ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Θ">Θ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Λ">Λ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Ξ">Ξ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Π">Π</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Σ">Σ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Υ">Υ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Φ">Φ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Ψ">Ψ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Ω">Ω</></li>
 
-                    <li><span class="js-science-symbol" data-symbol="α">α</span></li>
-                    <li><span class="js-science-symbol" data-symbol="β">β</span></li>
-                    <li><span class="js-science-symbol" data-symbol="γ">γ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="δ">δ</span></li>
-                    <li><span class="js-science-symbol" data-symbol=">">ε</span></li>
-                    <li><span class="js-science-symbol" data-symbol="ϵ">ϵ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="ζ">ζ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="η">η</span></li>
-                    <li><span class="js-science-symbol" data-symbol="θ">θ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="ϑ">ϑ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="ι">ι</span></li>
-                    <li><span class="js-science-symbol" data-symbol="κ">κ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="λ">λ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="μ">μ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="ν">ν</span></li>
-                    <li><span class="js-science-symbol" data-symbol="ξ">ξ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="π">π</span></li>
-                    <li><span class="js-science-symbol" data-symbol="ϖ">ϖ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="ρ">ρ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="ϱ">ϱ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="σ">σ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="ς">ς</span></li>
-                    <li><span class="js-science-symbol" data-symbol="τ">τ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="υ">υ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="φ">φ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="ϕ">ϕ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="χ">χ</span></li>
-                    <li><span class="js-science-symbol" data-symbol=">">ψ</span></li>
-                    <li><span class="js-science-symbol" data-symbol="ω">ω</span></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="α">α</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="β">β</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="γ">γ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="δ">δ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol=">">ε</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϵ">ϵ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ζ">ζ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="η">η</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="θ">θ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϑ">ϑ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ι">ι</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="κ">κ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="λ">λ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="μ">μ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ν">ν</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ξ">ξ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="π">π</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϖ">ϖ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ρ">ρ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϱ">ϱ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="σ">σ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ς">ς</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="τ">τ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="υ">υ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="φ">φ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϕ">ϕ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="χ">χ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol=">">ψ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ω">ω</></li>
                 </ul>
             </div>
 
@@ -754,12 +754,12 @@ function get_client_ip() {
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="plugins/node-waves/waves.js"></script>
 
- <script src="equation-editor/mathquill.min.js"></script>
+ <script src="equation-editor/mathquill.min.js?ver=1.1"></script>
 <script src="equation-editor/matheditor.js"></script>
 <script src="js/dom-to-image.js"></script>
 <script src="js-tree/jstree.js"></script>
 <script src="plugins/spectrum/spectrum.js"></script>
-<script src="js/canvas.js"></script>
+<script src="js/canvas.js?ver=1.2"></script>
 
 </body>
 </html>
