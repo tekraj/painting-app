@@ -38,6 +38,8 @@ function get_client_ip() {
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
     <meta http-equiv="pragma" content="no-cache">
+    <meta name="user" content="37BEC3B3-483C-4229-9953-2268EE525A6B">
+    <meta name="type" content="student">
     <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">-->
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="font-awesome/css/fontawesome.css">
@@ -53,11 +55,12 @@ function get_client_ip() {
     <link rel="stylesheet" href="plugins/spectrum/spectrum.css">
     <link href="equation-editor/mathquill.css" rel="stylesheet">
     <link href="equation-editor/matheditor.css" rel="stylesheet">
+    <link rel="stylesheet" href="ripple-css/ripple.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css" >
     <title>White Board</title>
 
 </head>
-<body data-ip="<?php echo get_client_ip(); ?>" data-user="<?php echo 'whiteboard_'. time(); ?>">
+<body>
 <header>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -411,73 +414,73 @@ function get_client_ip() {
                     <img src="images/science-w.png" style="width: 42px;">
                 </a>
                 <ul class="option-menu symbol-dropdown" style="display:none;">
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol=":">:</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≤">≤</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≥">≥</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="◦">◦</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≈">≈</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∈">∈</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="×">×</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="±">±</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∧">∧</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∨">∨</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≡">≡</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≅">≅</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≠">≠</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∼">∼</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∝">∝</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≺">≺</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⪯">⪯</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⊂">⊂</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⊆">⊆</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≻">≻</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⪰">⪰</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⊥">⊥</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∣">∣</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∥">∥</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∂">∂</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∞">∞</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Γ">Γ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Δ">Δ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Θ">Θ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Λ">Λ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Ξ">Ξ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Π">Π</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Σ">Σ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Υ">Υ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Φ">Φ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Ψ">Ψ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Ω">Ω</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol=":">:</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≤">≤</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≥">≥</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="◦">◦</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≈">≈</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∈">∈</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="×">×</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="±">±</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∧">∧</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∨">∨</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≡">≡</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≅">≅</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≠">≠</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∼">∼</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∝">∝</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≺">≺</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="⪯">⪯</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="⊂">⊂</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="⊆">⊆</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≻">≻</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="⪰">⪰</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="⊥">⊥</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∣">∣</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∥">∥</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∂">∂</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∞">∞</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Γ">Γ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Δ">Δ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Θ">Θ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Λ">Λ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Ξ">Ξ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Π">Π</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Σ">Σ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Υ">Υ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Φ">Φ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Ψ">Ψ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Ω">Ω</></li>
 
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="α">α</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="β">β</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="γ">γ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="δ">δ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol=">">ε</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϵ">ϵ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ζ">ζ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="η">η</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="θ">θ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϑ">ϑ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ι">ι</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="κ">κ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="λ">λ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="μ">μ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ν">ν</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ξ">ξ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="π">π</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϖ">ϖ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ρ">ρ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϱ">ϱ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="σ">σ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ς">ς</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="τ">τ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="υ">υ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="φ">φ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϕ">ϕ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="χ">χ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol=">">ψ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ω">ω</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="α">α</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="β">β</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="γ">γ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="δ">δ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol=">">ε</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ϵ">ϵ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ζ">ζ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="η">η</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="θ">θ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ϑ">ϑ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ι">ι</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="κ">κ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="λ">λ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="μ">μ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ν">ν</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ξ">ξ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="π">π</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ϖ">ϖ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ρ">ρ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ϱ">ϱ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="σ">σ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ς">ς</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="τ">τ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="υ">υ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="φ">φ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ϕ">ϕ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="χ">χ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol=">">ψ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ω">ω</></li>
                 </ul>
             </div>
 
@@ -760,7 +763,7 @@ function get_client_ip() {
 <script src="js-tree/jstree.js"></script>
 <script src="plugins/spectrum/spectrum.js"></script>
 <script src="js/canvas.js?ver=1.2"></script>
-
+<script src="chatjs/chat.js"></script>
 </body>
 </html>
 

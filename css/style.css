@@ -315,17 +315,8 @@ body {
 
 }
 
-#tab-3-equation-editor-wrapper .matheditor-btn-span{height:35px!important;width:100px!important;}
-#tab-3-equation-editor-wrapper .matheditor-btn-span .mq-root-block {
-    height: 35px!important;
-    width: 100px!important;
-    line-height: 25px;
-}
-#tab-4-equation-editor-wrapper .matheditor-btn-span{height:35px!important;width:70px!important;}
-#tab-4-equation-editor-wrapper .matheditor-btn-span .mq-root-block {
-    height:35px!important;width:70px!important;
-    line-height: 30px;
-}
+
+
 .tab-content-me{min-height: 150px;}
 #tab-1-equation-editor-wrapper .close-btn{display: none;}
 .modal.active{
@@ -390,58 +381,18 @@ body {
     height:29px;
     line-height: 29px;
 }
-.symbol-dropdown .btn:before {
-    content: '';
-    background-color: aliceblue;
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    -webkit-transform: scale(0.001, 0.001);
-    transform: scale(0.001, 0.001);
-}
+
 .symbol-dropdown .btn:focus {
     outline: 0;
     color: #fff!important;
+    border:2px inset #3cb44b!important;
 }
 .symbol-dropdown .btn:focus:before {
-    -webkit-animation: effect_dylan 0.8s ease-out;
-    animation: effect_dylan 0.8s ease-out;
+    color:#fff!important;
+    border:2px inset #3cb44b!important;
 }
-@-webkit-keyframes effect_dylan {
-    50% {
-        -webkit-transform: scale(1,1);
-        transform: scale(3.5, 3.5);
-        opacity: 0;
-    }
-    99% {
-        -webkit-transform: scale(0.001, 0.001);
-        transform: scale(0.001, 0.001);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: scale(0.001, 0.001);
-        transform: scale(0.001, 0.001);
-        opacity: 1;
-    }
+.btn.matheditor-btn-span{width:auto;height:auto;padding:5px;min-width:40px;}
+.btn.matheditor-btn-span.active{
+    background:#009688 !important;
+    color:#fff;
 }
-@keyframes effect_dylan {
-    50% {
-        -webkit-transform: scale(3.5, 3.5);
-        transform: scale(3.5, 3.5);
-        opacity: 0;
-    }
-    99% {
-        -webkit-transform: scale(0.001, 0.001);
-        transform: scale(0.001, 0.001);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: scale(0.001, 0.001);
-        transform: scale(0.001, 0.001);
-        opacity: 1;
-    }
-}
-

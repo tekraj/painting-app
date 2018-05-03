@@ -469,7 +469,7 @@ keyboardAction = function(top_elements,answer_span,field){
 setCloseButton = function(top_elements, answer_span){
     editor_id = jq(answer_span).attr('id')
     btnhtml = "<div class='close-btn'><span id='close-btn-"+editor_id+"'>X</span></div>"
-    jq(btnhtml).insertBefore(top_elements.wrapper.find('.matheditor-btn-span:first'));
+    jq(btnhtml).insertBefore(top_elements.wrapper.find('.matheditor-btn-span ripple:first'));
     jq('#close-btn-'+editor_id).on('click',function(e){
         //top_elements.toolbar.hide();
     });
@@ -505,7 +505,7 @@ setToolbar = function(btns,answer_span,answer_math_field,top_elements,tabs,tabEn
 
                 if(button_meta[b].tab == idx+1){
                     if(button_meta[b]){
-                        html+="<span class='matheditor-btn-span'><i title='"+b.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}).replace('_',' ')+"' data-latex='"+button_meta[b].latex+"' data-moveto='"+button_meta[b].moveto+"' data-movefor='"+button_meta[b].movefor+"' id='matheditor-btn-"+b+"' class='op-btn'><span id='selectable-"+b+"-"+editor_id+"' class='op-btn-icon'>"+button_meta[b].icon+"</span></i></span>";
+                        html+="<button class='btn btn-sm matheditor-btn-span ripple'><i title='"+b.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}).replace('_',' ')+"' data-latex='"+button_meta[b].latex+"' data-moveto='"+button_meta[b].moveto+"' data-movefor='"+button_meta[b].movefor+"' id='matheditor-btn-"+b+"' class='op-btn'><span id='selectable-"+b+"-"+editor_id+"' class='op-btn-icon'>"+button_meta[b].icon+"</span></i></button>";
                     }else{
                         console.warn("MathEditor: '"+b+"' is an invalid button");
                     }
