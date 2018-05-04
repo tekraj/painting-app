@@ -409,7 +409,7 @@ function get_client_ip() {
                     <span data-toggle="tooltip" data-placement="top" title="Click here to open equation editor"> <img src="images/math-w.png"></span>
                 </a>
             </div>
-            <div class="text-center my-1 option-menu-wrapper  js-enable-symbol">
+            <div class="text-center my-1 science-menu-wrapper  js-enable-symbol">
                 <a href="#" class="btn btn-default btn-square mx-auto">
                     <img src="images/science-w.png" style="width: 42px;">
                 </a>

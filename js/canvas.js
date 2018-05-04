@@ -142,7 +142,7 @@ $(document).ready(function(){
                 alert('Please select text and click anywhere in the board.');
                 return false;
             }
-            pasteHtmlAtCaret('<sub style="color:'+currentColor+';">&nbsp;</sub>', textHolder[0]);
+            pasteHtmlAtCaret('<sub style="color:'+currentColor+';">&#8203;</sub>', textHolder[0]);
 
         })
         //clear math editor
@@ -159,7 +159,7 @@ $(document).ready(function(){
                 alert('Please select text and click anywhere in the board.');
                 return false;
             }
-            pasteHtmlAtCaret('<sup style="color:'+currentColor+'">&nbsp;</sup>', textHolder[0]);
+            pasteHtmlAtCaret('<sup style="color:'+currentColor+'">&#8203;</sup>', textHolder[0]);
         });
 
         $('.js-science-symbol').click(function(e){
@@ -185,7 +185,7 @@ $(document).ready(function(){
                 textHolder.hide();
                 symbolModal.modal('show');
                 setTimeout(function(){
-                    $('#equation-editor-wrapper').find(".mq-root-block").append('<span>&nbsp;</span>').click();
+                    $('#equation-editor-wrapper').find(".mq-root-block").append('<span>&#8203;</span>').click();
                 },100);
             });
 
@@ -209,7 +209,7 @@ $(document).ready(function(){
                     textHolder.css('color',currentColor);
                     textHolder[0].focus();
                 }else{
-                    pasteHtmlAtCaret("<span style='color:"+currentColor+";'>&nbsp;</span>", textHolder[0]);
+                    pasteHtmlAtCaret("<span style='color:"+currentColor+";'>&#8203;</span>", textHolder[0]);
                 }
             }
 
@@ -313,28 +313,32 @@ $(document).ready(function(){
             font = $('.js-font.active').data().font;
             fontSize = $('.js-font-size.active').data().size;
             fontStyle = $('.js-font-style.active').data().style;
-            $('.js-text-demo,#text-holder').css({'font-family':font,'font-size':fontSize});
 
+            var css = {'font-family':font,'font-size':fontSize};
             if(fontStyle=='italic' || fontStyle=='bold italic'){
-                $('.js-text-demo,#text-holder').css({'font-style':'italic'});
-
+                css['font-style'] = 'italic';
             }else{
-                $('.js-text-demo,#text-holder').css({'font-style':'normal'});
-
+                css['font-style'] = 'normal';
             }
+
             if(fontStyle=='bold' || fontStyle=='bold italic'){
-                $('.js-text-demo,#text-holder').css({'font-weight':'bold'});
+                css['font-weight'] = 'bold';
                 fontWeight = 'bold'
             }else{
-                $('.js-text-demo,#text-holder').css({'font-weight':'normal'});
+                css['font-weight'] = 'bold';
                 fontWeight = 'normal';
 
             }
-            $enableTextTool.click();
-            $('.option-menu').hide();
-            setTimeout(function(){
-                textHolder[0].focus();
-            },50);
+            $('.js-text-demo').css(css);
+            if(currentTool=='text'){
+                if(textHolder.text().trim().length<1){
+                    textHolder.css('color',currentColor);
+                    textHolder.css(css);
+                    textHolder[0].focus();
+                }else{
+                    pasteHtmlAtCaret("<span style='color:"+currentColor+";font-family:"+font+";font-size:"+fontSize+"px;font-style:"+fontStyle+";font-weight:"+fontWeight+"'>&#8203;</span>", textHolder[0]);
+                }
+            }
 
         });
 
@@ -479,7 +483,6 @@ $(document).ready(function(){
                 textEnabled = true;
                 writeTextDivToCanvas(textLeftCord,textTopCord,function (){
                     textHolder.show();
-                    console.log(currentColor);
                     textHolder.css({'color':currentColor,'font-size':fontSize,'font-family':font,'font-weight':fontWeight,'font-style': fontStyle}).html('');
                     $enableTextTool.addClass('active');
                     dc.css('cursor','url(images/text.png), auto');
@@ -1529,7 +1532,7 @@ $(document).ready(function(){
                         textHolder.css('color',currentColor);
                         textHolder[0].focus();
                     }else{
-                        pasteHtmlAtCaret("<span style='color:"+currentColor+";'>&nbsp;</span>", textHolder[0]);
+                        pasteHtmlAtCaret("<span style='color:"+currentColor+";'>&#8203;</span>", textHolder[0]);
                     }
                 }
             }
@@ -1617,8 +1620,8 @@ $(document).ready(function(){
                             rC.width = canvasWidth;
                             rC.height = canvasHeight;
                             resizeCanvas.drawImage(drawingC, 0, 0);
-                            dc.attr('width',left);
-                            fa.attr('width',left);
+                            dc.attr('width',left+20);
+                            fa.attr('width',left+20);
                             drawingCanvas.drawImage(rC,0,0);
                         }
                         if(top>canvasHeight){
@@ -1661,7 +1664,7 @@ $(document).ready(function(){
         if( htmlString.trim().length<1)
             return callback();
 
-        htmlString = htmlString.replace(/&nbsp;/g,' ');
+        htmlString = htmlString.replace(/&#8203;/g,' ');
 
 
         var height = parseInt(textHolder.height())+20;

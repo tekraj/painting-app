@@ -52,7 +52,7 @@ body {
     white-space: pre-wrap;
     height: auto;
 }
-.option-menu-wrapper{position: relative;}
+.option-menu-wrapper,.science-menu-wrapper{position: relative;}
 .option-menu {
     position: absolute;
     width: 100px;
@@ -396,3 +396,4 @@ body {
     background:#009688 !important;
     color:#fff;
 }
+.science-menu-wrapper:hover .option-menu{display: block!important;}
