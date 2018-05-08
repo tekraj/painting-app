@@ -16,13 +16,7 @@ if (!HTMLCanvasElement.prototype.toBlob) {
         }
     });
 }
-Array.prototype.max = function() {
-    return Math.max.apply(Math, this);
-};
 
-Array.prototype.min = function() {
-    return Math.min.apply(Math, this);
-};
 //plugin to move cursor
 $.fn.selectRange = function (start,end){
     if(end==undefined){
@@ -45,6 +39,7 @@ $.fn.selectRange = function (start,end){
 }
 
 $(document).ready(function(){
+
         $('#symbol-modal').on('mousedown','.matheditor-btn-span',function(){
             $(this).addClass('active');
         }).on('mouseup','.matheditor-btn-span',function(){
@@ -116,7 +111,7 @@ $(document).ready(function(){
         var parentWidth = dc.parent().width();
         dc.attr({'height':parentHeight-8,'width':parentWidth-5});
         fa.attr({'height':parentHeight-8,'width':parentWidth-5});
-        sc.attr({'height':parentHeight-8,'width':parentWidth-5});
+        sc.attr({'height':parentHeight-15,'width':parentWidth-12});
         dc.parent().scroll(function(){
             position = getCoords(drawingC);
         });
@@ -339,7 +334,7 @@ $(document).ready(function(){
                     pasteHtmlAtCaret("<span style='color:"+currentColor+";font-family:"+font+";font-size:"+fontSize+"px;font-style:"+fontStyle+";font-weight:"+fontWeight+"'>&#8203;</span>", textHolder[0]);
                 }
             }
-
+            $('.font-menu').hide();
         });
 
         $('#cancel-font').click(function (e){
@@ -418,7 +413,8 @@ $(document).ready(function(){
                     }
                 });
             }
-
+            textHolder.html('');
+            textHolder.hide();
             $('.modal').modal('hide');
             drawingCanvas.clearRect(0,0,drawingC.width,drawingC.height);
             drag =[];
@@ -1242,6 +1238,7 @@ $(document).ready(function(){
                     ctx.font = 'normal 14px '+font;
                     ctx.fillStyle = color;
                     ctx.fillText(j*10,point.x-3,point.y+14 );
+                    ctx.closePath();
                 }
             }
             var startX = x1+(x2>x1?-10 :10),
@@ -1363,6 +1360,7 @@ $(document).ready(function(){
                         ctx.font = 'normal 12px '+font;
                         ctx.fillStyle = color;
                         ctx.fillText(j-10,point.x-3,point.y+20 );
+                        ctx.closePath();
                     }else{
                         ctx.moveTo(point.x,point.y-2);
                         ctx.lineTo(point.x,point.y+2);
@@ -1411,6 +1409,7 @@ $(document).ready(function(){
                         ctx.font = 'normal 12px '+font;
                         ctx.fillStyle = color;
                         ctx.fillText(10-l,point.x-20,point.y+3 );
+                        ctx.closePath();
                     }else{
                         ctx.moveTo(point.x-2,point.y);
                         ctx.lineTo(point.x+2,point.y);
@@ -1833,12 +1832,13 @@ $(document).ready(function(){
             if(x>=x1-15 && x<=x2+15 && y>=y1-15 && y<=y2+15){
                 draggingShape = canvasShape;
                 draggingShape.rectArea = {x1:x1-5,y1:y1-5,x2:x2+5,y2:y2+5};
+                canvasObjects.splice(i,1);//remove that objects from canvas;
                 drawMultipleShapes(canvasShape,false,true);
                 var dx = x2-x1,dy = y2-y1;
                 if(canvasShape.shape!=='image' && canvasShape.shape!=='image-text' && canvasShape.shape!=='line'){
                     draggingShape.img = fakeCanvas.getImageData(draggingShape.rectArea.x1,draggingShape.rectArea.y1,dx,dy+20);
                 }
-                canvasObjects.splice(i,1);//remove that objects from canvas;
+
                 return true;
             }
         }
@@ -2060,92 +2060,40 @@ function getCoords(elem) {
 
 
 
-function setEndOfContenteditable(contentEditableElement) {
-    var range, selection;
-    if (document.createRange) //Firefox, Chrome, Opera, Safari, IE 9+
-    {
-        range = document.createRange(); //Create a range (a range is a like the selection but invisible)
-        range.selectNodeContents(contentEditableElement); //Select the entire contents of the element with the range
-        range.collapse(false); //collapse the range to the end point. false means collapse to end rather than the start
-        selection = window.getSelection(); //get the selection object (allows you to change selection)
-        selection.removeAllRanges(); //remove any selections already made
-        selection.addRange(range); //make the range you have just created the visible selection
-    } else if (document.selection) //IE 8 and lower
-    {
-        range = document.body.createTextRange(); //Create a range (a range is a like the selection but invisible)
-        range.moveToElementText(contentEditableElement); //Select the entire contents of the element with the range
-        range.collapse(false); //collapse the range to the end point. false means collapse to end rather than the start
-        range.select(); //Select the range (make it the visible selection
-    }
-}
+function pasteHtmlAtCaret(html,el) {
 
-function elementContainsSelection(el) {
-    var sel;
-    if (window.getSelection) {
-        sel = window.getSelection();
-        if (sel.rangeCount > 0) {
-            for (var i = 0; i < sel.rangeCount; ++i) {
-                if (!isOrContains(sel.getRangeAt(i).commonAncestorContainer, el)) {
-                    return false;
-                }
-            }
-            return true;
-        }
-    } else if ((sel = document.selection) && sel.type != "Control") {
-        return isOrContains(sel.createRange().parentElement(), el);
-    }
-    return false;
-}
-
-function isOrContains(node, container) {
-    while (node) {
-        if (node === container) {
-            return true;
-        }
-        node = node.parentNode;
-    }
-    return false;
-}
-
-function pasteHtmlAtCaret(html, el) {
     var sel, range;
     if (window.getSelection) {
         // IE9 and non-IE
         sel = window.getSelection();
-        if (elementContainsSelection(el)) {
-            if (sel.getRangeAt && sel.rangeCount) {
-                range = sel.getRangeAt(0);
-                range.deleteContents();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            range.deleteContents();
 
-                // Range.createContextualFragment() would be useful here but is
-                // non-standard and not supported in all browsers (IE9, for one)
-                var el = document.createElement("div");
-                el.innerHTML = html;
-                var frag = document.createDocumentFragment(),
-                    node, lastNode;
-                while ((node = el.firstChild)) {
-                    lastNode = frag.appendChild(node);
-                }
-                range.insertNode(frag);
-
-                // Preserve the selection
-                if (lastNode) {
-                    range = range.cloneRange();
-                    range.setStart(lastNode,1);
-                    range.collapse(false);
-                    sel.removeAllRanges();
-                    sel.addRange(range);
-                }
-            } else if (document.selection && document.selection.type != "Control") {
-                // IE < 9
-                document.selection.createRange().pasteHTML(html);
+            // Range.createContextualFragment() would be useful here but is
+            // non-standard and not supported in all browsers (IE9, for one)
+            var el = document.createElement("div");
+            el.innerHTML = html;
+            var frag = document.createDocumentFragment(), node, lastNode;
+            while ( (node = el.firstChild) ) {
+                lastNode = frag.appendChild(node);
             }
-        } else {
-            setEndOfContenteditable(el);
-            pasteHtmlAtCaret(html, el);
-        }
-    }
+            range.insertNode(frag);
 
+            // Preserve the selection
+            if (lastNode) {
+                range = range.cloneRange();
+                range.setStartAfter(lastNode);
+                range.setStart(lastNode,1)
+                range.collapse(true);
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+        }
+    } else if (document.selection && document.selection.type != "Control") {
+        // IE < 9
+        document.selection.createRange().pasteHTML(html);
+    }
 }
 
 

@@ -161,3 +161,48 @@ I have checked and found it is not moving anywhere. Please have a look on it.
 one click not working =>fixed
 color shape, text combination =>fixed
 line splittiong on equation editor =>fixed
+
+
+//new bugs 2018-05-06
+1.I want the whiteboard to be fit in one window. There should be no need to scroll.
+Now most part of the chat board is visible.
+
+2. When I use text and click on eraser the text vanishes out. I didnt rub the eraser i just clicked on it.
+I'm unable to replicate this issue. If this issue arises again please let me know and the when it occurs.
+
+3. When I select Font and click ok the dialogue box doesnt disappear.
+=>FIXED
+4. Eraser and Text are behaving erratically. If you use text and then eraser you will know what i mean and then when i again click on text after erasing it suddenly appear. pls check.
+=> This will take little bit time but there is one condition once you use eraser on the text then you can't edit it.
+
+5. Give a small name to every function Like when I put my curser on the function below color it shows how to use it. What is the name of the function. Also the function to copy paste image on clipboard is not working.
+
+6.Undo works for some and doesnt works for some.
+Sorry but when I use undo I did not found any issue with this. It is working fine.
+I have checked time.
+7. the equation editor : Insert option is not working.
+=> This is also working fine. Some times ago it has issue but now it is working pretty well.
+I have checked by inserting all symbols at all.
+8. When I select the text and use super script and sub scrip the text suddenly disappears.
+I don't konw why you have many issue. These all are working fine.
+Can you test the whiteboard by clearing cache. These all issues are already fixed and are working fine.
+9. No option for clear whiteboard.
+Ther are two options for clearing whiteboard.
+a. New Board
+b. Below there is cross buton once you click on it a popup will display and you have two options
+one for clearing drawing with save the current drawing and one for clearing without saving.
+10. The pencil function is not working perfectly. Sometimes even after we click we are not able to use pencil. Also, When I drop the pencil and move my cursor over the board the pencil is still working. I want if i loose my hold on cursor then only board should move not pencil.
+=> Now this will work fine. If still you found this issue please mention when and how pencil behaves like this.
+11. The blue buttons on the top are not at all working.
+=================================================
+=> I have already completed the functionality of the blue that I can. Your developer needs to do work on
+remaining functionality. FADSON
+====================================
+12. Can you use more gif and smiley like those in Hike Messenger? Like How may I help you ? ( Cute Smiley)
+
+Also the smileys arent showing while we type.
+
+13. The image attachment in chat is not working.
+
+14. What is this option of public in the right corner of the board? It is also not working.
+=> Can you describe it more.

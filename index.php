@@ -55,7 +55,9 @@ function get_client_ip() {
     <link rel="stylesheet" href="plugins/spectrum/spectrum.css">
     <link href="equation-editor/mathquill.css" rel="stylesheet">
     <link href="equation-editor/matheditor.css" rel="stylesheet">
+    <link rel="stylesheet" href="izitoast/css/iziToast.min.css">
     <link rel="stylesheet" href="ripple-css/ripple.min.css">
+
     <link rel="stylesheet" type="text/css" href="css/style.css" >
     <title>White Board</title>
 
@@ -95,7 +97,17 @@ function get_client_ip() {
                         <a class="nav-link" href="#">Favorites</a>
                     </li>
                 </ul>
-
+                <ul class="nav navbar-nav navbar-right prev-next-navbar">
+                    <li>
+                        <a class="btn btn-primary btn-sm" id="new-board" data-toggle="tooltip" data-placement="bottom" title="Clear this board and draw on new board">New Board</a>
+                    </li>
+                    <li>
+                        <button class="btn btn-default btn-sm btn-back" data-toggle="tooltip" data-placement="bottom" title="Back to previous board"><img src="images/icons/ic_keyboard_arrow_left_black_24dp_1x.png"> <span>Back</span></button>
+                    </li>
+                    <li>
+                        <button class="btn btn-default btn-sm btn-next" data-toggle="tooltip" data-placement="bottom" title="Next Board"><span>Next</span> <img src="images/icons/ic_keyboard_arrow_right_black_24dp_1x.png"></button>
+                    </li>
+                </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
@@ -103,11 +115,11 @@ function get_client_ip() {
 
 <div class="container-fluid top-functions">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 top-nav-tools" >
             <a href="#" class="btn btn-primary btn-square js-tools" id="mouse-cursor" data-tool="none" data-cursor="default">
                 <img src="images/computer-mouse-cursor.png">
             </a>
-            <button  class="btn btn-primary btn-square js-tools" data-tool="drag" data-toggle="tooltip" data-placement="top" title="Drag Shapes" data-cursor="url(images/drag.png), auto" style="background:url(images/drag.png) no-repeat center;width:35px;height:30px;position:relative;z-index: 999;">
+            <button  class="btn btn-primary btn-square js-tools" data-tool="drag" data-toggle="tooltip" data-placement="top" title="Drag Shapes" data-cursor="url(images/drag.png), auto" style="background:url(images/drag.png) no-repeat center;width:35px;height:26px;position:relative;z-index: 999;">
                 &nbsp;
             </button>
             <a href="#" class="btn btn-primary btn-square active" id="enable-drawing" data-toggle="tooltip" data-placement="bottom" title="Switch to Drawing">
@@ -143,9 +155,7 @@ function get_client_ip() {
             <span style="font-size:12px;"><b>Slide 1/1</b></span>
         </div>
         <div class="col-sm-6 text-right">
-            <a class="btn btn-primary btn-sm" id="new-board" data-toggle="tooltip" data-placement="bottom" title="Clear this board and draw on new board">New Board</a>
-            <button class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="bottom" title="Back to previous board"><img src="images/icons/ic_keyboard_arrow_left_black_24dp_1x.png"> Back</button>
-            <button class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="bottom" title="Next Board">Next <img src="images/icons/ic_keyboard_arrow_right_black_24dp_1x.png"></button>
+                <button class="btn btn-warning btn-public">Public</button>
         </div>
     </div>
 </div>
@@ -155,7 +165,7 @@ function get_client_ip() {
         <div class="col-md-1 tools-list">
             <div class="text-center my-1 option-menu-wrapper">
                 <a href="#" class="btn btn-default js-tools" id="pencil-tool" data-tool="pencil" data-toggle="tooltip" data-placement="top" title="Pencil" data-cursor="url(images/pencil.png), auto">
-                    <span class=""><img src="images/pencil-w.png"></span>
+                    <img src="images/pencil-w.png">
                 </a>
                 <ul class="option-menu" style="display: none;">
                     <li>
@@ -414,73 +424,73 @@ function get_client_ip() {
                     <img src="images/science-w.png" style="width: 42px;">
                 </a>
                 <ul class="option-menu symbol-dropdown" style="display:none;">
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol=":">:</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≤">≤</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≥">≥</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="◦">◦</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≈">≈</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∈">∈</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="×">×</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="±">±</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∧">∧</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∨">∨</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≡">≡</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≅">≅</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≠">≠</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∼">∼</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∝">∝</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≺">≺</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="⪯">⪯</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="⊂">⊂</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="⊆">⊆</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="≻">≻</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="⪰">⪰</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="⊥">⊥</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∣">∣</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∥">∥</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∂">∂</></li>
-                    <li> <button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="∞">∞</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Γ">Γ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Δ">Δ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Θ">Θ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Λ">Λ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Ξ">Ξ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Π">Π</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Σ">Σ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Υ">Υ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Φ">Φ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Ψ">Ψ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="Ω">Ω</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol=":">:</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≤">≤</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≥">≥</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="◦">◦</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≈">≈</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∈">∈</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="×">×</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="±">±</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∧">∧</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∨">∨</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≡">≡</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≅">≅</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≠">≠</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∼">∼</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∝">∝</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≺">≺</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⪯">⪯</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⊂">⊂</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⊆">⊆</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="≻">≻</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⪰">⪰</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="⊥">⊥</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∣">∣</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∥">∥</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∂">∂</></li>
+                    <li> <button class="btn btn-sm btn-default js-science-symbol" data-symbol="∞">∞</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Γ">Γ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Δ">Δ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Θ">Θ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Λ">Λ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Ξ">Ξ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Π">Π</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Σ">Σ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Υ">Υ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Φ">Φ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Ψ">Ψ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="Ω">Ω</></li>
 
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="α">α</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="β">β</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="γ">γ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="δ">δ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol=">">ε</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ϵ">ϵ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ζ">ζ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="η">η</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="θ">θ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ϑ">ϑ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ι">ι</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="κ">κ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="λ">λ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="μ">μ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ν">ν</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ξ">ξ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="π">π</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ϖ">ϖ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ρ">ρ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ϱ">ϱ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="σ">σ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ς">ς</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="τ">τ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="υ">υ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="φ">φ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ϕ">ϕ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="χ">χ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol=">">ψ</></li>
-                    <li><button class="btn btn-sm btn-default js-science-symbol ripple" data-symbol="ω">ω</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="α">α</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="β">β</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="γ">γ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="δ">δ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol=">">ε</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϵ">ϵ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ζ">ζ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="η">η</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="θ">θ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϑ">ϑ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ι">ι</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="κ">κ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="λ">λ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="μ">μ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ν">ν</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ξ">ξ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="π">π</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϖ">ϖ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ρ">ρ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϱ">ϱ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="σ">σ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ς">ς</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="τ">τ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="υ">υ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="φ">φ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ϕ">ϕ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="χ">χ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol=">">ψ</></li>
+                    <li><button class="btn btn-sm btn-default js-science-symbol" data-symbol="ω">ω</></li>
                 </ul>
             </div>
 
@@ -530,7 +540,7 @@ function get_client_ip() {
                 </div>
 
             </div>
-            <br>
+
             <div class="card chat-card">
                 <div class="header">
                     <div class="row ">
@@ -561,7 +571,7 @@ function get_client_ip() {
                             </div>
                             <form id="chat-input-area" class="chat-input">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="chat-input" id="chat-input">
+                                    <div contentEditable="true" class="form-control" name="chat-input" id="chat-input"></div>
                                     <ul class="input-group-addon list-inline">
                                         <li class="dropdown">
                                             <a herf="#" class=" dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img
@@ -570,76 +580,37 @@ function get_client_ip() {
 
                                                 <li class="body">
                                                     <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 254px;">
-                                                        <ul class="menu" style="overflow: hidden; width: auto; height: 254px;">
+                                                        <ul class="menu smily-menu" style="overflow: hidden; width: auto; height: 254px;">
                                                             <li>
-                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                                    <div class="icon-circle bg-cyan"><i class="fa fa-smile-o" aria-hidden="true"></i>
-                                                                    </div>
-                                                                    <div class="menu-info">
-                                                                        <h4>Great Job</h4>
-
-                                                                    </div>
-                                                                </a>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block js-emoji" ><span>{:)2}{wave}</span> <span>goodbye!</span></a>
                                                             </li>
                                                             <li>
-                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                                    <div class="icon-circle bg-cyan"><i class="fa fa-smile-o" aria-hidden="true"></i>
-                                                                    </div>
-                                                                    <div class="menu-info">
-                                                                        <h4>can I help you?</h4>
-
-                                                                    </div>
-                                                                </a>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block js-emoji" ><span>{wave}</span> <span>raise hand</span></a>
                                                             </li>
                                                             <li>
-                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                                    <div class="icon-circle bg-cyan">
-                                                                        <i class="fa fa-smile-o" aria-hidden="true"></i>
-                                                                    </div>
-                                                                    <div class="menu-info">
-                                                                        <h4>I have an idea!</h4>
-
-                                                                    </div>
-                                                                </a>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block js-emoji"><span>{cool}</span> <span>Great Job</span></a>
                                                             </li>
                                                             <li>
-                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                                    <div class="icon-circle bg-cyan">
-                                                                        <i class="fa fa-smile-o" aria-hidden="true"></i>
-                                                                    </div>
-                                                                    <div class="menu-info">
-                                                                        <h4>Try Again!</h4>
-
-                                                                    </div>
-                                                                </a>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block js-emoji" ><span>{gq}</span> <span>can I help you?</span></a>
                                                             </li>
                                                             <li>
-                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                                    <div class="icon-circle bg-cyan">
-                                                                        <i class="fa fa-smile-o" aria-hidden="true"></i>
-                                                                    </div>
-                                                                    <div class="menu-info">
-                                                                        <h4>yes!</h4>
-
-                                                                    </div>
-                                                                </a>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block js-emoji" ><span>{lightbulb}</span> <span>I have an idea!</span></a>
                                                             </li>
                                                             <li>
-                                                                <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                                                    <div class="icon-circle bg-cyan"><i class="fa fa-smile-o" aria-hidden="true"></i>
-                                                                    </div>
-                                                                    <div class="menu-info">
-                                                                        <h4>hello!</h4>
-
-                                                                    </div>
-                                                                </a>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block js-emoji"><span>{hmm}</span> <span>Try Again!</span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block js-emoji"><span>{:|3}</span> <span>yes!</span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class=" waves-effect waves-block js-emoji"><span>{:)}</span> <span>hello!</span></a>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li>
+                                        <li style="margin-left:-26px;margin-right: 5px;">
                                             <button type="submit" class="input-group-addon">Send</button>
                                         </li>
                                         <li>
@@ -748,9 +719,43 @@ function get_client_ip() {
         </div>
     </div>
 </div>
+<div class="modal" id="user-input-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Please Select User Name and Type</h4>
+            </div>
+            <form action="" id="prompt-form">
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="user_type" class="col-sm-4">Type</label>
+                        <div class="col-sm-8">
+                            <select name="user_type" id="user_type" class="form-control">
+                                <option value="student">Student</option>
+                                <option value="tutor">Tutor</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="user_name" class="col-sm-4">User Name</label>
+                        <div class="col-sm-8">
+                            <select name="user_name" id="user_name" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/jquery.min.js"></script>
+<script src="emoji-js/emoji.js"></script>
+<script src="izitoast/js/iziToast.min.js"></script>
 <script src="chatjs/socket.io.js"></script>
 <script src="js/proper.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -762,6 +767,10 @@ function get_client_ip() {
 <script src="js/dom-to-image.js"></script>
 <script src="js-tree/jstree.js"></script>
 <script src="plugins/spectrum/spectrum.js"></script>
+<script src="nice-scrollbar/jquery.nicescroll.js"></script>
+<script>
+    $("html").niceScroll();
+</script>
 <script src="js/canvas.js?ver=1.2"></script>
 <script src="chatjs/chat.js"></script>
 </body>

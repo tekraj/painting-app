@@ -31,7 +31,7 @@ body {
 
 .canvas-wrapper, .session-canvas-wrapper {
     overflow: auto;
-    height: 450px;
+    height: 370px;
     border: 2px solid #e8e8e8;
     position: relative;
     background: #fff;
@@ -61,9 +61,9 @@ body {
     background: lightyellow;
     border: 1px solid #ccc;
     margin: 0;
-    left: 48px;
+    left: 50px;
     top: 0;
-    z-index: 999;
+    z-index: 9999;
 }
 .option-menu li a {
     display: block;
@@ -121,6 +121,7 @@ body {
     background:#fff;
     z-index: 99;
 }
+.canvas-writing{padding-left:8px;}
 #symbol-modal .modal-dialog{max-width: 800px;width: 800px;}
 #symbol-modal .modal-header{padding:0;}
 #symbol-modal h4{font-size:14px;margin:0;padding:10px 15px;}
@@ -205,18 +206,18 @@ body {
 .canvas-wrapper.no-scroll{overflow: hidden;}
 .navbar-nav>li>a {
     margin: 0;
-    padding: 10px 14px;
+    padding: 5px 14px;
 }
-.navbar.navbar-default{position:relative;margin-bottom:8px;min-height: 35px;}
+.navbar.navbar-default{position:relative;margin-bottom:5px;min-height: 30px;}
 .tools-list .btn {
     width: 35px;
     height: 30px;
     padding: 0;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     transition:0.3s ease all;
 }
 .tools-list .btn:hover,.tools-list .btn.active{background:#009688 !important}
-.top-functions{padding:0px 30px 10px 30px;}
+.top-functions{padding:0px 30px 5px 30px;}
 .tools-list .btn img{max-width: 30px;height:30px;}
 .canvas-list{padding-left:0;padding-right:0;}
 .modal-header{position: relative;}
@@ -245,12 +246,13 @@ body {
 .sp-input{background:#fff;}
 .btn-sm i{display: inline-block;vertical-align: middle;top:-1px!important;}
 .participant-list{
-    height:292px;background:#F5F5F5;overflow-y: auto;border: 1px solid #eceaea;}
-.chat-room {height:250px;overflow-y: auto;background: #fff;border: 1px solid #eceaea;margin-top: -16px;}
+    height:188px;background:#F5F5F5;overflow-y: auto;border: 1px solid #eceaea;}
+.chat-room {height:140px;overflow-y: auto;background: #fff;border: 1px solid #eceaea;}
 .chat-board{margin-bottom:60px;box-shadow: 0px 0px 1px 1px #d4d4d4;margin-top:10px;padding-bottom:20px;}
-#chat-input-area {margin-top:10px;background:#ccc;padding:5px;}
+#chat-input-area {background:#ccc;padding:5px;}
 #chat-input-area .input-group{margin:0;}
 #chat-input-area .input-group-addon{padding-left:4px;}
+#chat-input{padding-left:10px;padding-right:10px;}
 .header.header-default{background: #e2e2e2;padding-bottom: 15px;
     padding-top: 15px;}
 .header.header-default h2{font-size:15px;}
@@ -341,40 +343,34 @@ body {
 #chat-board{list-style: none;margin:0;padding:10px;}
 #chat-board li:before,#chat-board li:after{content:'';display: block;clear: both;width:100%;}
 #chat-board li{
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
-#chat-board li div{
-    display: inline-block;
+/*#chat-board li div{*/
+    /*display: inline-block;*/
+    /*float:left;*/
+/*}*/
 
-    width: 300px;
-    max-width: 70%;
-    float:left;
-}
-#chat-board li div .message{
-    background: #4CAF50;
-    color: #fff;
-    border-radius: 6px;
-    padding: 5px 10px;
-}
-#chat-board li.mine div{
-    float:right;
-}
-#chat-board li.mine div .message{
-    background:#607D8B
-}
+
+/*#chat-board li.mine div .message{*/
+    /*background:#607D8B*/
+/*}*/
 #chat-board li p{margin:0;}
 #chat-board li p .username{
-    color: #000;
-    font-size: 12px;
+    color:#7c7979;
+    font-size: 11px;
     font-weight: bold;
+    margin-right:20px;
 }
 
 #chat-board li p .time{
     font-size:12px;
     color:#a8a8a8;
 }
-.chat-card .header{padding:10px 20px;}
-
+#chat-board li .message{position:relative;top:-2px;color:#000;font-weight:600;}
+#chat-board  .mine .message{color:#3F51B5;}
+.chat-card{margin-top:5px;margin-left:-6px;}
+.chat-card .header{padding:4px 20px;}
+.chat-card .body{padding:0px 20px;}
 .symbol-dropdown .btn{
     position:relative;
     width:29px;
@@ -391,9 +387,68 @@ body {
     color:#fff!important;
     border:2px inset #3cb44b!important;
 }
-.btn.matheditor-btn-span{width:auto;height:auto;padding:5px;min-width:40px;}
+.btn.matheditor-btn-span{width:auto;height:auto;padding:0px;}
+#tab-1-equation-editor-wrapper .op-btn .op-btn-icon,#tab-5-equation-editor-wrapper  .op-btn .op-btn-icon{
+    min-width: 40px;
+    text-align: center;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+}
+#tab-3-equation-editor-wrapper .op-btn-icon,#tab-4-equation-editor-wrapper .op-btn-icon{
+
+    min-height: 40px;
+    width: auto;
+    display: inline-block;
+    padding: 5px;
+    line-height: 35px;
+}
 .btn.matheditor-btn-span.active{
     background:#009688 !important;
     color:#fff;
 }
 .science-menu-wrapper:hover .option-menu{display: block!important;}
+
+.prev-next-navbar .btn{padding:4px;font-size:12px!important;height:25px;}
+.prev-next-navbar .btn img {
+    width: 25px;
+    margin-top: -10px;
+    position: relative;
+    top: 5px;
+}
+.prev-next-navbar{padding-top:2px;padding-right:15px;}
+.prev-next-navbar>li{margin-left:10px!important;}
+.prev-next-navbar .btn.btn-primary{color:#fff!important;}
+.prev-next-navbar .btn.btn-back span{display: inline-block;position:relative;left:-5px;}
+.prev-next-navbar .btn.btn-next span{display: inline-block;position:relative;left:5px;}
+.btn.btn-public{padding:4px 20px;font-size: 12px!important;position:relative;top:5px;}
+
+.top-nav-tools .btn-square {
+    padding: 3px 9px;
+    min-height: 26px;
+}
+body::-webkit-scrollbar {
+    width: 0;
+}
+body::-moz-scrollbar {
+    width: 0;
+}
+body::-ms-scrollbar {
+    width: 0;
+}
+body::scrollbar {
+    width: 0;
+}
+body{
+    -webkit-user-select: none; /* Chrome all / Safari all */
+    -moz-user-select: none;   /* Firefox all */
+    -ms-user-select: none;  /* IE 10+ */
+    user-select: none;  /* Likely future */
+}
+.emoji {
+    height: 1em; /*edit for height*/
+    margin: 0 .05em 0 .1em;
+    vertical-align: -0.1em;
+}
+.smily-menu li a span{font-size:16px;color:#5d5d5d!important;text-decoration: none!important;display: inline-block;vertical-align: middle;}
+.form-control{border: 1px solid #ccc!important;}
