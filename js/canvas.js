@@ -2094,6 +2094,8 @@ function pasteHtmlAtCaret(html,el) {
         // IE < 9
         document.selection.createRange().pasteHTML(html);
     }
+
+
 }
 
 

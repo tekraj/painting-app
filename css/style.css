@@ -452,3 +452,18 @@ body{
 }
 .smily-menu li a span{font-size:16px;color:#5d5d5d!important;text-decoration: none!important;display: inline-block;vertical-align: middle;}
 .form-control{border: 1px solid #ccc!important;}
+.canvas-user-lists {
+    width: 80%;
+    max-width: 100%;
+    overflow-x: auto;
+    margin-top: -20px;
+}
+.canvas-user-lists ul{list-style: none;padding:0}
+.canvas-user-lists:after{content:'';display: block;clear: both;}
+.canvas-user-lists ul li{
+    float: left;
+    padding: 8px 15px;
+    background: #fff;
+    border-right: 1px solid #ccc;
+}
+.canvas-user-lists ul li.active {background:#0082c8;color:#fff;}
