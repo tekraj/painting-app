@@ -499,6 +499,7 @@ $(document).ready(function(){
                             textHolder[0].focus();
                         }, 50);
                     }
+                    broadCastCanvasImage();
                 });
 
             }else if(currentTool=='line' || currentTool=='cube' || currentTool=='rectangle' ||currentTool=='oval' || currentTool=='cone' || currentTool=='pyramid' || currentTool=='xgraph' || currentTool=='xygraph' || currentTool=='cylinder' || currentTool=='rectangle-filled' || currentTool=='oval-filled' || currentTool=='line-sarrow' ||  currentTool=='line-darrow'){
@@ -512,10 +513,11 @@ $(document).ready(function(){
                    showDragUIAnimation(left,top);
                }
             }
-            // else if(currentTool=='none'){
-            //     $enableTextTool.click();
-            // }
-            broadCastCanvasImage();
+
+            if(currentTool!='text'){
+                broadCastCanvasImage();
+            }
+
         }).mouseleave(function(){
             textEnabled = false;
             textwritten = false;

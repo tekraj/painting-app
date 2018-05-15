@@ -456,9 +456,14 @@ body{
     width: 80%;
     max-width: 100%;
     overflow-x: auto;
-    margin-top: -20px;
+    margin-top: -35px;
 }
-.canvas-user-lists ul{list-style: none;padding:0}
+.canvas-user-lists ul {
+    list-style: none;
+    padding: 0;
+    min-height: 36px;
+    margin-bottom: 0;
+}
 .canvas-user-lists:after{content:'';display: block;clear: both;}
 .canvas-user-lists ul li{
     float: left;

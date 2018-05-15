@@ -520,11 +520,11 @@ function get_client_ip() {
             <div class="row">
                 <div class="col-md-6 px-0 canvas-writing writing">
                     <div class="canvas-wrapper">
-                        <canvas class="drawing-board" id="drawing-board"></canvas>
+                        <canvas class="drawing-board" id="drawing-board" ></canvas>
                         <canvas id="fake-canvas" class="fake-canvas"></canvas>
                         <canvas id="resize-canvas" style="display: none;"></canvas>
                         <div>
-                            <div id="text-holder" contenteditable>
+                            <div id="text-holder" contenteditable="true" spellcheck="false">
 
                             </div>
                         </div>
@@ -541,6 +541,7 @@ function get_client_ip() {
                     </div>
                     <div class="session-canvas-wrapper">
                         <canvas  class="session-canvas" id="session-canvas"></canvas>
+                        <canvas  id="session-resize-canvas" style="display: none"></canvas>
                     </div>
                 </div>
 

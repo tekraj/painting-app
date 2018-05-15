@@ -20,6 +20,7 @@ $(function () {
         $sessionCanvas = $('#session-canvas');
     $userType.change(function () {
         var type = $(this).val();
+        console.log(type);
         getUsers(type);
     });
 
@@ -29,6 +30,7 @@ $(function () {
             url: herokoUrl + 'get-users',
             data: {type: type},
             success: function (response) {
+
                 if (!response)
                     return false;
                 var html = '';
@@ -188,7 +190,7 @@ $(function () {
                         position: 'topRight',
                         timeout: 5000
                     });
-
+                    broadCastCanvasImage();
                     $onlineUserList.append('<li class="js-online-users" id="user-' + data.student + '" data-user="' + data.student + '">' + data.Name + '</li>');
                     $onlineCanvasUser.append( '<li class="js-canvas-users" id="canvas-' + data.student + '" data-user="' + data.student + '">' + data.Name + '</li>')
                     if($onlineUserList.find('li').length==1){
@@ -210,7 +212,6 @@ $(function () {
             }
 
             socket.on(disconnectEvent, function (data) {
-                console.log(data);
                 iziToast.show({
                     class: 'error',
                     message: data.userName.toUpperCase() + ' has left the class',
@@ -227,9 +228,13 @@ $(function () {
                         $onlineUserList.find('li:first').click();
                     }
                 }
+
                 if ($('#canvas-' + data.socket).length > 0){
                     $('#canvas-' + data.socket).remove();
                 }
+
+
+
             });
 
 
@@ -254,9 +259,13 @@ $(function () {
                 if(user.userType=='student') {
                     user.tutor = receiver;
                     socket.emit('subscribe-tutor', user);
+                    broadCastCanvasImage();
+                }else{
+                    user.student = receiver;
+                    socket.emit('send-drawing',user);
                 }
-
             });
+
             $onlineCanvasUser.on('click','.js-canvas-users', function(){
                 if(user.userType=='student' && $onlineUserList.find('li').length>1){
                     user.previousTutor = receiver
@@ -273,9 +282,13 @@ $(function () {
                 if(user.userType=='student'){
                     user.tutor = receiver;
                     socket.emit('subscribe-tutor',user);
+                    broadCastCanvasImage();
+                }else{
+                    user.student = receiver;
+                    socket.emit('send-drawing',user);
                 }
-            });
 
+            });
 
 
             $chatForm.submit(function (e) {
@@ -303,7 +316,6 @@ $(function () {
                 $chatBoard.append(html);
                 $chatRoom.animate({scrollTop: $chatBoard.height()}, 0);
             });
-
             socket.on('new-message', function (data) {
                 var date = new Date();
                 receiver = data.socket;
@@ -322,24 +334,55 @@ $(function () {
                 $chatBoard.append(html);
                 $chatRoom.animate({scrollTop: $chatBoard.height()}, 0);
             });
-            var shareCanvas = document.getElementById('session-canvas').getContext('2d');
+            var sc = document.getElementById('session-canvas');
+            var shareCanvas = sc.getContext('2d');
+            var rc = document.getElementById('session-resize-canvas');
+            var resizeCanvas = rc.getContext('2d');
             if(user.userType=='tutor'){
                 socket.on('draw-student-drawing', function(data){
-                    var img = new Image();
-                    img.onload = function (){
-                        shareCanvas.drawImage(img,0,0);
-                    };
-                    img.src = data.image;
+                    if(data.socket==receiver){
+                        drawOnSessionCanvas(data);
+                    }
+
                 })
+                socket.on('student-drawing', function (data){
+                    drawOnSessionCanvas(data);
+                });
             }else if(user.userType=='student'){
                 socket.on('get-teacher-drawing', function (data){
-                    var img = new Image();
-                    img.onload = function (){
-                        shareCanvas.drawImage(img,0,0);
-                    };
-                    img.src = data.image;
-                })
+                   drawOnSessionCanvas(data);
+                });
+                socket.on('send-drawing', function (data){
+                    broadCastCanvasImage()
+                });
             }
+
+            function drawOnSessionCanvas(data){
+                shareCanvas.clearRect(0,0,sc.width,sc.height);
+                var img = new Image();
+                var canvasHeight = sc.height;
+                var canvasWidth = sc.width;
+                img.onload = function (){
+                    var imgWidth = img.width;
+                    var imgHeight = img.height;
+                    if(imgWidth>canvasWidth){
+                        rc.width = canvasWidth;
+                        rc.height = canvasHeight;
+                        resizeCanvas.drawImage(sc, 0, 0);
+                        $(sc).attr('width',imgWidth);
+                        shareCanvas.drawImage(rc,0,0);
+                    }
+                    if(imgHeight>canvasHeight){
+                        rc.width = canvasWidth;
+                        rc.height = canvasHeight;
+                        resizeCanvas.drawImage(sc, 0, 0);
+                        $(sc).attr('height',imgHeight);
+                        shareCanvas.drawImage(rc,0,0);
+                    }
+                    shareCanvas.drawImage(img,0,0);
+                };
+                img.src = data.image;
+            };
 
         }
     }
