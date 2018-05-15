@@ -2056,6 +2056,7 @@ function getCoords(elem) {
     var top  = box.top +  scrollTop - clientTop;
     var left = box.left + scrollLeft - clientLeft;
     return {top: Math.round(top), left:Math.round(left) };
+
 }
 
 
