@@ -515,7 +515,7 @@ $(document).ready(function(){
             // else if(currentTool=='none'){
             //     $enableTextTool.click();
             // }
-
+            broadCastCanvasImage();
         }).mouseleave(function(){
             textEnabled = false;
             textwritten = false;
@@ -621,6 +621,7 @@ $(document).ready(function(){
                     drawLineAnimation(lineStartPoint.x,lineStartPoint.y,left,top,currentColor,lineSize,false,'double');
                 }
             }
+            //broadCastCanvasImage()
         });
 
         //mouseup
@@ -682,6 +683,7 @@ $(document).ready(function(){
             pencilPoints = [];
             lineEndPoint.x = left;
             lineEndPoint.y = top;
+            broadCastCanvasImage();
         });
 
         textHolder.on('blur', function(){
