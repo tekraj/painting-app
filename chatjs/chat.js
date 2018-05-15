@@ -1,7 +1,8 @@
 "use strict";
 var socket;
-var subscribedTeacher;
-var subscribedStudent;
+var receiver ='';
+var user;
+
 $(function () {
     $('#user-input-modal').modal('show');
     var herokoUrl = 'http://localhost:8000/';//'https://whiteboardchatapp.herokuapp.com/';
@@ -14,7 +15,8 @@ $(function () {
         $chatFile = $('#attach-file'),
         $chatBoard = $('#chat-board'),
         $chatRoom = $('.chat-room'),
-        $subject = $('#subject');
+        $subject = $('#subject'),
+        $sessionCanvas = $('#session-canvas');
     $userType.change(function () {
         var type = $(this).val();
         getUsers(type);
@@ -93,10 +95,9 @@ $(function () {
 
 
         function chatSystem(authUser) {
-            var user = authUser;
+            user = authUser;
             var token = user.token;
             var date = new Date();
-            var receiver = '';
             var receiverName = '';
             var connectionOptions = {
                 'force new connection': true,
@@ -319,12 +320,31 @@ $(function () {
 
                 $chatBoard.append(html);
                 $chatRoom.animate({scrollTop: $chatBoard.height()}, 0);
-            })
+            });
+
+            if(user.userType=='tutor'){
+                socket.on('draw-student-drawing', function(data){
+                    $sessionCanvas.css('background',data.image);
+                })
+            }else if(user.userType=='student'){
+                socket.on('get-teacher-drawing', function (data){
+                    $sessionCanvas.css('background',data.image);
+                })
+            }
+
         }
     }
 });
 
 
 function broadCastCanvasImage(){
+    var canvas = document.getElementById('drawing-canvas');
+    var image = canvas.toDataURL();
+    if(user.userType=='student'){
+        socket.emit('send-draw-to-tutor',{user:user,receiver:receiver,image:image});
+    }else if(user.userType=='tutor'){
+        socket.emit('send-draw-to-student',{user:user,image:image});
+    }
+
 
 }
