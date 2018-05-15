@@ -621,7 +621,7 @@ $(document).ready(function(){
                     drawLineAnimation(lineStartPoint.x,lineStartPoint.y,left,top,currentColor,lineSize,false,'double');
                 }
             }
-            broadCastCanvasImage()
+            //broadCastCanvasImage()
         });
 
         //mouseup

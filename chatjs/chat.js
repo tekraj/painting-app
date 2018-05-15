@@ -2,10 +2,10 @@
 var socket;
 var receiver ='';
 var user;
-
+var $sessionCanvasWrapper;
 $(function () {
     $('#user-input-modal').modal('show');
-    var herokoUrl = 'http://localhost:8000/';//'https://whiteboardchatapp.herokuapp.com/';
+    var herokoUrl = 'https://whiteboardchatapp.herokuapp.com/';
     var $userName = $('#user_name');
     var $userType = $('#user_type');
     var $onlineUserList = $('#online-users'),
@@ -16,6 +16,7 @@ $(function () {
         $chatBoard = $('#chat-board'),
         $chatRoom = $('.chat-room'),
         $subject = $('#subject'),
+        $sessionCanvasWrapper = $('.session-canvas-wrapper'),
         $sessionCanvas = $('#session-canvas');
     $userType.change(function () {
         var type = $(this).val();
@@ -321,14 +322,22 @@ $(function () {
                 $chatBoard.append(html);
                 $chatRoom.animate({scrollTop: $chatBoard.height()}, 0);
             });
-
+            var shareCanvas = document.getElementById('session-canvas').getContext('2d');
             if(user.userType=='tutor'){
                 socket.on('draw-student-drawing', function(data){
-                    $sessionCanvas.css('background',data.image);
+                    var img = new Image();
+                    img.onload = function (){
+                        shareCanvas.drawImage(img,0,0);
+                    };
+                    img.src = data.image;
                 })
             }else if(user.userType=='student'){
                 socket.on('get-teacher-drawing', function (data){
-                    $sessionCanvas.css('background',data.image);
+                    var img = new Image();
+                    img.onload = function (){
+                        shareCanvas.drawImage(img,0,0);
+                    };
+                    img.src = data.image;
                 })
             }
 
@@ -338,8 +347,12 @@ $(function () {
 
 
 function broadCastCanvasImage(){
-    var canvas = document.getElementById('drawing-canvas');
+
+    var canvas = document.getElementById('drawing-board');
     var image = canvas.toDataURL();
+    if(!user)
+        return;
+
     if(user.userType=='student'){
         socket.emit('send-draw-to-tutor',{user:user,receiver:receiver,image:image});
     }else if(user.userType=='tutor'){
