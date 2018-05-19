@@ -776,6 +776,7 @@ function get_client_ip() {
 <script>
     $("html").niceScroll();
 </script>
+<script src="momentjs/moment.js"></script>
 <script src="chatjs/chat.js"></script>
 <script src="js/canvas.js?ver=1.2"></script>
 </body>

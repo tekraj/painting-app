@@ -2171,9 +2171,10 @@ function canvasDrawing(user,socket) {
 
     if (user.userType == 'tutor') {
         socket.on('draw-student-drawing', function (data) {
+
             if (data.socket == receiver && data.hasOwnProperty('canvasData')) {
                 for (var i in data.canvasData) {
-                    drawMultipleShapes(data.canvasData[i]);
+                    drawMultipleShapes(data.canvasData[i],true);
                 }
             }
         });
@@ -2185,7 +2186,7 @@ function canvasDrawing(user,socket) {
         socket.on('get-teacher-drawing', function (data) {
             if (data.hasOwnProperty('canvasData')) {
                 for (var i in data.canvasData) {
-                    drawMultipleShapes(data.canvasData[i]);
+                    drawMultipleShapes(data.canvasData[i],true);
                 }
             }
         });

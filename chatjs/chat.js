@@ -2,7 +2,7 @@
 var socket;
 var receiver ='';
 var user;
-var herokoUrl ='https://chatappwhiteboard.herokuapp.com/';
+var herokoUrl ='http://localhost:8000/'; //'https://chatappwhiteboard.herokuapp.com/';
 var canvasObjects = [];
 var $sessionCanvasWrapper;
 $(function () {
@@ -286,7 +286,7 @@ $(function () {
                 receiver = data.socket;
                 receiverName = data.userName;
                 $('.js-online-users').removeClass('active');
-                $('#' + data.socket).addClass('active');
+                $('#user-' + data.socket).addClass('active');
                 var html = '<li class="from">\n' +
                     ' <div>\n' +
                     ' <p class="clearfix"><span class="username">' + receiverName + '</span> <span class="time">' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + '</span></p>\n' +
@@ -351,9 +351,9 @@ function getUserMessages(userId,receiverId,userType){
                 var html = '';
                 for(var i in messages){
                     var message = messages[i];
-                     html+= '<li class="'+(message.messageType=='mine' ? 'mine' : '')+'">\n' +
+                     html+= '<li class="'+(message.UserName==user.Name ? 'mine' : '')+'">\n' +
                         ' <div>\n' +
-                        ' <p class="clearfix"><span class="pull-left username">' +(message.messageType=='mine' && user.userType=='student' ? message.studentName : message.tutorName) + '</span> <span class="pull-left time">' + message.CreatedAt + '</span></p>\n' +
+                        ' <p class="clearfix"><span class="pull-left username">' +message.UserName + '</span> <span class="pull-left time">' +moment(message.CreatedAt).format('MMM DD h:mm A')+ '</span></p>\n' +
                         ' <p class="message">\n' +
                         decodeHtml(message.Message) +
                         ' </p>\n' +
