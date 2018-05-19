@@ -517,8 +517,8 @@ function get_client_ip() {
 
         <div class="col-md-11 border px-0 canvas-list">
 
-            <div class="row">
-                <div class="col-md-6 px-0 canvas-writing writing">
+            <div class="canvas-writing writing">
+
                     <div class="canvas-wrapper">
                         <canvas class="drawing-board" id="drawing-board" ></canvas>
                         <canvas id="fake-canvas" class="fake-canvas"></canvas>
@@ -531,19 +531,7 @@ function get_client_ip() {
                         <div id="pdf-reader" style="display: none;"></div>
                         <div id="drag-div"></div>
                     </div>
-                </div>
 
-                <div class="col-md-6 px-0">
-                    <div class="canvas-user-lists">
-                        <ul class="js-canvas-users" id="canvas-online-users">
-
-                        </ul>
-                    </div>
-                    <div class="session-canvas-wrapper">
-                        <canvas  class="session-canvas" id="session-canvas"></canvas>
-                        <canvas  id="session-resize-canvas" style="display: none"></canvas>
-                    </div>
-                </div>
 
             </div>
 

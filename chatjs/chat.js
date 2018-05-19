@@ -2,22 +2,21 @@
 var socket;
 var receiver ='';
 var user;
+var herokoUrl ='https://chatappwhiteboard.herokuapp.com/';
+var canvasObjects = [];
 var $sessionCanvasWrapper;
 $(function () {
     $('#user-input-modal').modal('show');
-    var herokoUrl = 'https://whiteboardchatapp.herokuapp.com/';
     var $userName = $('#user_name');
     var $userType = $('#user_type');
     var $onlineUserList = $('#online-users'),
-        $onlineCanvasUser = $('#canvas-online-users'),
         $chatForm = $('#chat-input-area'),
         $chatInput = $('#chat-input'),
         $chatFile = $('#attach-file'),
         $chatBoard = $('#chat-board'),
         $chatRoom = $('.chat-room'),
-        $subject = $('#subject'),
-        $sessionCanvasWrapper = $('.session-canvas-wrapper'),
-        $sessionCanvas = $('#session-canvas');
+        $subject = $('#subject');
+
     $userType.change(function () {
         var type = $(this).val();
         console.log(type);
@@ -111,6 +110,7 @@ $(function () {
             };
 
             socket = new io(herokoUrl, connectionOptions);
+            canvasDrawing(user,socket);
             socket.emit('add-user');
 
             //save user socket data on connection
@@ -142,17 +142,14 @@ $(function () {
                  */
                 socket.on(updateEvent, function (data) {
                     var $html = '';
-                    var $canvasHtml = '';
                     for (var i in data) {
                         var u = data[i];
                         if (i !== user.socket) {
-                            $html += '<li class="js-online-users" id="user-' + u.socket + '" data-user="' + u.socket + '">' + u.user.Name + '</li>';
-                            $canvasHtml += '<li class="js-canvas-users" id="canvas-' + u.socket + '" data-user="' + u.socket + '">' + u.user.Name + '</li>';
+                            $html += '<li class="js-online-users" id="user-' + u.socket + '" data-user="' + u.socket + '" data-uid="'+u.ObjectID+'">' + u.user.Name + '</li>';
 
                         }
                     }
                     $onlineUserList.html($html);
-                    $onlineCanvasUser.html($canvasHtml);
                     $onlineUserList.find('li:first').click();
                 });
 
@@ -165,6 +162,7 @@ $(function () {
 
 
                 socket.on(notiticationEvent, function (data) {
+
                     iziToast.show({
                         class: 'success',
                         message: 'New ' + data.userType.toUpperCase() + ' has joined the class',
@@ -173,8 +171,7 @@ $(function () {
                         position: 'topRight',
                         timeout: 5000
                     });
-                    $onlineUserList.append('<li class="js-online-users" id="user-' + data.socket + '" data-user="' + data.socket + '">' + data.Name + '</li>');
-                    $onlineCanvasUser.append('<li class="js-canvas-users" id="canvas' + data.socket + '" data-user="' + data.socket + '">' + data.Name + '</li>')
+                    $onlineUserList.append('<li class="js-online-users" data-uid="'+data.ObjectID+'" id="user-' + data.socket + '" data-user="' + data.socket + '" >' + data.Name + '</li>');
                     if($onlineUserList.find('li').length==1){
                         $onlineUserList.find('li:first').click();
                     }
@@ -182,6 +179,7 @@ $(function () {
             }
             if(user.userType=='tutor'){
                 socket.on('tutor-subscribed', function(data){
+                    console.log(data);
                     iziToast.show({
                         class: 'success',
                         message:  data.Name.toUpperCase() + ' has joined the class',
@@ -190,9 +188,8 @@ $(function () {
                         position: 'topRight',
                         timeout: 5000
                     });
-                    broadCastCanvasImage();
-                    $onlineUserList.append('<li class="js-online-users" id="user-' + data.student + '" data-user="' + data.student + '">' + data.Name + '</li>');
-                    $onlineCanvasUser.append( '<li class="js-canvas-users" id="canvas-' + data.student + '" data-user="' + data.student + '">' + data.Name + '</li>')
+                    streamCanvasDrawing( canvasObjects);
+                    $onlineUserList.append('<li class="js-online-users" data-uid="'+data.ObjectID+'" id="user-' + data.student + '" data-user="' + data.student + '" >' + data.Name + '</li>');
                     if($onlineUserList.find('li').length==1){
                         $onlineUserList.find('li:first').click();
                     }
@@ -204,9 +201,6 @@ $(function () {
                         if(activeClass &&  $onlineUserList.find('li').length>0){
                             $onlineUserList.find('li:first').click();
                         }
-                    }
-                    if ($('#canvas-' + data.student).length > 0){
-                        $('#canvas-' + data.student).remove();
                     }
                 })
             }
@@ -228,13 +222,6 @@ $(function () {
                         $onlineUserList.find('li:first').click();
                     }
                 }
-
-                if ($('#canvas-' + data.socket).length > 0){
-                    $('#canvas-' + data.socket).remove();
-                }
-
-
-
             });
 
 
@@ -244,52 +231,29 @@ $(function () {
              * ==================================
              */
             $onlineUserList.on('click', '.js-online-users', function () {
+
                 if(user.userType=='student' && $onlineUserList.find('li').length>1){
                     user.previousTutor = receiver
                     socket.emit('tutor-unsubscribed',user);
                 }
+
                 var $this = $(this);
                 $('.js-online-users').removeClass('active');
                 $this.addClass('active');
                 receiver = $this.data().user;
+                var receiverId = $this.data().uid;
                 receiverName = $this.text();
                 var index = $this.index();
-                $onlineCanvasUser.find('li').removeClass('active');
-                $onlineCanvasUser.find('li:eq('+index+')').addClass('active');
+
                 if(user.userType=='student') {
                     user.tutor = receiver;
                     socket.emit('subscribe-tutor', user);
-                    broadCastCanvasImage();
                 }else{
                     user.student = receiver;
                     socket.emit('send-drawing',user);
                 }
+                getUserMessages(user.ObjectID,receiverId,user.userType);
             });
-
-            $onlineCanvasUser.on('click','.js-canvas-users', function(){
-                if(user.userType=='student' && $onlineUserList.find('li').length>1){
-                    user.previousTutor = receiver
-                    socket.emit('tutor-unsubscribed',user);
-                }
-                var $this = $(this);
-                $('.js-canvas-users').removeClass('active');
-                $this.addClass('active');
-                receiver = $this.data().user;
-                receiverName = $this.text();
-                var index = $this.index();
-                $onlineUserList.find('li').removeClass('active');
-                $onlineUserList.find('li:eq('+index+')').addClass('active');
-                if(user.userType=='student'){
-                    user.tutor = receiver;
-                    socket.emit('subscribe-tutor',user);
-                    broadCastCanvasImage();
-                }else{
-                    user.student = receiver;
-                    socket.emit('send-drawing',user);
-                }
-
-            });
-
 
             $chatForm.submit(function (e) {
                 e.preventDefault();
@@ -302,7 +266,7 @@ $(function () {
                 var message = $chatInput.html();
                 if (message.trim().length < 1)
                     return false;
-                socket.emit('private-mesage', {receiver: receiver, message: message, userName: user.Name});
+                socket.emit('private-mesage', {receiver: receiver, message: message, userName: user.Name,userType:user.userType,id:user.ObjectID});
                 $chatInput.blur();
                 $chatInput.html('');
                 var html = '<li class="mine">\n' +
@@ -316,6 +280,7 @@ $(function () {
                 $chatBoard.append(html);
                 $chatRoom.animate({scrollTop: $chatBoard.height()}, 0);
             });
+
             socket.on('new-message', function (data) {
                 var date = new Date();
                 receiver = data.socket;
@@ -334,73 +299,70 @@ $(function () {
                 $chatBoard.append(html);
                 $chatRoom.animate({scrollTop: $chatBoard.height()}, 0);
             });
-            var sc = document.getElementById('session-canvas');
-            var shareCanvas = sc.getContext('2d');
-            var rc = document.getElementById('session-resize-canvas');
-            var resizeCanvas = rc.getContext('2d');
-            if(user.userType=='tutor'){
-                socket.on('draw-student-drawing', function(data){
-                    if(data.socket==receiver){
-                        drawOnSessionCanvas(data);
-                    }
 
-                })
-                socket.on('student-drawing', function (data){
-                    drawOnSessionCanvas(data);
-                });
-            }else if(user.userType=='student'){
-                socket.on('get-teacher-drawing', function (data){
-                   drawOnSessionCanvas(data);
-                });
-                socket.on('send-drawing', function (data){
-                    broadCastCanvasImage()
-                });
-            }
 
-            function drawOnSessionCanvas(data){
-                shareCanvas.clearRect(0,0,sc.width,sc.height);
-                var img = new Image();
-                var canvasHeight = sc.height;
-                var canvasWidth = sc.width;
-                img.onload = function (){
-                    var imgWidth = img.width;
-                    var imgHeight = img.height;
-                    if(imgWidth>canvasWidth){
-                        rc.width = canvasWidth;
-                        rc.height = canvasHeight;
-                        resizeCanvas.drawImage(sc, 0, 0);
-                        $(sc).attr('width',imgWidth);
-                        shareCanvas.drawImage(rc,0,0);
-                    }
-                    if(imgHeight>canvasHeight){
-                        rc.width = canvasWidth;
-                        rc.height = canvasHeight;
-                        resizeCanvas.drawImage(sc, 0, 0);
-                        $(sc).attr('height',imgHeight);
-                        shareCanvas.drawImage(rc,0,0);
-                    }
-                    shareCanvas.drawImage(img,0,0);
-                };
-                img.src = data.image;
-            };
 
         }
     }
 });
 
 
-function broadCastCanvasImage(){
-
-    var canvas = document.getElementById('drawing-board');
-    var image = canvas.toDataURL();
+function streamCanvasDrawing(data){
     if(!user)
         return;
-
     if(user.userType=='student'){
-        socket.emit('send-draw-to-tutor',{user:user,receiver:receiver,image:image});
+        socket.emit('send-draw-to-tutor',{user:user,receiver:receiver,canvasData:data});
     }else if(user.userType=='tutor'){
-        socket.emit('send-draw-to-student',{user:user,image:image});
+        socket.emit('send-draw-to-student',{user:user,canvasData:data});
     }
 
+}
 
+function decodeHtml(str){
+    if(!str)
+        return '';
+    var entityPairs = [
+        {character: '&', html: '&amp;'},
+        {character: '<', html: '&lt;'},
+        {character: '>', html: '&gt;'},
+        {character: "'", html: '&apos;'},
+        {character: '"', html: '&quot;'}
+    ];
+
+    entityPairs.forEach( function(pair){
+        var reg = new RegExp(pair.html, 'g');
+        str = str.replace(reg, pair.character);
+    });
+    return str;
+}
+
+function getUserMessages(userId,receiverId,userType){
+    if(!receiverId)
+        return false;
+    if(!userId)
+        return false;
+    $.ajax({
+        type : 'post',
+        url : herokoUrl+'get-user-messages',
+        data : {fromUser: userId.replace(/\s+/,''),toUser:receiverId.replace(/\s+/,''),userType:userType},
+        success : function (response){
+            if(response.status){
+                var messages = response.messages;
+                var html = '';
+                for(var i in messages){
+                    var message = messages[i];
+                     html+= '<li class="'+(message.messageType=='mine' ? 'mine' : '')+'">\n' +
+                        ' <div>\n' +
+                        ' <p class="clearfix"><span class="pull-left username">' +(message.messageType=='mine' && user.userType=='student' ? message.studentName : message.tutorName) + '</span> <span class="pull-left time">' + message.CreatedAt + '</span></p>\n' +
+                        ' <p class="message">\n' +
+                        decodeHtml(message.Message) +
+                        ' </p>\n' +
+                        '     </div>\n' +
+                        ' </li>';
+                }
+                $('#chat-board').html(html);
+                $('.chat-room').animate({scrollTop: $('#chat-board').height()}, 0);
+            }
+        }
+    })
 }
