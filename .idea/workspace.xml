@@ -13,12 +13,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="canvas.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/canvas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3488">
-              <caret line="2180" column="0" lean-forward="true" selection-start-line="2180" selection-start-column="0" selection-end-line="2180" selection-end-column="0" />
+            <state relative-caret-position="45780">
+              <caret line="2180" column="0" lean-forward="false" selection-start-line="2180" selection-start-column="0" selection-end-line="2180" selection-end-column="0" />
               <folding>
                 <marker date="1526724271248" expanded="true" signature="4874:4901" ph="..." />
                 <marker date="1526724271248" expanded="true" signature="4903:4910" ph="..." />
@@ -40,8 +40,8 @@
       <file leaf-file-name="chat.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+            <state relative-caret-position="-105">
+              <caret line="306" column="3" lean-forward="false" selection-start-line="306" selection-start-column="3" selection-end-line="306" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -50,7 +50,7 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
+            <state relative-caret-position="16338">
               <caret line="778" column="31" lean-forward="false" selection-start-line="778" selection-start-column="31" selection-end-line="778" selection-end-column="31" />
               <folding />
             </state>
@@ -99,7 +99,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -117,11 +116,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../typewriter" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -150,33 +150,40 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1526721406059</updated>
-      <workItem from="1526721407632" duration="3098000" />
+      <workItem from="1526721407632" duration="4548000" />
+      <workItem from="1526800574353" duration="993000" />
+      <workItem from="1526923361387" duration="95000" />
+      <workItem from="1527173891879" duration="17000" />
+      <workItem from="1527264558738" duration="454000" />
+      <workItem from="1527520282015" duration="1126000" />
+      <workItem from="1528014785193" duration="610000" />
+      <workItem from="1528391643621" duration="739000" />
+      <workItem from="1528560022810" duration="30000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3098000" />
+    <option name="totallyTimeSpent" value="8612000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21559633" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -191,11 +198,306 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45780">
+          <caret line="2180" column="0" lean-forward="false" selection-start-line="2180" selection-start-column="0" selection-end-line="2180" selection-end-column="0" />
+          <folding>
+            <marker date="1526724271248" expanded="true" signature="4874:4901" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="4903:4910" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5537:5543" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5565:5572" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5901:5907" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="6487:6494" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7327:7354" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7356:7363" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11337:11459" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11479:11486" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58074:58101" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58103:58110" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16338">
+          <caret line="778" column="31" lean-forward="false" selection-start-line="778" selection-start-column="31" selection-end-line="778" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6426">
+          <caret line="306" column="3" lean-forward="false" selection-start-line="306" selection-start-column="3" selection-end-line="306" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45780">
+          <caret line="2180" column="0" lean-forward="false" selection-start-line="2180" selection-start-column="0" selection-end-line="2180" selection-end-column="0" />
+          <folding>
+            <marker date="1526724271248" expanded="true" signature="4874:4901" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="4903:4910" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5537:5543" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5565:5572" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5901:5907" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="6487:6494" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7327:7354" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7356:7363" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11337:11459" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11479:11486" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58074:58101" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58103:58110" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16338">
+          <caret line="778" column="31" lean-forward="false" selection-start-line="778" selection-start-column="31" selection-end-line="778" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6426">
+          <caret line="306" column="3" lean-forward="false" selection-start-line="306" selection-start-column="3" selection-end-line="306" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45780">
+          <caret line="2180" column="0" lean-forward="false" selection-start-line="2180" selection-start-column="0" selection-end-line="2180" selection-end-column="0" />
+          <folding>
+            <marker date="1526724271248" expanded="true" signature="4874:4901" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="4903:4910" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5537:5543" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5565:5572" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5901:5907" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="6487:6494" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7327:7354" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7356:7363" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11337:11459" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11479:11486" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58074:58101" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58103:58110" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16338">
+          <caret line="778" column="31" lean-forward="false" selection-start-line="778" selection-start-column="31" selection-end-line="778" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6426">
+          <caret line="306" column="3" lean-forward="true" selection-start-line="306" selection-start-column="3" selection-end-line="306" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45780">
+          <caret line="2180" column="0" lean-forward="false" selection-start-line="2180" selection-start-column="0" selection-end-line="2180" selection-end-column="0" />
+          <folding>
+            <marker date="1526724271248" expanded="true" signature="4874:4901" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="4903:4910" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5537:5543" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5565:5572" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5901:5907" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="6487:6494" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7327:7354" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7356:7363" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11337:11459" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11479:11486" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58074:58101" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58103:58110" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16338">
+          <caret line="778" column="31" lean-forward="false" selection-start-line="778" selection-start-column="31" selection-end-line="778" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6048">
+          <caret line="288" column="32" lean-forward="false" selection-start-line="288" selection-start-column="32" selection-end-line="288" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45780">
+          <caret line="2180" column="0" lean-forward="false" selection-start-line="2180" selection-start-column="0" selection-end-line="2180" selection-end-column="0" />
+          <folding>
+            <marker date="1526724271248" expanded="true" signature="4874:4901" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="4903:4910" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5537:5543" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5565:5572" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5901:5907" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="6487:6494" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7327:7354" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7356:7363" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11337:11459" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11479:11486" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58074:58101" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58103:58110" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16338">
+          <caret line="778" column="31" lean-forward="false" selection-start-line="778" selection-start-column="31" selection-end-line="778" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6048">
+          <caret line="288" column="32" lean-forward="true" selection-start-line="288" selection-start-column="32" selection-end-line="288" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45780">
+          <caret line="2180" column="0" lean-forward="false" selection-start-line="2180" selection-start-column="0" selection-end-line="2180" selection-end-column="0" />
+          <folding>
+            <marker date="1526724271248" expanded="true" signature="4874:4901" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="4903:4910" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5537:5543" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5565:5572" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5901:5907" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="6487:6494" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7327:7354" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7356:7363" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11337:11459" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11479:11486" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58074:58101" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58103:58110" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16338">
+          <caret line="778" column="31" lean-forward="false" selection-start-line="778" selection-start-column="31" selection-end-line="778" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5775">
+          <caret line="275" column="29" lean-forward="false" selection-start-line="275" selection-start-column="29" selection-end-line="275" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45780">
+          <caret line="2180" column="0" lean-forward="false" selection-start-line="2180" selection-start-column="0" selection-end-line="2180" selection-end-column="0" />
+          <folding>
+            <marker date="1526724271248" expanded="true" signature="4874:4901" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="4903:4910" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5537:5543" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5565:5572" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5901:5907" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="6487:6494" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7327:7354" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7356:7363" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11337:11459" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11479:11486" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58074:58101" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58103:58110" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16338">
+          <caret line="778" column="31" lean-forward="false" selection-start-line="778" selection-start-column="31" selection-end-line="778" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5775">
+          <caret line="275" column="29" lean-forward="true" selection-start-line="275" selection-start-column="29" selection-end-line="275" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45780">
+          <caret line="2180" column="0" lean-forward="true" selection-start-line="2180" selection-start-column="0" selection-end-line="2180" selection-end-column="0" />
+          <folding>
+            <marker date="1526724271248" expanded="true" signature="4874:4901" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="4903:4910" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5537:5543" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5565:5572" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="5901:5907" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="6487:6494" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7327:7354" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="7356:7363" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11337:11459" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="11479:11486" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58074:58101" ph="..." />
+            <marker date="1526724271248" expanded="true" signature="58103:58110" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16338">
+          <caret line="778" column="31" lean-forward="false" selection-start-line="778" selection-start-column="31" selection-end-line="778" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5313">
+          <caret line="253" column="17" lean-forward="true" selection-start-line="253" selection-start-column="17" selection-end-line="253" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/momentjs/ender.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -203,7 +505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -211,15 +512,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
+        <state relative-caret-position="16338">
           <caret line="778" column="31" lean-forward="false" selection-start-line="778" selection-start-column="31" selection-end-line="778" selection-end-column="31" />
           <folding />
         </state>
@@ -227,8 +525,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/canvas.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3488">
-          <caret line="2180" column="0" lean-forward="true" selection-start-line="2180" selection-start-column="0" selection-end-line="2180" selection-end-column="0" />
+        <state relative-caret-position="45780">
+          <caret line="2180" column="0" lean-forward="false" selection-start-line="2180" selection-start-column="0" selection-end-line="2180" selection-end-column="0" />
           <folding>
             <marker date="1526724271248" expanded="true" signature="4874:4901" ph="..." />
             <marker date="1526724271248" expanded="true" signature="4903:4910" ph="..." />
@@ -248,8 +546,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        <state relative-caret-position="-105">
+          <caret line="306" column="3" lean-forward="false" selection-start-line="306" selection-start-column="3" selection-end-line="306" selection-end-column="3" />
           <folding />
         </state>
       </provider>

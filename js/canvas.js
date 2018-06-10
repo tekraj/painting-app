@@ -10,7 +10,6 @@ if (!HTMLCanvasElement.prototype.toBlob) {
                 for (var i = 0; i < len; i++) {
                     arr[i] = binStr.charCodeAt(i);
                 }
-
                 callback(new Blob([arr], {type: type || 'image/png'}));
             });
         }
@@ -102,7 +101,10 @@ function canvasDrawing(user,socket) {
         pdfEnabled = false,
         pdfReaderWrapper = $('#pdf-reader'),
         background = '#fff',
+        eraserPoints = [],
+        publicModeEnabled = false,
         currentTool = 'text';
+    var foreignCanvasData = [];
     dc.css({'cursor': cursor});
     var parentHeight = dc.parent().height();
     var parentWidth = dc.parent().width();
@@ -461,6 +463,7 @@ function canvasDrawing(user,socket) {
 
     //mouseDown Event Handler
     dc.mousedown(function (e) {
+        eraserPoints =[];
         mouseDown = true;
         var left = e.pageX - position.left,
             top = e.pageY - position.top;
@@ -523,7 +526,7 @@ function canvasDrawing(user,socket) {
         textwritten = false;
     });
     //mousemove
-    $('body').mousemove(function (e) {
+    $('body').on('mousemove',function (e) {
 
         var left = e.pageX - position.left;
         var top = e.pageY - position.top;
@@ -570,11 +573,7 @@ function canvasDrawing(user,socket) {
             } else if (currentTool == 'eraser') {
                 fa.show();
                 showEraserAnimation(left, top, eraserSize);
-                drawingCanvas.beginPath();
-                drawingCanvas.globalCompositeOperation = "destination-out";
-                drawingCanvas.arc(left, top, eraserSize, 0, Math.PI * 2, false);
-                drawingCanvas.fill();
-                drawingCanvas.globalCompositeOperation = 'source-over';
+                eraseActualDrawing(left, top, eraserSize);
             } else if (currentTool == 'pencil') {
 
                 //if shift is pressed draw straight line
@@ -627,7 +626,7 @@ function canvasDrawing(user,socket) {
     });
 
     //mouseup
-    $('body').mouseup(function (e) {
+    $('body').on('mouseup',function (e) {
 
         var left = e.pageX - position.left;
         var top = e.pageY - position.top;
@@ -787,6 +786,14 @@ function canvasDrawing(user,socket) {
                     color: currentColor,
                     lineSize: lineSize
                 });
+            }else if(currentTool=='eraser'){
+                canvasObjects.push({shape:'eraser',data:eraserPoints});
+                if(publicModeEnabled){
+                    streamCanvasDrawing([{shape:'eraser',data:eraserPoints}]);
+                }else {
+                    streamCanvasDrawing(canvasObjects,publicModeEnabled);
+                }
+
             }
         }
         fakeCanvas.clearRect(0, 0, fakeC.height, fakeC.width);
@@ -835,6 +842,21 @@ function canvasDrawing(user,socket) {
         }
     }
 
+    /**
+     * function to erase drawing
+     * @param l
+     * @param t
+     * @param es
+     */
+    function eraseActualDrawing(l,t,es){
+        drawingCanvas.beginPath();
+        drawingCanvas.globalCompositeOperation = "destination-out";
+        drawingCanvas.arc(l, t, es, 0, Math.PI * 2, false);
+        drawingCanvas.fill();
+        drawingCanvas.globalCompositeOperation = 'source-over';
+        eraserPoints.push({left:l,top:t,eraserSize:es});
+
+    }
     /**
      * ======================================================
      * *************** draw with pencil
@@ -1894,7 +1916,12 @@ function canvasDrawing(user,socket) {
      */
     function saveCanvasObjects(shape, data) {
         canvasObjects.push({shape: shape, data: data});
-        streamCanvasDrawing([{shape: shape, data: data}]);
+        if(publicModeEnabled){
+            streamCanvasDrawing([{shape: shape, data: data}],publicModeEnabled);
+        }else{
+            streamCanvasDrawing(canvasObjects,publicModeEnabled);
+        }
+
     }
 
     /**
@@ -1989,7 +2016,16 @@ function canvasDrawing(user,socket) {
                 continue;
             drawMultipleShapes(canvasShape, true);
         }
+        console.log(foreignCanvasData);
+        for (var j = 0; j < foreignCanvasData.length; j++) {
 
+            var cShape = foreignCanvasData[j];
+            if (!cShape)
+                continue;
+            if (!cShape.data)
+                continue;
+            drawMultipleShapes(cShape, true);
+        }
     }
 
     /**
@@ -2093,6 +2129,14 @@ function canvasDrawing(user,socket) {
                 ctx.drawImage(img, l, t);
             };
             img.src = shapeData.image;
+        }else if(shape=='eraser'){
+            shapeData.forEach(function(d){
+                drawingCanvas.beginPath();
+                drawingCanvas.globalCompositeOperation = "destination-out";
+                drawingCanvas.arc(d.left, d.top, d.eraserSize, 0, Math.PI * 2, false);
+                drawingCanvas.fill();
+                drawingCanvas.globalCompositeOperation = 'source-over';
+            });
         }
     }
 
@@ -2169,31 +2213,54 @@ function canvasDrawing(user,socket) {
         return false;
     }
 
-    if (user.userType == 'tutor') {
-        socket.on('draw-student-drawing', function (data) {
-
+    //enable public mode
+    $('.js-public-mode').click(function(){
+        if($(this).hasClass('active')){
+            publicModeEnabled = false;
+            foreignCanvasData = [];
+        }else{
+            $(this).addClass('active');
+            publicModeEnabled = true;
+            foreignCanvasData = [];
+        }
+    });
+    if(publicModeEnabled){
+        socket.on('public-drawing', function (data) {
             if (data.socket == receiver && data.hasOwnProperty('canvasData')) {
-                for (var i in data.canvasData) {
-                    drawMultipleShapes(data.canvasData[i],true);
-                }
+                foreignCanvasData.push(data.canvasData);
+                redrawCanvas();
             }
         });
+    }else{
+        if (user.userType == 'tutor') {
+            socket.on('draw-student-drawing', function (data) {
+                if (data.socket == receiver && data.hasOwnProperty('canvasData')) {
 
-        socket.on('student-drawing', function (data) {
-            streamCanvasDrawing(canvasObjects);
-        });
-    } else if (user.userType == 'student') {
-        socket.on('get-teacher-drawing', function (data) {
-            if (data.hasOwnProperty('canvasData')) {
-                for (var i in data.canvasData) {
-                    drawMultipleShapes(data.canvasData[i],true);
+                    foreignCanvasData = data.canvasData;
+                    redrawCanvas();
                 }
-            }
-        });
-        socket.on('send-drawing', function (data) {
-            streamCanvasDrawing(canvasObjects)
-        });
+            });
+            socket.on('student-drawing', function (data) {
+                streamCanvasDrawing(canvasObjects,publicModeEnabled);
+            });
+        } else if (user.userType == 'student') {
+            socket.on('get-teacher-drawing', function (data) {
+                foreignCanvasData = data.canvasData;
+                redrawCanvas();
+            });
+            socket.on('send-drawing', function (data) {
+                streamCanvasDrawing(canvasObjects,publicModeEnabled)
+            });
+        }
     }
+
+
+    $(document).on('click','.js-online-users',function(){
+        if($(this).hasClass('active'))
+            return false;
+        foreignCanvasData = [];
+        redrawCanvas();
+    })
 
 };
 

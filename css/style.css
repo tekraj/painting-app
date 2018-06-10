@@ -472,3 +472,7 @@ body{
     border-right: 1px solid #ccc;
 }
 .canvas-user-lists ul li.active {background:#0082c8;color:#fff;}
+.btn-public.active{
+    background-color: #1f91f3 !important;
+    border-color:#1f91f3 !important;
+}

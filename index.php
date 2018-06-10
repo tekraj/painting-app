@@ -155,7 +155,7 @@ function get_client_ip() {
             <span style="font-size:12px;"><b>Slide 1/1</b></span>
         </div>
         <div class="col-sm-6 text-right">
-                <button class="btn btn-warning btn-public">Public</button>
+                <button class="btn btn-warning btn-public js-public-mode">Public</button>
         </div>
     </div>
 </div>

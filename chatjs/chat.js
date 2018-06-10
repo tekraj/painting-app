@@ -2,7 +2,7 @@
 var socket;
 var receiver ='';
 var user;
-var herokoUrl ='https://chatappwhiteboard.herokuapp.com/';
+var herokoUrl ='http://localhost:8000/' ;//'https://chatappwhiteboard.herokuapp.com/';
 var canvasObjects = [];
 var $sessionCanvasWrapper;
 $(function () {
@@ -142,15 +142,18 @@ $(function () {
                  */
                 socket.on(updateEvent, function (data) {
                     var $html = '';
+
                     for (var i in data) {
                         var u = data[i];
-                        if (i !== user.socket) {
+                        if (u.ObjectID !== user.ObjectID ) {
                             $html += '<li class="js-online-users" id="user-' + u.socket + '" data-user="' + u.socket + '" data-uid="'+u.ObjectID+'">' + u.user.Name + '</li>';
-
                         }
                     }
                     $onlineUserList.html($html);
-                    $onlineUserList.find('li:first').click();
+                    if( $onlineUserList.find('li').length>0){
+                        $onlineUserList.find('.js-online-users:first').click();
+                    }
+
                 });
 
 
@@ -165,7 +168,7 @@ $(function () {
 
                     iziToast.show({
                         class: 'success',
-                        message: 'New ' + data.userType.toUpperCase() + ' has joined the class',
+                        message:  data.userType.toUpperCase() + ' has joined the class',
                         color: 'green',
                         icon: '',
                         position: 'topRight',
@@ -173,13 +176,13 @@ $(function () {
                     });
                     $onlineUserList.append('<li class="js-online-users" data-uid="'+data.ObjectID+'" id="user-' + data.socket + '" data-user="' + data.socket + '" >' + data.Name + '</li>');
                     if($onlineUserList.find('li').length==1){
-                        $onlineUserList.find('li:first').click();
+                        $onlineUserList.find('.js-online-users:first').click();
                     }
                 });
             }
             if(user.userType=='tutor'){
                 socket.on('tutor-subscribed', function(data){
-                    console.log(data);
+
                     iziToast.show({
                         class: 'success',
                         message:  data.Name.toUpperCase() + ' has joined the class',
@@ -191,7 +194,7 @@ $(function () {
                     streamCanvasDrawing( canvasObjects);
                     $onlineUserList.append('<li class="js-online-users" data-uid="'+data.ObjectID+'" id="user-' + data.student + '" data-user="' + data.student + '" >' + data.Name + '</li>');
                     if($onlineUserList.find('li').length==1){
-                        $onlineUserList.find('li:first').click();
+                        $onlineUserList.find('.js-online-users:first').click();
                     }
                 });
                 socket.on('unsubscribe-tutor', function (data){
@@ -199,7 +202,7 @@ $(function () {
                         var activeClass = $('#user-' + data.student).hasClass('active');
                         $('#user-' + data.student).remove();
                         if(activeClass &&  $onlineUserList.find('li').length>0){
-                            $onlineUserList.find('li:first').click();
+                            $onlineUserList.find('.js-online-users:first').click();
                         }
                     }
                 })
@@ -231,6 +234,8 @@ $(function () {
              * ==================================
              */
             $onlineUserList.on('click', '.js-online-users', function () {
+                if($(this).hasClass('active'))
+                    return false;
 
                 if(user.userType=='student' && $onlineUserList.find('li').length>1){
                     user.previousTutor = receiver
@@ -299,22 +304,23 @@ $(function () {
                 $chatBoard.append(html);
                 $chatRoom.animate({scrollTop: $chatBoard.height()}, 0);
             });
-
-
-
         }
     }
 });
 
-
-function streamCanvasDrawing(data){
+function streamCanvasDrawing(data,publicModeEnabled){
     if(!user)
         return;
-    if(user.userType=='student'){
-        socket.emit('send-draw-to-tutor',{user:user,receiver:receiver,canvasData:data});
-    }else if(user.userType=='tutor'){
-        socket.emit('send-draw-to-student',{user:user,canvasData:data});
+    if(publicModeEnabled){
+        socket.emit('get-public-drawing',{user:user,receiver:receiver,canvasData:data});
+    }else{
+        if(user.userType=='student'){
+            socket.emit('send-draw-to-tutor',{user:user,receiver:receiver,canvasData:data});
+        }else if(user.userType=='tutor'){
+            socket.emit('send-draw-to-student',{user:user,canvasData:data});
+        }
     }
+
 
 }
 
