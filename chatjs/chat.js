@@ -4,6 +4,7 @@ var receiver ='';
 var user;
 var herokoUrl ='https://chatappwhiteboard.herokuapp.com/';
 var canvasObjects = [];
+var currentStudentID ='';
 var $sessionCanvasWrapper;
 $(function () {
     $('#user-input-modal').modal('show');
@@ -191,7 +192,7 @@ $(function () {
                         position: 'topRight',
                         timeout: 5000
                     });
-                    streamCanvasDrawing( canvasObjects);
+
                     $onlineUserList.append('<li class="js-online-users" data-uid="'+data.ObjectID+'" id="user-' + data.student + '" data-user="' + data.student + '" >' + data.Name + '</li>');
                     if($onlineUserList.find('li').length==1){
                         $onlineUserList.find('.js-online-users:first').click();
@@ -247,6 +248,9 @@ $(function () {
                 $this.addClass('active');
                 receiver = $this.data().user;
                 var receiverId = $this.data().uid;
+                if(user.userType=='tutor'){
+                    currentStudentID = receiverId;
+                }
                 receiverName = $this.text();
                 var index = $this.index();
 
@@ -312,16 +316,10 @@ function streamCanvasDrawing(data,publicModeEnabled){
     if(!user)
         return;
     if(publicModeEnabled){
-        socket.emit('get-public-drawing',{user:user,receiver:receiver,canvasData:data});
+        socket.emit('send-public-drawing',{user:user,receiver:receiver,canvasData:data});
     }else{
-        if(user.userType=='student'){
-            socket.emit('send-draw-to-tutor',{user:user,receiver:receiver,canvasData:data});
-        }else if(user.userType=='tutor'){
-            socket.emit('send-draw-to-student',{user:user,canvasData:data});
-        }
+        socket.emit('send-private-drawing',{user:user,receiver:receiver,canvasData:data});
     }
-
-
 }
 
 function decodeHtml(str){

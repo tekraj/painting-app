@@ -37,7 +37,7 @@ $.fn.selectRange = function (start, end) {
     });
 }
 
-function canvasDrawing(user,socket) {
+function canvasDrawing(user, socket) {
 
     $('#symbol-modal').on('mousedown', '.matheditor-btn-span', function () {
         $(this).addClass('active');
@@ -410,6 +410,7 @@ function canvasDrawing(user,socket) {
                     }
                 }
             });
+
         }
         textHolder.html('');
         textHolder.hide();
@@ -429,6 +430,8 @@ function canvasDrawing(user,socket) {
         canvasObjects = [];
         $enableTextTool.click();
         $('#color-indicator').css('background', '#000');
+        var rec = $('.js-online-users.active').data().user;
+        socket.emit('redraw-canvas', {receiver: rec});
     });
 
     //detect shit key pressed for straight lines and squares
@@ -463,7 +466,7 @@ function canvasDrawing(user,socket) {
 
     //mouseDown Event Handler
     dc.mousedown(function (e) {
-        eraserPoints =[];
+        eraserPoints = [];
         mouseDown = true;
         var left = e.pageX - position.left,
             top = e.pageY - position.top;
@@ -520,13 +523,12 @@ function canvasDrawing(user,socket) {
         }
 
 
-
     }).mouseleave(function () {
         textEnabled = false;
         textwritten = false;
     });
     //mousemove
-    $('body').on('mousemove',function (e) {
+    $('body').on('mousemove', function (e) {
 
         var left = e.pageX - position.left;
         var top = e.pageY - position.top;
@@ -626,7 +628,7 @@ function canvasDrawing(user,socket) {
     });
 
     //mouseup
-    $('body').on('mouseup',function (e) {
+    $('body').on('mouseup', function (e) {
 
         var left = e.pageX - position.left;
         var top = e.pageY - position.top;
@@ -786,14 +788,9 @@ function canvasDrawing(user,socket) {
                     color: currentColor,
                     lineSize: lineSize
                 });
-            }else if(currentTool=='eraser'){
-                canvasObjects.push({shape:'eraser',data:eraserPoints});
-                if(publicModeEnabled){
-                    streamCanvasDrawing([{shape:'eraser',data:eraserPoints}]);
-                }else {
-                    streamCanvasDrawing(canvasObjects,publicModeEnabled);
-                }
-
+            } else if (currentTool == 'eraser') {
+                canvasObjects.push({shape: 'eraser', data: eraserPoints});
+                streamCanvasDrawing([{shape: 'eraser', data: eraserPoints}], publicModeEnabled);
             }
         }
         fakeCanvas.clearRect(0, 0, fakeC.height, fakeC.width);
@@ -848,15 +845,16 @@ function canvasDrawing(user,socket) {
      * @param t
      * @param es
      */
-    function eraseActualDrawing(l,t,es){
+    function eraseActualDrawing(l, t, es) {
         drawingCanvas.beginPath();
         drawingCanvas.globalCompositeOperation = "destination-out";
         drawingCanvas.arc(l, t, es, 0, Math.PI * 2, false);
         drawingCanvas.fill();
         drawingCanvas.globalCompositeOperation = 'source-over';
-        eraserPoints.push({left:l,top:t,eraserSize:es});
+        eraserPoints.push({left: l, top: t, eraserSize: es});
 
     }
+
     /**
      * ======================================================
      * *************** draw with pencil
@@ -1907,6 +1905,8 @@ function canvasDrawing(user,socket) {
         canvasObjects = [];
         $enableTextTool.click();
         $('#color-indicator').css('background', '#000');
+        var rec = $('.js-online-users.active').data().user;
+        socket.emit('redraw-canvas', {receiver: rec});
     });
 
     /**
@@ -1916,12 +1916,7 @@ function canvasDrawing(user,socket) {
      */
     function saveCanvasObjects(shape, data) {
         canvasObjects.push({shape: shape, data: data});
-        if(publicModeEnabled){
-            streamCanvasDrawing([{shape: shape, data: data}],publicModeEnabled);
-        }else{
-            streamCanvasDrawing(canvasObjects,publicModeEnabled);
-        }
-
+        streamCanvasDrawing([{shape: shape, data: data}], publicModeEnabled);
     }
 
     /**
@@ -2016,16 +2011,7 @@ function canvasDrawing(user,socket) {
                 continue;
             drawMultipleShapes(canvasShape, true);
         }
-        console.log(foreignCanvasData);
-        for (var j = 0; j < foreignCanvasData.length; j++) {
 
-            var cShape = foreignCanvasData[j];
-            if (!cShape)
-                continue;
-            if (!cShape.data)
-                continue;
-            drawMultipleShapes(cShape, true);
-        }
     }
 
     /**
@@ -2129,8 +2115,8 @@ function canvasDrawing(user,socket) {
                 ctx.drawImage(img, l, t);
             };
             img.src = shapeData.image;
-        }else if(shape=='eraser'){
-            shapeData.forEach(function(d){
+        } else if (shape == 'eraser') {
+            shapeData.forEach(function (d) {
                 drawingCanvas.beginPath();
                 drawingCanvas.globalCompositeOperation = "destination-out";
                 drawingCanvas.arc(d.left, d.top, d.eraserSize, 0, Math.PI * 2, false);
@@ -2214,55 +2200,69 @@ function canvasDrawing(user,socket) {
     }
 
     //enable public mode
-    $('.js-public-mode').click(function(){
-        if($(this).hasClass('active')){
+    $('.js-public-mode').click(function () {
+        if ($(this).hasClass('active')) {
             publicModeEnabled = false;
             foreignCanvasData = [];
-        }else{
+        } else {
             $(this).addClass('active');
             publicModeEnabled = true;
             foreignCanvasData = [];
         }
     });
-    if(publicModeEnabled){
-        socket.on('public-drawing', function (data) {
-            if (data.socket == receiver && data.hasOwnProperty('canvasData')) {
-                foreignCanvasData.push(data.canvasData);
-                redrawCanvas();
-            }
-        });
-    }else{
-        if (user.userType == 'tutor') {
-            socket.on('draw-student-drawing', function (data) {
-                if (data.socket == receiver && data.hasOwnProperty('canvasData')) {
 
-                    foreignCanvasData = data.canvasData;
-                    redrawCanvas();
-                }
-            });
-            socket.on('student-drawing', function (data) {
-                streamCanvasDrawing(canvasObjects,publicModeEnabled);
-            });
-        } else if (user.userType == 'student') {
-            socket.on('get-teacher-drawing', function (data) {
-                foreignCanvasData = data.canvasData;
-                redrawCanvas();
-            });
-            socket.on('send-drawing', function (data) {
-                streamCanvasDrawing(canvasObjects,publicModeEnabled)
-            });
-        }
-    }
-
-
-    $(document).on('click','.js-online-users',function(){
-        if($(this).hasClass('active'))
+    socket.on('get-public-drawing', function (data) {
+        if (!publicModeEnabled){
             return false;
-        foreignCanvasData = [];
-        redrawCanvas();
-    })
+        }
 
-};
+        if (data.user.ObjectID!=user.ObjectID && data.hasOwnProperty('canvasData')) {
+            canvasObjects.push(data.canvasData);
+            redrawCanvas();
+        }
+    });
+
+    socket.on('get-private-drawing', function (data) {
+
+        if (publicModeEnabled){
+            return false;
+        }
+        if(user.userType=='tutor' && data.user.ObjectID !=currentStudentID){
+            return false;
+        }
+
+        if (data.user.ObjectID!=user.ObjectID && data.hasOwnProperty('canvasData')) {
+            for (var i in data.canvasData) {
+                canvasObjects.push(data.canvasData[i]);
+            }
+            redrawCanvas();
+        }
+    });
+
+    socket.on('req-for-drawing-update', function(){
+       streamCanvasDrawing(canvasObjects,publicModeEnabled);
+    });
+    
+    socket.on('force-redraw', function(){
+        if(user.userType=='student'){
+            canvasObjects =[];
+            redrawCanvas();
+        }
+    });
+    $(document).on('click', '.js-online-users', function () {
+        if ($(this).hasClass('already-selected')){
+            return false;
+        }
+        $('.js-online-users').removeClass('already-selected');
+        $(this).addClass('already-selected');
+        canvasObjects = [];
+        redrawCanvas();
+        if(user.userType=='tutor') {
+            var rec = $(this).data().user;
+            socket.emit('req-student-drawing',{receiver:rec});
+        }
+    });
+}
 
 
 function getCoords(elem) {
