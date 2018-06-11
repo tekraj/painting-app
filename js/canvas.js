@@ -2253,11 +2253,16 @@ function canvasDrawing(user, socket) {
                     url : herokoUrl+'set-public-drawing',
                     data : user,
                     success : function (data){
-                        $this.addClass('active');
-                        publicModeEnabled = true;
-                        foreignCanvasData = [];
-                        canvasObjects =[];
-                        redrawCanvas();
+                        if(data.status){
+                            $this.addClass('active');
+                            publicModeEnabled = true;
+                            foreignCanvasData = [];
+                            canvasObjects =[];
+                            redrawCanvas();
+                        }else{
+                            alert('Sorry You are currently Offline. Please refresh the page');
+                        }
+
                     }
                 })
 

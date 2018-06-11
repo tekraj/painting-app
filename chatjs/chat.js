@@ -2,7 +2,7 @@
 var socket;
 var receiver ='';
 var user;
-var herokoUrl ='https://chatappwhiteboard.herokuapp.com/';
+var herokoUrl = 'http://localhost:8000/';//'https://chatappwhiteboard.herokuapp.com/';
 var canvasObjects = [];
 var currentStudentID ='';
 var $sessionCanvasWrapper;
@@ -342,8 +342,8 @@ function streamCanvasDrawing(data,publicModeEnabled){
         return;
     if(publicModeEnabled){
         if(user.userType=='student'){
-            checkPublicMethodEnabled(function(data){
-                if(data.status){
+            checkPublicMethodEnabled(function(response){
+                if(response.status){
                     socket.emit('send-public-drawing',{user:user,receiver:receiver,canvasData:data});
                 }else{
                     alert('Sorry currently public option is not avilable');
