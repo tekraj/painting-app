@@ -382,6 +382,7 @@ function getUserMessages(userId,receiverId,userType){
         return false;
     if(!userId)
         return false;
+    $('#chat-board').html('');
     $.ajax({
         type : 'post',
         url : herokoUrl+'get-user-messages',
