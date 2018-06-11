@@ -427,11 +427,10 @@ function canvasDrawing(user, socket) {
         fa.attr({'height': parentHeight - 8, 'width': parentWidth - 5});
         sc.attr({'height': parentHeight - 8, 'width': parentWidth - 5});
         pencilPoints = [];
-        canvasObjects = [];
+
         $enableTextTool.click();
         $('#color-indicator').css('background', '#000');
-        var rec = $('.js-online-users.active').data().user;
-        socket.emit('redraw-canvas', {receiver: rec});
+
     });
 
     //detect shit key pressed for straight lines and squares
@@ -2261,6 +2260,11 @@ function canvasDrawing(user, socket) {
             var rec = $(this).data().user;
             socket.emit('req-student-drawing',{receiver:rec});
         }
+    });
+    $('#clear-canvas').click(function(){
+        canvasObjects = [];
+        var rec = $('.js-online-users.active').data().user;
+        socket.emit('redraw-canvas', {receiver: rec});
     });
 }
 
