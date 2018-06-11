@@ -103,6 +103,7 @@ function canvasDrawing(user, socket) {
         background = '#fff',
         eraserPoints = [],
         publicModeEnabled = false,
+        $onlineUsers = $('#online-users'),
         currentTool = 'text';
     var foreignCanvasData = [];
     dc.css({'cursor': cursor});
@@ -427,7 +428,6 @@ function canvasDrawing(user, socket) {
         fa.attr({'height': parentHeight - 8, 'width': parentWidth - 5});
         sc.attr({'height': parentHeight - 8, 'width': parentWidth - 5});
         pencilPoints = [];
-
         $enableTextTool.click();
         $('#color-indicator').css('background', '#000');
 
@@ -1905,9 +1905,10 @@ function canvasDrawing(user, socket) {
         $enableTextTool.click();
         $('#color-indicator').css('background', '#000');
         canvasObjects = [];
+        foreignCanvasData = [];
         redrawCanvas();
         if(user.userType=='tutor'){
-            var rec = $('.js-online-users.active').data().user;
+            var rec = $onlineUsers.find('li.active').find('.js-online-users').data().user;
             socket.emit('redraw-canvas', {receiver: rec});
         }
 
@@ -2007,6 +2008,15 @@ function canvasDrawing(user, socket) {
     function redrawCanvas() {
         drawingCanvas.clearRect(0, 0, drawingC.width, drawingC.height);
         for (var i = 0; i < canvasObjects.length; i++) {
+
+            var canvasShape = canvasObjects[i];
+            if (!canvasShape)
+                continue;
+            if (!canvasShape.data)
+                continue;
+            drawMultipleShapes(canvasShape, true);
+        }
+        for (var i = 0; i < foreignCanvasData.length; i++) {
 
             var canvasShape = canvasObjects[i];
             if (!canvasShape)
@@ -2205,13 +2215,54 @@ function canvasDrawing(user, socket) {
 
     //enable public mode
     $('.js-public-mode').click(function () {
-        if ($(this).hasClass('active')) {
+        var $this = $(this);
+        if ($this.hasClass('active')) {
+            $this.removeClass('active')
             publicModeEnabled = false;
             foreignCanvasData = [];
+            canvasObjects =[];
+            redrawCanvas();
+            if(user.userType=='tutor'){
+                $.ajax({
+                    type : 'post',
+                    url : herokoUrl+'unset-public-drawing',
+                    data : user,
+                    success : function (data){
+
+                    }
+                });
+
+            }
         } else {
-            $(this).addClass('active');
-            publicModeEnabled = true;
-            foreignCanvasData = [];
+            if(user.userType=='student'){
+
+                checkPublicMethodEnabled(function(data){
+                    if(data.status){
+                        $this.addClass('active');
+                        publicModeEnabled = true;
+                        foreignCanvasData = [];
+                        canvasObjects =[];
+                        redrawCanvas();
+                    }else{
+                        alert('Sorry currently no public option avilable');
+                    }
+                });
+            }else{
+                $.ajax({
+                    type : 'post',
+                    url : herokoUrl+'set-public-drawing',
+                    data : user,
+                    success : function (data){
+                        $this.addClass('active');
+                        publicModeEnabled = true;
+                        foreignCanvasData = [];
+                        canvasObjects =[];
+                        redrawCanvas();
+                    }
+                })
+
+            }
+
         }
     });
 
@@ -2221,8 +2272,12 @@ function canvasDrawing(user, socket) {
         }
 
         if (data.user.ObjectID!=user.ObjectID && data.hasOwnProperty('canvasData')) {
-            canvasObjects.push(data.canvasData);
-            redrawCanvas();
+
+            for (var i in data.canvasData) {
+                foreignCanvasData.push(data.canvasData[i]);
+                drawMultipleShapes(data.canvasData[i],true);
+            }
+
         }
     });
 
@@ -2237,9 +2292,10 @@ function canvasDrawing(user, socket) {
 
         if (data.user.ObjectID!=user.ObjectID && data.hasOwnProperty('canvasData')) {
             for (var i in data.canvasData) {
-                canvasObjects.push(data.canvasData[i]);
+                foreignCanvasData.push(data.canvasData[i]);
+                drawMultipleShapes(data.canvasData[i],true);
             }
-            redrawCanvas();
+
         }
     });
 
@@ -2254,27 +2310,41 @@ function canvasDrawing(user, socket) {
         }
     });
     $(document).on('click', '.js-online-users', function () {
-        if ($(this).hasClass('already-selected')){
-            return false;
-        }
-        $('.js-online-users').removeClass('already-selected');
-        $(this).addClass('already-selected');
-        canvasObjects = [];
-        redrawCanvas();
-        if(user.userType=='tutor') {
+        if (!$(this).hasClass('already-selected')){
+            console.log('data');
+            $('.js-online-users').removeClass('already-selected');
+            $(this).addClass('already-selected');
+            canvasObjects = [];
+            foreignCanvasData = [];
+            redrawCanvas();
             var rec = $(this).data().user;
             socket.emit('req-student-drawing',{receiver:rec});
         }
+
     });
     $('#clear-canvas').click(function(){
         canvasObjects = [];
+        foreignCanvasData = [];
         redrawCanvas();
         if(user.userType=='tutor'){
-            var rec = $('.js-online-users.active').data().user;
+            var rec = $onlineUsers.find('li.active').find('.js-online-users').data().user;
             socket.emit('redraw-canvas', {receiver: rec});
         }
 
         $enableTextTool.click();
+    });
+
+    $(document).on('click','.js-clear-std-board',function(e){
+        e.preventDefault();
+
+        if(user.userType=='tutor'){
+            var rec = $(this).parent().find('.js-online-users').data().user;
+            socket.emit('redraw-canvas', {receiver: rec});
+            foreignCanvasData = [];
+            redrawCanvas();
+        }
+
+
     });
 }
 

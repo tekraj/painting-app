@@ -335,7 +335,7 @@ body {
 .mq-sqrt-prefix{transform:none!important;}
 
 #online-users{list-style: none;padding:0;}
-#online-users li{padding:5px 20px;font-size:14px;font-weight:600;cursor: pointer;border-bottom:1px solid #ccc;}
+#online-users li{padding:5px;font-size:14px;font-weight:600;cursor: pointer;border-bottom:1px solid #ccc;}
 #online-users li.active{
     background: #3F51B5;
     color: #fff;
@@ -475,4 +475,31 @@ body{
 .btn-public.active{
     background-color: #1f91f3 !important;
     border-color:#1f91f3 !important;
+}
+#online-users li{font-size:13px;}
+#online-users li .span-clear{
+    font-size: 10px;
+    float: left;
+    width:40%;
+    height:fit-content;
+    color: #ccc;
+    padding-top: 4px;
+    display:none;
+    box-sizing: border-box;
+}
+
+#online-users li.active .span-clear{
+    display:block;
+}
+#online-users li .user-name-span{
+    width: 60%;
+    display: block;
+    float: left;
+    height: fit-content;
+    box-sizing: border-box;
+}
+#online-users li::after{
+    content : '';
+    display: block;
+    clear:both;
 }
