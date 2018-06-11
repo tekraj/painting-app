@@ -146,8 +146,8 @@ $(function () {
 
                     for (var i in data) {
                         var u = data[i];
-                        if (u.ObjectID !== user.ObjectID ) {
-                            $html += '<li class="js-online-users" id="user-' + u.socket + '" data-user="' + u.socket + '" data-uid="'+u.ObjectID+'">' + u.user.Name + '</li>';
+                        if (u.ObjectID !== user.ObjectID  &&  $('#user-' + u.ObjectID.toLowerCase()).length<1 ) {
+                            $html += '<li class="js-online-users" id="user-' + u.ObjectID.toLowerCase() + '" data-user="' + u.socket + '" data-uid="'+u.ObjectID+'">' + u.user.Name + '</li>';
                         }
                     }
                     $onlineUserList.html($html);
@@ -166,36 +166,37 @@ $(function () {
 
 
                 socket.on(notiticationEvent, function (data) {
-
-                    iziToast.show({
-                        class: 'success',
-                        message:  data.userType.toUpperCase() + ' has joined the class',
-                        color: 'green',
-                        icon: '',
-                        position: 'topRight',
-                        timeout: 5000
-                    });
-                    $onlineUserList.append('<li class="js-online-users" data-uid="'+data.ObjectID+'" id="user-' + data.socket + '" data-user="' + data.socket + '" >' + data.Name + '</li>');
-                    if($onlineUserList.find('li').length==1){
-                        $onlineUserList.find('.js-online-users:first').click();
+                    if($('#user-' + data.ObjectID.toLowerCase()).length<1) {
+                        iziToast.show({
+                            class: 'success',
+                            message: data.userType.toUpperCase() + ' has joined the class',
+                            color: 'green',
+                            icon: '',
+                            position: 'topRight',
+                            timeout: 5000
+                        });
+                        $onlineUserList.append('<li class="js-online-users" data-uid="' + data.ObjectID + '" id="user-' + data.ObjectID.toLowerCase() + '" data-user="' + data.socket + '" >' + data.Name + '</li>');
+                        if ($onlineUserList.find('li').length == 1) {
+                            $onlineUserList.find('.js-online-users:first').click();
+                        }
                     }
                 });
             }
             if(user.userType=='tutor'){
                 socket.on('tutor-subscribed', function(data){
-
-                    iziToast.show({
-                        class: 'success',
-                        message:  data.Name.toUpperCase() + ' has joined the class',
-                        color: 'green',
-                        icon: '',
-                        position: 'topRight',
-                        timeout: 5000
-                    });
-
-                    $onlineUserList.append('<li class="js-online-users" data-uid="'+data.ObjectID+'" id="user-' + data.student + '" data-user="' + data.student + '" >' + data.Name + '</li>');
-                    if($onlineUserList.find('li').length==1){
-                        $onlineUserList.find('.js-online-users:first').click();
+                    if($('#user-' + data.ObjectID.toLowerCase()).length<1) {
+                        iziToast.show({
+                            class: 'success',
+                            message:  data.Name.toUpperCase() + ' has joined the class',
+                            color: 'green',
+                            icon: '',
+                            position: 'topRight',
+                            timeout: 5000
+                        });
+                        $onlineUserList.append('<li class="js-online-users" data-uid="' + data.ObjectID + '" id="user-' + data.ObjectID.toLowerCase() + '" data-user="' + data.student + '" >' + data.Name + '</li>');
+                        if ($onlineUserList.find('li').length == 1) {
+                            $onlineUserList.find('.js-online-users:first').click();
+                        }
                     }
                 });
                 socket.on('unsubscribe-tutor', function (data){
