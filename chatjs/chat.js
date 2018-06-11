@@ -143,12 +143,16 @@ $(function () {
                  */
                 socket.on(updateEvent, function (data) {
                     var $html = '';
-
+                    console.log(data);
                     for (var i in data) {
                         var u = data[i];
-                        if (u.ObjectID !== user.ObjectID  &&  $('#user-' + u.ObjectID.toLowerCase()).length<1 ) {
-                            $html += '<li class="js-online-users" id="user-' + u.ObjectID.toLowerCase() + '" data-user="' + u.socket + '" data-uid="'+u.ObjectID+'">' + u.user.Name + '</li>';
+                        if(u && u.ObjectID){
+                            if (u.ObjectID !== user.ObjectID  &&  $('#user-' + u.ObjectID.toLowerCase()).length<1 ) {
+                                $html += '<li class="js-online-users" id="user-' + u.ObjectID.toLowerCase() + '" data-user="' + u.socket + '" data-uid="'+u.ObjectID+'">' + u.user.Name + '</li>';
+                            }
                         }
+
+
                     }
                     $onlineUserList.html($html);
                     if( $onlineUserList.find('li').length>0){

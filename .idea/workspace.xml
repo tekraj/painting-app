@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ecb7341-a375-43d9-9dde-d4b762da5d98" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatjs/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatjs/chat.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/canvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/canvas.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="canvas.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="canvas.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/canvas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="2267" column="7" lean-forward="true" selection-start-line="2267" selection-start-column="7" selection-end-line="2267" selection-end-column="7" />
+            <state relative-caret-position="650">
+              <caret line="2276" column="32" selection-start-line="2276" selection-start-column="32" selection-end-line="2276" selection-end-column="32" />
               <folding>
                 <element signature="n#style#0;n#sub#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#sup#0;n#!!top" expanded="true" />
@@ -27,6 +29,15 @@
                 <element signature="e#13741#14338#0" />
                 <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chat.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="145" column="38" selection-start-line="145" selection-start-column="38" selection-end-line="145" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -48,6 +59,8 @@
       <find>js-clear-can</find>
       <find>#clear-canvas</find>
       <find>clear-canvas</find>
+      <find>rec</find>
+      <find>var rec =</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -57,8 +70,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/chatjs/chat.js" />
         <option value="$PROJECT_DIR$/js/canvas.js" />
+        <option value="$PROJECT_DIR$/chatjs/chat.js" />
       </list>
     </option>
   </component>
@@ -85,7 +98,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -96,17 +108,23 @@
             <path>
               <item name="painting-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="painting-app" type="462c0819:PsiDirectoryNode" />
+              <item name="chatjs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="painting-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="painting-app" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../chat-app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -144,29 +162,30 @@
       <workItem from="1528014785193" duration="610000" />
       <workItem from="1528391643621" duration="739000" />
       <workItem from="1528560022810" duration="30000" />
-      <workItem from="1528694858193" duration="1434000" />
+      <workItem from="1528694858193" duration="1516000" />
+      <workItem from="1528697315574" duration="1103000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10046000" />
+    <option name="totallyTimeSpent" value="11231000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="990" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21771611" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22038421" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32905483" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3282887" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -183,6 +202,29 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42807">
+          <caret line="2267" column="7" lean-forward="true" selection-start-line="2267" selection-start-column="7" selection-end-line="2267" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#sub#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#sup#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="e#13741#14338#0" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9690">
+          <caret line="510" column="77" selection-start-line="510" selection-start-column="65" selection-end-line="510" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/canvas.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="41420">
@@ -462,13 +504,6 @@
     <entry file="file://$PROJECT_DIR$/momentjs/moment.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
@@ -478,8 +513,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/canvas.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="2267" column="7" lean-forward="true" selection-start-line="2267" selection-start-column="7" selection-end-line="2267" selection-end-column="7" />
+        <state relative-caret-position="650">
+          <caret line="2276" column="32" selection-start-line="2276" selection-start-column="32" selection-end-line="2276" selection-end-column="32" />
           <folding>
             <element signature="n#style#0;n#sub#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#sup#0;n#!!top" expanded="true" />
@@ -489,6 +524,13 @@
             <element signature="e#13741#14338#0" />
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chatjs/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="145" column="38" selection-start-line="145" selection-start-column="38" selection-end-line="145" selection-end-column="38" />
         </state>
       </provider>
     </entry>
