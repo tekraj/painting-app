@@ -2,9 +2,11 @@
 var socket;
 var receiver ='';
 var user;
-var herokoUrl ='https://chatappwhiteboard.herokuapp.com/';
+var herokoUrl = 'https://chatappwhiteboard.herokuapp.com/';
 var canvasObjects = [];
 var currentStudentID ='';
+var canvasStates = [];
+var currentStateIndex = 1;
 var $sessionCanvasWrapper;
 $(function () {
     $('#user-input-modal').modal('show');
@@ -20,7 +22,6 @@ $(function () {
 
     $userType.change(function () {
         var type = $(this).val();
-        console.log(type);
         getUsers(type);
     });
 
@@ -29,15 +30,25 @@ $(function () {
             type: 'post',
             url: herokoUrl + 'get-users',
             data: {type: type},
+            beforeSend: function(){
+                $userName.html('<option>Loading...</option>')
+            },
             success: function (response) {
 
-                if (!response)
-                    return false;
-                var html = '';
-                for (var i in response) {
-                    html += '<option value="' + response[i].ObjectID + '">' + response[i].Name + '</option>';
+                if (!response){
+                    getUsers(type);
+                }else{
+                    var html = '';
+                    for (var i in response) {
+                        html += '<option value="' + response[i].ObjectID + '">' + response[i].Name + '</option>';
+                    }
+                    $userName.html(html);
                 }
-                $userName.html(html);
+
+
+            },
+            error : function(){
+                getUsers(type);
             }
         })
     }
@@ -229,7 +240,6 @@ $(function () {
             }
 
             socket.on(disconnectEvent, function (data) {
-                console.log(data);
                 iziToast.show({
                     class: 'error',
                     message: data.userName.toUpperCase() + ' has left the class',
@@ -274,6 +284,7 @@ $(function () {
                     var receiverId = $onlineUser.data().uid;
                     if (user.userType == 'tutor') {
                         currentStudentID = receiverId;
+                        canvasStates = [];
                     }
                     receiverName = $onlineUser.text();
                     var index = $this.index();
@@ -337,13 +348,14 @@ $(function () {
     }
 });
 
-function streamCanvasDrawing(data,publicModeEnabled){
+function streamCanvasDrawing(data,publicModeEnabled,redrawForeign){
     if(!user)
         return;
+    var redrawForeign = redrawForeign ? redrawForeign : 'no';
     if(publicModeEnabled){
         if(user.userType=='student'){
-            checkPublicMethodEnabled(function(data){
-                if(data.status){
+            checkPublicMethodEnabled(function(response){
+                if(response.status){
                     socket.emit('send-public-drawing',{user:user,receiver:receiver,canvasData:data});
                 }else{
                     alert('Sorry currently public option is not avilable');
@@ -355,7 +367,7 @@ function streamCanvasDrawing(data,publicModeEnabled){
         }
 
     }else{
-        socket.emit('send-private-drawing',{user:user,receiver:receiver,canvasData:data});
+        socket.emit('send-private-drawing',{user:user,receiver:receiver,canvasData:data,redrawForeign:redrawForeign});
     }
 }
 
@@ -382,6 +394,7 @@ function getUserMessages(userId,receiverId,userType){
         return false;
     if(!userId)
         return false;
+    $('#chat-board').html('');
     $.ajax({
         type : 'post',
         url : herokoUrl+'get-user-messages',
