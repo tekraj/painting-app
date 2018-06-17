@@ -503,3 +503,23 @@ body{
     display: block;
     clear:both;
 }
+.student-request-list{
+    position:fixed;
+    top:100px;
+    right:10px;
+    width: 35%;
+    display: none;
+}
+.student-request-list li {
+    background: #4CAF50;
+    padding: 10px 20px;
+    border: 1px solid #dedede;
+    text-align: left;
+    clear: both;
+    margin-bottom: 15px;
+    color: #fff;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px 2px #f1eded;
+    font-weight: bold;
+    text-transform: capitalize;
+}

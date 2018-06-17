@@ -756,6 +756,7 @@ function get_client_ip() {
         </div>
     </div>
 </div>
+<ul class="student-request-list"></ul>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/jquery.min.js"></script>

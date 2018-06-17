@@ -8,6 +8,7 @@ var currentStudentID ='';
 var canvasStates = [];
 var currentStateIndex = 1;
 var $sessionCanvasWrapper;
+
 $(function () {
     $('#user-input-modal').modal('show');
     var $userName = $('#user_name');
@@ -46,9 +47,6 @@ $(function () {
                 }
 
 
-            },
-            error : function(){
-                getUsers(type);
             }
         })
     }
@@ -165,10 +163,6 @@ $(function () {
                     $onlineUserList.html($html);
                     if( $onlineUserList.find('li').length>0){
                         $onlineUserList.find('li:first').click();
-                        setTimeout(function(){
-                            socket.emit('req-student-drawing',{receiver:receiver});
-                        },2000)
-
                     }
 
                 });
@@ -201,9 +195,64 @@ $(function () {
                         }
                     }
                 });
+
+
+
+                //select the tutor if request is accepted
+                socket.on('student-req-accepted', function (data) {
+                    if(receiver){
+                        user.previousTutor = receiver
+                        socket.emit('tutor-unsubscribed', user);
+                    }
+                    var $this = $('#user-'+data.ObjectID.toLowerCase());
+                    $onlineUserList.find('li').removeClass('active');
+                    $this.addClass('active');
+                    var $onlineUser = $this.find('.js-online-users');
+                    receiver = $onlineUser.data().user;
+                    var receiverId = $onlineUser.data().uid;
+                    currentStudentID = receiverId;
+                    canvasStates = [];
+                    receiverName = $onlineUser.text();
+                    var index = $this.index();
+                    user.tutor = receiver;
+                    socket.emit('req-student-drawing',{receiver:receiver});
+                    getUserMessages(user.ObjectID, receiverId, user.userType);
+                });
+
+                socket.on('student-req-rejected',function(data){
+                   alert('Sorry '+data.Name+' Rejected Your Reqest for joining class');
+                });
             }
+
             if(user.userType=='tutor'){
-                socket.on('tutor-subscribed', function(data){
+                socket.on('class-join-req', function(data){
+
+                    $('.student-request-list').show().append('<li><span class="pull-left">'+data.Name+' wants to join your class</span> <span class="pull-right" style="margin-top:-5px;"><button class="btn btn-default js-accept-reject-std-req" data-student="'+ data.student+'" data-value="reject">Reject</button>\n' +
+                        '                <button class="btn btn-primary js-accept-reject-std-req" data-student="'+ data.student+'" data-value="accept">Accept</button></span></li>');
+                });
+
+                //accept reject request
+                $('.student-request-list').on('click','.js-accept-reject-std-req', function(e){
+                    e.preventDefault();
+                   var std = $(this).data().student;
+                   console.log(std);
+                   var value = $(this).data().value;
+                   console.log('test');
+                   if(value=='accept'){
+                        socket.emit('accept-student',{student:std});
+                   }else{
+                       socket.emit('reject-student',{student:std});
+                   }
+                   $(this).closest('li').hide().remove();
+
+                   if($('.student-request-list').find('li').length==0){
+                       $('.student-request-list').hide();
+                   }
+
+                });
+
+
+                socket.on('student-req-accepted', function(data){
                     if($('#user-' + data.ObjectID.toLowerCase()).length<1) {
                         iziToast.show({
                             class: 'success',
@@ -213,15 +262,15 @@ $(function () {
                             position: 'topRight',
                             timeout: 5000
                         });
+
                         $onlineUserList.append('<li id="user-' + data.ObjectID.toLowerCase() + '"  ><span class="js-online-users user-name-span" data-uid="' + data.ObjectID + '" data-user="' + data.student + '">' + data.Name + '</span>'+(user.userType=='tutor'  ? '<span class="js-clear-std-board span-clear">Clear Student Board</span>' :'')+'</li>');
                         if ($onlineUserList.find('li').length == 1) {
                             $onlineUserList.find('li:first').click();
-                            setTimeout(function(){
-                                socket.emit('req-student-drawing',{receiver:receiver});
-                            },2000)
                         }
                     }
                 });
+
+
                 socket.on('unsubscribe-tutor', function (data){
                     if ($('#user-' + data.student).length > 0){
                         var activeClass = $('#user-' + data.student).hasClass('active');
@@ -229,11 +278,6 @@ $(function () {
                         if(activeClass &&  $onlineUserList.find('li').length>0){
 
                             $onlineUserList.find('li:first').click();
-
-                            setTimeout(function(){
-                                socket.emit('req-student-drawing',{receiver:receiver});
-                            },2000);
-
                         }
                     }
                 })
@@ -254,9 +298,6 @@ $(function () {
                     $('#user-' + data.user.ObjectID.toLowerCase()).remove();
                     if(activeClass &&  $onlineUserList.find('li').length>0){
                         $onlineUserList.find('li:first').click();
-                        setTimeout(function(){
-                            socket.emit('req-student-drawing',{receiver:receiver});
-                        },2000)
                     }
                 }
             });
@@ -267,36 +308,29 @@ $(function () {
              * SEND MESSGE TO USER (STUDENT <=> TEACHER)
              * ==================================
              */
+
             $onlineUserList.on('click', 'li', function () {
                 if(!$(this).hasClass('active')) {
-
-
-                    if (user.userType == 'student' && $onlineUserList.find('li').length > 1) {
-                        user.previousTutor = receiver
-                        socket.emit('tutor-unsubscribed', user);
-                    }
-
                     var $this = $(this);
-                    $onlineUserList.find('li').removeClass('active');
-                    $this.addClass('active');
                     var $onlineUser = $this.find('.js-online-users');
-                    receiver = $onlineUser.data().user;
-                    var receiverId = $onlineUser.data().uid;
                     if (user.userType == 'tutor') {
+                        $onlineUserList.find('li').removeClass('active');
+                        $this.addClass('active');
+                        receiver = $onlineUser.data().user;
+                        var receiverId = $onlineUser.data().uid;
                         currentStudentID = receiverId;
                         canvasStates = [];
-                    }
-                    receiverName = $onlineUser.text();
-                    var index = $this.index();
-
-                    if (user.userType == 'student') {
-                        user.tutor = receiver;
-                        socket.emit('subscribe-tutor', user);
-                    } else {
+                        receiverName = $onlineUser.text();
+                        var index = $this.index();
                         user.student = receiver;
                         socket.emit('send-drawing', user);
+                        getUserMessages(user.ObjectID, receiverId, user.userType);
+                    }else{
+                        user.tutor = $onlineUser.data().user;
+                        console.log(user);
+                        socket.emit('req-for-join-class', user);
                     }
-                    getUserMessages(user.ObjectID, receiverId, user.userType);
+
                 }
             });
 
