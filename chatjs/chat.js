@@ -58,12 +58,13 @@ $(function () {
         var userType = $userType.val();
         var subject = $subject.val();
         $('#user-input-modal').modal('hide');
-        enableChat(userId, userType,subject);
+        var name = $userName.find('option:selected').text();
+        enableChat(userId, userType,subject,name);
     });
     // var userId = $('meta[name=user]').attr("content");
     // var userType = $('meta[name=type]').attr("content");
 
-    function enableChat(userId, userType,subject) {
+    function enableChat(userId, userType,subject,name) {
 
 
         $chatRoom.animate({scrollTop: $chatBoard.height()}, 0);
@@ -95,7 +96,7 @@ $(function () {
         $.ajax({
             type: 'post',
             url: herokoUrl + 'authenticate',
-            data: {id: userId, userType: userType,subject:subject},
+            data: {id: userId, userType: userType,subject:subject,name:name},
             success: function (response) {
                 if (response.status === 'success') {
                     var token = response.token;
@@ -270,6 +271,23 @@ $(function () {
                     }
                 });
 
+                socket.on('force-student-mapped', function(data){
+                    if($('#user-' + data.ObjectID.toLowerCase()).length<1) {
+                        iziToast.show({
+                            class: 'success',
+                            message:  data.Name.toUpperCase() + ' has joined the class via admin',
+                            color: 'green',
+                            icon: '',
+                            position: 'topRight',
+                            timeout: 5000
+                        });
+
+                        $onlineUserList.append('<li id="user-' + data.ObjectID.toLowerCase() + '"  ><span class="js-online-users user-name-span" data-uid="' + data.ObjectID + '" data-user="' + data.student + '">' + data.Name + '</span>'+(user.userType=='tutor'  ? '<span class="js-clear-std-board span-clear">Clear Student Board</span>' :'')+'</li>');
+                        if ($onlineUserList.find('li').length == 1) {
+                            $onlineUserList.find('li:first').click();
+                        }
+                    }
+                });
 
                 socket.on('unsubscribe-tutor', function (data){
                     if ($('#user-' + data.student).length > 0){
