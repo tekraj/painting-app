@@ -102,10 +102,10 @@ function get_client_ip() {
                         <a class="btn btn-primary btn-sm" id="new-board" data-toggle="tooltip" data-placement="bottom" title="Clear this board and draw on new board">New Board</a>
                     </li>
                     <li>
-                        <button class="btn btn-default btn-sm btn-back" data-toggle="tooltip" data-placement="bottom" title="Back to previous board"><img src="images/icons/ic_keyboard_arrow_left_black_24dp_1x.png"> <span>Back</span></button>
+                        <button class="btn btn-default btn-sm btn-back " id="canvas-back-state" data-toggle="tooltip" data-placement="bottom" title="Back to previous board"><img src="images/icons/ic_keyboard_arrow_left_black_24dp_1x.png"> <span>Back</span></button>
                     </li>
                     <li>
-                        <button class="btn btn-default btn-sm btn-next" data-toggle="tooltip" data-placement="bottom" title="Next Board"><span>Next</span> <img src="images/icons/ic_keyboard_arrow_right_black_24dp_1x.png"></button>
+                        <button class="btn btn-default btn-sm btn-next" id="canvas-next-state" data-toggle="tooltip" data-placement="bottom" title="Next Board"><span>Next</span> <img src="images/icons/ic_keyboard_arrow_right_black_24dp_1x.png"></button>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

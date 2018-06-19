@@ -104,6 +104,7 @@ function canvasDrawing(user, socket) {
         eraserPoints = [],
         publicModeEnabled = false,
         $onlineUsers = $('#online-users'),
+        isNewDrawing = false,
         currentTool = 'text';
     var foreignCanvasData = [];
     dc.css({'cursor': cursor});
@@ -1899,20 +1900,66 @@ function canvasDrawing(user, socket) {
         textHolder.css({'font-size': fontSize, 'color': currentColor, 'font-style': 'normal', 'font-weight': 'normal'});
         dc.attr({'height': parentHeight - 8, 'width': parentWidth - 5});
         fa.attr({'height': parentHeight - 8, 'width': parentWidth - 5});
-        sc.attr({'height': parentHeight - 8, 'width': parentWidth - 5});
         pencilPoints = [];
 
         $enableTextTool.click();
         $('#color-indicator').css('background', '#000');
+        if(user.userType=='tutor'){
+            if(canvasObjects.length>1){
+                canvasStates.push(canvasObjects);
+                currentStateIndex = canvasStates.length;
+            }
+
+        }
+
         canvasObjects = [];
         foreignCanvasData = [];
         redrawCanvas();
         if(user.userType=='tutor'){
             var rec = $onlineUsers.find('li.active').find('.js-online-users').data().user;
-            socket.emit('redraw-canvas', {receiver: rec});
+            socket.emit('redraw-canvas', {receiver: rec,type:'new-board'});
         }
 
     });
+    if(user.userType=='tutor'){
+        $('#canvas-next-state').click(function(e){
+            e.preventDefault();
+
+            currentStateIndex++;
+            if(currentStateIndex<canvasStates.length){
+
+                if(canvasObjects && canvasObjects.length>0 && isNewDrawing){
+                    isNewDrawing = false;
+                    canvasStates.push(canvasObjects);
+                };
+                canvasObjects = canvasStates[currentStateIndex];
+               redrawCanvas();
+                streamCanvasDrawing(canvasObjects, false,'redraw-foreign');
+            }else{
+                currentStateIndex = canvasStates.length-1;
+            }
+        });
+
+        $('#canvas-back-state').click(function(e){
+            e.preventDefault();
+            currentStateIndex--;
+
+            if(currentStateIndex>=0){
+
+                if(canvasObjects && canvasObjects.length>0 && isNewDrawing){
+                    isNewDrawing = false;
+                    canvasStates.push(canvasObjects);
+                }
+                canvasObjects = canvasStates[currentStateIndex];
+                streamCanvasDrawing(canvasObjects, false,'redraw-foreign');
+                redrawCanvas();
+            }else{
+                currentStateIndex =0;
+            }
+        });
+    }else{
+        $('#canvas-next-state,#canvas-back-state').hide();
+    }
 
     /**
      * method to save canvas states
@@ -1920,7 +1967,10 @@ function canvasDrawing(user, socket) {
      * @param data
      */
     function saveCanvasObjects(shape, data) {
+        if(!canvasObjects)
+            canvasObjects = [];
         canvasObjects.push({shape: shape, data: data});
+        isNewDrawing = true;
         streamCanvasDrawing([{shape: shape, data: data}], publicModeEnabled);
     }
 
@@ -1945,7 +1995,6 @@ function canvasDrawing(user, socket) {
             var x1, y1, x2, y2;
             if (canvasShape.shape === 'pencil') {
                 var pPoints = shapeData.minMaxPoints;
-                console.log(pPoints);
                 x1 = pPoints.minX;
                 x2 = pPoints.maxX + 5;
                 y1 = pPoints.minY;
@@ -2007,23 +2056,29 @@ function canvasDrawing(user, socket) {
      */
     function redrawCanvas() {
         drawingCanvas.clearRect(0, 0, drawingC.width, drawingC.height);
-        for (var i = 0; i < canvasObjects.length; i++) {
+        if(canvasObjects) {
 
-            var canvasShape = canvasObjects[i];
-            if (!canvasShape)
-                continue;
-            if (!canvasShape.data)
-                continue;
-            drawMultipleShapes(canvasShape, true);
+            for (var i = 0; i < canvasObjects.length; i++) {
+
+                var canvasShape = canvasObjects[i];
+                if (!canvasShape)
+                    continue;
+                if (!canvasShape.data)
+                    continue;
+                drawMultipleShapes(canvasShape, true);
+
+            }
         }
-        for (var i = 0; i < foreignCanvasData.length; i++) {
+        if(foreignCanvasData) {
+            for (var i = 0; i < foreignCanvasData.length; i++) {
 
-            var canvasShape = canvasObjects[i];
-            if (!canvasShape)
-                continue;
-            if (!canvasShape.data)
-                continue;
-            drawMultipleShapes(canvasShape, true);
+                var canvasShape = foreignCanvasData[i];
+                if (!canvasShape)
+                    continue;
+                if (!canvasShape.data)
+                    continue;
+                drawMultipleShapes(canvasShape, true);
+            }
         }
 
     }
@@ -2187,27 +2242,29 @@ function canvasDrawing(user, socket) {
 
     //check for text edit option
     function checkTextEdit(x, y) {
-        for (var i = 0; i < canvasObjects.length; i++) {
-            var canvasShape = canvasObjects[i];
-            if (canvasShape.shape !== 'image-text')
-                continue;
-            var shapeData = canvasShape.data;
-            x1 = Math.min(shapeData.startX, shapeData.endX);
-            x2 = Math.max(shapeData.startX, shapeData.endX);
-            y1 = Math.min(shapeData.startY, shapeData.endY);
-            y2 = Math.min(shapeData.startY, shapeData.endY);
+        if(canvasObjects) {
+            for (var i = 0; i < canvasObjects.length; i++) {
+                var canvasShape = canvasObjects[i];
+                if (canvasShape.shape !== 'image-text')
+                    continue;
+                var shapeData = canvasShape.data;
+                x1 = Math.min(shapeData.startX, shapeData.endX);
+                x2 = Math.max(shapeData.startX, shapeData.endX);
+                y1 = Math.min(shapeData.startY, shapeData.endY);
+                y2 = Math.min(shapeData.startY, shapeData.endY);
 
-            dx = x2 - x1;
-            dy = y2 - y1;
-            if (x >= x1 - 20 && x <= x2 + 20 && y >= y1 - 20 && y <= y2 + 20) {
-                canvasObjects.splice(i, 1);
-                redrawCanvas();
-                return {
-                    left: shapeData.textLeftCord,
-                    top: shapeData.textTopCord,
-                    html: shapeData.html,
-                    cssObj: shapeData.cssObj
-                };
+                dx = x2 - x1;
+                dy = y2 - y1;
+                if (x >= x1 - 20 && x <= x2 + 20 && y >= y1 - 20 && y <= y2 + 20) {
+                    canvasObjects.splice(i, 1);
+                    redrawCanvas();
+                    return {
+                        left: shapeData.textLeftCord,
+                        top: shapeData.textTopCord,
+                        html: shapeData.html,
+                        cssObj: shapeData.cssObj
+                    };
+                }
             }
         }
         return false;
@@ -2278,6 +2335,7 @@ function canvasDrawing(user, socket) {
 
         if (data.user.ObjectID!=user.ObjectID && data.hasOwnProperty('canvasData')) {
 
+
             for (var i in data.canvasData) {
                 foreignCanvasData.push(data.canvasData[i]);
                 drawMultipleShapes(data.canvasData[i],true);
@@ -2296,10 +2354,18 @@ function canvasDrawing(user, socket) {
         }
 
         if (data.user.ObjectID!=user.ObjectID && data.hasOwnProperty('canvasData')) {
-            for (var i in data.canvasData) {
-                foreignCanvasData.push(data.canvasData[i]);
-                drawMultipleShapes(data.canvasData[i],true);
+
+            if(data.redrawForeign=='redraw-foreign'){
+
+                foreignCanvasData = data.canvasData;
+                redrawCanvas();
+            }else{
+                for (var i in data.canvasData) {
+                    foreignCanvasData.push(data.canvasData[i]);
+                    drawMultipleShapes(data.canvasData[i],true);
+                }
             }
+
 
         }
     });
@@ -2308,15 +2374,17 @@ function canvasDrawing(user, socket) {
        streamCanvasDrawing(canvasObjects,publicModeEnabled);
     });
     
-    socket.on('force-redraw', function(){
+    socket.on('force-redraw', function(data){
         if(user.userType=='student'){
+            if(data.type == 'new-board'){
+                foreignCanvasData =[];
+            }
             canvasObjects =[];
             redrawCanvas();
         }
     });
     $(document).on('click', '.js-online-users', function () {
         if (!$(this).hasClass('already-selected')){
-            console.log('data');
             $('.js-online-users').removeClass('already-selected');
             $(this).addClass('already-selected');
             canvasObjects = [];
@@ -2333,7 +2401,7 @@ function canvasDrawing(user, socket) {
         redrawCanvas();
         if(user.userType=='tutor'){
             var rec = $onlineUsers.find('li.active').find('.js-online-users').data().user;
-            socket.emit('redraw-canvas', {receiver: rec});
+            socket.emit('redraw-canvas', {receiver: rec,type:'new-board'});
         }
 
         $enableTextTool.click();
@@ -2344,7 +2412,7 @@ function canvasDrawing(user, socket) {
 
         if(user.userType=='tutor'){
             var rec = $(this).parent().find('.js-online-users').data().user;
-            socket.emit('redraw-canvas', {receiver: rec});
+            socket.emit('redraw-canvas', {receiver: rec,type:'std-board'});
             foreignCanvasData = [];
             redrawCanvas();
         }
