@@ -571,7 +571,6 @@ function get_client_ip() {
                                             <a herf="#" class=" dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img
                                                     src="images/icons/ic_tag_faces_black_24dp_1x.png" alt=""></a>
                                             <ul class="dropdown-menu dropdown-menu-left">
-
                                                 <li class="body">
                                                     <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 254px;">
                                                         <ul class="menu smily-menu" style="overflow: hidden; width: auto; height: 254px;">
